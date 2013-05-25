@@ -1,0 +1,305 @@
+Table: ricca3_alumne
+Columns:
+idalumne		int(11) PK AI
+cognom1			varchar(50) 
+cognom2			varchar(50) 
+nom			varchar(50) 
+idestat_al			int(11)
+datanai			date 
+llocnai			varchar(50) 
+provnai			varchar(50) 
+paisnai			varchar(50) 
+dni			varchar(30) 
+residenciacurs		varchar(255) 
+ciutatcurs		varchar(50) 
+codpostalcurs		varchar(5) 
+telefoncontactecurs1	varchar(30) 
+telefoncontactecurs2	varchar(30) 
+email			varchar(50) 
+residenciahabitual	varchar(255) 
+ciutathabitual		varchar(50) 
+provinciahabitual	varchar(50) 
+codipostal		varchar(5) 
+telefon			varchar(30) 
+estudisrealitzats	varchar(50) 
+datainscripcio		date 
+telefonfixe		varchar(50) 
+estudisanteriors	varchar(255) 
+centreea		varchar(50) 
+poblacioea		varchar(50) 
+abonament		varchar(50) 
+tipusdni		varchar(255) 
+llenguafamiliar		varchar(255) 
+professio		varchar(255) 
+idhistorial		tinytext 
+nacionalitat		varchar(45) 
+attachment_id		varchar(30) 
+cognomsinom		varchar(100) 
+nomicognoms		varchar(100) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+
+
+Table: ricca3_alumne_especialitat
+Columns:
+idalumespec		int(11) PK AI
+idalumne		int(11) 
+idgrup			int(11) 
+idany			int(11) 
+idestat_es		int(11) 
+motiubaixa		varchar(255) 
+databaixa		datetime 
+notafes			double 
+repeteix		varchar(1) 
+observ1			varchar(255) 
+observ2			varchar(255) 
+observ3			varchar(255) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_grups (idgrup → idgrup)
+ricca3_estat (idestat → idestat)
+ricca3_alumne (idalumne → idalumne)
+ricca3_any (idany → idany)
+
+
+Table: ricca3_any
+Columns:
+idany			int(11) PK AI
+any			varchar(50) 
+actual			tinyint(1) 
+insc			tinyint(1) 
+conv			varchar(45) 
+cursanterior		varchar(45) 
+cursposterior		varchar(45) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+
+
+
+Table: ricca3_avaluacions
+Columns:
+idavaluacio		int(11) PK AI
+nomaval			varchar(50) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+
+
+
+Table: ricca3_calcul_notaf
+Columns:
+idcalcul		int(11) PK AI
+idalumne		int(11) 
+idespecialitat		int(11) 
+doublenotaf		double 
+nomcredit		varchar(1024) 
+notaf			varchar(1024) 
+hores			varchar(1024) 
+punts			varchar(1024) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_alumne (idalumne → idalumne)
+ricca3_especialitats (idespecialitat → idespecialitat)
+
+
+
+Table: ricca3_ccomp
+Columns:
+idccomp			int(11) PK AI
+idcredit		int(11) 
+idgrup			int(11) 
+idprofessor		int(11) 
+idtutor			int(11) 
+horescc			int(11) 
+actiucc			tinyint(1) 
+nomccomp		varchar(255) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_credits (idcredit → idcredit)
+ricca3_grups (idgrup → idgrup)
+ricca3_professors (idprofessor → idprof)
+ricca3_professors (idtutor → idtutor)
+
+
+
+Table: ricca3_credits
+Columns:
+idcredit		int(11) PK AI
+idespecialitat		int(11) 
+idcurs			int(11) 
+horescr			int(11) 
+actiucr			tinyint(1) 
+ordrecr			tinyint(4) 
+aval3nomes		tinyint(1) 
+nomcredit		varchar(100) 
+credit			varchar(255) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_cursos (idcurs → idcurs)
+ricca3_especialitats (idespecialitat → idespecialitat)
+
+
+
+Table: ricca3_credits_avaluacions
+Columns:
+idcredaval		int(11) PK AI
+idany			int(11) 
+idccomp			int(11) 
+idalumne		int(11) 
+idestat_cr			int(11)
+nota1			varchar(50) 
+nota2			varchar(50) 
+nota3			varchar(50) 
+recup			varchar(50) 
+notafcr			varchar(50) 
+act1			varchar(255) 
+act2			varchar(255) 
+actf			varchar(255) 
+pendi			varchar(1) 
+repe			varchar(50) 
+convord			int(11) 
+convext1		int(11) 
+convext2		int(11) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_any (idany → idany)
+ricca3_ccomp (idccomp → idccomp)
+ricca3_alumne (idalumne → idalumne)
+ricca3_any (convord → idany)
+
+
+
+Table: ricca3_credits_especialitat
+Columns:
+idcredespec		int(11) PK AI
+idespecialitat		int(11) 
+idcredit		int(11) 
+modul			int(5) 
+ordrecres		int(5) 
+numero			varchar(45) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_especialitats (idespecialitat → idespecialitat)
+ricca3_credits (idcredit → idcredit)
+
+
+
+Table: ricca3_cursos
+Columns:
+idcurs			int(11) PK AI
+curs			varchar(15) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+
+
+
+Table: ricca3_especialitats
+Columns:
+idespecialitat		int(11) PK AI
+nomespecialitat		varchar(255) 
+codiespecialitat	varchar(45) 
+pla			varchar(15) 
+actiues			int(5) 
+cursos			int(5) 
+ordrees			int(5) 
+professio		varchar(255) 
+duracio			varchar(255) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+
+
+
+Table: ricca3_estat
+Columns:
+idestat			int(11) PK AI
+estat			varchar(15) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+
+
+Table: ricca3_grups
+Columns:
+idgrup			int(11) PK AI
+grup			varchar(45) 
+idespecialitat		int(11) 
+idcurs			int(11) 
+actiugr			int(5) 
+ordregr			int(11) 
+sessio			varchar(25) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_cursos (idcurs → idcurs)
+ricca3_especialitats (idespecialitat → idespecialitat)
+
+
+
+Table: ricca3_historial
+Columns:
+idhistorial		int(11) PK AI
+codi_c			varchar(225) 
+nom_c			varchar(225) 
+grau_c			varchar(225) 
+titol			varchar(225) 
+prova			varchar(225) 
+condic			varchar(225) 
+cicle_codi		varchar(225) 
+cicle_nom		varchar(225) 
+cicle_any_de		varchar(225) 
+cicle_any_a		varchar(225) 
+cicle_curs		varchar(225) 
+modul			varchar(1024) 
+m_hores			varchar(225) 
+m_qual			varchar(225) 
+m_conv			varchar(225) 
+uf			varchar(1024) 
+uf_hores		varchar(225) 
+uf_qual			varchar(225) 
+uf_conv			varchar(225) 
+qual_final		varchar(45) 
+obs			varchar(225) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_alumne (idhistorial → idalumne)
+
+
+
+Table: ricca3_plan
+Columns:
+idplan			int(11) PK AI
+idany			int(11) 
+idccomp			int(11) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+Related Tables:ricca3_any (idany → idany)
+ricca3_ccomp (idccomp → idccomp)
+
+
+
+Table: ricca3_professors
+Columns:
+idprof			int(11) PK AI
+idtutor			int(11) 
+nomicognoms		varchar(45) 
+telcasa			varchar(30) 
+telcont1		varchar(30) 
+telcont2		varchar(30) 
+telcont3		varchar(30) 
+email			varchar(50) 
+ts			timestamp 
+stampuser		varchar(15) 
+stampplace		varchar(50) 
+
