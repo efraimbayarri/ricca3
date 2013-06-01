@@ -342,7 +342,7 @@ $ricca3_butons_actes=array(
 /**   */
 #############################################################################################
 $ricca3_butons_dades=array(
-	"imatge" =>array("especialitats", "credits",     "grups",        "professors",   "ccomp",        "buid",         "pla",        "guardarpla",        "plallista",         "sensepla",        "buid",         "buid"),
+	"imatge" =>array("especialitats", "credits",     "grups",        "professors",   "ccomp",        "creditsespec", "pla",        "guardarpla",        "plallista",         "sensepla",        "buid",         "buid"),
 	"enllac" =>array("ricca3-espec",  "ricca3-cred", "ricca3-grups", "ricca3-prof",  "ricca3-ccomp", "ricca3-dades", "ricca3-pla", "ricca3-guardarpla", "ricca3-llistarpla", "ricca3-sensepla", "ricca3-dades", "ricca3-notafinalalumne"),
 	"id"     =>array(false,           false,         false,          false,          false,          false,          false,        false,               false,               false,             false,          false),
 	"nova"   =>array(false,           false,         false,          false,          false,          false,          false,        false,               false,               false,             false,          false),

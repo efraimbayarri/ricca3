@@ -4,7 +4,7 @@
  * Plugin URI: http://replicantsfactory.com/
  * Author: Efraim Bayarri
  * Author URI: http://replicantsfactory.com/
- * Version: 201322060937
+ * Version: 201322061609
  * Description: Projecte RIC-CA (Escola Ramon i Cajal) Versió 3 (BETA)
  */
 
@@ -174,9 +174,10 @@ function ricca3_init() {
 		ricca3_ricca3_grups();
 	}
 		
-	load_plugin_textdomain( 'ricca3-admin', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
-	load_plugin_textdomain( 'ricca3-alum',  false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
-	load_plugin_textdomain( 'ricca3-inc',   false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
-	load_plugin_textdomain( 'ricca3-aval',  false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	load_plugin_textdomain( 'ricca3-admin',  false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	load_plugin_textdomain( 'ricca3-alum',   false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	load_plugin_textdomain( 'ricca3-inc',    false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	load_plugin_textdomain( 'ricca3-aval',   false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	load_plugin_textdomain( 'ricca3-dades',  false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	
 }

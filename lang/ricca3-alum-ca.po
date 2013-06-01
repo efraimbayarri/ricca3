@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RICCA3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-12 17:07+0100\n"
-"PO-Revision-Date: 2013-05-12 17:07+0100\n"
+"POT-Creation-Date: 2013-06-01 12:09+0100\n"
+"PO-Revision-Date: 2013-06-01 13:08+0100\n"
 "Last-Translator: Efraim Bayarri <efraim.bayarri@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -50,111 +50,111 @@ msgid "Alumnes per especialitat"
 msgstr "Alumnes per especialitat"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:67
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2368
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2379
 msgid "ajuda-llistar-alumnes"
 msgstr "Llista els alumnes d'una especialitat, segons els criteris d'Especialitat, Grup, Any, Estat i Repetidors de la barra de selecció."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:70
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:384
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2371
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2382
 msgid "Especialitat:"
 msgstr "Especialitat:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:70
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2371
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2382
 msgid "ajuda_drop_especialitat"
 msgstr "Llistat d'especialitats com a criteri de cerca. Si escollim 'qualsevol' el criteri es qualsevol especialitat."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:72
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:77
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2373
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2384
 msgid "Pla:"
 msgstr "Pla:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:75
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:349
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:383
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1593
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2376
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1595
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2387
 msgid "Grup:"
 msgstr "Grup:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:75
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:349
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2376
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2387
 msgid "ajuda_drop_ grup"
 msgstr "Llistat de grups d'estudis com a criteri de cerca. Si escollim 'qualsevol', el criteri es qualsevol grup."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:80
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1596
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2330
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2379
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1598
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2341
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2390
 msgid "Any:"
 msgstr "Any:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:80
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2330
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2379
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2341
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2390
 msgid "ajuda_drop_any"
 msgstr "Llistat d'anys com a criteri de cerca. "
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:82
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2381
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2392
 msgid "Estat:"
 msgstr "Estat:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:82
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2381
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2392
 msgid "ajuda_drop_estat"
 msgstr "Alta o Baixa com estat del alumne al criteri de cerca. "
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:84
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2383
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2394
 msgid "Repetidors:"
 msgstr "Repetidors:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:84
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2383
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2394
 msgid "ajuda_drop_repe"
 msgstr "Alumnes repetidors com a criteri de cerca."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:100
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:128
 msgid "ajuda-alumespec-id"
-msgstr "ajuda-alumespec-id"
+msgstr "Número d'identificació"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:101
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:129
 msgid "ajuda-alumespec-veure"
-msgstr "ajuda-alumespec-veure"
+msgstr "Visualitzar les dades de l'alumne"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:102
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:130
 msgid "ajuda-alumespec-nom"
-msgstr "ajuda-alumespec-nom"
+msgstr "Nom i cognoms de l'alumne"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:103
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:131
 msgid "ajuda-alumespec-tel1"
-msgstr "ajuda-alumespec-tel1"
+msgstr "Telèfon de contacte de l'alumne"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:104
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:132
 msgid "ajuda-alumespec-tel2"
-msgstr "ajuda-alumespec-tel2"
+msgstr "Telèfon de contacte de l'alumne"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:105
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:133
 msgid "ajuda-alumespec-email"
-msgstr "ajuda-alumespec-email"
+msgstr "E-mail del alumne"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:106
 msgid "ajuda-alumespec-estat"
-msgstr "ajuda-alumespec-estat"
+msgstr "Estat de l'especialitat (alta/baixa)"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:107
 msgid "ajuda-alumespec-repe"
-msgstr "ajuda-alumespec-repe"
+msgstr "Indica si l'alumne és repetidor"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:135
 msgid "Cerca d'alumnes"
@@ -163,9 +163,9 @@ msgstr "Cerca d'alumnes"
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:139
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:194
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:339
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2357
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2498
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2544
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2368
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2509
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2555
 msgid "ajuda-alumnes"
 msgstr "Torna a la pàgina d'alumnes"
 
@@ -424,41 +424,41 @@ msgid "Editar dades de l'Alumne"
 msgstr "Editar dades de l'Alumne."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:494
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1570
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1629
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1714
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1906
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2008
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2242
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2303
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1572
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1631
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1716
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1914
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2019
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2253
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2314
 msgid "ajuda-editardades-especialitats"
 msgstr "Mostra les especialitats i el crèdits del alumne."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:495
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1571
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1630
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1715
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1907
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2009
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2243
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2304
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1573
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1632
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1717
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1915
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2020
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2254
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2315
 msgid "ajuda-editardades-dadesalumne"
 msgstr "Mostra les dades personal de l'alumne."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:496
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1572
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1631
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1716
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1908
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2010
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2244
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2305
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1574
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1633
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1718
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1916
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2021
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2255
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2316
 msgid "ajuda-editardades-alumnes"
 msgstr "Torna a la selecció de alumnes."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:599
 msgid "ajuda-noualumne-desar"
-msgstr "ajuda-noualumne-desar"
+msgstr "Desar dades"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:599
 msgid "Desar dades"
@@ -513,32 +513,32 @@ msgid "ajuda-especalum-canviarany"
 msgstr "Canvia el any en que l'alumne ha cursat un curs i els seus crèdits. Es fa servir per exemple quan un alumne ha cursat ja estudis en un any anterior i no tenim pla d'estudis per aquell any."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:666
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1576
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1578
 msgid "ajuda-graella-especalum-any"
 msgstr "Any del curs."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:667
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1577
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1579
 msgid "ajuda-graella-especalum-especialitat"
 msgstr "Nom de l'especialitat."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:668
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1578
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1580
 msgid "ajuda-graella-especalum-grup"
 msgstr "Grup en qual el alumne està matriculat."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:669
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1579
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1581
 msgid "ajuda-graella-especalum-estat"
 msgstr "Estat del curs (Alta/Baixa)."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:670
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1580
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1582
 msgid "ajuda-graella-especalum-nota"
 msgstr "Nota final de l'especialitat si el alumne a acabat els estudis."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:671
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1581
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1583
 msgid "ajuda-graella-especalum-repeteix"
 msgstr "Indica si el alumne ha tingut crèdits pendents al final del curs."
 
@@ -559,896 +559,904 @@ msgid "ajuda-tab-historial"
 msgstr "Historial Acadèmic d'una especialitat de l'alumne. Permet imprimir-ho per poder entregar-ho a l'alumne."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:719
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:800
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1756
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:801
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1758
 msgid "ajuda-graella-credalu-grup"
 msgstr "Grup en qual el alumne està matriculat."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:720
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:801
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1757
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:802
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1759
 msgid "ajuda-graella-credalu-conv"
 msgstr "Convocatòria del crèdit."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:721
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:802
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1759
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1804
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1859
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:803
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1761
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1807
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1865
 msgid "ajuda-graella-credalu-R"
 msgstr "* si l'alumne repeteix el crèdit."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:722
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:803
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1760
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:804
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1762
 msgid "ajuda-graella-credalu-credit"
 msgstr "Nom del crèdit."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:723
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:804
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1761
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1812
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1850
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:805
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1763
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1815
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1855
 msgid "ajuda-graella-credalu-N1"
 msgstr "Nota de la primera avaluació."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:724
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:805
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1762
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1814
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1851
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:806
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1764
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1817
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1856
 msgid "ajuda-graella-credalu-A1"
 msgstr "Actitud de la primera avaluació."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:725
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:806
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1763
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1816
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1852
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:807
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1765
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1819
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1857
 msgid "ajuda-graella-credalu-N2"
 msgstr "Nota de la segona avaluació."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:726
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:807
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1764
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1818
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1853
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:808
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1766
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1821
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1858
 msgid "ajuda-graella-credalu-A2"
 msgstr "Actitud de la segona avaluació."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:727
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:808
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1765
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1820
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1854
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:809
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1767
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1823
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1859
 msgid "ajuda-graella-credalu-N3"
 msgstr "Nota de la tercera avaluació."
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:728
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:809
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1766
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1822
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1856
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:810
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1768
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1825
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1860
+msgid "ajuda-graella-credalu-A3"
+msgstr "Actitud de la tercera avaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:729
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:811
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1769
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1827
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1862
 msgid "ajuda-graella-credalu-NFCC"
 msgstr "Nota final del crèdit/crèdit compartit."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:729
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:810
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:730
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:812
 msgid "ajuda-graella-credalu-NF"
 msgstr "Nota final del crèdit."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:730
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:811
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1768
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:731
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:813
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1771
 msgid "ajuda-graella-credalu-prof"
 msgstr "Nom del professor que imparteix el crèdit."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:731
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:812
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1769
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:732
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:814
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1772
 msgid "ajuda-graella-credalu-horesCC"
 msgstr "Hores de que consta el crèdit/crèdit compartit."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:732
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:813
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:733
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:815
 msgid "ajuda-graella-credalu-hores"
 msgstr "Hores de que consta tot el crèdit."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:860
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:862
 msgid "ajuda-historial-imprimir"
 msgstr "Imprimeix una copia del Historial Acadèmic de l'alumne."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:860
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:862
 msgid "Imprimir Historial"
 msgstr "Imprimir Historial"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1056
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1058
 msgid "DADES DEL ALUMNE"
 msgstr "DADES DEL ALUMNE"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1058
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1232
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1349
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1434
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1060
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1234
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1351
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1436
 msgid "Cognoms i nom"
 msgstr "Cognoms i nom"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1060
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1232
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1349
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1434
-msgid "Núm. d'identificació"
-msgstr "Núm. d'identificació"
-
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1062
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1234
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1351
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1436
+msgid "Núm. d'identificació"
+msgstr "Número d'identificació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1064
 msgid "ajuda-historial-tipusdni"
 msgstr "Tipus de document d'identificació: DNI/NIE/Passaport."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1062
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1064
 msgid "Document d'indentificació"
 msgstr "Document d'identificació"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1064
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1237
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1066
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1239
 msgid "Número"
 msgstr "Número"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1066
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1068
 msgid "ajuda-historial-datanai"
 msgstr "Data de naixement de l'alumne."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1066
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1068
 msgid "Data de neixament"
 msgstr "Data de naixement"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1068
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1070
 msgid "ajuda-historial-llocnai"
 msgstr "Lloc de naixement de l'alumne."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1068
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1070
 msgid "Lloc de neixament"
 msgstr "Lloc de naixement"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1070
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1072
 msgid "ajuda-historial-paisnai"
 msgstr "País de naixement de l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1070
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1242
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1072
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1244
 msgid "País"
 msgstr "País"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1072
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1074
 msgid "ajuda-historial-nacionalitat"
 msgstr "Nacionalitat de l'alumne."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1072
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1242
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1074
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1244
 msgid "Nacionalitat"
 msgstr "Nacionalitat"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1074
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1076
 msgid "DADES ACADÈMIQUES"
 msgstr "DADES ACADÈMIQUES"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1076
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1078
 msgid "ajuda-historial-codidades"
 msgstr "Codi del cicle formatiu."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1076
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1222
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1252
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1358
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1443
-msgid "Codi"
-msgstr "Codi"
-
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1078
-msgid "ajuda-historial-nomcicle"
-msgstr "Nom del cicle formatiu."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1078
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1252
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1358
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1443
-msgid "Nom del cicle formatiu"
-msgstr "Nom del cicle formatiu"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1080
-msgid "ajuda-historial-graucicle"
-msgstr "Grau del cicle formatiu. "
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1080
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1252
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1358
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1443
-msgid "Grau"
-msgstr "Grau"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1082
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1142
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1165
-msgid "ajuda-historial-desar"
-msgstr "Desar totes les dades introduïdes al Historial Acadèmic de l'alumne."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1084
-msgid "CONDICIONS D'ACCÉS"
-msgstr "CONDICIONS D'ACCÉS"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1086
-msgid "ajuda-historial-radiotitol"
-msgstr "Marcar si l'alumne ha presentat com a condició d'accés un títol d'estudis."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1088
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1268
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1273
-msgid "Títol de:"
-msgstr "Títol de:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1090
-msgid "ajuda-historial-titolde"
-msgstr "Nom del títol d'accés presentat."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1092
-msgid "ajuda-historial-radioprova"
-msgstr "Marcar si l'alumne ha presentat com a condició un certificat de prova d'accés."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1094
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1263
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1273
-msgid "Prova d'accés a:"
-msgstr "Prova d'accés a:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1096
-msgid "ajuda-historial-provaa"
-msgstr "Descripció del títol de prova d'accés presentat."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1098
-msgid "ajuda-historial-radiosense"
-msgstr "Marcar si l'alumne ha presentat una autorització com condició d'accés al curs."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1101
-msgid "Sense requisits, amb autorització:"
-msgstr "Sense requisits, amb autorització:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1103
-msgid "MATRICULACIONS EN EL CICLE FORMATIU"
-msgstr "MATRICULACIONS EN EL CICLE FORMATIU"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1105
-msgid "ajuda-hist-codidelcentre"
-msgstr "ajuda-hist-codidelcentre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1105
-msgid "Codi de centre"
-msgstr "Codi del centre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1107
-msgid "ajuda-hist-cnomdelcentre"
-msgstr "ajuda-hist-cnomdelcentre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1107
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1290
-msgid "Nom del centre"
-msgstr "Nom del centre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1109
-msgid "ajuda-hist-anycicle"
-msgstr "ajuda-hist-anycicle"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1109
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1290
-msgid "Anys acadèmics"
-msgstr "Anys acadèmics"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1118
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1129
-msgid "ajuda-historial-codicentre"
-msgstr "Codi numèric del centre on ha realitzat el curs."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1120
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1131
-msgid "ajuda-historial-nomcentre"
-msgstr "Nom del centre on ha realitzat el curs."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1122
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1133
-msgid "ajuda-historial-anydesde"
-msgstr "Any en que va començar el curs al centre."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1124
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1135
-msgid "ajuda-historial-anyfins"
-msgstr "Any en que va acabar el curs al centre."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1126
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1137
-msgid "ajuda-historial-nomcurs"
-msgstr "Nom del curs que ha realitzat al centre."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1143
-msgid "QUALIFICACIONS"
-msgstr "QUALIFICACIONS"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1145
-msgid "ajuda-hist-nomcredit"
-msgstr "ajuda-hist-nomcredit"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1145
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1366
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1451
-msgid "Crèdit"
-msgstr "Crèdit"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1146
-msgid "ajuda-hist-horescredit"
-msgstr "ajuda-hist-horescredit"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1146
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1366
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1451
-msgid "Hores"
-msgstr "Hores"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1147
-msgid "ajuda-hist-qualcredit"
-msgstr "ajuda-hist-qualcredit"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1147
-msgid "Qualif."
-msgstr "Qualif."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1148
-msgid "ajuda-hist-convcredit"
-msgstr "ajuda-hist-convcredit"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1148
-msgid "Conv."
-msgstr "Conv."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1158
-msgid "Qualificació final del cicle formatiu"
-msgstr "Qualificació final del cicle formatiu"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1160
-msgid "OBSERVACIONS"
-msgstr "OBSERVACIONS"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1162
-msgid "ajuda-historial-observacions"
-msgstr "Observacions al Historial Acadèmic de l'especialitat de l'alumne."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1188
-msgid "ajuda-especalum-anterior"
-msgstr "ajuda-especalum-anterior"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1190
-msgid "ajuda-especalum-seguent"
-msgstr "ajuda-especalum-seguent"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1214
-msgid "Historial acadèmic de l'alumne/a"
-msgstr "Historial acadèmic de l'alumne/a"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1214
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1342
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1427
-msgid "Formació professional inicial"
-msgstr "Formació professional inicial"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1219
-msgid "Dades del centre"
-msgstr "Dades del centre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1222
-msgid "Nom"
-msgstr "Nom"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1222
-msgid "Municipi"
-msgstr "Municipi"
-
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1224
-msgid "Escola Ramon i Cajal"
-msgstr "Escola Ramon i Cajal"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1224
-msgid "08035672"
-msgstr "08035672"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1224
-msgid "Barcelona"
-msgstr "Barcelona"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1229
-msgid "Dades de l'alumne"
-msgstr "Dades de l'alumne"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1237
-msgid "Document d'identificació"
-msgstr "Document d'identificació"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1242
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2071
-msgid "Data de naixement"
-msgstr "Data de naixement"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1242
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2072
-msgid "Lloc de naixement"
-msgstr "Lloc de naixement"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1249
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1355
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1440
-msgid "Dades acadèmiques"
-msgstr "Dades acadèmiques"
-
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1254
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1360
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1445
+msgid "Codi"
+msgstr "Codi"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1080
+msgid "ajuda-historial-nomcicle"
+msgstr "Nom del cicle formatiu."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1080
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1254
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1360
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1445
+msgid "Nom del cicle formatiu"
+msgstr "Nom del cicle formatiu"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1082
+msgid "ajuda-historial-graucicle"
+msgstr "Grau del cicle formatiu. "
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1082
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1254
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1360
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1445
+msgid "Grau"
+msgstr "Grau"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1084
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1144
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1167
+msgid "ajuda-historial-desar"
+msgstr "Desar totes les dades introduïdes al Historial Acadèmic de l'alumne."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1086
+msgid "CONDICIONS D'ACCÉS"
+msgstr "CONDICIONS D'ACCÉS"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1088
+msgid "ajuda-historial-radiotitol"
+msgstr "Marcar si l'alumne ha presentat com a condició d'accés un títol d'estudis."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1090
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1270
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1275
+msgid "Títol de:"
+msgstr "Títol de:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1092
+msgid "ajuda-historial-titolde"
+msgstr "Nom del títol d'accés presentat."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1094
+msgid "ajuda-historial-radioprova"
+msgstr "Marcar si l'alumne ha presentat com a condició un certificat de prova d'accés."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1096
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1265
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1275
+msgid "Prova d'accés a:"
+msgstr "Prova d'accés a:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1098
+msgid "ajuda-historial-provaa"
+msgstr "Descripció del títol de prova d'accés presentat."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1100
+msgid "ajuda-historial-radiosense"
+msgstr "Marcar si l'alumne ha presentat una autorització com condició d'accés al curs."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1103
+msgid "Sense requisits, amb autorització:"
+msgstr "Sense requisits, amb autorització:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1105
+msgid "MATRICULACIONS EN EL CICLE FORMATIU"
+msgstr "MATRICULACIONS EN EL CICLE FORMATIU"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1107
+msgid "ajuda-hist-codidelcentre"
+msgstr "Codi del centre"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1107
+msgid "Codi de centre"
+msgstr "Codi del centre"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1109
+msgid "ajuda-hist-cnomdelcentre"
+msgstr "Nom del centre"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1109
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1292
+msgid "Nom del centre"
+msgstr "Nom del centre"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1111
+msgid "ajuda-hist-anycicle"
+msgstr "Anys acadèmics"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1111
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1292
+msgid "Anys acadèmics"
+msgstr "Anys acadèmics"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1120
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1131
+msgid "ajuda-historial-codicentre"
+msgstr "Codi numèric del centre on ha realitzat el curs."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1122
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1133
+msgid "ajuda-historial-nomcentre"
+msgstr "Nom del centre on ha realitzat el curs."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1124
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1135
+msgid "ajuda-historial-anydesde"
+msgstr "Any en que va començar el curs al centre."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1126
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1137
+msgid "ajuda-historial-anyfins"
+msgstr "Any en que va acabar el curs al centre."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1128
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1139
+msgid "ajuda-historial-nomcurs"
+msgstr "Nom del curs que ha realitzat al centre."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1145
+msgid "QUALIFICACIONS"
+msgstr "QUALIFICACIONS"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1147
+msgid "ajuda-hist-nomcredit"
+msgstr "Nom del crèdit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1147
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1368
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1453
+msgid "Crèdit"
+msgstr "Crèdit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1148
+msgid "ajuda-hist-horescredit"
+msgstr "Hores lectives del crèdit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1148
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1368
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1453
+msgid "Hores"
+msgstr "Hores"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1149
+msgid "ajuda-hist-qualcredit"
+msgstr "Qualificació final del cràdit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1149
+msgid "Qualif."
+msgstr "Qualif."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1150
+msgid "ajuda-hist-convcredit"
+msgstr "Convocatòria de la qualificació final del crèdit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1150
+msgid "Conv."
+msgstr "Conv."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1160
+msgid "Qualificació final del cicle formatiu"
+msgstr "Qualificació final del cicle formatiu"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1162
+msgid "OBSERVACIONS"
+msgstr "OBSERVACIONS"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1164
+msgid "ajuda-historial-observacions"
+msgstr "Observacions al Historial Acadèmic de l'especialitat de l'alumne."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1190
+msgid "ajuda-especalum-anterior"
+msgstr "Anar directament a les dades de l'alumne anterior a la llista del grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1192
+msgid "ajuda-especalum-seguent"
+msgstr "Anar directament a les dades de l'alumne següent a la llista del grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1216
+msgid "Historial acadèmic de l'alumne/a"
+msgstr "Historial acadèmic de l'alumne/a"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1216
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1344
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1429
+msgid "Formació professional inicial"
+msgstr "Formació professional inicial"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1221
+msgid "Dades del centre"
+msgstr "Dades del centre"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1224
+msgid "Nom"
+msgstr "Nom"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1224
+msgid "Municipi"
+msgstr "Municipi"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1226
+msgid "Escola Ramon i Cajal"
+msgstr "Escola Ramon i Cajal"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1226
+msgid "08035672"
+msgstr "08035672"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1226
+msgid "Barcelona"
+msgstr "Barcelona"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1231
+msgid "Dades de l'alumne"
+msgstr "Dades de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1239
+msgid "Document d'identificació"
+msgstr "Document d'identificació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1244
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2082
+msgid "Data de naixement"
+msgstr "Data de naixement"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1244
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2083
+msgid "Lloc de naixement"
+msgstr "Lloc de naixement"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1251
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1357
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1442
+msgid "Dades acadèmiques"
+msgstr "Dades acadèmiques"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1256
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1362
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1447
 msgid "SUPERIOR"
 msgstr "SUPERIOR"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1259
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1261
 msgid "Condicions d'accés"
 msgstr "Condicions d'accés"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1263
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1265
 msgid "[x] Títol de:"
 msgstr "[x] Títol de:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1263
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1268
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1265
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1270
 msgid "Sense requisits amb autorització"
 msgstr "Sense requisits amb autorització"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1265
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1270
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1275
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1267
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1272
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1277
 msgid " "
 msgstr " "
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1268
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1270
 msgid "[x] Prova d'accés a:"
 msgstr "[x] Prova d'accés a:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1273
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1275
 msgid "[x] Sense requisits amb autorització"
 msgstr "[x] Sense requisits amb autorització"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1287
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1289
 msgid "Matriculacions en el cicle formatiu"
 msgstr "Matriculacions en el cicle formatiu"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1290
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1292
 msgid "Codi del centre"
 msgstr "Codi del centre"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1294
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1296
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1300
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1298
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1302
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1306
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1304
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1308
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1312
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1310
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1314
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1318
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1316
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1320
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1322
 msgid "de"
 msgstr "de"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1294
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1296
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1300
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1298
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1302
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1306
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1304
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1308
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1312
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1310
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1314
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1318
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1316
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1320
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1322
 msgid "a"
 msgstr "a"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1327
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1412
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1485
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1329
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1414
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1487
 msgid "Signatura del secretari"
 msgstr "Signatura del secretari"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1327
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1412
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1485
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1329
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1414
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1487
 msgid "Segell del centre"
 msgstr "Segell del centre"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1327
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1412
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1485
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1329
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1414
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1487
 msgid "Vist i plau de la directora"
 msgstr "Vist i plau de la directora"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1330
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1415
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1488
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2070
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1332
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1417
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1490
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2081
 msgid "Nom i cognoms"
 msgstr "Nom i cognoms"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1332
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1417
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1490
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1334
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1419
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1492
 msgid "Carlos Aylagas Molero"
 msgstr "Carlos Aylagas Molero"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1332
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1417
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1490
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1334
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1419
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1492
 msgid "Teresa Llirinós Sopena"
 msgstr "Teresa Llirinós Sopena"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1334
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1419
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1495
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1336
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1421
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1497
 msgid "___/___"
 msgstr "___/___"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1340
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1425
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1342
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1427
 msgid "Historial acadèmic"
 msgstr "Historial acadèmic"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1342
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1427
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1344
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1429
 msgid "Resultats de l'avaluació dels crèdits"
 msgstr "Resultats de l'avaluació dels crèdits"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1346
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1431
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1348
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1433
 msgid "Dades de l'alumne/a"
 msgstr "Dades de l'alumne/a"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1349
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1434
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1351
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1436
 msgid "DNI/NIE/passaport"
 msgstr "DNI/NIE/passaport"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1363
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1448
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1365
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1450
 msgid "Qualificacions"
 msgstr "Qualificacions"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1366
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1451
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1368
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1453
 msgid "Convocatoria"
 msgstr "Convocatòria"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1366
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1451
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1368
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1453
 msgid "Qualificació"
 msgstr "Qualificació"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1473
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1475
 msgid "Qualificació final del cicle formatíu"
 msgstr "Qualificació final del cicle formatiu"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1474
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1476
 msgid "Observacions"
 msgstr "Observacions"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1479
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1481
 msgid "Diligència de la validesa de l'historial acadèmic"
 msgstr "Diligència de la validesa de l'historial acadèmic"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1481
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1483
 msgid "CARLOS AYLAGAS MOLERO Secretari del centre ESCOLA RAMON I CAJAL amb codi 08035672 certifica que les dades que figuren en aquest historial reflecteixen les que consten en la documentació dipositada a la secretaria d'aquest centre."
 msgstr "CARLOS AYLAGAS MOLERO Secretari del centre ESCOLA RAMON I CAJAL amb codi 08035672 certifica que les dades que figuren en aquest historial reflecteixen les que consten en la documentació dipositada a la secretaria d'aquest centre."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1493
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1495
 msgid "Lloc i data"
 msgstr "Lloc i data"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1567
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1569
 msgid "Afegir especialitat a l'alumne"
 msgstr "Afegir especialitat a l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1593
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1595
 msgid "ajuda_novaespec_grup"
-msgstr "ajuda_novaespec_grup"
+msgstr "Grup que es vol afegir a l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1596
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1598
 msgid "ajuda_novaespec_any"
-msgstr "ajuda_novaespec_any"
+msgstr "Any a assignar al grup"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1599
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1601
 msgid "ajuda_novaespec_abonament"
-msgstr "ajuda_novaespec_abonament"
+msgstr "Abonament que es fa en el moment de la inscripció al grup"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1599
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1601
 msgid "Abonament"
 msgstr "Abonament"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1602
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1604
 msgid "ajuda_novaespec_afegir"
-msgstr "ajuda_novaespec_afegir"
+msgstr "Afegir nova especialitat a l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1626
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1628
 msgid "Donar de baixa d'una especialitat a l'alumne"
 msgstr "Donar de baixa d'una especialitat a l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1649
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2248
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2309
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1651
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2259
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2320
 msgid "ajuda-graella-baixaespec-motiu"
 msgstr "Motiu per el qual el alumne demana la baixa de l'especialitat."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1650
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2249
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2310
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1652
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2260
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2321
 msgid "ajuda-graella-baixaespec-nom"
 msgstr "Nom de l'alumne."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1651
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2250
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2311
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1653
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2261
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2322
 msgid "ajuda-graella-baixaespec-any"
 msgstr "Any del curs de l'especialitat."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1652
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2251
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2312
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1654
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2262
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2323
 msgid "ajuda-graella-baixaespec-espec"
 msgstr "Nom de l'especialitat"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1653
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2252
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2313
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1655
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2263
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2324
 msgid "ajuda-graella-baixaespec-grup"
 msgstr "Nom del grup."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1654
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2253
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2314
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1656
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2264
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2325
 msgid "ajuda-graella-baixaespec-estat"
 msgstr "Estat actual de l'especialitat."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1662
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1664
 msgid "ajuda-baixaespec-motiubaixa"
 msgstr "Motiu per el qual el alumne demana la baixa de l'especialitat."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1662
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1664
 msgid "Motiu Baixa"
 msgstr "Motiu Baixa"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1663
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1665
 msgid "ajuda-desar-baixaespec"
 msgstr "Desar el canvis efectuats."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1711
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1713
 msgid "Dades dels crèdits de l'alumne"
 msgstr "Dades dels crèdits de l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1729
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1731
 msgid "ajuda-tab-credits-especialitat"
 msgstr "Crèdits de l'especialitat."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1732
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1734
 msgid "ajuda-tab-credits-tots"
 msgstr "Tots els crèdits de l'alumne."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1732
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1734
 msgid "Tots els crèdits"
 msgstr "Tots els crèdits"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1758
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1802
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1858
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1760
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1805
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1864
 msgid "ajuda-graella-credalu-P"
 msgstr "'P' si el alumne té el crèdit pendent, 'R' si el alumne ha repetit el crèdit i en blanc si el alumne ha superat el crèdit."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1767
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1857
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1770
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1863
 msgid "ajuda-graella-credalu-NFCR"
 msgstr "Nota final del crèdit."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1770
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1773
 msgid "ajuda-graella-credalu-hores CR"
 msgstr "Hores de que consta tot el crèdit."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1827
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1874
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1832
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1882
 msgid "ajuda-tab-credits-tots-desar"
 msgstr "Desar el canvis efectuats als crèdits del alumne."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1855
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1861
 msgid "ajuda-graella-credalu-RE"
 msgstr "Nota de la recuperació."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1903
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1911
 msgid "Aplicar plà d'estudis a l'alumne"
 msgstr "Aplicar pla d'estudis a l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1927
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1929
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1932
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1938
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1940
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1943
 msgid "El crèdit"
 msgstr "El crèdit"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1927
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1938
 msgid "afegit correctament"
 msgstr "afegit correctament"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1929
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1940
 msgid "no s'ha pogut afegir, ERROR!!"
 msgstr "no s'ha pogut afegir, ERROR!!"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1932
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1943
 msgid "ja existeix per el alumne i any especificats"
 msgstr "ja existeix per el alumne i any especificats"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1939
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1950
 msgid "ajuda-graella-creacred-nom"
 msgstr "Nom del alumne."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1940
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1951
 msgid "ajuda-graella-creacred-any"
 msgstr "Any del curs."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1941
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1952
 msgid "ajuda-graella-creacred-espec"
 msgstr "Nom de l'especialitat."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1942
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1953
 msgid "ajuda-graella-creacred-grup"
 msgstr "Grup del curs."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1943
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1954
 msgid "ajuda-graella-creacred-estat"
 msgstr "Estat del curs."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1965
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1976
 msgid "Crèdits del grup"
 msgstr "Crèdits del grup"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1965
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1976
 msgid "per el any"
 msgstr "per el any"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1976
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1987
 msgid "No existeis plà per el any "
 msgstr "No existeix pla per el any "
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1976
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1987
 msgid "per el grup"
 msgstr "per el grup"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1979
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1990
 msgid "ajuda-desar-aplicapla"
 msgstr "Assignar nous crèdits a l'alumne si encara no els te assignats."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1982
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:1993
 msgid "ajuda-aplica-aplicapla"
 msgstr "Comprovar si tenim crèdits al pla d'estudis per el grup i el any definits."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2005
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2016
 msgid "Butlletí de Preinscripció de l'alumne"
 msgstr "Butlletí de Preinscripció de l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2021
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2032
 msgid "Abonament:"
 msgstr "Abonament:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2021
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2032
 msgid "ajuda-butlleti-abonament"
-msgstr "ajuda-butlleti-abonament"
+msgstr "Abonament que es fa en el moment de la inscripció al grup"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2022
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2033
 msgid "data d'inscripció"
 msgstr "data d'inscripció"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2023
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2034
 msgid "ajuda-butlleti-data"
-msgstr "ajuda-butlleti-data"
+msgstr "Data que ha de sortir al butlletí de subscripció"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2026
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2037
 msgid "ajuda-imprimir-butlleti"
-msgstr "ajuda-imprimir-butlleti"
+msgstr "Validar dades per Imprimir el butlletí"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2031
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2042
 msgid "Butlletí d'inscripció per l'especialitat:"
 msgstr "Butlletí d'inscripció per l'especialitat:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2041
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2052
 msgid "ajuda-radio-butlleti"
-msgstr "ajuda-radio-butlleti"
+msgstr "Seleccionar el grup"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2041
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2052
 msgid "ajuda-curs-butlleti"
-msgstr "ajuda-curs-butlleti"
+msgstr "Nom del grup"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2044
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2055
 msgid "ajuda-desar-especbutlleti"
-msgstr "ajuda-desar-especbutlleti"
+msgstr "Seleccionar el grup"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2069
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2080
 msgid "<b>PREINSCRIPCIÓ</b> CURS"
 msgstr "<b>PREINSCRIPCIÓ</b> CURS"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2075
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2086
 msgid "DNI/Passaport"
 msgstr "DNI/Passaport"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2076
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2087
 msgid "Professió"
 msgstr "Professió"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2077
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2088
 msgid "Telèfon fixe"
 msgstr "Telèfon fixe"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2078
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2089
 msgid "Telèfon mòbil"
 msgstr "Telèfon mòbil"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2079
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2090
 msgid "Domicili"
 msgstr "Domicili"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2080
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2086
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2091
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2097
 msgid "Població"
 msgstr "Població"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2081
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2092
 msgid "Codi postal"
 msgstr "Codi postal"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2082
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2093
 msgid "Email"
 msgstr "Email"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2083
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2094
 msgid "EL ALUMNE S'HA MATRICULAT A L'ESPECIALITAT"
 msgstr "EL ALUMNE S'HA MATRICULAT A L'ESPECIALITAT"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2085
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2096
 msgid "Domicili durant el curs"
 msgstr "Domicili durant el curs"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2087
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2098
 msgid "Codi Postal"
 msgstr "Codi Postal"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2088
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2099
 msgid "Estudis anteriors"
 msgstr "Estudis anteriors"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2089
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2100
 msgid "Centre estudis anteriors"
 msgstr "Centre estudis anteriors"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2090
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2101
 msgid "Població estudis anteriors"
 msgstr "Població estudis anteriors"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2092
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2103
 msgid "Abonament en concepte<br>d'inscripció (*):"
 msgstr "Abonament en concepte<br>d'inscripció (*):"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2093
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2104
 msgid "* L'inscripció no es retornarà en cas de baixa."
 msgstr "* La inscripció no es retornarà en cas de baixa."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2094
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2105
 msgid "Data d'inscripció"
 msgstr "Data d'inscripció"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2095
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2106
 msgid "Signatura"
 msgstr "Signatura"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2096
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2107
 msgid ""
 "<b>Clàusula de Protecció de Dades Personals:</b> D'acord amb els principis disposats en la Llei Orgànica 15/1999, de 13 de desembre,\n"
 "\t\tde Protecció de Dades Personals, l'informem que les seves dades personals s'incorporaran a un fitxer de dades personals, titularitat de\n"
@@ -1464,94 +1472,94 @@ msgstr ""
 "\t\tutilitzats exclusivament de manera interna i per a les finalitats indicades. Per tant, no cedim ni comuniquem a cap tercer les seves\n"
 "\t\tdades, llevat que siguin necessaris per a la prestació del servei contractat, o en els casos legalment previstos."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2239
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2250
 msgid "Marcar com a repetidor d'una especialitat o curs de l'alumne"
 msgstr "Marcar com a repetidor d'una especialitat o curs de l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2260
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2271
 msgid "ajuda-desar-especrepe"
 msgstr "ajuda-desar-especrepe"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2300
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2311
 msgid "Canviar any d'especialitat de l'alumne"
 msgstr "Canviar any d'especialitat de l'alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2323
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2334
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2345
 msgid "Guardar dades"
 msgstr "Guardar dades"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2353
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2364
 msgid "Mailings"
 msgstr "Mailings"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2399
-msgid "ajuda-mailings-nom"
-msgstr "ajuda-mailings-nom"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2400
-msgid "ajuda-mailings-email"
-msgstr "ajuda-mailings-email"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2401
-msgid "ajuda-mailings-grup"
-msgstr "ajuda-mailings-grup"
-
 #: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2410
+msgid "ajuda-mailings-nom"
+msgstr "Nom i cognoms de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2411
+msgid "ajuda-mailings-email"
+msgstr "E-mail del alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2412
+msgid "ajuda-mailings-grup"
+msgstr "Grup de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2421
 msgid "<b>Assumpte:</b>"
 msgstr "<b>Assumpte:</b>"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2412
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2423
 msgid "Hola!"
 msgstr "Hola!"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2490
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2501
 msgid "Crèdit afegit correctament"
 msgstr "Crèdit afegit correctament"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2494
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2505
 msgid "Alumnes amb crèdits pendents"
 msgstr "Alumnes amb crèdits pendents"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2502
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2513
 msgid "ajuda-alumpendi-nom"
 msgstr "ajuda-alumpendi-nom"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2503
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2514
 msgid "ajuda-alumpendi-any"
 msgstr "ajuda-alumpendi-any"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2504
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2515
 msgid "ajuda-alumpendi-cred"
 msgstr "ajuda-alumpendi-cred"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2520
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2531
 msgid "Assignar crèdits als alumnes seleccionats"
 msgstr "Assignar crèdits als alumnes seleccionats"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2540
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2551
 msgid "Preinscripcions per grup per el curs "
 msgstr "Preinscripcions per grup per el curs "
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2573
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2584
 msgid "TOTAL:"
 msgstr "TOTAL:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2573
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2584
 msgid "Curs I:"
 msgstr "Curs I:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2573
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2574
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2584
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2585
 msgid "Matí:"
 msgstr "Matí:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2573
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2574
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2584
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2585
 msgid "Tarda:"
 msgstr "Tarda:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2574
+#: /var/www/ric-ca/wp-content/plugins/ricca3/alumnes/ricca3-alumnes.php:2585
 msgid "Curs II:"
 msgstr "Curs II:"
 

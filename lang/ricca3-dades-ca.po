@@ -1,0 +1,452 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RICCA3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-01 15:58+0100\n"
+"PO-Revision-Date: 2013-06-01 16:03+0100\n"
+"Last-Translator: Efraim Bayarri <efraim.bayarri@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Catalan\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: /var/www/ric-ca/wp-content/plugins/ricca3/dades\n"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:14
+msgid "Dades primeries"
+msgstr "Dades primàries"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:16
+msgid "ajuda-dades-espec"
+msgstr "ajuda-dades-espec"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:17
+msgid "ajuda-dades-cred"
+msgstr "ajuda-dades-cred"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:18
+msgid "ajuda-dades-grup"
+msgstr "ajuda-dades-grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:19
+msgid "ajuda-dades-prof"
+msgstr "ajuda-dades-prof"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:20
+msgid "ajuda-dades-ccomp"
+msgstr "ajuda-dades-ccomp"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:21
+msgid "ajuda-dades-pla"
+msgstr "ajuda-dades-pla"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:22
+msgid "ajuda-dades-guardarpla"
+msgstr "ajuda-dades-guardarpla"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:44
+msgid "Definició Especialitats"
+msgstr "Definició Especialitats"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:45
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:152
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:277
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:398
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:498
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:610
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:653
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:699
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:746
+msgid "ajuda-dades-dades"
+msgstr "ajuda-dades-dades"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:88
+msgid "No es pot eliminar l'especialitat"
+msgstr "No es pot eliminar l'especialitat"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:106
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:223
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:345
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:452
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:563
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:806
+msgid "Guardar dades"
+msgstr "Guardar dades"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:109
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:229
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:351
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:457
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:569
+msgid "Editar dades"
+msgstr "Editar dades"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:110
+msgid "Afegir especialitat"
+msgstr "Afegir especialitat"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:111
+msgid "Eliminar especialitat"
+msgstr "Eliminar especialitat"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:115
+msgid "Nom especialitat:"
+msgstr "Nom especialitat:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:116
+msgid "Pla:"
+msgstr "Pla:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:117
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:239
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:361
+msgid "Actiu:"
+msgstr "Actiu:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:118
+msgid "Codi:"
+msgstr "Codi:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:119
+msgid "Cursos:"
+msgstr "Cursos:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:120
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:244
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:363
+msgid "Ordre:"
+msgstr "Ordre:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:121
+msgid "Professió:"
+msgstr "Professió:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:122
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:243
+msgid "Hores:"
+msgstr "Hores:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:123
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:130
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:246
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:254
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:366
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:374
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:471
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:476
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:584
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:591
+msgid "Guardar dades:"
+msgstr "Guardar dades:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:128
+msgid "id especialitat:"
+msgstr "id especialitat:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:151
+msgid "Definició Crèdits"
+msgstr "Definició Crèdits"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:157
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:282
+msgid "Estat:"
+msgstr "Estat:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:157
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:282
+msgid "ajuda-credits-estat"
+msgstr "ajuda-credits-estat"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:158
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:242
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:283
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:364
+msgid "Curs:"
+msgstr "Curs:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:158
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:283
+msgid "ajuda-credits-curs"
+msgstr "ajuda-credits-curs"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:161
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:286
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:504
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:617
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:711
+msgid "Especialitat:"
+msgstr "Especialitat:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:161
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:286
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:504
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:617
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:711
+msgid "ajuda_drop_especialitat"
+msgstr "ajuda_drop_especialitat"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:163
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:288
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:506
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:622
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:755
+msgid "ajuda-dades-cred-drop"
+msgstr "ajuda-dades-cred-drop"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:208
+msgid "No es pot eliminar el crèdit!"
+msgstr "No es pot eliminar el crèdit!"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:230
+msgid "Afegir crèdit"
+msgstr "Afegir crèdit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:231
+msgid "Eliminar crèdit"
+msgstr "Eliminar crèdit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:238
+msgid "Nom crèdit:"
+msgstr "Nom crèdit:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:240
+msgid "3 Aval:"
+msgstr "3 Aval:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:241
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:362
+msgid "Espec:"
+msgstr "Espec:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:245
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:465
+msgid "Nom:"
+msgstr "Nom:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:252
+msgid "id credit:"
+msgstr "id crèdit:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:276
+msgid "Definició dels grups"
+msgstr "Definició dels grups"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:324
+msgid "No es pot crear el grup!"
+msgstr "No es pot crear el grup!"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:330
+msgid "No es pot eliminar el grup!"
+msgstr "No es pot eliminar el grup!"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:352
+msgid "Afegir grup"
+msgstr "Afegir grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:353
+msgid "Eliminar grup"
+msgstr "Eliminar grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:360
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:620
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:714
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:753
+msgid "Grup:"
+msgstr "Grup:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:365
+msgid "Sessió:"
+msgstr "Sessió:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:372
+msgid "id grup:"
+msgstr "id grup:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:397
+msgid "Definició dels professors"
+msgstr "Definició dels professors"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:431
+msgid "No es pot crear el professor!"
+msgstr "No es pot crear el professor!"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:437
+msgid "No es pot eliminar el professor!"
+msgstr "No es pot eliminar el professor!"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:458
+msgid "Afegir professor"
+msgstr "Afegir professor"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:459
+msgid "Eliminar professor"
+msgstr "Eliminar professor"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:466
+msgid "Tel. casa:"
+msgstr "Tel. casa:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:467
+msgid "Tel. cont1:"
+msgstr "Tel. cont1:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:468
+msgid "Tel. cont2:"
+msgstr "Tel. cont2:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:469
+msgid "Tel. cont3:"
+msgstr "Tel. cont3:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:470
+msgid "Email:"
+msgstr "Email:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:475
+msgid "id professor:"
+msgstr "id professor:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:497
+msgid "Definició dels crèdits compartits"
+msgstr "Definició dels crèdits compartits"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:542
+msgid "No es pot crear el crèdit compartit!"
+msgstr "No es pot crear el crèdit compartit!"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:548
+msgid "No es pot eliminar el crèdit compartit!"
+msgstr "No es pot eliminar el crèdit compartit!"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:570
+msgid "Afegir ccomp"
+msgstr "Afegir ccomp"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:571
+msgid "Eliminar ccomp"
+msgstr "Eliminar ccomp"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:577
+msgid "idcred:"
+msgstr "idcred:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:578
+msgid "idgrup:"
+msgstr "idgrup:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:579
+msgid "h:"
+msgstr "h:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:580
+msgid "idprof:"
+msgstr "idprof:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:581
+msgid "idtut:"
+msgstr "idtut:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:582
+msgid "actiu:"
+msgstr "actiu:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:583
+msgid "nom:"
+msgstr "nom:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:589
+msgid "id ccomp:"
+msgstr "id ccomp:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:609
+msgid "Pla d'estudis"
+msgstr "Pla d'estudis"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:620
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:714
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:753
+msgid "ajuda_drop_grup"
+msgstr "ajuda_drop_grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:652
+msgid "Guardar pla d'estudis"
+msgstr "Guardar pla d'estudis"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:659
+msgid "ajuda-gaurdarpla-escollir"
+msgstr "ajuda-gaurdarpla-escollir"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:659
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:704
+msgid "escollir"
+msgstr "escollir"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:662
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:708
+msgid "Any:"
+msgstr "Any:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:662
+msgid "ajuda_aplicarpla_any"
+msgstr "ajuda_aplicarpla_any"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:676
+msgid "No es pot crear el crèdit!"
+msgstr "No es pot crear el crèdit!"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:698
+msgid "Llistar plans d'estudis"
+msgstr "Llistar plans d'estudis"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:704
+msgid "ajuda-llistarpla-escollir"
+msgstr "ajuda-llistarpla-escollir"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:708
+msgid "ajuda_llistarpla_any"
+msgstr "ajuda_llistarpla_any"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:745
+msgid "Alumnes sense pla d'estudis"
+msgstr "Alumnes sense pla d'estudis"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:791
+msgid "ajuda-sensepla-check"
+msgstr "ajuda-sensepla-check"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:792
+msgid "ajuda-sensepla-id"
+msgstr "ajuda-sensepla-id"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:792
+msgid "ID"
+msgstr "ID"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:793
+msgid "ajuda-sensepla-alumne"
+msgstr "ajuda-sensepla-alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:793
+msgid "Alumne"
+msgstr "Alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:794
+msgid "ajuda-sensepla-espec"
+msgstr "ajuda-sensepla-espec"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:794
+msgid "Especialitat"
+msgstr "Especialitat"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:795
+msgid "ajuda-sensepla-grup"
+msgstr "ajuda-sensepla-grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/dades/ricca3-dades.php:795
+msgid "Grup"
+msgstr "Grup"
+

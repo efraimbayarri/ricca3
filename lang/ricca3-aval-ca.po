@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RICCA3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-12 17:10+0100\n"
-"PO-Revision-Date: 2013-05-12 17:12+0100\n"
+"POT-Creation-Date: 2013-06-01 13:09+0100\n"
+"PO-Revision-Date: 2013-06-01 15:54+0100\n"
 "Last-Translator: Efraim Bayarri <efraim.bayarri@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -22,64 +22,79 @@ msgstr "Avaluacions dels alumnes"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:16
 msgid "ajuda-aval-actes"
-msgstr "ajuda-aval-actes"
+msgstr "Imprimir actes d'avaluació"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:17
 msgid "ajuda-aval-notes"
-msgstr "ajuda-aval-notes"
+msgstr "Entrada de notes de les avaluacions"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:18
 msgid "ajuda-aval-obs"
-msgstr "ajuda-aval-obs"
+msgstr "Entrada d'observacions a les actes d'evaluacion"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:19
 msgid "ajuda-aval-nf"
-msgstr "ajuda-aval-nf"
+msgstr "Calcular nota final"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:20
 msgid "ajuda-aval-veurecalcul"
-msgstr "ajuda-aval-veurecalcul"
+msgstr "Veure els càlculs de la nota final"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:21
 msgid "ajuda-aval-certif"
-msgstr "ajuda-aval-certif"
+msgstr "Imprimir certificats avaluacions"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:22
 msgid "ajuda-aval-1curs"
-msgstr "ajuda-aval-1curs"
+msgstr "Imprimir certificats finals primer curs"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:23
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:42
 msgid "ajuda-aval-certfinal"
-msgstr "ajuda-aval-certfinal"
+msgstr "Imprimir certificats finals especialitat"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:41
 msgid "Actes d'avaluació"
 msgstr "Actes d'avaluació"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:48
-msgid "ajuda-actes-escollir"
-msgstr "ajuda-actes-escollir"
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:42
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:216
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:407
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:530
+msgid "ajuda-aval-aval"
+msgstr "Tornar al menú d'avaluacions"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:48
+msgid "ajuda-actes-escollir"
+msgstr "Escollir els criteris de cerca actuals"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:48
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:222
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:254
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:441
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:536
 msgid "escollir"
 msgstr "escollir"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:51
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:225
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:539
 msgid "Any:"
 msgstr "Any:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:51
 msgid "ajuda_actes_any"
-msgstr "ajuda_actes_any"
+msgstr "Any de les actes"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:54
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:228
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:420
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:542
 msgid "Grup:"
 msgstr "Grup:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:54
 msgid "ajuda_actes_grup"
-msgstr "ajuda_actes_grup"
+msgstr "Grup de les actes"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:57
 msgid "Avaluació:"
@@ -87,7 +102,7 @@ msgstr "Avaluació:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:57
 msgid "ajuda_actes_aval"
-msgstr "ajuda_actes_aval"
+msgstr "Avaluació de les actes"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:61
 msgid "Data"
@@ -95,15 +110,19 @@ msgstr "Data"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:61
 msgid "ajuda_actes_data"
-msgstr "ajuda_actes_data"
+msgstr "Data que ha de sortir impresa a les actes"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:64
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:67
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:232
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:235
 msgid "ajuda_actes_repe"
-msgstr "ajuda_actes_repe"
+msgstr "Imprimir les actes dels alumnes repetidors"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:64
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:67
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:232
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:235
 msgid "Repetidors"
 msgstr "Repetidors"
 
@@ -114,6 +133,7 @@ msgstr "Actes de"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:81
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:84
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:554
 msgid "amb data"
 msgstr "amb data"
 
@@ -127,57 +147,281 @@ msgid "Imprimir actes"
 msgstr "Imprimir actes"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:128
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:181
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:176
 msgid "ACTA D'AVALUACIÓ"
 msgstr "ACTA D'AVALUACIÓ"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:129
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:182
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:177
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:270
 msgid "CRÉDIT:"
 msgstr "CRÈDIT:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:132
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:183
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:130
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:178
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:592
 msgid "CURS:"
 msgstr "CURS:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:132
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:184
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:131
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:179
 msgid "DATA:"
 msgstr "DATA:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:135
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:186
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:132
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:180
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:588
 msgid "ESPECIALITAT:"
 msgstr "ESPECIALITAT:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:136
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:187
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:133
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:181
 msgid "GRUP:"
 msgstr "GRUP:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:138
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:188
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:134
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:182
 msgid "PROFESSOR/A:"
 msgstr "PROFESSOR/A:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:139
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:189
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:135
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:183
 msgid "TUTOR/A:"
 msgstr "TUTOR/A:"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:150
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:195
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:145
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:189
 msgid "Alumnes"
 msgstr "Alumnes"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:151
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:196
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:146
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:190
 msgid "Qualificació"
 msgstr "Qualificació"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:152
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:197
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:147
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:191
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:601
 msgid "Actitud"
 msgstr "Actitud"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:215
+msgid "Entrada de notes"
+msgstr "Entrada de notes"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:222
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:254
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:536
+msgid "ajuda-notes-escollir"
+msgstr "Escollir els criteris de cerca actuals"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:225
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:539
+msgid "ajuda_notes_any"
+msgstr "Any de l'evaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:228
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:542
+msgid "ajuda_notes_grup"
+msgstr "Grup de l'evaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:247
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:268
+msgid "del curs"
+msgstr "del curs"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:256
+msgid "Crèdit:"
+msgstr "Crèdit:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:256
+msgid "ajuda_notes_ccomp"
+msgstr "Seleccionar de quin crèdit volem entrar les notes"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:271
+msgid "PROFESSOR:"
+msgstr "PROFESSOR:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:275
+msgid "ajuda-notes-1aval"
+msgstr "Notes de la primera avalaució"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:275
+msgid "Primera Avaluació"
+msgstr "Primera Avaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:276
+msgid "ajuda-notes-2aval"
+msgstr "Notes de la segona avaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:276
+msgid "Segona Avaluació"
+msgstr "Segona Avaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:277
+msgid "ajuda-notes-3aval"
+msgstr "Notes de la tercera avaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:277
+msgid "Tercera Avaluació"
+msgstr "Tercera Avaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:278
+msgid "ajuda-notes-4aval"
+msgstr "Notes de la avaluació final"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:278
+msgid "Quarta Avaluació"
+msgstr "Avaluació final"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:298
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:318
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:337
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:358
+msgid "ajuda-notes-desar"
+msgstr "Desar les notes introduïdes"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:364
+msgid "No hi han dades per la sel·leció"
+msgstr "No hi han dades per la selecció"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:406
+msgid "Entrada observacions en els certificats"
+msgstr "Entrada observacions en els certificats"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:413
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:415
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:420
+msgid "ajuda-obser-grup"
+msgstr "Seleccionar si volem entrar observacions a un grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:417
+msgid "Per grup"
+msgstr "Per grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:423
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:425
+msgid "ajuda-obser-alumne"
+msgstr "Seleccionar si volem entrar observacions a un alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:427
+msgid "Per Alumne"
+msgstr "Per Alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:429
+msgid "ajuda-obser-cognom1"
+msgstr "Primer cognom de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:431
+msgid "ajuda-obser-cognom2"
+msgstr "Segon cognom de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:433
+msgid "ajuda-obser-nom"
+msgstr "Nom de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:435
+msgid "ajuda-obser-dni"
+msgstr "DNI/NIE/Passaport de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:437
+msgid "ajuda-obser-id"
+msgstr "Número d'identificació de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:441
+msgid "ajuda-obser-escollir"
+msgstr "Escollir els criteris de cerca de les observacions"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:451
+msgid "Observacions del grup"
+msgstr "Observacions del grup"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:454
+msgid "ajuda-obser-desar-grup"
+msgstr "Desar les observacions per el grup escollit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:460
+msgid "No hi han criteris de cerca. Si us plau afegiu-ne un."
+msgstr "No hi han criteris de cerca. Si us plau afegiu-ne un."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:469
+msgid "Escollir alumne"
+msgstr "Escollir alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:476
+msgid "No hi han alumnes seleccionats. Si us plau selecioneu-ne un."
+msgstr "No hi han alumnes seleccionats. Si us plau seleccioneu-ne un."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:484
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:486
+msgid "Observacions de l'alumne"
+msgstr "Observacions de l'alumne"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:484
+msgid "per a la primera avaluació"
+msgstr "per a la primera avaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:486
+msgid "per a la segona avaluació"
+msgstr "per a la segona avaluació"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:489
+msgid "ajuda-obser-desar-alumne"
+msgstr "Desar les observacions per el alumne escollit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:529
+msgid "Certificats avaluacions"
+msgstr "Certificats avaluacions"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:554
+msgid "Certificats de"
+msgstr "Certificats de"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:585
+msgid "BUTLLETÍ DE NOTES"
+msgstr "BUTLLETÍ DE NOTES"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:590
+msgid "ANY:"
+msgstr "ANY:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:594
+msgid "ALUMNE/A:"
+msgstr "ALUMNE/A:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:598
+msgid "Nom del crèdit"
+msgstr "Nom del crèdit"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:599
+msgid "1ª ava."
+msgstr "1ª ava."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:600
+msgid "2ª ava."
+msgstr "2ª ava."
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:623
+msgid "VALORACIÓ DE L'ACTITUD ( A: Molt bona, B: Bona, C: Normal, D: Passiva, E: Negativa)"
+msgstr "VALORACIÓ DE L'ACTITUD ( A: Molt bona, B: Bona, C: Normal, D: Passiva, E: Negativa)"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:625
+msgid "OBSERVACIONS:"
+msgstr "OBSERVACIONS:"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:633
+msgid "Barcelona, a"
+msgstr "Barcelona, a"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:637
+msgid "Vist i plau"
+msgstr "Vist i plau"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:638
+msgid "Segell del centre"
+msgstr "Segell del centre"
+
+#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:639
+msgid "Direcció Docent"
+msgstr "Direcció Docent"
 
