@@ -4,7 +4,7 @@
  * Plugin URI: http://replicantsfactory.com/
  * Author: Efraim Bayarri
  * Author URI: http://replicantsfactory.com/
- * Version: 201322061609
+ * Version: 201322061836
  * Description: Projecte RIC-CA (Escola Ramon i Cajal) Versió 3 (BETA)
  */
 
@@ -66,6 +66,7 @@ add_shortcode( 'ricca3-cred',         'ricca3_shortcode_cred' );
 add_shortcode( 'ricca3-grups',        'ricca3_shortcode_grups' );
 add_shortcode( 'ricca3-prof',         'ricca3_shortcode_prof' );
 add_shortcode( 'ricca3-ccomp',        'ricca3_shortcode_ccomp' );
+add_shortcode( 'ricca3-credespec',    'ricca3_shortcode_credespec' );
 add_shortcode( 'ricca3-pla',          'ricca3_shortcode_pla' );
 add_shortcode( 'ricca3-guardarpla',   'ricca3_shortcode_guardarpla' );
 add_shortcode( 'ricca3-llistarpla',   'ricca3_shortcode_llistarpla' );

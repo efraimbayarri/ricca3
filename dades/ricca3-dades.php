@@ -807,6 +807,116 @@ function ricca3_shortcode_sensepla($atts, $content = null) {
 	}
 }
 
+#############################################################################################
+/**
+ * definició dels crèdits per especialitat
+ * shortcode: [ricca3-credespec]
+ *
+ * @since ricca3.v.20132206
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_credespec($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_espec;
+	global $ricca3_listcredespec;
+	global $ricca3_editcredespec;
+	global $current_user;
 
+	get_currentuserinfo();
+	$row_any  = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1',  ARRAY_A, 0);
+	ricca3_missatge(__('Crèdits per especialitat','ricca3-dades'));
+	$ricca3_butons_espec['texte'][0] = __('ajuda-dades-dades', 'ricca3-dades');
+//		butons
+	ricca3_butons( $ricca3_butons_espec, 6 );
+	
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt800"><tr>', NULL);
+	printf('<td><button type="submit" name="cercar" value="actualitzar" title="%s">%s</td>',
+	__('ajuda-credespec-escollir', 'ricca3-dades'), __('escollir', 'ricca3-dades'));
+//		drop per a especialitat
+	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+	ricca3_drop( __('Especialitat:','ricca3-dades'), 'espec', $data_espec, 'idespecialitat', 'nomespecialitat', __('ajuda_drop_especialitat', 'ricca3-dades'), TRUE );
+	
+	printf('</tr></table></form>', NULL);
+	
+	if(isset($_POST['cercar'])){
+		$query = 'SELECT * FROM ricca3_credits_especialitat '.
+				'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_credits_especialitat.idespecialitat '.
+				'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_credits_especialitat.idcredit '.
+				'WHERE 1 = 1';
+		if( $_POST['espec'] != "-1") $query = substr_replace( $query," AND ricca3_credits_especialitat.idespecialitat = '".$_POST['espec']."' ORDER BY ordre_cr_es ",strlen( $query ) , 0 );
+	}
+//	Guardem les dades
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'guardar'){
+		for( $i = 0; $i < count($_POST['idcredespec']); $i++){
+			$wpdb->update('ricca3_credits_especialitat',
+					array( 	'idespecialitat' => $_POST['idespecialitat'][$i],
+							'idcredit'       => $_POST['idcredit'][$i],
+							'ordre_cr_es'    => $_POST['ordre_cr_es'][$i],
+							'numero'         => $_POST['numero'][$i]),
+					array(	'idcredespec' => $_POST['idcredespec'][$i]) 	) ;
+		}
+		$_POST['cercar'] = 'actualitzar';
+	}
+// 	nou crèdit
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'nou'){
+		if(!$wpdb->insert('ricca3_credits_especialitat',
+				array(	'idespecialitat' => $_POST['idespecialitat'],
+						'idcredit'       => $_POST['idcredit'],
+						'ordre_cr_es'    => $_POST['ordre_cr_es'],
+						'numero'         => $_POST['numero'],
+						'stampuser'   => $current_user->user_login,
+						'stampplace'  => 'ricca_shortcode_grups_insert' 	) ) )
+			ricca3_missatge(__('No es pot crear la entrada!','ricca3-dades'));
+		$_POST['cercar'] = 'actualitzar';
+	}
+//	esborrar crèdit
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'delete'){
+		if(!$wpdb->query($wpdb->prepare('DELETE FROM ricca3_credits_especialitat WHERE idcredespec=%s', $_POST['idcredespec'])))
+			ricca3_missatge(__('No es pot eliminar l\'entrada!','ricca3-dades'));
+		$_POST['cercar'] = 'actualitzar';
+	}
+//
+	if(isset($_POST['cercar']) && $_POST['cercar'] != 'editar'){
+		printf('<table>', NULL);
+		$data_view = $wpdb->get_results( $query, ARRAY_A);
+		ricca3_graella( $ricca3_listcredespec, $data_view );
+		printf('</table>', NULL);
+	}
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'editar'){
+//	estem editan
+		printf('<form method="post" action="" target="_self" name="especialitats"><table>', NULL);
+		$data_view = $wpdb->get_results( $query, ARRAY_A);
+		ricca3_graella( $ricca3_editcredespec, $data_view );
+		printf('<tr><td><button type="submit" name="cercar" value="guardar"><font size ="1px" face="Arial, Helvetica, sans-serif">%s</button>',	__('Guardar dades','ricca3-dades'));
+		printf('<INPUT type="hidden" name="espec" value="%s" />', $_POST['espec']);
+		printf('</td></tr></table></form>', NULL);
+	}
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'actualitzar'){
+		printf('<form method="post" action="" target="_self" name="especialitats"><table>', NULL);
+		printf('<tr><td><button type="submit" name="cercar" value="editar">  <font size ="1px" face="Arial, Helvetica, sans-serif">%s</font></button></td>', __('Editar dades','ricca3-dades'));
+		printf('    <td><button type="submit" name="cercar" value="afegir">  <font size ="1px" face="Arial, Helvetica, sans-serif">%s</font></button></td>', __('Afegir crèdit','ricca3-dades'));
+		printf('    <td><button type="submit" name="cercar" value="eliminar"><font size ="1px" face="Arial, Helvetica, sans-serif">%s</font></button>', __('Eliminar crèdit','ricca3-dades'));
+		printf('<INPUT type="hidden" name="espec" value="%s" /></td></tr></table></form>', $_POST['espec']);
+	}
+//	prepara afegir
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'afegir'){
+		$data_cred = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits WHERE idespecialitat = %s ORDER BY ordre_cr', $_POST['espec']), ARRAY_A);
+		$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+		printf('<form method="post" action="" target="_self" name="ccomp"><table><tr>', NULL);
+		ricca3_drop( __('Especialitat:','ricca3-dades'), 'idespecialitat', $data_espec, 'idespecialitat', 'nomespecialitat', __('ajuda_drop_especialitat', 'ricca3-dades'), TRUE );
+		ricca3_drop( __('idcredit:','ricca3-dades'), 'idcredit', $data_cred, 'idcredit', 'nomcredit', __('ajuda_drop_credit', 'ricca3-dades'), TRUE );
+		printf('<td>%s<INPUT type="text" name="ordre_cr_es" value="0" pattern="[0-9]{1,2}" size="5"  /></td>', __('ordre:', 'ricca3-dades'));
+		ricca3_drop_fixe( __('..:','ricca3-dades'), 'numero',  array( "0", "fct", "sintesi"), array( "0", "fct", "sintesi"), __('ajuda_drop_fct', 'ricca3-dades'), TRUE );
+		printf('<tr><td><button type="submit" name="cercar" value="nou"><font size ="1px" face="Arial, Helvetica, sans-serif">%s</font></button></td>', __('Guardar dades:','ricca3-dades'));
+		printf('<td><INPUT type="hidden" name="espec" value="%s" /></td></tr></table></form>', $_POST['espec']);
+	}
+//	prepara eliminar
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'eliminar'){
+		printf('<form method="post" action="" target="_self" name="grups"><table><tr><td>%s', __('idcredespec:', 'ricca3-dades'));
+		printf('<INPUT type="text" name="idcredespec" size="5" /></td></tr><tr><td><button type="submit" name="cercar" value="delete"><font size ="1px" face="Arial, Helvetica, sans-serif">', NULL);
+		printf('%s</font></button></td><td><INPUT type="hidden" name="espec" value="%s" /></td></tr></table></form>', __('Guardar dades:','ricca3-dades'), $_POST['espec']);
+	}	
+}
 
 

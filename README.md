@@ -6,6 +6,6 @@ ricca3
  * Plugin URI: http://replicantsfactory.com/
  * Author: Efraim Bayarri
  * Author URI: http://replicantsfactory.com/
- * Version: 201322061609
+ * Version: 201322061836
  * Description: Projecte RIC-CA (Escola Ramon i Cajal) Versió 3 (BETA)
  */

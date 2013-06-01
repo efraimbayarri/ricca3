@@ -270,9 +270,10 @@ function ricca3_drop_any($texte, $nom_post, $dades, $camp_valor, $camp_mostra, $
  * @author Efraim Bayarri
  */
 #############################################################################################
-function ricca3_drop_fixe($texte, $nom_post, $valor_array, $mostra_array, $ajuda ){
+function ricca3_drop_fixe($texte, $nom_post, $valor_array, $mostra_array, $ajuda , $tipus = null){
 	printf('<td> %s' , $texte );
-	printf('<select name="%s" title="%s"><option value="-1">%s</option>', $nom_post, $ajuda,  __('-- qualsevol --','ricca3-inc') );
+	printf('<select name="%s" title="%s">', $nom_post, $ajuda );
+	if( !$tipus) printf('<option value="-1">%s</option>', __('-- qualsevol --','ricca3-inc') );
 	for( $i=0; $i < count($valor_array); $i++ ) {
 		if(isset($_POST[$nom_post]) && $_POST[$nom_post] != '-1' && $_POST[$nom_post] == $valor_array[$i]){
 			printf('<option selected="selected" value="%s">%s</option>', $valor_array[$i] , $mostra_array[$i] );

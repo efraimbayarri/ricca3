@@ -252,6 +252,26 @@ $ricca3_listpla=array(
 		"visual" => array('idccomp', 'especialitat',    'crèdit',   'grup', 'hcc',      'ht',       'professor',   'tutor')
 );
 
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_editcredespec=array(
+		"tipus"     => array('bd',          'bd',             'bd',       'bd',        'bd',          'bd'),
+		"nombd"	    => array('idcredespec', 'idespecialitat', 'idcredit', 'nomcredit', 'ordre_cr_es', 'numero'),
+		"visual"    => array('id',          'idespecialitat', 'idcredit', 'crèdit',    'ordre',       '..'),
+		"nomeslect" => array( false,        false,            false,      true,        false,         false),
+		"tamany"    => array( 5,            5,                5,          5,           5,             15)
+);
+
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_listcredespec=array(
+		"tipus"  => array('bd',          'bd',             'bd',       'bd',        'bd',          'bd'),
+		"nombd"	 => array('idcredespec', 'idespecialitat', 'idcredit', 'nomcredit', 'ordre_cr_es', 'numero'),
+		"visual" => array('id',          'idespecialitat', 'idcredit', 'crèdit',    'ordre',       '..')
+);
+
 ######################################################
 ######################################################
 ##
@@ -342,11 +362,11 @@ $ricca3_butons_actes=array(
 /**   */
 #############################################################################################
 $ricca3_butons_dades=array(
-	"imatge" =>array("especialitats", "credits",     "grups",        "professors",   "ccomp",        "creditsespec", "pla",        "guardarpla",        "plallista",         "sensepla",        "buid",         "buid"),
-	"enllac" =>array("ricca3-espec",  "ricca3-cred", "ricca3-grups", "ricca3-prof",  "ricca3-ccomp", "ricca3-dades", "ricca3-pla", "ricca3-guardarpla", "ricca3-llistarpla", "ricca3-sensepla", "ricca3-dades", "ricca3-notafinalalumne"),
-	"id"     =>array(false,           false,         false,          false,          false,          false,          false,        false,               false,               false,             false,          false),
-	"nova"   =>array(false,           false,         false,          false,          false,          false,          false,        false,               false,               false,             false,          false),
-	"texte"  =>array("",              "" ,           "",             "",             "",             "",             "",           "" ,                 "",                  "",                "",             "")
+	"imatge" =>array("especialitats", "credits",     "grups",        "professors",   "ccomp",        "creditsespec",     "pla",        "guardarpla",        "plallista",         "sensepla",        "buid",         "buid"),
+	"enllac" =>array("ricca3-espec",  "ricca3-cred", "ricca3-grups", "ricca3-prof",  "ricca3-ccomp", "ricca3-credespec", "ricca3-pla", "ricca3-guardarpla", "ricca3-llistarpla", "ricca3-sensepla", "ricca3-dades", "ricca3-notafinalalumne"),
+	"id"     =>array(false,           false,         false,          false,          false,          false,              false,        false,               false,               false,             false,          false),
+	"nova"   =>array(false,           false,         false,          false,          false,          false,              false,        false,               false,               false,             false,          false),
+	"texte"  =>array("",              "" ,           "",             "",             "",             "",                 "",           "" ,                 "",                  "",                "",             "")
 );
 
 #############################################################################################
