@@ -1,0 +1,31 @@
+body {font-family:Arial,Helvetica,sans-serif; font-size: 12px}
+
+tbody {vertical-align: top; height: 5px;}
+
+td.dereta {text-align: right;}
+td.petit {font-family:Arial,Helvetica,sans-serif; font-size: 8px}
+td.gran  {font-family:Arial,Helvetica,sans-serif; font-size: 14px}
+td.notaf   {border-width: 1px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+td.nonotaf {border-width: 0px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+
+tr.linea {font-family:Arial,Helvetica,sans-serif; font-size: 5px}
+
+table.cap {border-width: 0px;border-spacing: 2px;border-style: solid;border-color: white;border-collapse:collapse;background-color: white;}
+
+table.center {text-align: center;width: 100%;border-width: 0px;border-spacing: 2px;border-style: solid;border-color: white;border-collapse:collapse;background-color: white;}
+
+table.cos {border-width: 1px;border-spacing: 2px;border-style: solid;border-color: gray;border-collapse: collapse;background-color: white;}
+table.cos th {border-width: 1px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+table.cos td {border-width: 1px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+
+table.cosassist {border-width: 1px;border-spacing: 2px;border-style: solid;border-color: gray;border-collapse: collapse;background-color: white;}
+table.cosassist th {border-width: 1px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+table.cosassist td {height: 40px; border-width: 1px;padding: 2px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+
+table.cos2 {border-width: 1px;border-spacing: 2px;border-style: solid;border-color: gray;border-collapse: collapse;background-color: white;}
+table.cos2 th {border-width: 1px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+table.cos2 td {border-width: 1px;padding: 10px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+
+
+
+

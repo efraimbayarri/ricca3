@@ -1,6 +1,8 @@
 <?php
 
-
+#############################################################################################
+/** 	ricca3_credits  																	*/
+#############################################################################################
 $ricca3_sql_credits = "CREATE TABLE ricca3_credits (
 idcredit       int(11) NOT NULL AUTO_INCREMENT,
 idespecialitat int(11) NOT NULL,
@@ -17,6 +19,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idcredit),
 );";
 
+#############################################################################################
+/** 	ricca3_professors 																	*/
+#############################################################################################
 $ricca3_sql_professors = "CREATE TABLE ricca3_professors (
 idprof         int(11) NOT NULL AUTO_INCREMENT,
 idtutor        int(11) NOT NULL,
@@ -32,6 +37,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idprof),
 );";
 
+#############################################################################################
+/** 	ricca3_alumne_especialitat  														*/
+#############################################################################################
 $ricca3_sql_alumne_especialitat = "CREATE TABLE ricca3_alumne_especialitat (
 idalumespec    int(11) NOT NULL AUTO_INCREMENT,
 idalumne       int(11) NOT NULL,
@@ -53,6 +61,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT '',
 PRIMARY KEY  (idalumespec),
 );";
 
+#############################################################################################
+/** 	ricca3_grups 																		 */
+#############################################################################################
 $ricca3_sql_grups = "CREATE TABLE ricca3_grups (
 idgrup         int(11) NOT NULL AUTO_INCREMENT,
 grup           varchar(45) COLLATE utf8_unicode_ci NOT NULL,
@@ -67,6 +78,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idgrup),
 );";
 
+#############################################################################################
+/**   	ricca3_any																			*/
+#############################################################################################
 $ricca3_sql_any = "CREATE TABLE ricca3_any (
 idany          int(11) NOT NULL AUTO_INCREMENT,
 any            varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -79,6 +93,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idany),
 );";
 
+#############################################################################################
+/**   	ricca3_historial																	*/
+#############################################################################################
 $ricca3_sql_historial = "CREATE TABLE ricca3_historial (
 idhistorial    int(11) NOT NULL AUTO_INCREMENT,
 idalumne       int(11) NOT NULL,
@@ -110,6 +127,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idhistorial),
 );";
 
+#############################################################################################
+/**   	ricca3_avaluacions																	*/
+#############################################################################################
 $ricca3_sql_avaluacions = "CREATE TABLE ricca3_avaluacions (
 idavaluacio    int(11) NOT NULL AUTO_INCREMENT,
 nomaval        varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -119,6 +139,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idavaluacio),
 );";
 
+#############################################################################################
+/**   	ricca3_ccomp																		*/
+#############################################################################################
 $ricca3_sql_ccomp = "CREATE TABLE ricca3_ccomp (
 idccomp        int(11) NOT NULL AUTO_INCREMENT,
 idcredit       int(11) NOT NULL,
@@ -134,6 +157,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idccomp),
 );";
 
+#############################################################################################
+/**   	ricca3_calcul_notaf																	*/
+#############################################################################################
 $ricca3_sql_calcul_notaf = "CREATE TABLE ricca3_calcul_notaf (
 idcalcul       int(11) NOT NULL AUTO_INCREMENT,
 idalumne       int(11) NOT NULL,
@@ -149,11 +175,15 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idcalcul),
 );";
 
+#############################################################################################
+/**   	ricca3_alumne																		*/
+#############################################################################################
 $ricca3_sql_alumne = "CREATE TABLE ricca3_alumne (
 idalumne       int(11) NOT NULL AUTO_INCREMENT,
 cognom1        varchar(50) COLLATE utf8_unicode_ci NOT NULL,
 cognom2        varchar(50) COLLATE utf8_unicode_ci NOT NULL,
 nom            varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+idestat_al     int(11) NOT NULL,
 datanai        date NOT NULL,
 llocnai        varchar(50) COLLATE utf8_unicode_ci DEFAULT 'Barcelona',
 provnai        varchar(50) COLLATE utf8_unicode_ci DEFAULT '',
@@ -191,6 +221,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT '',
 PRIMARY KEY  (idalumne),
 );";
 
+#############################################################################################
+/**   	ricca3_credits_especialitat															*/
+#############################################################################################
 $ricca3_sql_credits_especialitat = "CREATE TABLE ricca3_credits_especialitat (
 idcredespec    int(11) NOT NULL AUTO_INCREMENT,
 idespecialitat int(11) NOT NULL,
@@ -204,6 +237,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idcredespec),
 );";
 
+#############################################################################################
+/**   	ricca3_pla																			*/
+#############################################################################################
 $ricca3_sql_pla = "CREATE TABLE ricca3_pla (
 idpla          int(11) NOT NULL AUTO_INCREMENT,
 idany          int(11) NOT NULL,
@@ -214,6 +250,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idpla),
 );";
 		
+#############################################################################################
+/**   	ricca3_cursos																		*/
+#############################################################################################
 $ricca3_sql_cursos = "CREATE TABLE ricca3_cursos (
 idcurs         int(11) NOT NULL AUTO_INCREMENT,
 curs           varchar(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -223,6 +262,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idcurs),
 );";		
 
+#############################################################################################
+/**   	ricca3_estat																		*/
+#############################################################################################
 $ricca3_sql_estat = "CREATE TABLE ricca3_estat (
 idestat        int(11) NOT NULL AUTO_INCREMENT,
 estat          varchar(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -232,6 +274,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idestat),
 );";
 
+#############################################################################################
+/**   	ricca3_especialitats																*/
+#############################################################################################
 $ricca3_sql_especialitats = "CREATE TABLE ricca3_especialitats (
 idespecialitat int(11) NOT NULL AUTO_INCREMENT,
 nomespecialitat varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -248,6 +293,9 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idespecialitat),
 );";
 
+#############################################################################################
+/**   	ricca3_credits_avaluacions 															*/
+#############################################################################################
 $ricca3_sql_credits_avaluacions = "CREATE TABLE ricca3_credits_avaluacions (
 idcredaval     int(11) NOT NULL AUTO_INCREMENT,
 idany          int(11) NOT NULL,

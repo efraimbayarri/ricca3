@@ -1,0 +1,33 @@
+<meta http-equiv="Content-type: image/png">
+<script>
+function checkAll(){
+	for (var i=0;i<document.forms[6].elements.length;i++)
+	{
+		var e=document.forms[6].elements[i];
+		if ((e.name != 'allbox') && (e.type=='checkbox'))
+		{
+			e.checked=document.forms[6].allbox.checked;
+		}
+	}
+}
+</script>
+<script language="javascript" type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script language="javascript" type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<script>
+	$(function() {
+		$( document ).tooltip({
+			track: true, 
+			show: { duration: 800 } 
+			});
+	});
+</script>
+<script>  
+	$(function() { 
+		$( "#tabs" ).tabs({
+			
+		});  
+	});  
+</script>
+

@@ -1,0 +1,40 @@
+th {font: bold 9px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; color: #6D929B; 	border-right: 1px solid #C1DAD7; border-bottom: 1px solid #C1DAD7; border-top: 1px solid #C1DAD7; letter-spacing: 2px; text-transform: uppercase; text-align: left; padding: 1px 1px 1px 1px; }
+th.nobg { border-top: 0; border-left: 0; border-right: 1px solid #C1DAD7; background: none;}
+th.spec { border-left: 1px solid #C1DAD7; border-top: 0; font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; }
+th.specalt { border-left: 1px solid #C1DAD7; border-top: 0; font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;}
+
+td { font: 10px Verdana, "Trebuchet MS", Arial, Helvetica, sans-serif; border-right: 1px solid #C1DAD7; border-bottom: 1px solid #C1DAD7; color: #596770; padding: 6px 6px 6px 12px;}
+td:hover {background: dee3e3;}
+td:focus {background: dee3e3;}
+td.alt { background: #F5FAFA; color: #B4AA9D; }
+td.opcions{ border-right:0px; border-bottom: 0px; padding:0px; }
+td.nom{font: bold 11px  Arial, "Trebuchet MS", Verdana, Helvetica, sans-serif; color: #6D929B;font-size: 120%}
+
+tr:nth-of-type(odd){background: #F5FAFA;}
+tr:hover {color: #61828a; background: #edf2f2;}
+tr.credit{ background: rgb(202,202,216);}
+tr{background: #fff; }
+
+table.opcions{ margin-left: 30px; border-collapse: separate; border-spacing: 0px; border-color: gray; padding: 0px; background-color: #EEC;}
+table.cercar{ margin-left: 30px; border-collapse: separate; border-spacing: 0px; border-color: gray; padding: 0px; background-color: #EEC;}
+table.nom{ margin-left: 30px; border-collapse: separate; border-spacing: 0px; border-color: gray; padding: 0px;}
+table.frame{ margin-left: 0px; border-collapse: separate; border-spacing: 0px; border-color: gray; padding: 0px; background-color: #EEC;}
+table{margin-left: 30px;}
+
+input {font: 11px  Arial, "Trebuchet MS", Verdana, Helvetica, sans-serif;}
+select {font: 11px  Arial, "Trebuchet MS", Verdana, Helvetica, sans-serif;}
+input:focus {background: dee3e3;}
+select:focus {background: dee3e3;}
+
+#content tr th, #content thed th {color  #888;font-size: 9px;font-weigth: bold;line heigth: 12px;padding: 2px 2px;}
+#content tr td {border-style:none; border-top: 1px solid #e7e7e7; padding: 4px 2px;}
+
+#content tr th.noualumne {color  #888;font-size: 10px;font-weigth: bold;line heigth: 12px;padding: 2px 2px; width:20%}
+#content tr td.noualumne{font-size: 10px; border-style:none; border-top: 1px solid #e7e7e7; padding: 4px 2px;}
+
+#content table.menucurt800{width: 800px;}
+#content table.menucurt600{width: 600px;}
+#content table.menucurt500{width: 500px;}
+#content table.menucurt400{width: 400px;}
+#content table.menucurt350{width: 350px;}
+

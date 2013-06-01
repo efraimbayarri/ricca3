@@ -1,0 +1,13 @@
+<head>
+<link rel="stylesheet" type="text/css" href="/ric-ca/wp-content/plugins/ricca3/styles/ricca3.css">
+<script>
+<!--
+	function printpage() {
+		window.print();
+	}
+//-->
+</script>
+</head>
+<body onload="printpage()">
+[ricca3-impcertif]	
+</body>
