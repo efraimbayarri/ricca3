@@ -2,9 +2,9 @@
 #############################################################################################
 /**
  * Alumnes per especialitat. Mostra un filtre per escollir alumnes segons especialitat i any
- * shortcode: [ricca-alumespec]
+ * shortcode: [ricca3-alumespec]
  *
- * @since ric-ca.v.2013.6.3
+ * @since ricca3.v.2013.13.6
  * @author Efraim Bayarri
  */
 #############################################################################################
@@ -114,7 +114,7 @@ function ricca3_shortcode_alumnes($atts, $content = null) {
 #############################################################################################
 /**
  * Cerca alumnes segons criteris de Nom, Cognom, DNI i ID amb clausules %LIKE%
- * shortcode: [ricca-cercalumne]
+ * shortcode: [ricca3-cercalumne]
  *
  * @since ricca3.v.2013.13.6
  * @author Efraim Bayarri
