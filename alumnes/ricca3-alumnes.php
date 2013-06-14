@@ -303,6 +303,7 @@ function ricca3_shortcode_noualumne($atts, $content = null) {
 //	calculem els camps nomicognoms i cognomsinom
 		$_POST['nomicognoms'] = sprintf('%s %s %s',  trim(mb_strtoupper($_POST['nom'], "utf-8")),     trim(mb_strtoupper($_POST['cognom1'], "utf-8")), trim(mb_strtoupper($_POST['cognom2'], "utf-8")) );
 		$_POST['cognomsinom'] = sprintf('%s %s, %s', trim(mb_strtoupper($_POST['cognom1'], "utf-8")), trim(mb_strtoupper($_POST['cognom2'], "utf-8")), trim(mb_strtoupper($_POST['nom'], "utf-8")) );
+		$_POST = stripslashes_deep($_POST);
 //	afegim els stamp
 		$_POST['stampuser'] = $current_user->user_login;
 		$_POST['stampplace'] = 'ricca3_shortcode_noualumne_insert';
@@ -575,7 +576,7 @@ function ricca3_shortcode_editardades($atts, $content = null) {
 					if($ricca3_alumcol['obliga'][$i]){
 //	si es nomes lletres
 						if($ricca3_alumcol['nomes-az'][$i]){
-							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" required="required" pattern="[a-zA-ZàáÁÀèéÈÉíÍïÏòóÒÓúÚñÑçÇ·  ]{1,}" /></td></tr>',
+							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" required="required" pattern="[a-zA-ZàáÁÀèéÈÉíÍïÏòóÒÓúÚñÑçÇ·\'  ]{1,}" /></td></tr>',
 								$ricca3_alumcol['nombd'][$i],$row[$ricca3_alumcol['nombd'][$i]] );
 						}else{						
 							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" required="required" /></td></tr>',
@@ -584,7 +585,7 @@ function ricca3_shortcode_editardades($atts, $content = null) {
 					}else{
 						//	si es nomes lletres
 						if($ricca3_alumcol['nomes-az'][$i]){
-							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" pattern="[a-zA-ZàáÁÀèéÈÉíÍïÏòóÒÓúÚñÑçÇ· ]{1,}" /></td></tr>',
+							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" pattern="[a-zA-ZàáÁÀèéÈÉíÍïÏòóÒÓúÚñÑçÇ·\' ]{1,}" /></td></tr>',
 								$ricca3_alumcol['nombd'][$i],$row[$ricca3_alumcol['nombd'][$i]] );
 						}else{
 							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" /></td></tr>', 
@@ -615,6 +616,7 @@ function ricca3_shortcode_editardades($atts, $content = null) {
 //	calculem els camps nomicognoms i cognomsinom
 		$_POST['nomicognoms'] = sprintf('%s %s %s',  trim(mb_strtoupper($_POST['nom'], "utf-8")),     trim(mb_strtoupper($_POST['cognom1'], "utf-8")), trim(mb_strtoupper($_POST['cognom2'], "utf-8")) );
 		$_POST['cognomsinom'] = sprintf('%s %s, %s', trim(mb_strtoupper($_POST['cognom1'], "utf-8")), trim(mb_strtoupper($_POST['cognom2'], "utf-8")), trim(mb_strtoupper($_POST['nom'], "utf-8")) );
+		$_POST = stripslashes_deep($_POST);
 //	canviem el format de la data de neixement
 		$_POST['datanai']    = strftime("%Y-%m-%d",strtotime(str_replace('/','-',$_POST['datanai'])));
 //	afegim els stamp
@@ -1154,10 +1156,8 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 				$nom_modul[$y], $hores_modul[$y], $qual_modul[$y], $conv_modul[$y]);  					
 			}
   		}
-  		$notaf = $row_h['qual_final'];
-  		if($notaf < 5)$notaf = '';
   		printf('</table><hr /><table><tr><td><b>%s</b></td><td>%s</td></tr></table>', 
-  			__('Qualificació final del cicle formatiu','ricca3-alum'), $notaf);
+  			__('Qualificació final del cicle formatiu','ricca3-alum'), $notafinal);
   		printf('');
   		printf('<hr /><table><tr><td><b>%s</b></td></tr></table>', __('OBSERVACIONS','ricca3-alum')); 
   		printf('<table><tr><td title="%s"><INPUT type="text" name="obs[%s]" size="180" maxlength="225" value="%s" ></td></tr></table>', 

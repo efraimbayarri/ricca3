@@ -581,24 +581,7 @@ function ricca3_ricca3_credaval(){
 	$dades = $wpdb->get_results( 'SELECT * FROM ricca.ricca_credits_avaluacions', ARRAY_A);
 	
 	for( $i = 0; $i < count($dades); $i++ ){
-		$convext1 = 1;
-		$convext2 = 1;
 		$row_any   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE any=%s',   $dades[$i]['idany']), ARRAY_A, 0);
-		if(strlen($dades[$i]['convord']) == 0){
-			$convord = $row_any['idany'];
-		}else{
-			$row_conv = $wpdb->get_row( $wpdb->prepare(' SELECT * FROM ricca3_any WHERE conv=%s', $dades[$i]['convord']), ARRAY_A, 0);
-			$convord = $row_conv['idany'];
-		}
-		if(strlen($dades[$i]['convext1']) > 0){
-			$row_conv = $wpdb->get_row( $wpdb->prepare(' SELECT * FROM ricca3_any WHERE conv=%s', $dades[$i]['convext1']), ARRAY_A, 0);
-			$convext1 = $row_conv['idany'];
-		}
-		if(strlen($dades[$i]['convext2']) > 0){
-			$row_conv = $wpdb->get_row( $wpdb->prepare(' SELECT * FROM ricca3_any WHERE conv=%s', $dades[$i]['convext2']), ARRAY_A, 0);
-			$convext2 = $row_conv['idany'];
-		}
-
 		$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_credits_avaluacions ( idcredaval,    idany,    idccomp,    idalumne,    nota1,    nota2,    nota3,'.
 			'recup,    notaf_cc,    notaf_cr,    act1,    act2,    actf,    pendi,    repe,    convord,    convext1,    convext2, stampuser, stampplace)'.
 			'                                                         VALUES ( %d,            %d,       %d,         %d,          %s,       %s,       %s,'.
@@ -606,9 +589,9 @@ function ricca3_ricca3_credaval(){
 			' ON DUPLICATE KEY UPDATE                                                                idany=%d, idccomp=%d, idalumne=%d, nota1=%s, nota2=%s, nota3=%s,'.
 			'recup=%s, notaf_cc=%s, notaf_cr=%s, act1=%s, act2=%s, actf=%s, pendi=%s, repe=%s, convord=%d, convext1=%d, convext2=%d, stampuser="update", stampplace="update" ',
 			$dades[$i]['idkey'], $row_any['idany'], $dades[$i]['idccomp'], $dades[$i]['idalumne'], $dades[$i]['nota1'], $dades[$i]['nota2'], $dades[$i]['nota3'],
-			$dades[$i]['recup'], $dades[$i]['notaf'], $dades[$i]['notaf'], $dades[$i]['act1'], $dades[$i]['act2'], $dades[$i]['actf'], $dades[$i]['pendi'], $dades[$i]['repe'], $convord, $convext1, $convext2,
+			$dades[$i]['recup'], $dades[$i]['notaf'], $dades[$i]['notaf'], $dades[$i]['act1'], $dades[$i]['act2'], $dades[$i]['actf'], $dades[$i]['pendi'], $dades[$i]['repe'], $dades[$i]['convord'], $dades[$i]['convext1'], $dades[$i]['convext2'],
 			                     $row_any['idany'], $dades[$i]['idccomp'], $dades[$i]['idalumne'], $dades[$i]['nota1'], $dades[$i]['nota2'], $dades[$i]['nota3'],
-			$dades[$i]['recup'], $dades[$i]['notaf'], $dades[$i]['notaf'], $dades[$i]['act1'], $dades[$i]['act2'], $dades[$i]['actf'], $dades[$i]['pendi'], $dades[$i]['repe'], $convord, $convext1, $convext2 ));
+			$dades[$i]['recup'], $dades[$i]['notaf'], $dades[$i]['notaf'], $dades[$i]['act1'], $dades[$i]['act2'], $dades[$i]['actf'], $dades[$i]['pendi'], $dades[$i]['repe'], $dades[$i]['convord'], $dades[$i]['convext1'], $dades[$i]['convext2'] ));
 	}
 	$time_end = microtime(true);
 	$time = $time_end - $time_start;
