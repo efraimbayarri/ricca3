@@ -51,7 +51,7 @@ CREATE TABLE `ricca3_alumne_especialitat` (
   CONSTRAINT `ricca3_alumne_especialitat_ibfk_3` FOREIGN KEY (`idestat_es`) REFERENCES `ricca3_estat` (`idestat`),
   CONSTRAINT `ricca3_alumne_especialitat_ibfk_4` FOREIGN KEY (`idalumne`) REFERENCES `ricca3_alumne` (`idalumne`),
   CONSTRAINT `ricca3_alumne_especialitat_ibfk_5` FOREIGN KEY (`idany`) REFERENCES `ricca3_any` (`idany`)
-) ENGINE=InnoDB AUTO_INCREMENT=1321 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1362 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -63,4 +63,4 @@ CREATE TABLE `ricca3_alumne_especialitat` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-14 22:20:36
+-- Dump completed on 2013-06-15 19:57:31

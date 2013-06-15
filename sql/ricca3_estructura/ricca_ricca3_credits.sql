@@ -42,7 +42,7 @@ CREATE TABLE `ricca3_credits` (
   KEY `idcurs` (`idcurs`),
   CONSTRAINT `ricca3_credits_ibfk_1` FOREIGN KEY (`idcurs`) REFERENCES `ricca3_cursos` (`idcurs`),
   CONSTRAINT `ricca3_credits_ibfk_2` FOREIGN KEY (`idespecialitat`) REFERENCES `ricca3_especialitats` (`idespecialitat`)
-) ENGINE=InnoDB AUTO_INCREMENT=223 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=221 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +54,4 @@ CREATE TABLE `ricca3_credits` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-14 22:20:36
+-- Dump completed on 2013-06-15 19:57:31

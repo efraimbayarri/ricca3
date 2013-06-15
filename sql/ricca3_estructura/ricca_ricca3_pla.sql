@@ -36,7 +36,7 @@ CREATE TABLE `ricca3_pla` (
   KEY `idccomp` (`idccomp`),
   CONSTRAINT `ricca3_pla_ibfk_1` FOREIGN KEY (`idccomp`) REFERENCES `ricca3_ccomp` (`idccomp`),
   CONSTRAINT `ricca3_pla_ibfk_2` FOREIGN KEY (`idany`) REFERENCES `ricca3_any` (`idany`)
-) ENGINE=InnoDB AUTO_INCREMENT=334 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=568 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +48,4 @@ CREATE TABLE `ricca3_pla` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-14 22:20:36
+-- Dump completed on 2013-06-15 19:57:31

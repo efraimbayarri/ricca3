@@ -51,4 +51,4 @@ CREATE TABLE `ricca3_especialitats` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-14 22:20:36
+-- Dump completed on 2013-06-15 19:57:31

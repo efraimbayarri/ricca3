@@ -56,7 +56,7 @@ CREATE TABLE `ricca3_historial` (
   KEY `idalumne` (`idalumne`),
   KEY `fk_ricca3_historial_1` (`idalumne`),
   CONSTRAINT `fk_ricca3_historial_1` FOREIGN KEY (`idalumne`) REFERENCES `ricca3_alumne` (`idalumne`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=260 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -68,4 +68,4 @@ CREATE TABLE `ricca3_historial` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-14 22:20:36
+-- Dump completed on 2013-06-15 19:57:31

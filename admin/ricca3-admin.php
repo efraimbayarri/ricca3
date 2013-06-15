@@ -329,9 +329,9 @@ function ricca3_ricca3_alumespec(){
 		$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_alumne_especialitat (idalumespec, idalumne,    idgrup,    idany,    idestat_es,    motiubaixa,    databaixa,'.
 			'    notaf_es,    repeteix,    observ1,    observ2,    observ3,    stampuser,          stampplace)'.
 			'                                                         VALUES (%s,          %s,          %s,        %s,       %s,            %s,            %s,'.
-			'           %f,          %s,          %s,         %s,         %s,         "upgrade",          "upgrade")'.
+			'           %01.3f,          %s,          %s,         %s,         %s,         "upgrade",          "upgrade")'.
 			' ON DUPLICATE KEY UPDATE                                                      idalumne=%s, idgrup=%s, idany=%s, idestat_es=%s, motiubaixa=%s, databaixa=%s,'.
-			' notaf_es=%f, repeteix=%s, observ1=%s, observ2=%s, observ3=%s, stampuser="update", stampplace="update" ',
+			' notaf_es=%01.3f, repeteix=%s, observ1=%s, observ2=%s, observ3=%s, stampuser="update", stampplace="update" ',
 			$dades[$i]['idkey'],      $dades[$i]['idalumne'],   $dades[$i]['idgrup'],    $row_any['idany'],
 			$row_estat['idestat'],    $dades[$i]['motiubaixa'], $dades[$i]['databaixa'], $dades[$i]['nota'], 
 			$dades[$i]['repeteix'],   $dades[$i]['observ1'],    $dades[$i]['observ2'],   $dades[$i]['observ3'],
@@ -585,9 +585,9 @@ function ricca3_ricca3_credaval(){
 		$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_credits_avaluacions ( idcredaval,    idany,    idccomp,    idalumne,    nota1,    nota2,    nota3,'.
 			'recup,    notaf_cc,    notaf_cr,    act1,    act2,    actf,    pendi,    repe,    convord,    convext1,    convext2, stampuser, stampplace)'.
 			'                                                         VALUES ( %d,            %d,       %d,         %d,          %s,       %s,       %s,'.
-			'%s,       %s,          %s,          %s,      %s,      %s,      %s,       %s,      %d,         %d,          %d,       "upgrade", "upgrade" )'.
+			'%s,       %s,          %s,          %s,      %s,      %s,      %s,       %s,      %s,         %s,          %s,       "upgrade", "upgrade" )'.
 			' ON DUPLICATE KEY UPDATE                                                                idany=%d, idccomp=%d, idalumne=%d, nota1=%s, nota2=%s, nota3=%s,'.
-			'recup=%s, notaf_cc=%s, notaf_cr=%s, act1=%s, act2=%s, actf=%s, pendi=%s, repe=%s, convord=%d, convext1=%d, convext2=%d, stampuser="update", stampplace="update" ',
+			'recup=%s, notaf_cc=%s, notaf_cr=%s, act1=%s, act2=%s, actf=%s, pendi=%s, repe=%s, convord=%s, convext1=%s, convext2=%s, stampuser="update", stampplace="update" ',
 			$dades[$i]['idkey'], $row_any['idany'], $dades[$i]['idccomp'], $dades[$i]['idalumne'], $dades[$i]['nota1'], $dades[$i]['nota2'], $dades[$i]['nota3'],
 			$dades[$i]['recup'], $dades[$i]['notaf'], $dades[$i]['notaf'], $dades[$i]['act1'], $dades[$i]['act2'], $dades[$i]['actf'], $dades[$i]['pendi'], $dades[$i]['repe'], $dades[$i]['convord'], $dades[$i]['convext1'], $dades[$i]['convext2'],
 			                     $row_any['idany'], $dades[$i]['idccomp'], $dades[$i]['idalumne'], $dades[$i]['nota1'], $dades[$i]['nota2'], $dades[$i]['nota3'],

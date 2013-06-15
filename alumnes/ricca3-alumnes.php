@@ -576,7 +576,7 @@ function ricca3_shortcode_editardades($atts, $content = null) {
 					if($ricca3_alumcol['obliga'][$i]){
 //	si es nomes lletres
 						if($ricca3_alumcol['nomes-az'][$i]){
-							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" required="required" pattern="[a-zA-ZàáÁÀèéÈÉíÍïÏòóÒÓúÚñÑçÇ·\'  ]{1,}" /></td></tr>',
+							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" required="required" pattern="[a-zA-ZàáÁÀèéÈÉíÍïÏòóÒÓúÚñÑçÇ·\'-,  ]{1,}" /></td></tr>',
 								$ricca3_alumcol['nombd'][$i],$row[$ricca3_alumcol['nombd'][$i]] );
 						}else{						
 							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" required="required" /></td></tr>',
@@ -585,7 +585,7 @@ function ricca3_shortcode_editardades($atts, $content = null) {
 					}else{
 						//	si es nomes lletres
 						if($ricca3_alumcol['nomes-az'][$i]){
-							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" pattern="[a-zA-ZàáÁÀèéÈÉíÍïÏòóÒÓúÚñÑçÇ·\' ]{1,}" /></td></tr>',
+							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" pattern="[a-zA-ZàáÁÀèéÈÉíÍïÏòóÒÓúÚñÑçÇ·\'-, ]{1,}" /></td></tr>',
 								$ricca3_alumcol['nombd'][$i],$row[$ricca3_alumcol['nombd'][$i]] );
 						}else{
 							printf('<td class="noualumne"><INPUT type="text" name="%s" size="50" value="%s" /></td></tr>', 
@@ -652,16 +652,18 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">',__('Especialitats de l\'alumne','ricca3-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
 	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
 //	ajuda al butons	
-	$ricca3_butons_especalum['texte'][0] = __('ajuda-especalum-afegirespecialitat', 'ricca3-alum');
-	$ricca3_butons_especalum['texte'][1] = __('ajuda-especalum-baixaespecialitat',  'ricca3-alum');
-	$ricca3_butons_especalum['texte'][2] = __('ajuda-especalum-creditsalumne',      'ricca3-alum');
-	$ricca3_butons_especalum['texte'][3] = __('ajuda-especalum-aplicarpla',         'ricca3-alum');
-	$ricca3_butons_especalum['texte'][4] = __('ajuda-especalum-dadesalumne',        'ricca3-alum');
-	$ricca3_butons_especalum['texte'][5] = __('ajuda-especalum-alumne',             'ricca3-alum');
-	$ricca3_butons_especalum['texte'][6] = __('ajuda-especalum-butlleti',           'ricca3-alum');
-	$ricca3_butons_especalum['texte'][7] = __('ajuda-especalum-caratula',           'ricca3-alum');
-	$ricca3_butons_especalum['texte'][8] = __('ajuda-especalum-marcarrepetidor',    'ricca3-alum');
-	$ricca3_butons_especalum['texte'][9] = __('ajuda-especalum-canviarany',         'ricca3-alum');
+	$ricca3_butons_especalum['texte'][0] =  __('ajuda-especalum-afegirespecialitat', 'ricca3-alum');
+	$ricca3_butons_especalum['texte'][1] =  __('ajuda-especalum-baixaespecialitat',  'ricca3-alum');
+	$ricca3_butons_especalum['texte'][2] =  __('ajuda-especalum-creditsalumne',      'ricca3-alum');
+	$ricca3_butons_especalum['texte'][3] =  __('ajuda-especalum-aplicarpla',         'ricca3-alum');
+	$ricca3_butons_especalum['texte'][4] =  __('ajuda-especalum-dadesalumne',        'ricca3-alum');
+	$ricca3_butons_especalum['texte'][5] =  __('ajuda-especalum-alumne',             'ricca3-alum');
+	$ricca3_butons_especalum['texte'][6] =  __('ajuda-especalum-butlleti',           'ricca3-alum');
+	$ricca3_butons_especalum['texte'][7] =  __('ajuda-especalum-caratula',           'ricca3-alum');
+	$ricca3_butons_especalum['texte'][8] =  __('ajuda-especalum-marcarrepetidor',    'ricca3-alum');
+	$ricca3_butons_especalum['texte'][9] =  __('ajuda-especalum-canviarany',         'ricca3-alum');
+	$ricca3_butons_especalum['texte'][10] = __('ajuda-especalum-afegircredit',       'ricca3-alum');
+	$ricca3_butons_especalum['texte'][11] = __('ajuda-especalum-notafinal',          'ricca3-alum');
 //		mostrar la filera de butons
 	ricca3_butons( $ricca3_butons_especalum, 12, $token );	
 //		ajuda a la graella
@@ -717,7 +719,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
  		printf('<table>', NULL);
 //	mostrem la capçalera de la graella amb les ajudes
  		printf( '<tr><th title="%s">Grup</th><th title="%s">Conv</th><th title="%s">R</th><th title="%s">Crèdit</th><th title="%s">N1</th><th title="%s">A1</th><th title="%s">N2</th>'.
- 				'<th title="%s">A2</th><th title="%s">N3</th><th title="%s">A3</th><th title="%s">NFCC</th><th title="%s">NF</th><th title="%s">Professor</th><th title="%s">HoresCC</th><th title="%s">Hores</th></tr>',
+ 				'<th title="%s">A2</th><th title="%s">N3</th><th title="%s">A3</th><th title="%s">NFCC</th><th title="%s">NF</th><th title="%s">P</th><th title="%s">Professor</th><th title="%s">HoresCC</th><th title="%s">Hores</th></tr>',
  				__('ajuda-graella-credalu-grup',    'ricca3-alum'),
  				__('ajuda-graella-credalu-conv',    'ricca3-alum'),
  				__('ajuda-graella-credalu-R',       'ricca3-alum'),
@@ -730,6 +732,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
  				__('ajuda-graella-credalu-A3',      'ricca3-alum'),
  				__('ajuda-graella-credalu-NFCC',    'ricca3-alum'),
  				__('ajuda-graella-credalu-NF',      'ricca3-alum'),
+ 				__('ajuda-graella-credalu-P',       'ricca3-alum'),
  				__('ajuda-graella-credalu-prof',    'ricca3-alum'),
  				__('ajuda-graella-credalu-horesCC', 'ricca3-alum'),
  				__('ajuda-graella-credalu-hores',   'ricca3-alum')
@@ -749,8 +752,8 @@ function ricca3_shortcode_especalum($atts, $content = null) {
  										'ORDER BY ricca3_credits_avaluacions.idany DESC', $_GET['ID'], $array_cred_espec[$j]['idccomp']);
  			$row_cred = $wpdb->get_row( $query_cred, ARRAY_A, 0);
 //	si el crèdit es actiu per aquest any mostrem la convocatoria en negretes
- 			$conv = $row_cred['conv'];
- 			if($row_cred['conv'] == $row_any['conv']) $conv = sprintf('<b>%s</b>', $row_cred['conv']);
+ 			$conv = $row_cred['convord'];
+ 			if($row_cred['conv'] == $row_any['conv']) $conv = sprintf('<b>%s</b>', $row_cred['convord']);
 // 	preparem les dades
  			$repeteix = $row_cred['repe'];
  			if($row_cred['repe'] =='R') $repeteix = '<b>*</b>';
@@ -772,9 +775,9 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 
  			}
 //	mostrem els resultats a la linea de la graella 			
-			printf('<tr><td>%s</td><td>%s</td><td>%s</td><td title="%s">%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td></tr>', 
+			printf('<tr><td>%s</td><td>%s</td><td>%s</td><td title="%s">%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', 
  				$row_cred['grup'], $conv, $repeteix, $title, $row_cred['nomccomp'], $row_cred['nota1'], $row_cred['act1'], $row_cred['nota2'], $row_cred['act2'], 
- 				$row_cred['nota3'], $row_cred['actf'], $row_cred['notaf_cc'], $row_cred['notaf_cr'], $row_cred['nomicognoms'], $row_cred['hores_cc'], $row_cred['hores_cr']);
+ 				$row_cred['nota3'], $row_cred['actf'], $row_cred['notaf_cc'], $row_cred['notaf_cr'], $row_cred['pendi'],  $row_cred['nomicognoms'], $row_cred['hores_cc'], $row_cred['hores_cr']);
  		}
  		printf('</table></form>', NULL);
   	}
@@ -799,7 +802,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 		printf('<div id="espec%s"><table>', $i);
 //	mostrem la capçalera de la graella amb les ajudes
  		printf( '<tr><th title="%s">Grup</th><th title="%s">Conv</th><th title="%s">R</th><th title="%s">Crèdit</th><th title="%s">N1</th><th title="%s">A1</th><th title="%s">N2</th>'.
- 				'<th title="%s">A2</th><th title="%s">N3</th><th title="%s">A3</th><th title="%s">NFCC</th><th title="%s">NF</th><th title="%s">Professor</th><th title="%s">HoresCC</th><th title="%s">Hores</th></tr>',
+ 				'<th title="%s">A2</th><th title="%s">N3</th><th title="%s">A3</th><th title="%s">NFCC</th><th title="%s">NF</th><th title="%s">P</th><th title="%s">Professor</th><th title="%s">HoresCC</th><th title="%s">Hores</th></tr>',
  				__('ajuda-graella-credalu-grup',    'ricca3-alum'),
  				__('ajuda-graella-credalu-conv',    'ricca3-alum'),
  				__('ajuda-graella-credalu-R',       'ricca3-alum'),
@@ -812,14 +815,15 @@ function ricca3_shortcode_especalum($atts, $content = null) {
  				__('ajuda-graella-credalu-A3',      'ricca3-alum'),
  				__('ajuda-graella-credalu-NFCC',    'ricca3-alum'),
  				__('ajuda-graella-credalu-NF',      'ricca3-alum'),
+ 				__('ajuda-graella-credalu-P',       'ricca3-alum'),
  				__('ajuda-graella-credalu-prof',    'ricca3-alum'),
  				__('ajuda-graella-credalu-horesCC', 'ricca3-alum'),
  				__('ajuda-graella-credalu-hores',   'ricca3-alum')
  				);			
 		for( $j=0; $j < count($data_cred); $j++ ){
 //	si el crèdit es actiu per aquest any mostrem la convocatoria en negretes
-			$conv = $data_cred[$j]['conv'];
-			if($data_cred[$j]['conv'] == $row_any['conv']) $conv = sprintf('<b>%s</b>', $data_cred[$j]['conv']);
+			$conv = $data_cred[$j]['convord'];
+			if($data_cred[$j]['conv'] == $row_any['conv']) $conv = sprintf('<b>%s</b>', $data_cred[$j]['convord']);
 //
 			$repeteix = $data_cred[$j]['repe'];
 			if($data_cred[$j]['repe'] =='R') $repeteix = '<b>*</b>';
@@ -832,19 +836,22 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 						'WHERE idalumne=%s AND idcredit=%s ORDER by idany DESC ',
 						$_GET['ID'], $data_cred[$j]['idcredit']), ARRAY_A, 0);
 				$nota = $row_nota['notaf_cr'];
-//	mostrem la linea inicial del crèdit				
-				printf('<tr class="credit"><td>%s</td><td>%s</td><td></td><td><b>%s</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><b>%s</b></td><td></td><td></td><td>%s</td></tr>',
-				$data_cred[$j]['grup'], '<b>===></b>', $data_cred[$j]['nomcredit'], $nota, $data_cred[$j]['hores_cr']);
+//	mostrem la linea inicial del crèdit
+				$pendi='';
+				if( $data_cred[$j]['pendi'] == 'P') $pendi='P';				
+//				printf('<tr class="credit"><td>%s</td><td>%s</td><td></td><td><b>%s</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><b>%s</b></td><td><b>%s</b></td><td></td><td></td><td>%s</td></tr>',
+				printf('<tr class="credit"><td>%s</td><td>%s</td><td colspan="2"><b>%s</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><b>%s</b></td><td><b>%s</b></td><td></td><td></td><td>%s</td></tr>',
+				$data_cred[$j]['grup'], '<b>===></b>', $data_cred[$j]['nomcredit'], $nota, $pendi, $data_cred[$j]['hores_cr']);
 			}
 //	si ja hem mostrat el ccomp a la linea anterior, no posem el nomccomp
 			if( $j != 0 && $data_cred[$j]['idccomp'] == $data_cred[$j-1]['idccomp'] ){
-				printf('<tr><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s</td><td>%s</td><td>%s</td></tr>',
+				printf('<tr><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>',
 				$data_cred[$j]['grup'], $conv, $repeteix, $data_cred[$j]['nota1'], $data_cred[$j]['act1'], $data_cred[$j]['nota2'], $data_cred[$j]['act2'],
-				$data_cred[$j]['nota3'], $data_cred[$j]['actf'], $data_cred[$j]['notaf_cc'], $data_cred[$j]['nomicognoms'], $data_cred[$j]['hores_cc'], $data_cred[$j]['hores_cr']);
+				$data_cred[$j]['nota3'], $data_cred[$j]['actf'], $data_cred[$j]['notaf_cc'], $data_cred[$j]['pendi'], $data_cred[$j]['nomicognoms'], $data_cred[$j]['hores_cc'], $data_cred[$j]['hores_cr']);
 			}else{			
-				printf('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s</td><td>%s</td><td>%s</td></tr>',
+				printf('<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>',
 				$data_cred[$j]['grup'], $conv, $repeteix, $data_cred[$j]['nomccomp'], $data_cred[$j]['nota1'], $data_cred[$j]['act1'], $data_cred[$j]['nota2'], $data_cred[$j]['act2'],
-				$data_cred[$j]['nota3'], $data_cred[$j]['actf'], $data_cred[$j]['notaf_cc'], $data_cred[$j]['nomicognoms'], $data_cred[$j]['hores_cc'], $data_cred[$j]['hores_cr']);
+				$data_cred[$j]['nota3'], $data_cred[$j]['actf'], $data_cred[$j]['notaf_cc'], $data_cred[$j]['pendi'], $data_cred[$j]['nomicognoms'], $data_cred[$j]['hores_cc'], $data_cred[$j]['hores_cr']);
 			}
 		}
 		printf('</table></div>', NULL);
@@ -1041,7 +1048,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 			$nom_modul[$j]   = $dades_ccomp[0]['nomcredit'];
 			$hores_modul[$j] = $dades_ccomp[0]['hores_cr'];
 			$qual_modul[$j]  = $dades_ccomp[0]['notaf_cr'];
-			$conv_modul[$j]  = $dades_ccomp[0]['conv'];		
+			$conv_modul[$j]  = $dades_ccomp[0]['convord'];		
 		}
 // nota final
 	  	$notafinal = "";
@@ -1702,6 +1709,7 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 				array(  'pendi' => strtoupper($_POST['pendi'][$i]), 'repe'     => strtoupper($_POST['repe'][$i]),   'nota1' => strtoupper($_POST['nota1'][$i]), 
 						'act1'  => strtoupper($_POST['act1'][$i]),  'nota2'    => strtoupper($_POST['nota2'][$i]),  'act2'  => strtoupper($_POST['act2'][$i]), 
 						'nota3' => strtoupper($_POST['nota3'][$i]), 'actf'     => strtoupper($_POST['actf'][$i]),   'notaf_cc' => strtoupper($_POST['notaf_cc'][$i]), 
+						'convord' => $_POST['convord'][$i], 
 						'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credalu'),
 				array('idcredaval' => $_POST['idcredaval'][$i]) );
 		}
@@ -1753,7 +1761,7 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 		$data_cred = $wpdb->get_results( $query_cred, ARRAY_A);
 		printf('<div id="espec%s"><table>', $i);
 //	mostrem la capçalera de la graella amb les ajudes
-		printf( '<tr><th title="%s">Grup</th><th title="%s">Conv</th><th title="%s">P</th><th title="%s">R</th><th title="%s">Crèdit</th><th title="%s">N1</th><th title="%s">A1</th><th title="%s">N2</th>'.
+		printf( '<tr><th title="%s">Grup</th><th></th><th title="%s">Conv</th><th title="%s">P</th><th title="%s">R</th><th title="%s">Crèdit</th><th title="%s">N1</th><th title="%s">A1</th><th title="%s">N2</th>'.
 				'<th title="%s">A2</th><th title="%s">N3</th><th title="%s">A3</th><th title="%s">NFCC</th><th title="%s">NFCR</th><th title="%s">Professor</th><th title="%s">HoresCC</th><th title="%s">Hores</th></tr>',
 				__('ajuda-graella-credalu-grup',     'ricca3-alum'),
 				__('ajuda-graella-credalu-conv',     'ricca3-alum'),
@@ -1772,17 +1780,16 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 				__('ajuda-graella-credalu-horesCC',  'ricca3-alum'),
 				__('ajuda-graella-credalu-hores CR', 'ricca3-alum')
 		);
-		$row_any = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE actual = 1', NULL ) , ARRAY_A , 0 );
+
 		if( $i == 0){
 			printf('<form method="post" action="" target="_self" name="credespec" id="form1">', NULL);
 		}else{
 			printf('<form method="post" action="" target="_self" name="credespec" id="especform2">', NULL);
 		}
 		for( $j=0; $j < count($data_cred); $j++ ){
-//	si el crèdit es actiu per aquest any mostrem la convocatoria en negretes
-			$conv = $data_cred[$j]['conv'];
-			if($data_cred[$j]['conv'] == $row_any['conv']) $conv = sprintf('<b>%s</b>', $data_cred[$j]['conv']);
 //
+			$row_any = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE idany = %s', $data_cred[$j]['idany'] ) , ARRAY_A , 0 );
+//			
 			$repeteix = $data_cred[$j]['repe'];
 			if($data_cred[$j]['repe'] =='R') $repeteix = '<b>*</b>';
 //	mostrem els resultats a la linea de la graella
@@ -1795,13 +1802,15 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 						$_GET['ID'], $data_cred[$j]['idcredit']), ARRAY_A, 0);
 				$nota = $row_nota['notaf_cr'];
 //	mostrem la linea inicial del crèdit
-				printf('<tr class="credit"><td>%s</td><td>%s</td><td></td><td></td><td><b>%s</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><b>%s</b></td><td></td><td></td><td>%s</td></tr>',
+				printf('<tr class="credit"><td><b>%s</b></td><td></td><td><b>%s</b></td><td></td><td colspan="2"><b>%s</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><b>%s</b></td><td></td><td></td><td>%s</td></tr>',
 				$data_cred[$j]['grup'], '<b>===></b>', $data_cred[$j]['nomcredit'], $nota, $data_cred[$j]['hores_cr']);
 			}
 //	si ja hem mostrat el ccomp a la linea anterior, no posem el nomccomp
-//			if( $j != 0 && $data_cred[$j]['idccomp'] == $data_cred[$j-1]['idccomp'] ){
-			printf('<tr><td>%s</td><td>%s</td>', $data_cred[$j]['grup'], $conv, $data_cred[$j]);
-			printf('<td width="10px"><INPUT type="text" size="1" name="pendi[%s]" value="%s" title="%s" pattern="[PRpr ]{1,1}" /></td>',
+			printf('<tr><td>%s</td>', $data_cred[$j]['grup'] );
+			printf('<td>%s</td>',$row_any['any']);
+			printf('<td width="15px"><INPUT type="text" size="5" name="convord[%s]" value="%s" title="%s"  required="required" pattern="[0-9]{2,2}/[0-9]{2,2}" /></td>',
+				$j, $data_cred[$j]['convord'], __('ajuda-graella-credalu-conv'));
+			printf('<td width="10px"><INPUT type="text" size="1" name="pendi[%s]"  value="%s" title="%s" pattern="[PRpr ]{1,1}" /></td>',
 				$j, $data_cred[$j]['pendi'], __('ajuda-graella-credalu-P', 'ricca3-alum'));
 			printf('<td width="10px"><INPUT type="text" size="1" name="repe[%s]"  value="%s" title="%s" pattern="[Rrj ]{1,1}" /></td>',
 				$j, $data_cred[$j]['repe'],  __('ajuda-graella-credalu-R', 'ricca3-alum'));
@@ -1823,9 +1832,10 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 				$j, $data_cred[$j]['nota3'],  __('ajuda-graella-credalu-N3', 'ricca3-alum'));
 			printf('<td width="10px"><INPUT type="text" size="1" name="actf[%s]"   value="%s" title="%s" pattern="[ABCDEabcde ]{1,1}" /></td>',
 				$j, $data_cred[$j]['actf'],   __('ajuda-graella-credalu-A3', 'ricca3-alum'));
-			printf('<td width="10px"><INPUT type="text" size="1" name="notaf_cc[%s]"  value="%s" title="%s" pattern="[0-9NPCOEXATnpcoexat ]{1,4}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cc[%s]"  value="%s" title="%s" pattern="[0-9A-Za-zèéÈÉ: ]{1,15}" /></td>',
 				$j, $data_cred[$j]['notaf_cc'],  __('ajuda-graella-credalu-NFCC', 'ricca3-alum'));
-			printf('<td></td>', NULL);
+			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cr[%s]"  value="%s" title="%s" pattern="[0-9A-Za-zèéÈÉ: ]{1,15}" /></td>',
+				$j, $data_cred[$j]['notaf_cr'],  __('ajuda-graella-credalu-NFCR', 'ricca3-alum'));
 			printf('<td>%s</td><td>%s</td><td>%s<input type="hidden" name="idcredaval[%s]" value="%s"></td></tr>', $data_cred[$j]['nomicognoms'], $data_cred[$j]['hores_cc'], $data_cred[$j]['hores_cr'], $j, $data_cred[$j]['idcredaval']);
 		}
 		printf('</table>', NULL);

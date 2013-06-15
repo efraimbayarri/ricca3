@@ -39,7 +39,7 @@ CREATE TABLE `ricca3_credits_especialitat` (
   KEY `idcredit` (`idcredit`),
   CONSTRAINT `ricca3_credits_especialitat_ibfk_1` FOREIGN KEY (`idespecialitat`) REFERENCES `ricca3_especialitats` (`idespecialitat`),
   CONSTRAINT `ricca3_credits_especialitat_ibfk_2` FOREIGN KEY (`idcredit`) REFERENCES `ricca3_credits` (`idcredit`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ CREATE TABLE `ricca3_credits_especialitat` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-14 22:20:36
+-- Dump completed on 2013-06-15 19:57:31
