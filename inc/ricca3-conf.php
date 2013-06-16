@@ -22,7 +22,7 @@ $ricca3_mailings=array(
 		"nombd"		=>array("",      "idalumne", "cognomsinom", "email", "grup", ""),
 		"visual"	=>array("",      "",         "Nom",         "email", "Grup", ""),
 		"camp"	    =>array("",      "",         "",            "",      "",     "idalumne"),
-		"enllac"    =>array("",      "",         "",            "",      "",     ""),
+		"enllac"    =>array("",      "",         "",            "",      "",     "ricca3-dadesalumne/?ID="),
 		"ajuda"     =>array("",      "",         "",            "",      "",     "")
 );
 
@@ -270,6 +270,42 @@ $ricca3_listcredespec=array(
 		"tipus"  => array('bd',          'bd',             'bd',       'bd',        'bd',          'bd'),
 		"nombd"	 => array('idcredespec', 'idespecialitat', 'idcredit', 'nomcredit', 'ordre_cr_es', 'numero'),
 		"visual" => array('id',          'idespecialitat', 'idcredit', 'crèdit',    'ordre',       '..')
+);
+
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_afegircredit=array(
+		"tipus"   =>array( "radio",      "bd",      "bd",       "bd",   "bd", ),
+		"nombd"   =>array( "idcredaval", "convord", "nomccomp", "grup", "nomicognoms" ),
+		"visual"  =>array( "",           "",        "crèdit",   "grup", "professor" ),
+		"radio"   =>array( "",           "",        "",         "",     "" ),
+		"enllac"  =>array( "",           "",        "",         "",     "" ),
+		"camp"    =>array( "",           "",        "",         "",     "" )
+);
+
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_afegircredit_sinradio=array(
+		"tipus"   =>array( "bd",      "bd",       "bd",   "bd" ),
+		"nombd"   =>array( "convord", "nomccomp", "grup", "nomicognoms" ),
+		"visual"  =>array( "",        "crèdit",   "grup", "professor" ),
+		"radio"   =>array( "",        "",         "",     "" ),
+		"enllac"  =>array( "",        "",         "",     "" ),
+		"camp"    =>array( "",        "",         "",     "" )
+);
+
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_afegircredit_ccomp=array(
+		"tipus"   =>array( "radio",   "bd",       "bd",   "bd",          "bd",       "bd" ),
+		"nombd"   =>array( "idccomp", "nomccomp", "grup", "nomicognoms", "hores_cc", "hores_cr" ),
+		"visual"  =>array( "",        "crèdit",   "grup", "professor",   "hores CC", "hores crèdit"),
+		"radio"   =>array( "",        "",         "",     "",            "",         "" ),
+		"enllac"  =>array( "",        "",         "",     "",            "",         "" ),
+		"camp"    =>array( "",        "",         "",     "",            "",         "" )
 );
 
 ######################################################

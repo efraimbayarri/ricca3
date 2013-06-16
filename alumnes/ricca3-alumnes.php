@@ -2359,7 +2359,7 @@ function ricca3_shortcode_canviany($atts, $content = null) {
 #############################################################################################
 /**
  * Mailings
- * shortcode: [ricca3-canviany]
+ * shortcode: [ricca3-mailings]
  *
  * @since ricca3.v.2013.19.2
  * @author Efraim Bayarri
@@ -2595,6 +2595,136 @@ function ricca3_shortcode_pregrup($atts, $content = null) {
 	__('Curs II:','ric-ca-alum'), $tot2, __('Matí:','ric-ca-alum'), $tot2mati, __('Tarda:','ric-ca-alum'), $tot2tarda);
 }
 
+#############################################################################################
+/**
+ * Afegir o esborrar un crèdit a un alumne
+ * shortcode: [ricca3-afegircredit]
+ *
+ * @since ricca3.v.2013.24.7
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_afegircredit($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_editardades;
+	global $ricca3_afegircredit;
+	global $ricca3_afegircredit_sinradio;
+	global $ricca3_afegircredit_ccomp;
+	global $current_user;
+
+	dump_r($_POST);
+	
+	get_currentuserinfo();
+
+	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
+	$image_attributes = ricca3_miniatura($_GET['ID']);
+//		missatge de capçalera de la pàgina
+	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Afegir o esborrar crèdits a l\'alumne','ric-ca-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+//	ajuda al butons
+	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
+	$ricca3_butons_editardades['texte'][1] = __('ajuda-editardades-dadesalumne',   'ricca3-alum');
+	$ricca3_butons_editardades['texte'][2] = __('ajuda-editardades-alumnes', 'ricca3-alum');
+//		mostrar la filera de butons
+	ricca3_butons( $ricca3_butons_editardades, 6, $token );
+//		Afegir crèdit
+	if(isset( $_POST['accio']) && $_POST['accio'] == 'afegircredit_ccomp'){
+		$row_ccomp = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_ccomp_view WHERE idccomp=%s', $_POST['cbox']), ARRAY_A, 0);
+		$row_any = $wpdb->get_row('SELECT * FROM ricca3_any WHERE actual=1', ARRAY_A,0);
+		ricca3_missatge(sprintf('%s %s', __('Afegint el crèdit','ricca3-alum'),$row_ccomp['nomccomp']));
+		$wpdb->insert('ricca3_credits_avaluacions',
+				array(	'idany'      => $row_any['idany'],
+						'idccomp'    => $_POST['cbox'],
+						'idalumne'   => $_GET['ID'],
+						'convord'    => $row_any['conv'],
+						'stampuser'  => $current_user->user_login,
+						'stampplace' => 'ricca_shortcode_credits_insert'
+				));
+		
+		unset($_POST['accio']);
+	}
+//		Esborrar crèdit
+	if(isset( $_POST['accio']) && $_POST['accio'] == 'esborrarcredit'){
+		ricca3_missatge(__('Esborrant crèdit','ricca3-alum'));
+		unset($_POST['accio']);
+	}
+//		Buscar credits de l'alumne
+	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '. 
+				'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp=ricca3_credits_avaluacions.idccomp '. 
+				'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit  '.
+				'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '. 
+				'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup  '.
+				'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_credits_avaluacions.idany '. 
+				'INNER JOIN ricca3_professors ON ricca3_professors.idprof = ricca3_ccomp.idprofessor '. 
+				'WHERE idalumne=%s ORDER BY ricca3_credits_avaluacions.idany, ricca3_especialitats.idespecialitat, ordre_cr ', 
+				$_GET['ID']), ARRAY_A);
+//
+	printf('<form method="post" action="" target="_self" name="credit" id="credit">', NULL);
+//	si no està afegint, mostrem els radio buttons	
+	if(!isset($_POST['accio'])){
+		ricca3_graella( $ricca3_afegircredit, $dades_cred, $token );
+		printf('</table>', NULL);
+		ricca3_missatge(__('Esborrar crèdit','ricca3-alum'));
+		ricca3_desar('accio', 'esborrarcredit', __('ajuda-desar-esborrarcredit', 'ricca3-alum'));
+		printf('</td></tr></table>', NULL);
+//	Si estem afegint, no mostrem els radio buttons		
+	}else{
+		ricca3_graella( $ricca3_afegircredit_sinradio, $dades_cred, $token );
+		printf('</table>', NULL);
+	}
+//	Si estem afegint, mostrar els ccomps del grup
+	if( isset( $_POST['accio'] ) && $_POST['accio'] == 'afegircredit_grup'){
+		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT grup FROM ricca3_grups WHERE idgrup=%s', $_POST['grup']), ARRAY_A,0);
+		ricca3_missatge(sprintf('%s %s %s',__('Afegir crèdit per el grup:','ricca3-alum'),$row_grup['grup'], __('al any actual.','ricca3-alum')));
+		$dades_ccomp = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ricca.ricca3_ccomp_view WHERE idgrup=%s', $_POST['grup']), ARRAY_A);
+		ricca3_graella( $ricca3_afegircredit_ccomp, $dades_ccomp, $token );
+		printf('</table>', NULL);
+		ricca3_desar('accio', 'afegircredit_ccomp', __('ajuda-afegirccomp-drop', 'ricca3-alum'));
+//	Escollir el grup del qual volem afegir el ccomp		
+	}else{
+		ricca3_missatge(__('Afegir crèdit','ricca3-alum'));
+		$dades_grup = $wpdb->get_results( $wpdb->prepare( 'SELECT DISTINCT ricca3_ccomp.idgrup, grup FROM ricca3_credits_avaluacions '.
+				'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp=ricca3_credits_avaluacions.idccomp '.
+				'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup '.
+				'WHERE idalumne=%s', $_GET['ID']), ARRAY_A);
+		printf('<table dir="ltr" class="menucurt600"><tr>', NULL);
+		ricca3_drop( __('Grup:','ricca3-alum'), 'grup', $dades_grup, 'idgrup', 'grup', __('ajuda_drop_afegircredit_grup', 'ricca3-alum'), TRUE );
+		printf('</tr></table>', NULL);
+		ricca3_desar('accio', 'afegircredit_grup', __('ajuda-afegircredit-drop', 'ricca3-alum'));
+	}
+	printf('</form>', NULL);
+}
+
+#############################################################################################
+/**
+ * Entrada manual de la nota final
+ * shortcode: [ricca3-notafinal]
+ *
+ * @since ricca3.v.2013.24.7
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_notafinal($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_editardades;
+	global $current_user;
+
+	get_currentuserinfo();
+
+	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
+	$image_attributes = ricca3_miniatura($_GET['ID']);
+	//		missatge de capçalera de la pàgina
+	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Entrada manual de la nota final de l\'alumne','ric-ca-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+	//	ajuda al butons
+	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
+	$ricca3_butons_editardades['texte'][1] = __('ajuda-editardades-dadesalumne',   'ricca3-alum');
+	$ricca3_butons_editardades['texte'][2] = __('ajuda-editardades-alumnes', 'ricca3-alum');
+	//		mostrar la filera de butons
+	ricca3_butons( $ricca3_butons_editardades, 6, $token );
+	//
+
+}
 
 
 
