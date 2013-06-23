@@ -918,5 +918,3 @@ function ricca3_shortcode_credespec($atts, $content = null) {
 		printf('%s</font></button></td><td><INPUT type="hidden" name="espec" value="%s" /></td></tr></table></form>', __('Guardar dades:','ricca3-dades'), $_POST['espec']);
 	}	
 }
-
-

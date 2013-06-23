@@ -42,8 +42,8 @@ CREATE TABLE `ricca3_credits_avaluacions` (
   `pendi` varchar(5) COLLATE utf8_unicode_ci DEFAULT '',
   `repe` varchar(5) COLLATE utf8_unicode_ci DEFAULT '',
   `convord` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `convext1` varchar(10) COLLATE utf8_unicode_ci DEFAULT '0',
-  `convext2` varchar(10) COLLATE utf8_unicode_ci DEFAULT '0',
+  `convext1` varchar(10) COLLATE utf8_unicode_ci DEFAULT '',
+  `convext2` varchar(10) COLLATE utf8_unicode_ci DEFAULT '',
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `stampuser` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `stampplace` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `ricca3_credits_avaluacions` (
   CONSTRAINT `ricca3_credits_avaluacions_ibfk_1` FOREIGN KEY (`idany`) REFERENCES `ricca3_any` (`idany`),
   CONSTRAINT `ricca3_credits_avaluacions_ibfk_2` FOREIGN KEY (`idccomp`) REFERENCES `ricca3_ccomp` (`idccomp`),
   CONSTRAINT `ricca3_credits_avaluacions_ibfk_3` FOREIGN KEY (`idalumne`) REFERENCES `ricca3_alumne` (`idalumne`)
-) ENGINE=InnoDB AUTO_INCREMENT=10350 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10358 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -68,4 +68,4 @@ CREATE TABLE `ricca3_credits_avaluacions` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-16 19:33:09
+-- Dump completed on 2013-06-23 18:29:53

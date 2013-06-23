@@ -321,4 +321,3 @@ stampplace     varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
 PRIMARY KEY  (idcredaval),
 );";
 
-

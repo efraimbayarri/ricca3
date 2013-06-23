@@ -33,8 +33,6 @@ CREATE TABLE `ricca3_any` (
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `stampuser` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `stampplace` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cursanterior` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cursposterior` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idany`),
   KEY `conv` (`conv`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -49,4 +47,4 @@ CREATE TABLE `ricca3_any` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-16 19:33:09
+-- Dump completed on 2013-06-23 18:29:53

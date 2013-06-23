@@ -30,19 +30,21 @@ CREATE TABLE `ricca3_credits` (
   `idcurs` int(11) NOT NULL,
   `hores_cr` int(11) NOT NULL,
   `actiu_cr` tinyint(1) NOT NULL DEFAULT '0',
-  `ordre_cr` tinyint(4) NOT NULL,
+  `ordre_cr` tinyint(4) NOT NULL DEFAULT '0',
   `aval3nomes` tinyint(1) NOT NULL DEFAULT '0',
   `nomcredit` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `nomcredit_cast` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `credit` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `credit_cast` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `stampuser` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `stampplace` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `stampplace` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idcredit`),
   KEY `idespecialitat` (`idespecialitat`),
   KEY `idcurs` (`idcurs`),
   CONSTRAINT `ricca3_credits_ibfk_1` FOREIGN KEY (`idcurs`) REFERENCES `ricca3_cursos` (`idcurs`),
   CONSTRAINT `ricca3_credits_ibfk_2` FOREIGN KEY (`idespecialitat`) REFERENCES `ricca3_especialitats` (`idespecialitat`)
-) ENGINE=InnoDB AUTO_INCREMENT=221 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=224 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +56,4 @@ CREATE TABLE `ricca3_credits` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-16 19:33:09
+-- Dump completed on 2013-06-23 18:29:53

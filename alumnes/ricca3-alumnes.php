@@ -679,21 +679,21 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 	ricca3_graella( $ricca3_especalum, $data_view, $token );
 	printf('</table></form>', NULL);
 //		quantes especialitats te l'alumne?
-	$espec = $wpdb->query( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']));	
+	$espec = $wpdb->query( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s and idestat_es = 1', $_GET['ID']));	
 //	<!-- the tabs -->
 	printf('<div id="tabs">', NULL);
 //		tab principal
 	printf('<ul class="tabs"><li><a href="#estat" title="%s">%s</a></li>', __('ajuda-tab-estatcredits', 'ricca3-alum'), __('Estat dels crèdits', 'ricca3-alum'));
 //		tabs especialitats	
 	for( $i = 0; $i < $espec; $i++){
-		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']), ARRAY_A, $i);
+		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s and idestat_es = 1', $_GET['ID']), ARRAY_A, $i);
 		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
 		$nom = str_word_count($row_espec['nomespecialitat'], 1, 'ÀÈÒÓ');
 		printf('<li><a href="#espec%s" title="%s">%s</a></li>', $i, __('ajuda-tab-especialitats','ricca3-alum'), $nom[0]); 
 	}
 //		tabs historial	
 	for( $i = 0; $i < $espec; $i++){
-		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']), ARRAY_A, $i);
+		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s and idestat_es = 1', $_GET['ID']), ARRAY_A, $i);
 		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
 		$nom = str_word_count($row_espec['nomespecialitat'], 1, 'ÀÈÒÓ');
 		printf('<li><a href="#hist%s" title="%s">HISTORIAL %s</a></li>', $i, __('ajuda-tab-historial','ricca3-alum') ,$nom[0]);
@@ -2488,26 +2488,31 @@ function ricca3_shortcode_credpendents($atts, $content = null) {
 	
 	if(isset($_POST['crear']) && $_POST['crear'] == 'guardar'){
 		for( $i = 0; $i < count($_POST['cbox']); $i++){
-			$row_cre = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions WHERE idcredaval = %s', $_POST['cbox'][$i] ), ARRAY_A, 0);
-			$row_pla = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_pla WHERE idpla = %s', $row_cre['idccomp'] ), ARRAY_A, 0);
+			$row_cre = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+					'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+					'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+					'WHERE idcredaval = %s', $_POST['cbox'][$i] ), ARRAY_A, 0);
 			$row_any = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1', ARRAY_A, 0);
-			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idkey' => $_POST['cbox'][$i] )	);
+			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
 			$wpdb->insert('ricca3_credits_avaluacions',
 					array(
-							'idany'          => $row_any['any'],
-							'idespecialitat' => $row_cre['idespecialitat'],
-							'idgrup'         => $row_cre['idgrup'],
-							'idcredit'       => $row_cre['idcredit'],
+							'idany'          => $row_any['idany'],
 							'idccomp'        => $row_cre['idccomp'],
 							'idalumne'       => $row_cre['idalumne'],
-							'idprofessor'    => $row_cre['idprofessor'],
 							'repe'           => 'R',
+							'convord'        => $row_any['conv'],
 							'stampuser'      => $current_user->user_login,
 							'stampplace'     => 'ricca_shortcode_credpendents_insert'
 					)
 			);
 			$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idgrup=%s', $row_cre['idalumne'], $row_cre['idgrup'] ));
-			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ), array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'] ) );
+			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ), 
+										array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'] ) );
+//	afegir especialitat als alumnes repetidors (no als que estan fent segon i tenen perndents de primer)
+			if(!$wpdb->query($wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s AND idany=%s ',
+					$row_cre['idalumne'], $row_cre['idespecialitat'], $row_any['idany']))){
+				$wpdb->insert('ricca3_alumne_especialitat', array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'], 'idany' => $row_any['idany'], 'idestat_es' => 1, 'repeteix' => 'R'));	
+			}
 			ricca3_missatge( __('Crèdit afegit correctament','ricca3-alum') );
 		}
 	}

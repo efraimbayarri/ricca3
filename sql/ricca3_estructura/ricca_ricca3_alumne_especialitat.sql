@@ -30,15 +30,15 @@ CREATE TABLE `ricca3_alumne_especialitat` (
   `idgrup` int(11) NOT NULL,
   `idany` int(11) NOT NULL,
   `idestat_es` int(11) NOT NULL,
-  `motiubaixa` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `databaixa` datetime DEFAULT NULL,
-  `notaf_es` double DEFAULT '0',
-  `repeteix` varchar(1) COLLATE utf8_unicode_ci DEFAULT '',
-  `observ1` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `observ2` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `observ3` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `motiubaixa` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `databaixa` datetime NOT NULL,
+  `notaf_es` double NOT NULL DEFAULT '0',
+  `repeteix` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `observ1` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `observ2` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `observ3` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `datainscripcio` date NOT NULL DEFAULT '0000-00-00',
-  `abonament` varchar(50) COLLATE utf8_unicode_ci DEFAULT '',
+  `abonament` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `stampuser` varchar(15) COLLATE utf8_unicode_ci DEFAULT '',
   `stampplace` varchar(50) COLLATE utf8_unicode_ci DEFAULT '',
@@ -51,7 +51,7 @@ CREATE TABLE `ricca3_alumne_especialitat` (
   CONSTRAINT `ricca3_alumne_especialitat_ibfk_3` FOREIGN KEY (`idestat_es`) REFERENCES `ricca3_estat` (`idestat`),
   CONSTRAINT `ricca3_alumne_especialitat_ibfk_4` FOREIGN KEY (`idalumne`) REFERENCES `ricca3_alumne` (`idalumne`),
   CONSTRAINT `ricca3_alumne_especialitat_ibfk_5` FOREIGN KEY (`idany`) REFERENCES `ricca3_any` (`idany`)
-) ENGINE=InnoDB AUTO_INCREMENT=1362 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1374 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -63,4 +63,4 @@ CREATE TABLE `ricca3_alumne_especialitat` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-16 19:33:09
+-- Dump completed on 2013-06-23 18:29:53

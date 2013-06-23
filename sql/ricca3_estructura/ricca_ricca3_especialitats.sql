@@ -27,14 +27,15 @@ DROP TABLE IF EXISTS `ricca3_especialitats`;
 CREATE TABLE `ricca3_especialitats` (
   `idespecialitat` int(11) NOT NULL AUTO_INCREMENT,
   `nomespecialitat` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `codiespecialitat` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `reialdecret` int(11) DEFAULT NULL,
-  `pla` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nomespecialitat_cast` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `codiespecialitat` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `reialdecret` int(11) NOT NULL DEFAULT '0',
+  `pla` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `actiu_es` int(5) NOT NULL DEFAULT '0',
-  `cursos` int(5) NOT NULL,
-  `ordre_es` int(5) DEFAULT NULL,
-  `professio` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `duracio` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cursos` int(5) NOT NULL DEFAULT '2',
+  `ordre_es` int(5) NOT NULL DEFAULT '0',
+  `professio` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `duracio` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `ts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `stampuser` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `stampplace` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -51,4 +52,4 @@ CREATE TABLE `ricca3_especialitats` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-16 19:33:09
+-- Dump completed on 2013-06-23 18:29:53

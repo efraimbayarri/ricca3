@@ -640,7 +640,3 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 	}	
 }
 
-
-
-
-

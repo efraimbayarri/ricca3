@@ -338,3 +338,4 @@ function ricca3_miniatura($idalumne){
 
 	return $image_attributes;
 }
+

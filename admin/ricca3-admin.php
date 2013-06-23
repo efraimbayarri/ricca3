@@ -378,11 +378,11 @@ function ricca3_ricca3_credits(){
 		$row_curs = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_cursos WHERE curs=%s', $dades[$i]['curs']), ARRAY_A, 0);
 		$res_espec = $wpdb->query(  $wpdb->prepare('SELECT * FROM ricca3_especialitats WHERE idespecialitat=%s', $dades[$i]['idespecialitat']));
 		if( $res_espec != 0){
-			$wpdb->query($wpdb->prepare(' INSERT INTO ricca3_credits ( idcredit, idespecialitat,    idcurs,    hores_cr,    actiu_cr,    ordre_cr,    aval3nomes,    nomcredit,    credit,    stampuser,          stampplace) '.
-				'                                             VALUES ( %d,       %d,                %d,        %d,          %d,          %d,          %d,            %s,           %s,        "upgrade",          "upgrade")'.
-				' ON DUPLICATE KEY UPDATE                                        idespecialitat=%d, idcurs=%d, hores_cr=%d, actiu_cr=%d, ordre_cr=%d, aval3nomes=%d, nomcredit=%s, credit=%s, stampuser="update", stampplace="update" ',
-				$dades[$i]['idcredit'], $dades[$i]['idespecialitat'], $row_curs['idcurs'], $dades[$i]['hores'], $dades[$i]['actiu'], $dades[$i]['ordre'], $dades[$i]['aval3nomes'], $dades[$i]['nomcredit'], $dades[$i]['credit'],
-				                        $dades[$i]['idespecialitat'], $row_curs['idcurs'], $dades[$i]['hores'], $dades[$i]['actiu'], $dades[$i]['ordre'], $dades[$i]['aval3nomes'], $dades[$i]['nomcredit'], $dades[$i]['credit'] ));
+			$wpdb->query($wpdb->prepare(' INSERT INTO ricca3_credits ( idcredit, idespecialitat,    idcurs,    hores_cr,    actiu_cr,    ordre_cr,    aval3nomes,    nomcredit,    nomcredit_cast,    credit,    stampuser,          stampplace) '.
+				'                                             VALUES ( %d,       %d,                %d,        %d,          %d,          %d,          %d,            %s,           %s,                %s,        "upgrade",          "upgrade")'.
+				' ON DUPLICATE KEY UPDATE                                        idespecialitat=%d, idcurs=%d, hores_cr=%d, actiu_cr=%d, ordre_cr=%d, aval3nomes=%d, nomcredit=%s, nomcredit_cast=%s, credit=%s, stampuser="update", stampplace="update" ',
+				$dades[$i]['idcredit'], $dades[$i]['idespecialitat'], $row_curs['idcurs'], $dades[$i]['hores'], $dades[$i]['actiu'], $dades[$i]['ordre'], $dades[$i]['aval3nomes'], $dades[$i]['nomcredit'], $dades[$i]['nomcredit_cast'], $dades[$i]['credit'],
+				                        $dades[$i]['idespecialitat'], $row_curs['idcurs'], $dades[$i]['hores'], $dades[$i]['actiu'], $dades[$i]['ordre'], $dades[$i]['aval3nomes'], $dades[$i]['nomcredit'], $dades[$i]['nomcredit_cast'], $dades[$i]['credit'] ));
 		}
 	}
 	$time_end = microtime(true);
@@ -535,36 +535,36 @@ function ricca3_ricca3_aval(){
 	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_cursos        ( idcurs, curs, stampuser, stampplace )         VALUES ( 2, "Curs II", "upgrade", "upgrade" )         ON DUPLICATE KEY UPDATE curs    = "Curs II", stampuser="update", stampplace="update" ',         NULL));
 	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_estat         ( idestat, estat, stampuser, stampplace )       VALUES ( 1, "Alta", "upgrade", "upgrade" )            ON DUPLICATE KEY UPDATE estat   = "Alta", stampuser="update", stampplace="update" ',            NULL));
 	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_estat         ( idestat, estat, stampuser, stampplace )       VALUES ( 2, "Baixa", "upgrade", "upgrade" )           ON DUPLICATE KEY UPDATE estat   = "Baixa", stampuser="update", stampplace="update" ',           NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (1,              "PRÒTESIS DENTAL",                 "1656",           "LOGSE", 1,        2,      5,          "PROTÈSIC DENTAL",        "2000",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="PRÒTESIS DENTAL",                 codiespecialitat="1656", pla="LOGSE", actiu_es=1, cursos=2, ordre_es=5,   professio="PROTÈSIC DENTAL",        duracio="2000", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (2,              "IMATGE PER AL DIAGNÒSTIC",        "1660",           "LOGSE", 1,        2,      3,          "RADIÒLEG",               "2000",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="IMATGE PER AL DIAGNÒSTIC",        codiespecialitat="1660", pla="LOGSE", actiu_es=1, cursos=2,  ordre_es=3,  professio="RADIÒLEG",               duracio="2000", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (3,              "LABORATORI DE DIAGNOSTIC CLINIC", "1654",           "LOGSE", 1,        2,      3,          "TÉCNIC LABORATORI",      "2000",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="LABORATORI DE DIAGNOSTIC CLINIC", codiespecialitat="1654", pla="LOGSE", actiu_es=1,  cursos=2, ordre_es=2,  professio="TÉCNIC LABORATORI",      duracio="2000", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (4,              "ORTESIS I PRÓTESIS",              "1657",           "LOGSE", 1,        2,     6,           "ORTOPROTÈSIC",           "2000",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="ORTESIS I PRÓTESIS",              codiespecialitat="1657", pla="LOGSE", actiu_es=1,  cursos=2, ordre_es=6,  professio="ORTOPROTÈSIC",           duracio="2000", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (5,              "DIETÈTICA",                       "1651",           "LOGSE", 1,        2,     1,           "DIETISTA",               "2000",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="DIETÈTICA",                       codiespecialitat="1651", pla="LOGSE", actiu_es=1,  cursos=2, ordre_es=1,  professio="DIETISTA",               duracio="2000", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (6,              "HIGIENE BUCODENTAL",              "1652",           "LOGSE", 1,        1,     4,           "HIGIENISTA BUCODENTAL",  "1400",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="HIGIENE BUCODENTAL",              codiespecialitat="1652", pla="LOGSE", actiu_es=1,  cursos=1, ordre_es=4,  professio="HIGIENISTA BUCODENTAL",  duracio="1400", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (7,              "DOCUMENTACIÓ SANITARIA",          "1658",           "LOGSE", 1,        1,     7,           "DOCUMENTACIÓ SANITARIA", "1400",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="DOCUMENTACIÓ SANITARIA",          codiespecialitat="1658", pla="LOGSE", actiu_es=1,  cursos=1, ordre_es=7,  professio="DOCUMENTACIÓ SANITARIA", duracio="1400", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (8,              "FARMÀCIA",                        "1602",           "LOGSE", 0,        2,     8,           " ",                      "2000",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="FARMÀCIA",                        codiespecialitat="1602", pla="LOGSE", actiu_es=0,  cursos=2, ordre_es=8,  professio=" ",                      duracio="1400", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (9,              "ACCES A C.F.S.",                  "",               "LOGSE", 0,        2,     9,           " ",                      "2000",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="ACCES A C.F.S.",                  codiespecialitat="",     pla="LOGSE", actiu_es=0,  cursos=2, ordre_es=9,  professio=" ",                      duracio="1400", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
-			'                                                   VALUES (10,             "PRÒTESIS DENTAL (*)",             "",               "LOE",   1,        2,     10,          "PROTÈSIC DENTAL",        "2000",  "upgrade", "upgrade" ) '.
-			'ON DUPLICATE KEY UPDATE   nomespecialitat="PRÒTESIS DENTAL (*)",             codiespecialitat="",     pla="LOE",   actiu_es=1,  cursos=2, ordre_es=10, professio="PROTÈSIC DENTAL",        duracio="2000", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (1,              "PRÒTESIS DENTAL",                 "1656",           541,       "LOGSE", 1,        2,      5,          "PROTÈSIC DENTAL",        "2000",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="PRÒTESIS DENTAL",                 codiespecialitat="1656", reialdecret=541, pla="LOGSE", actiu_es=1, cursos=2, ordre_es=5,   professio="PROTÈSIC DENTAL",        duracio="2000", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (2,              "IMATGE PER AL DIAGNÒSTIC",        "1660",           545,       "LOGSE", 1,        2,      3,          "RADIÒLEG",               "2000",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="IMATGE PER AL DIAGNÒSTIC",        codiespecialitat="1660", reialdecret=545, pla="LOGSE", actiu_es=1, cursos=2,  ordre_es=3,  professio="RADIÒLEG",               duracio="2000", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (3,              "LABORATORI DE DIAGNOSTIC CLINIC", "1654",           539,       "LOGSE", 1,        2,      3,          "TÉCNIC LABORATORI",      "2000",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="LABORATORI DE DIAGNOSTIC CLINIC", codiespecialitat="1654", reialdecret=539, pla="LOGSE", actiu_es=1,  cursos=2, ordre_es=2,  professio="TÉCNIC LABORATORI",      duracio="2000", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (4,              "ORTESIS I PRÓTESIS",              "1657",           542,       "LOGSE", 1,        2,     6,           "ORTOPROTÈSIC",           "2000",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="ORTESIS I PRÓTESIS",              codiespecialitat="1657", reialdecret=542, pla="LOGSE", actiu_es=1,  cursos=2, ordre_es=6,  professio="ORTOPROTÈSIC",           duracio="2000", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (5,              "DIETÈTICA",                       "1651",           536,       "LOGSE", 1,        2,     1,           "DIETISTA",               "2000",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="DIETÈTICA",                       codiespecialitat="1651", reialdecret=536, pla="LOGSE", actiu_es=1,  cursos=2, ordre_es=1,  professio="DIETISTA",               duracio="2000", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (6,              "HIGIENE BUCODENTAL",              "1652",           537,       "LOGSE", 1,        1,     4,           "HIGIENISTA BUCODENTAL",  "1400",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="HIGIENE BUCODENTAL",              codiespecialitat="1652", reialdecret=537, pla="LOGSE", actiu_es=1,  cursos=1, ordre_es=4,  professio="HIGIENISTA BUCODENTAL",  duracio="1400", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (7,              "DOCUMENTACIÓ SANITARIA",          "1658",           543, "LOGSE", 1,        1,     7,           "DOCUMENTACIÓ SANITARIA", "1400",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="DOCUMENTACIÓ SANITARIA",          codiespecialitat="1658", reialdecret=543, pla="LOGSE", actiu_es=1,  cursos=1, ordre_es=7,  professio="DOCUMENTACIÓ SANITARIA", duracio="1400", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (8,              "FARMÀCIA",                        "1602",           0,           "LOGSE", 0,        2,     8,           " ",                      "2000",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="FARMÀCIA",                        codiespecialitat="1602", reialdecret=0, pla="LOGSE", actiu_es=0,  cursos=2, ordre_es=8,  professio=" ",                      duracio="1400", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (9,              "ACCES A C.F.S.",                  "",               0,           "LOGSE", 0,        2,     9,           " ",                      "2000",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="ACCES A C.F.S.",                  codiespecialitat="",     reialdecret=0, pla="LOGSE", actiu_es=0,  cursos=2, ordre_es=9,  professio=" ",                      duracio="1400", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_especialitats (idespecialitat, nomespecialitat,                   codiespecialitat, reialdecret, pla,     actiu_es, cursos, ordre_es,   professio,                duracio, stampuser, stampplace )'.
+		'                                                   VALUES (10,             "PRÒTESIS DENTAL (*)",             "",               0,           "LOE",   1,        2,     10,          "PROTÈSIC DENTAL",        "2000",  "upgrade", "upgrade" ) '.
+		'ON DUPLICATE KEY UPDATE   nomespecialitat="PRÒTESIS DENTAL (*)",             codiespecialitat="",     reialdecret=0, pla="LOE",   actiu_es=1,  cursos=2, ordre_es=10, professio="PROTÈSIC DENTAL",        duracio="2000", stampuser="update", stampplace="update" ', NULL));
 	$time_end = microtime(true);
 	$time = $time_end - $time_start;
 	
@@ -686,16 +686,5 @@ function ricca3_ricca3_grups(){
 	
 	printf('<table><tr><td>[ricca3_grups]: Ha trigat %s segons en fer %s transaccions</td></tr></table>', $time, count($dades) );
 }
-
-
-
-
-
-
-
-
-
-
-
 
 

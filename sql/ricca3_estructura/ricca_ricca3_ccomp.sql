@@ -45,7 +45,7 @@ CREATE TABLE `ricca3_ccomp` (
   CONSTRAINT `ricca3_ccomp_ibfk_2` FOREIGN KEY (`idgrup`) REFERENCES `ricca3_grups` (`idgrup`),
   CONSTRAINT `ricca3_ccomp_ibfk_3` FOREIGN KEY (`idprofessor`) REFERENCES `ricca3_professors` (`idprof`),
   CONSTRAINT `ricca3_ccomp_ibfk_4` FOREIGN KEY (`idtutor`) REFERENCES `ricca3_professors` (`idtutor`)
-) ENGINE=InnoDB AUTO_INCREMENT=365 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=368 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +57,4 @@ CREATE TABLE `ricca3_ccomp` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-16 19:33:09
+-- Dump completed on 2013-06-23 18:29:53
