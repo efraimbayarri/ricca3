@@ -420,66 +420,66 @@ function ricca3_ricca3_any(){
 	global $wpdb;
 	$time_start = microtime(true);
 	
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv, stampuser, stampplace )'.
-			'                                          VALUES( 1,     "2001-2002",     0,        0,      "", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2001-2002", actual=0, insc=0, conv="", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 2,     "2002-2003",     0,        0,      "06/03", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2002-2003", actual=0, insc=0, conv="06/03", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 3,     "2003-2004",     0,        0,      "06/04", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2003-2004", actual=0, insc=0, conv="06/04", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 4,     "2004-2005",     0,        0,      "06/05", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2004-2005", actual=0, insc=0, conv="06/05", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 5,     "2005-2006",     0,        0,      "06/06", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2005-2006", actual=0, insc=0, conv="06/06", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 6,     "2006-2007",     0,        0,      "06/07", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2006-2007", actual=0, insc=0, conv="06/07", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 7,     "2007-2008",     0,        0,      "06/08", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2007-2008", actual=0, insc=0, conv="06/08", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 8,     "2008-2009",     0,        0,      "06/09", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2008-2009", actual=0, insc=0, conv="06/09", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 9,     "2009-2010",     0,        0,      "06/10", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2009-2010", actual=0, insc=0, conv="06/10", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 10,    "2010-2011",     0,        0,      "06/11", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2010-2011", actual=0, insc=0, conv="06/11", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 11,    "2011-2012",     0,        0,      "06/12", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2011-2012", actual=0, insc=0, conv="06/12", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 12,    "2012-2013",     1,        0,      "06/13", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2012-2013", actual=1, insc=0, conv="06/13", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 13,    "2013-2014",     0,        1,      "06/14", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2013-2014", actual=0, insc=1, conv="06/14", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 14,    "2014-2015",     0,        0,      "06/15", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2014-2015", actual=0, insc=0, conv="06/15", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 15,    "2015-2016",     0,        0,      "06/16", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2015-2016", actual=0, insc=0, conv="06/16", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 16,    "2016-2017",     0,        0,      "06/17", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2016-2017", actual=0, insc=0, conv="06/17", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 17,    "2017-2018",     0,        0,      "06/18", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2017-2018", actual=0, insc=0, conv="06/18", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 18,    "2018-2019",     0,        0,      "06/19", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2018-2019", actual=0, insc=0, conv="06/19", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 19,    "2018-2019",     0,        0,      "06/19", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2018-2019", actual=0, insc=0, conv="06/19", stampuser="update", stampplace="update" ', NULL));
-	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,    conv, stampuser, stampplace )'.
-			'                                          VALUES( 20,    "2019-2020",     0,        0,      "06/20", "upgrade", "upgrade" )'.
-			' ON DUPLICATE KEY UPDATE                                 any="2019-2020", actual=0, insc=0, conv="06/20", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 1,     "2001-2002",     0,        0,      "",      "07/02", "08/02", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2001-2002", actual=0, insc=0, conv="",      conv2="07/02", conv3="08/02", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 2,     "2002-2003",     0,        0,      "06/03", "07/03", "08/03", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2002-2003", actual=0, insc=0, conv="06/03", conv2="07/03", conv3="08/03", stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 3,     "2003-2004",     0,        0,      "06/04", "07/04", "08/04", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2003-2004", actual=0, insc=0, conv="06/04",  conv2="07/04", conv3="08/04",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 4,     "2004-2005",     0,        0,      "06/05", "07/05", "08/05", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2004-2005", actual=0, insc=0, conv="06/05",  conv2="07/05", conv3="08/05",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 5,     "2005-2006",     0,        0,      "06/06", "07/06", "08/06", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2005-2006", actual=0, insc=0, conv="06/06",  conv2="07/06", conv3="08/06",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 6,     "2006-2007",     0,        0,      "06/07", "07/07", "08/07", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2006-2007", actual=0, insc=0, conv="06/07",  conv2="07/07", conv3="08/07",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 7,     "2007-2008",     0,        0,      "06/08", "07/08", "08/08", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2007-2008", actual=0, insc=0, conv="06/08",  conv2="07/08", conv3="08/08",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+ 		'                                          VALUES( 8,     "2008-2009",     0,        0,      "06/09", "07/09", "08/09", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2008-2009", actual=0, insc=0, conv="06/09",  conv2="07/09", conv3="08/09",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 9,     "2009-2010",     0,        0,      "06/10", "07/10", "08/10", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2009-2010", actual=0, insc=0, conv="06/10",  conv2="07/10", conv3="08/10",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 10,    "2010-2011",     0,        0,      "06/11", "07/11", "08/11", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2010-2011", actual=0, insc=0, conv="06/11",  conv2="07/11", conv3="08/11",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 11,    "2011-2012",     0,        0,      "06/12", "07/12", "08/12", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2011-2012", actual=0, insc=0, conv="06/12",  conv2="07/12", conv3="08/12",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 12,    "2012-2013",     1,        0,      "06/13", "07/13", "08/13", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2012-2013", actual=1, insc=0, conv="06/13",  conv2="07/13", conv3="08/13",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 13,    "2013-2014",     0,        1,      "06/14", "07/14", "08/14", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2013-2014", actual=0, insc=1, conv="06/14",  conv2="07/14", conv3="08/14",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 14,    "2014-2015",     0,        0,      "06/15", "07/15", "08/15", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2014-2015", actual=0, insc=0, conv="06/15",  conv2="07/15", conv3="08/15",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 15,    "2015-2016",     0,        0,      "06/16", "07/16", "08/16", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2015-2016", actual=0, insc=0, conv="06/16",  conv2="07/16", conv3="08/16",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 16,    "2016-2017",     0,        0,      "06/17", "07/17", "08/17", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2016-2017", actual=0, insc=0, conv="06/17",  conv2="07/17", conv3="08/17",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 17,    "2017-2018",     0,        0,      "06/18", "07/18", "08/18", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2017-2018", actual=0, insc=0, conv="06/18",  conv2="07/18", conv3="08/18",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 18,    "2018-2019",     0,        0,      "06/19", "07/19", "08/19", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2018-2019", actual=0, insc=0, conv="06/19",  conv2="07/19", conv3="08/19",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 19,    "2019-2020",     0,        0,      "06/20", "07/20", "08/20", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2019-2020", actual=0, insc=0, conv="06/20",  conv2="07/20", conv3="08/20",stampuser="update", stampplace="update" ', NULL));
+	$wpdb->query( $wpdb->prepare('INSERT INTO ricca3_any ( idany, any,             actual,   insc,   conv,    conv2,   conv3,   stampuser, stampplace )'.
+		'                                          VALUES( 20,    "2020-2021",     0,        0,      "06/21", "07/21", "08/21", "upgrade", "upgrade" )'.
+		' ON DUPLICATE KEY UPDATE                                 any="2020-2021", actual=0, insc=0, conv="06/21",  conv2="07/21", conv3="08/21",stampuser="update", stampplace="update" ', NULL));
 	$time_end = microtime(true);
 	$time = $time_end - $time_start;
 	

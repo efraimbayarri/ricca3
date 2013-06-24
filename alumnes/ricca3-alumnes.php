@@ -706,7 +706,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
   	printf('<div id="estat">', NULL);
   	for( $i = 0; $i < $espec; $i++){
 //	busquem quines son les especialitats
-		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']), ARRAY_A, $i);
+		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s AND idestat_es=1 ', $_GET['ID']), ARRAY_A, $i);
  		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
  		printf('<form method="post" action="" target="_self" name="espec" id="primertab">', NULL);
  		printf('<table><tr><td>%s</td></tr></table>', $row_espec['nomespecialitat']);
@@ -786,7 +786,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 //		tabs detallats especialitat
 #################################
   	for( $i = 0; $i < $espec; $i++){
-  		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']), ARRAY_A, $i);
+  		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s AND idestat_es=1 ', $_GET['ID']), ARRAY_A, $i);
   		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
   		$nom = str_word_count($row_espec['nomespecialitat'], 1, 'ÀÈÒÓ');
   		$query_cred = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
@@ -860,7 +860,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 //		TABS HISTORIAL
 #################################
   	for( $z = 0; $z < $espec; $z++){
-  		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']), ARRAY_A, $z);
+  		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s AND idestat_es=1 ', $_GET['ID']), ARRAY_A, $z);
   		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
   		$nom = str_word_count($row_espec['nomespecialitat'], 1, 'ÀÈÒÓ');
   		printf('<div id="hist%s">', $z);
@@ -1057,7 +1057,11 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 		$result = $wpdb->query( $query );
 		if($result > 0){
 			$row = $wpdb->get_row( $query, ARRAY_A, 0);
-			$notafinal = $row['notaf_es'];
+			if($row['notaf_es'] != 0){
+				$notafinal = $row['notaf_es'];
+			}else{
+				$notafinal='';
+			}
 		}
 //
 //	FI RECALCULEM LES DADES
@@ -1942,7 +1946,7 @@ function ricca3_shortcode_alumcreacred($atts, $content = null) {
 							'idany' => $row_alumespec['idany'], 
 							'idccomp' => $_POST['idccomp'][$i][$j], 
 							'idalumne' => $_GET['ID'], 
-							'convord' => $row_alumespec['idany'],
+							'convord' => $row_any['conv'],
 							'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_creacred_insert'));
 					if( $result_insert ){
 						ricca3_missatge(sprintf('%s %s %s', __('El crèdit','ricca3-alum'), $row_ccomp['nomccomp'], __('afegit correctament', 'ricca3-alum')));
