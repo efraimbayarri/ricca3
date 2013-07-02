@@ -124,10 +124,10 @@ $ricca3_canviany=array(
 /**   */
 #############################################################################################
 $ricca3_alumpendi=array(
-		"tipus"   => array( 'ordre', 'checkall',   'bd',          'bd',  'bd'),
-		"nombd"	  => array( "",      "idcredaval", "cognomsinom", "any", "nomccomp"),
-		"visual"  => array( "",      "",           "Nom",         "Any", "Crèdit"),
-		"ajuda"   => array( "",      "",           "",            "",    "")
+		"tipus"   => array( 'ordre', 'checkall',   'bd',          'bd',  'bd',   'bd'),
+		"nombd"	  => array( "",      "idcredaval", "cognomsinom", "any", "grup", "nomccomp"),
+		"visual"  => array( "",      "",           "Nom",         "Any", "grup", "Crèdit"),
+		"ajuda"   => array( "",      "",           "",            "",    "",     "")
 );
 
 #############################################################################################

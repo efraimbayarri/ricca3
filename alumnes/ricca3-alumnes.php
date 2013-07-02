@@ -2537,11 +2537,13 @@ function ricca3_shortcode_credpendents($atts, $content = null) {
 									'ricca3_alumne.cognomsinom, '.
 									'ricca3_credits_avaluacions.idany, '.
 									'ricca3_any.any, '.
-									'ricca3_ccomp.nomccomp '.
+									'ricca3_ccomp.nomccomp, '.
+									'ricca3_grups.grup '.
 									'FROM ricca3_credits_avaluacions '. 
 									'INNER JOIN ricca3_alumne ON ricca3_alumne.idalumne = ricca3_credits_avaluacions.idalumne '. 
 									'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_credits_avaluacions.idany '.
 									'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+									'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup '.
 									'WHERE pendi="P" ORDER BY cognomsinom ASC', ARRAY_A); 
 //		llistat de les especialitats del alumne
 	printf('<form method="post" action="" target="_self" name="Baixes" id="especrepe">', NULL);
