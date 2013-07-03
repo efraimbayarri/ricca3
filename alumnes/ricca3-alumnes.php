@@ -1062,6 +1062,8 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 			}else{
 				$notafinal='';
 			}
+// si hem introduit la nota final a mà, fer-la servir.			
+			if($row['notaf_es_manual'] != 0) $notafinal = $row['notaf_es_manual'];
 		}
 //
 //	FI RECALCULEM LES DADES
@@ -1630,7 +1632,7 @@ function ricca3_shortcode_baixaespec($atts, $content = null) {
 	global $ricca3_butons_editardades;
 	global $ricca3_baixaespec;
 	global $current_user;
-	
+
 	get_currentuserinfo();	
 //		pantalla inicial
 	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
@@ -1658,6 +1660,16 @@ function ricca3_shortcode_baixaespec($atts, $content = null) {
 			}
 		}
 	}
+//	ESBORRA especialitat
+	if( isset( $_POST['accio'] ) && $_POST['accio'] == 'borraespec' && isset($_POST['cbox'])){
+		for( $i = 0; $i <count($_POST['cbox']); $i++){
+			if( $wpdb->delete('ricca3_alumne_especialitat', array('idalumespec' => $_POST['cbox'][$i]) ) ){
+				ricca3_missatge( __('Especialitat esborrada amb exit!', 'ricca3-alum'));
+			}else{
+				ricca3_missatge( __('No s\'ha pogut esborrar l\'especialitat!', 'ricca3-alum'));
+			}
+		}
+	}	
 //		ajuda a la graella
 	$ricca3_baixaespec['ajuda'][1] = __('ajuda-graella-baixaespec-motiu', 'ricca3-alum');
 	$ricca3_baixaespec['ajuda'][2] = __('ajuda-graella-baixaespec-nom',   'ricca3-alum');
@@ -1674,6 +1686,8 @@ function ricca3_shortcode_baixaespec($atts, $content = null) {
 	printf('<table><tr><td title="%s">%s<INPUT type="text" name="motiu" size="30" value="" /> </td></tr></table>',
 		__('ajuda-baixaespec-motiubaixa', 'ricca3_alum'), __('Motiu Baixa', 'ricca3-alum') );
 	ricca3_desar('accio', 'baixaespec', __('ajuda-desar-baixaespec', 'ricca3-alum'));
+	ricca3_missatge(sprintf('%s %s', __('Esborrar una especialitat a l\'alumne','ricca3-alum'), $row_alu['cognomsinom']));
+	ricca3_desar('accio', 'borraespec', __('ajuda-desar-borraespec', 'ricca3-alum'));
 	printf('</td></tr></table></form>', NULL);
 }
 
@@ -2623,8 +2637,6 @@ function ricca3_shortcode_afegircredit($atts, $content = null) {
 	global $ricca3_afegircredit_ccomp;
 	global $current_user;
 
-	dump_r($_POST);
-	
 	get_currentuserinfo();
 
 	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
@@ -2655,8 +2667,12 @@ function ricca3_shortcode_afegircredit($atts, $content = null) {
 		unset($_POST['accio']);
 	}
 //		Esborrar crèdit
-	if(isset( $_POST['accio']) && $_POST['accio'] == 'esborrarcredit'){
-		ricca3_missatge(__('Esborrant crèdit','ricca3-alum'));
+	if( isset( $_POST['accio']) && $_POST['accio'] == 'esborrarcredit' && isset($_POST['cbox']) ){
+		if( $wpdb->delete('ricca3_credits_avaluacions', array( 'idcredaval' => $_POST['cbox'] ) ) ){
+			ricca3_missatge(__('Crèdit esborrat amb exit!!!','ricca3-alum'));
+		}else{
+			ricca3_missatge(__('ERROR!! esborrant crèdit','ricca3-alum'));
+		}
 		unset($_POST['accio']);
 	}
 //		Buscar credits de l'alumne
@@ -2719,22 +2735,62 @@ function ricca3_shortcode_notafinal($atts, $content = null) {
 	global $wpdb;
 	global $ricca3_butons_editardades;
 	global $current_user;
+	global $ricca3_notafmanual;
 
 	get_currentuserinfo();
 
 	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
 	$image_attributes = ricca3_miniatura($_GET['ID']);
-	//		missatge de capçalera de la pàgina
+//		missatge de capçalera de la pàgina
 	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Entrada manual de la nota final de l\'alumne','ric-ca-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
 	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
-	//	ajuda al butons
+//	ajuda al butons
 	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
 	$ricca3_butons_editardades['texte'][1] = __('ajuda-editardades-dadesalumne',   'ricca3-alum');
 	$ricca3_butons_editardades['texte'][2] = __('ajuda-editardades-alumnes', 'ricca3-alum');
-	//		mostrar la filera de butons
+//		mostrar la filera de butons
 	ricca3_butons( $ricca3_butons_editardades, 6, $token );
-	//
-
+//
+	if(isset($_POST['accio']) && $_POST['accio'] == "entranota"){
+		if( $wpdb->update('ricca3_alumne_especialitat', array( 'notaf_es_manual' => $_POST['notafmanual']), array( 'idalumespec' => $_POST['cbox']) ) ){
+			ricca3_missatge( __('Nota Final Manual afegida amb exit!', 'ricca3-alum'));
+		}else{
+			ricca3_missatge( __('ERROR al afegir Nota Final Manual!!', 'ricca3-alum'));
+		}
+		unset($_POST['accio']);
+	}	
+//		ajuda a la graella
+	$ricca3_notafmanual['ajuda'][1] = __('ajuda-graella-notafmanual-nom', 'ricca3-alum');
+	$ricca3_notafmanual['ajuda'][2] = __('ajuda-graella-notafmanual-any', 'ricca3-alum');
+	$ricca3_notafmanual['ajuda'][3] = __('ajuda-graella-notafmanual-espec', 'ricca3-alum');
+	$ricca3_notafmanual['ajuda'][4] = __('ajuda-graella-notafmanual-grup', 'ricca3-alum');
+	$ricca3_notafmanual['ajuda'][5] = __('ajuda-graella-notafmanual-notaf', 'ricca3-alum');
+	$ricca3_notafmanual['ajuda'][6] = __('ajuda-graella-notafmanual-notaf-manual', 'ricca3-alum');
+	
+//		buscar especialitats del alumne
+	$dades_espec = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idespecialitat, idany ',
+			$_GET['ID']), ARRAY_A);
+//		llistat de les especialitats del alumne
+	printf('<form method="post" action="" target="_self" name="Baixes" id="baixes">', NULL);
+	ricca3_graella( $ricca3_notafmanual, $dades_espec, $token );
+	printf('</table>', NULL);
+	if(!isset($_POST['accio'])){		
+		ricca3_desar('accio', 'notafmanual', __('ajuda-desar-notafmanual', 'ricca3-alum'));
+		printf('</td></tr></table></form>', NULL);
+	}else{
+		if(!isset($_POST['cbox'])){
+			ricca3_missatge(__('Escolliu una especialitat si us plau.', 'ricca3-alum'));
+			ricca3_desar('accio', 'notafmanual', __('ajuda-desar-notafmanual', 'ricca3-alum'));
+			printf('</td></tr></table></form>', NULL);
+		}else{
+			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumespec=%s ', $_POST['cbox']), ARRAY_A, 0);
+			ricca3_missatge(sprintf('%s %s', __('Entrada manual de nota final per a l\'especialitat','ricca3-alum'), $row['nomespecialitat']));
+			printf('<table><tr><td title="%s">%s<INPUT type="text" name="notafmanual" size="5" value="" pattern="[0-9. ]{1,}" /><INPUT type="hidden" name="cbox" value="%s" /> </td></tr></table>',
+				__('ajuda-notafmanual', 'ricca3_alum'), __('Nota Manual', 'ricca3-alum'), $_POST['cbox'] );
+			ricca3_desar('accio', 'entranota', __('ajuda-desar-entranota', 'ricca3-alum'));
+			printf('</td></tr></table></form>', NULL);
+		}
+	}	
 }
 
 

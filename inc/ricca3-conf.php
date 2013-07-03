@@ -57,10 +57,11 @@ $ricca3_alumcol=array(
 /**   */
 #############################################################################################
 $ricca3_especalum=array(
-	"tipus"   =>array("any",   "bd",              "bd",   "bd",    "notaf",    "bd",      "hist"),
-	"nombd"	  =>array("idany", "nomespecialitat", "grup", "estat", "notaf_es", "repeteix",""),
-	"visual"  =>array("Any",   "Especialitat",    "Grup", "Estat", "Nota",     "R",       ""),
-	"ajuda"   =>array("",      "",                "",     "",      "",         "",        "")
+	"tipus"   =>array("any",   "bd",              "bd",   "bd",    "notaf",           "bd",      "hist"),
+	"nombd"	  =>array("idany", "nomespecialitat", "grup", "estat", "notaf_es",        "repeteix",""),
+	"visual"  =>array("Any",   "Especialitat",    "Grup", "Estat", "Nota",            "R",       ""),
+	"notam"   =>array("",      "",                "",     "",      "notaf_es_manual", "",        ""),
+	"ajuda"   =>array("",      "",                "",     "",      "",                "",        "")
 );
 
 #############################################################################################
@@ -73,6 +74,17 @@ $ricca3_baixaespec=array(
 		"nomeslect" =>array(true,          true,          true,          true,  true,              true,   true),
 		"tamany"    =>array(0,             30,            0,             0,     0,                 0,      0),
 		"ajuda"     =>array("",            "",            "",            "",    "",                "",     "")
+);
+
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_notafmanual=array(
+		"tipus"     =>array("radio",       "bd",          "bd",  "bd",              "bd",   "bd",             "bd"),
+		"nombd"     =>array("idalumespec", "cognomsinom", "any", "nomespecialitat", "grup", "notaf_es",       "notaf_es_manual"),
+		"visual"    =>array("",            "Nom",         "Any", "Especialitat",    "Grup", "Nota Calculada", "Nota Manual"),
+		"radio"     =>array("",            "",            "",    "",                "",     "",               ""),
+		"ajuda"     =>array("",            "",            "",    "",                "",     "",               "")
 );
 
 #############################################################################################

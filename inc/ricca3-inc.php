@@ -124,12 +124,16 @@ function ricca3_graella( $matriu, $data, $token = null){
 			}elseif( $matriu['tipus'][ $j ] == 'any'){
 				$any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany=%s', $data[ $i ][ $matriu['nombd'][ $j ] ] ), ARRAY_A, 0);
 				printf('<td>%s</td>', $any['any']);
-//	notofinal				
+//	notafinal				
 			}elseif( $matriu['tipus'][ $j ] == 'notaf'){
-				if( $data[ $i ][ $matriu['nombd'][ $j ] ] < 5){
-					printf('<td></td>', NULL);
+				if( $data[ $i ][ $matriu['notam'][ $j ] ] != 0){
+					printf('<td>%s</td>', $data[ $i ][ $matriu['notam'][ $j ] ]);
 				}else{
-					printf('<td>%s</td>', $data[ $i ][ $matriu['nombd'][ $j ] ]);
+					if( $data[ $i ][ $matriu['nombd'][ $j ] ] < 5){
+						printf('<td></td>', NULL);
+					}else{
+						printf('<td>%s</td>', $data[ $i ][ $matriu['nombd'][ $j ] ]);
+					}
 				}
 			}
 		}
