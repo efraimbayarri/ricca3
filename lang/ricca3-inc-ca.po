@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RICCA3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-23 18:37+0100\n"
-"PO-Revision-Date: 2013-06-23 18:37+0100\n"
+"POT-Creation-Date: 2013-07-05 12:31+0100\n"
+"PO-Revision-Date: 2013-07-05 12:31+0100\n"
 "Last-Translator: Efraim Bayarri <efraim.bayarri@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -16,14 +16,14 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: /var/www/ric-ca/wp-content/plugins/ricca3/inc\n"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:216
-#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:248
-#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:276
+#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:221
+#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:253
+#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:281
 msgid "-- qualsevol --"
 msgstr "--- qualsevol ---"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:304
-#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:321
+#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:309
+#: /var/www/ric-ca/wp-content/plugins/ricca3/inc/ricca3-inc.php:326
 msgid "Desar dades"
 msgstr "Desar dades"
 

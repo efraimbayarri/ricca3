@@ -1,4 +1,5 @@
 <?php
+## Release build 2013.27.5
 #############################################################################################
 /**
  * Avaluacions
@@ -226,6 +227,7 @@ function ricca3_shortcode_notes($atts, $content = null) {
 	global $ricca3_butons_actes;
 
 	get_currentuserinfo();
+
 	ricca3_missatge(__('Entrada de notes','ricca3-aval'));
 	$ricca3_butons_actes['texte'][0] = __('ajuda-aval-aval', 'ricca3-aval');
 //		butons
@@ -289,13 +291,14 @@ function ricca3_shortcode_notes($atts, $content = null) {
 				'WHERE ricca3_credits_avaluacions.idccomp = %s and ricca3_credits_avaluacions.idany = %s and idestat_es = 1 ORDER BY cognomsinom ASC ',
 				$_POST['ccomp'], $row_any['idany'] );
 		$dades_cred = $wpdb->get_results( $query, ARRAY_A );
+		$row_prof = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_professors WHERE idprof=%s ', $dades_cred[0]['idprofessor']), ARRAY_A, 0);
 //
 		if( count($dades_cred) > 0){
 			printf('<table id="nom" class="nom"><tr><td class="nom">%s ', $row_grup['grup']);
 			printf('%s %s </td></tr></table>', __('del curs','ricca3-aval'), $row_any['any'] );
 			printf('<table id="nom" class="nom"><tr><td class="nom">', NULL);
 			printf('%s %s ',__('CRÉDIT:','ricca3-aval'), $row_ccomp['nomccomp']);
-			printf('%s %s</td></tr></table>', __('PROFESSOR:','ricca3-aval'), $dades_cred[0]['nomicognoms'] );
+			printf('%s %s</td></tr></table>', __('PROFESSOR:','ricca3-aval'), $row_prof['nomicognoms'] );
 //	<!-- the tabs -->
 			printf('<div id="tabs">', NULL);
 			printf('<ul class="tabs">', NULL);
@@ -311,7 +314,8 @@ function ricca3_shortcode_notes($atts, $content = null) {
 			printf('<div id="aval1">', NULL);
 			$z=0;
 			if(!isset($_POST['repe']))$_POST['repe'] = 'no';
-			printf('<form method="post" action="" name="cercar"><table>', NULL);
+			printf('<form method="post" action="" name="cercar"><table><tr><th>%s</th><th>%s</th><th>%s</th></tr>',
+				__('Alumne','ricca3-aval'), __('Nota', 'ricca3-aval'), __('Actitud', 'ricca3-aval'));
 			for( $i=0; $i < count($dades_cred); $i++){
 				if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 					printf('<tr><td><INPUT type="hidden" name="RECORD[]" value="%s"> %s - %s</td>',
@@ -330,11 +334,12 @@ function ricca3_shortcode_notes($atts, $content = null) {
 			printf('<div id="aval2">', NULL);
 			$z=0;
 			if(!isset($_POST['repe']))$_POST['repe'] = 'no';
-			printf('<table>', NULL);
+			printf('<table><tr><th>%s</th><th>%s</th><th>%s</th><th></th><th>%s</th><th>%s</th></tr>',
+				__('Alumne','ricca3-aval'), __('N1', 'ricca3-aval'), __('A1', 'ricca3-aval'), __('Nota', 'ricca3-aval'), __('Actitud', 'ricca3-aval'));
 			for( $i=0; $i < count($dades_cred); $i++){
 				if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 					printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
-					printf('<td>%s</td><td>%s - </td><td><INPUT type="text" name="nota2[]" value="%s" ></td>', 
+					printf('<td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="nota2[]" value="%s" ></td>', 
 						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2']);
 					printf('<td><INPUT type="text" name="act2[]"  value="%s" ></td></tr>', 
 						$dades_cred[$i]['act2']);
@@ -350,11 +355,12 @@ function ricca3_shortcode_notes($atts, $content = null) {
 			printf('<div id="aval3">', NULL);
 			$z=0;
 			if(!isset($_POST['repe']))$_POST['repe'] = 'no';
-			printf('<table>', NULL);
+			printf('<table><tr><th>%s</th><th>%s</th><th>%s</th><th></th><th>%s</th><th>%s</th><th></th><th>%s</th><th>%s</th></tr>',
+				__('Alumne','ricca3-aval'), __('N1', 'ricca3-aval'), __('A1', 'ricca3-aval'), __('N2', 'ricca3-aval'), __('A2', 'ricca3-aval'), __('Nota', 'ricca3-aval'), __('Actitud', 'ricca3-aval'));
 			for( $i=0; $i < count($dades_cred); $i++){
 				if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 					printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
-					printf('<td>%s</td><td>%s - </td><td>%s</td><td>%s - </td><td><INPUT type="text" name="nota3[]" value="%s" ></td>', 
+					printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="nota3[]" value="%s" ></td>', 
 						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3']);
 					printf('<td><INPUT type="text" name="actf[]"  value="%s" ></td></tr>', $dades_cred[$i]['actf']);
 					$z++;
@@ -369,13 +375,28 @@ function ricca3_shortcode_notes($atts, $content = null) {
 			printf('<div id="aval4">', NULL);
 			$z=0;
 			if(!isset($_POST['repe']))$_POST['repe'] = 'no';
-			printf('<table>', NULL);
-			for( $i=0; $i < count($dades_cred); $i++){
-				if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
-					printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
-					printf('<td>%s</td><td>%s - </td><td>%s</td><td>%s - </td><td>%s</td><td>%s - </td><td><INPUT type="text" name="notaf_cc[]" value="%s" ></td></tr>', 
-						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3'], $dades_cred[$i]['actf'], $dades_cred[$i]['notaf_cc']);
-					$z++;
+			$count = $wpdb->query($wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idcredit=%s AND idgrup=%s ', $row_ccomp['idcredit'], $row_ccomp['idgrup']));
+			if( $count == '1'){
+				printf('<table><tr><th>%s</th><th>%s</th><th>%s</th><th></th><th>%s</th><th>%s</th><th></th><th>%s</th><th>%s</th><th></th><th>%s</th></tr>',
+					__('Alumne','ricca3-aval'), __('N1', 'ricca3-aval'), __('A1', 'ricca3-aval'), __('N2', 'ricca3-aval'), __('A2', 'ricca3-aval'), __('N3', 'ricca3-aval'), __('A3', 'ricca3-aval'), __('Nota Final', 'ricca3-aval'));
+				for( $i=0; $i < count($dades_cred); $i++){
+					if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
+						printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
+						printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="notaf_cc[]" value="%s" ><INPUT type="hidden" name="notaf_cr[]" value="%s" ></td></tr>', 
+							$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3'], $dades_cred[$i]['actf'], $dades_cred[$i]['notaf_cc'], $dades_cred[$i]['notaf_cr']);
+						$z++;
+					}
+				}
+			}else{
+				printf('<table><tr><th>%s</th><th>%s</th><th>%s</th><th></th><th>%s</th><th>%s</th><th></th><th>%s</th><th>%s</th><th></th><th>%s</th><th>%s</th></tr>',
+				__('Alumne','ricca3-aval'), __('N1', 'ricca3-aval'), __('A1', 'ricca3-aval'), __('N2', 'ricca3-aval'), __('A2', 'ricca3-aval'), __('N3', 'ricca3-aval'), __('A3', 'ricca3-aval'), __('Nota Final C. Comp.', 'ricca3-aval'),__('Nota Final Crèdit', 'ricca3-aval') );
+				for( $i=0; $i < count($dades_cred); $i++){
+					if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
+						printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
+						printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="notaf_cc[]" value="%s" ></td><td><INPUT type="text" name="notaf_cr[]" value="%s" ></td></tr>',
+						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3'], $dades_cred[$i]['actf'], $dades_cred[$i]['notaf_cc'], $dades_cred[$i]['notaf_cr']);
+						$z++;
+					}
 				}
 			}
 			printf('</table><table><tr><td><INPUT type="hidden" name="any"  value="%s" />',$_POST['any']);
@@ -384,7 +405,9 @@ function ricca3_shortcode_notes($atts, $content = null) {
 			printf('<INPUT type="hidden" name="repe"  value="%s" /></td></tr></table>',$_POST['repe']);
 			ricca3_desar('accio', 'actualitzar', __('ajuda-notes-desar','ricca3-aval'));
 			printf('</div>', NULL);
+#################################			
 //	<!-- Final de tab "panes" -->
+#################################
 			printf('</form>', NULL);
 			printf('</div>', NULL);
 		}else{
@@ -402,6 +425,7 @@ function ricca3_shortcode_notes($atts, $content = null) {
 						'nota3'      => strtoupper($_POST['nota3'][$i]),
 						'actf'       => strtoupper($_POST['actf'][$i]),
 						'notaf_cc'   => strtoupper($_POST['notaf_cc'][$i]),
+						'notaf_cr'   => strtoupper($_POST['notaf_cr'][$i]),
 						'stampuser'  => $current_user->user_login, 
 						'stampplace' => 'ricca_shortcode_notes' ), 
 				array( 'idcredaval'  => $_POST['RECORD'][$i]) 

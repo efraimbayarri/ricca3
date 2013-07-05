@@ -1,4 +1,5 @@
 <?php
+## Release build 2013.27.5
 #############################################################################################
 /**
  * Funcions per a la pàgina d'administracio del connector

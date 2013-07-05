@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RICCA3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-23 18:37+0100\n"
-"PO-Revision-Date: 2013-06-23 18:37+0100\n"
+"POT-Creation-Date: 2013-07-05 12:27+0100\n"
+"PO-Revision-Date: 2013-07-05 12:28+0100\n"
 "Last-Translator: Efraim Bayarri <efraim.bayarri@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -16,95 +16,96 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: /var/www/ric-ca/wp-content/plugins/ricca3/admin\n"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:20
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:21
 msgid "Opcions RICCA3"
 msgstr "Opcions RICCA3"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:21
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:22
 msgid "Opcions de configuració i administracio de RICCA3"
 msgstr "Opcions de configuració i administració de RICCA3"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:23
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:27
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:24
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:28
 msgid "Desar canvis"
 msgstr "Desar canvis"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:38
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:39
 msgid "Opcions principals"
 msgstr "Opcions principals"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:39
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:40
 msgid "Versió de la base de dades"
 msgstr "Versió de la base de dades"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:40
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:41
 msgid "Prefix de la base de dades"
 msgstr "Prefix de la base de dades"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:41
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:42
 msgid "Versió del connector"
 msgstr "Versió del connector"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:42
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:43
 msgid "Traspassar dades a \"ricca3\""
 msgstr "Traspassar dades a \"ricca3\""
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:43
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:44
 msgid "(*)actualitza totes les taules"
 msgstr "(*)actualitza totes les taules"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:44
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:45
 msgid "(1)ricca3_any(dades_preparades)"
 msgstr "(1)ricca3_any(dades_preparades)"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:45
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:46
 msgid "(2)ricca3_aval(dades_preparades)"
 msgstr "(2)ricca3_aval(dades_preparades)"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:46
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:47
 msgid "(3)ricca3_alumne"
 msgstr "(3)ricca3_alumne"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:47
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:48
 msgid "(4)ricca3_professors"
 msgstr "(4)ricca3_professors"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:48
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:49
 msgid "(5)ricca3_credits"
 msgstr "(5)ricca3_credits"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:49
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:50
 msgid "(6)ricca3_grups"
 msgstr "(6)ricca3_grups"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:50
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:51
 msgid "(7)ricca3_ccomp"
 msgstr "(7)ricca3_ccomp"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:51
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:52
 msgid "(8)ricca3_alumnes_especialitat"
 msgstr "(8)ricca3_alumnes_especialitat"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:52
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:53
 msgid "(9)ricca3_credespec"
 msgstr "(9)ricca3_credespec"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:53
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:54
 msgid "(A)ricca3_historial"
 msgstr "(A)ricca3_historial"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:54
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:55
 msgid "(B)ricca3_pla"
 msgstr "(B)ricca3_pla"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:55
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:56
 msgid "(C)ricca3_credaval"
 msgstr "(C)ricca3_credaval"
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:63
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:64
 msgid "Versions actuals."
 msgstr "Versions actuals."
 
-#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:72
+#: /var/www/ric-ca/wp-content/plugins/ricca3/admin/ricca3-admin.php:73
 msgid "traspasar dades de les taules ricca(v.2) a ricca3(v.3)"
 msgstr "traspasar dades de les taules ricca(v.2) a ricca3(v.3)"
+

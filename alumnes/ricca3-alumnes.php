@@ -1,4 +1,5 @@
 <?php
+## Release build 2013.27.5
 #############################################################################################
 /**
  * Alumnes per especialitat. Mostra un filtre per escollir alumnes segons especialitat i any
@@ -2548,6 +2549,7 @@ function ricca3_shortcode_credpendents($atts, $content = null) {
 	$ricca3_alumpendi['ajuda'][4] = __('ajuda-alumpendi-cred', 'ricca3-alum');
 //		buscar especialitats
 	$data_view = $wpdb->get_results('SELECT ricca3_credits_avaluacions.idcredaval, '.
+									'ricca3_alumne.idalumne, '.
 									'ricca3_alumne.cognomsinom, '.
 									'ricca3_credits_avaluacions.idany, '.
 									'ricca3_any.any, '.

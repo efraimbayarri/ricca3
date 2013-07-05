@@ -1,4 +1,5 @@
 <?php
+## Release build 2013.27.5
 ######################################################
 ##
 ## GRAELLES
@@ -136,10 +137,13 @@ $ricca3_canviany=array(
 /**   */
 #############################################################################################
 $ricca3_alumpendi=array(
-		"tipus"   => array( 'ordre', 'checkall',   'bd',          'bd',  'bd',   'bd'),
-		"nombd"	  => array( "",      "idcredaval", "cognomsinom", "any", "grup", "nomccomp"),
-		"visual"  => array( "",      "",           "Nom",         "Any", "grup", "Crèdit"),
-		"ajuda"   => array( "",      "",           "",            "",    "",     "")
+		"tipus"   => array( 'ordre', 'checkall',   'bd',       'token',                 'bd',          'bd',  'bd',   'bd'),
+		"nombd"	  => array( "",      "idcredaval", "idalumne", "",                      "cognomsinom", "any", "grup", "nomccomp"),
+		"visual"  => array( "",      "",           "ID",       "",                      "Nom",         "Any", "grup", "Crèdit"),
+		"enllac"  => array( "",      "",           "",         "ricca3-especalum/?ID=", "",            "",    "",     ""),
+		"camp"    => array( "",      "",           "",         "idalumne",              "",            "",    "",     ""),
+		"texte"   => array( "",      "",           "",         "veure",                 "",            "",    "",     ""),
+		"ajuda"   => array( "",      "",           "",         "",                      "",            "",    "",     "")
 );
 
 #############################################################################################
