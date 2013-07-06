@@ -4,7 +4,7 @@
  * Plugin URI: http://replicantsfactory.com/
  * Author: Efraim Bayarri
  * Author URI: http://replicantsfactory.com/
- * Version: 2013.27.5
+ * Version: 2013.27.6.A
  * Description: Projecte RIC-CA Versió 3 (Escola Ramon i Cajal) 
  * Release Version:(build 2013.27.5)
  * Release Date: 5 juliol 2013
@@ -77,11 +77,16 @@ add_shortcode( 'ricca3-llistarpla',   'ricca3_shortcode_llistarpla' );
 add_shortcode( 'ricca3-sensepla',     'ricca3_shortcode_sensepla' );
 
 function ricca3_init() {
-	$ricca3_db_version     = "2013.17.1";
-	$ricca3_plugin_version = "2013.17.1";
+	global $wpdb;
+	
+	$ricca3_db_version     = "2013.25.7";
+	$ricca3_plugin_version = "2013.25.7";
 	$ricca3_db_prefix      = "ricca3_";
 	$options = get_option('ricca3_options');
 
+	$any_act = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = "1" ', ARRAY_A, 0 );
+	$any_ins = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE insc   = "1" ', ARRAY_A, 0 );
+	
 	if(!$options)update_option( 'ricca3_options', NULL );
 	
 	if($options['plugin_version'] != $ricca3_plugin_version ){
@@ -101,84 +106,15 @@ function ricca3_init() {
 		update_option('ricca3_options', $options);
 	}
 
-	if(isset($options['ricca3_alumespec']) && $options['ricca3_alumespec'] == 1){
-		$options['ricca3_alumespec'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_alumespec();
-	}
-	
-	if(isset($options['ricca3_act_tot']) && $options['ricca3_act_tot'] == 1){
-		$options['ricca3_act_tot'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_act_tot();
-	}
-	
-	if(isset($options['ricca3_professors']) && $options['ricca3_professors'] == 1){
-		$options['ricca3_professors'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_professors();
-	}
-	
-	if(isset($options['ricca3_credits']) && $options['ricca3_credits'] == 1){
-		$options['ricca3_credits'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_credits();
+	if($options['any_actual'] != $any_act['any']){
+		ricca3_update_any_actual();
 	}
 
-	if(isset($options['ricca3_ccomp']) && $options['ricca3_ccomp'] == 1){
-		$options['ricca3_ccomp'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_ccomp();
+	if($options['any_inscri'] != $any_ins['any']){
+		ricca3_update_any_inscri();
 	}
 	
-	if(isset($options['ricca3_any']) && $options['ricca3_any'] == 1){
-		$options['ricca3_any'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_any();
-	}
 	
-	if(isset($options['ricca3_alumne']) && $options['ricca3_alumne'] == 1){
-		$options['ricca3_alumne'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_alumne();
-	}
-
-	if(isset($options['ricca3_aval']) && $options['ricca3_aval'] == 1){
-		$options['ricca3_aval'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_aval();
-	}
-	
-	if(isset($options['ricca3_credaval']) && $options['ricca3_credaval'] == 1){
-		$options['ricca3_credaval'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_credaval();
-	}
-
-	if(isset($options['ricca3_credespec']) && $options['ricca3_credespec'] == 1){
-		$options['ricca3_credespec'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_credespec();
-	}
-
-	if(isset($options['ricca3_historial']) && $options['ricca3_historial'] == 1){
-		$options['ricca3_historial'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_historial();
-	}
-	
-	if(isset($options['ricca3_pla']) && $options['ricca3_pla'] == 1){
-		$options['ricca3_pla'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_pla();
-	}
-
-	if(isset($options['ricca3_grups']) && $options['ricca3_grups'] == 1){
-		$options['ricca3_grups'] = 0;
-		update_option('ricca3_options',$options);
-		ricca3_ricca3_grups();
-	}
-		
 	load_plugin_textdomain( 'ricca3-admin',  false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	load_plugin_textdomain( 'ricca3-alum',   false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	load_plugin_textdomain( 'ricca3-inc',    false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
