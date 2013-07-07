@@ -2056,10 +2056,13 @@ function ricca3_shortcode_butlleti($atts, $content = null) {
 			$_GET['ID'], $_POST['cbox']), ARRAY_A, 0);
 		printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt400">', NULL);
 //	data i abonament
+		$today = getdate();
+		$avui = sprintf('%s/%s/%s', $today['mday'], $today['mon'], $today['year']);
 		printf(' <tr><td>%s<INPUT type="text" name="abona" value="%s" title="%s" />€</td>'.
 					'<td>%s<INPUT type="text" name="data" value="%s" title="%s" /><INPUT type="hidden" name="cbox" value="%s" /></td></tr>',
 			 __('Abonament:','ricca3-alum'), $row_espec['abonament'], __('ajuda-butlleti-abonament','ricca3-alum'), 
-			 __('data d\'inscripció','ricca3-alum'), date('d/m/Y', strtotime($row_espec['datainscripcio']) ), 
+//			 __('data d\'inscripció','ricca3-alum'), date('d/m/Y', strtotime($row_espec['datainscripcio']) ), 
+			 __('data d\'inscripció','ricca3-alum'), $avui,
 			 __('ajuda-butlleti-data','ricca3-alum'), $_POST['cbox']  );
 //		
 		printf('</table><table><tr><td>', NULL);
