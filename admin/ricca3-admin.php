@@ -182,7 +182,7 @@ function ricca3_update_any_actual(){
  * @author Efraim Bayarri
  */
 #############################################################################################
-function ricca3_update_any_inscrix(){
+function ricca3_update_any_inscri(){
 	global $wpdb;
 	$options = get_option('ricca3_options');
 	$any_ins = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE insc   = "1" ', ARRAY_A, 0 );

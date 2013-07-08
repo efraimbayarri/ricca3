@@ -2146,7 +2146,7 @@ function ricca3_shortcode_impbutlleti($atts, $content = null) {
 
 #############################################################################################
 /**
- * caratula
+ * primera pàgina per a la caratula
  * shortcode: [ricca3-caratula]
  *
  * @since ricca3.v.2013.19.1
@@ -2155,101 +2155,60 @@ function ricca3_shortcode_impbutlleti($atts, $content = null) {
 #############################################################################################
 function ricca3_shortcode_caratula($atts, $content = null) {
 	global $wpdb;
-	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE actual = 1', NULL),ARRAY_A,0);
-	$row_alu  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne = %s',$_GET['ID']),ARRAY_A,0);
-	$query = $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idany = %s ORDER BY grup ASC',$_GET['ID'],$row_any['any'] );
-	$result = $wpdb->query( $query );
-	for( $i = 0; $i < $result; $i++){
-		$row = $wpdb->get_row( $query , ARRAY_A , $i );
-		?>
-		<div id="caratcontainer">
-			<table class="cap" >
-				<tr>
-					<td width="400px">
-						<table class="cos2">
-							<tr><td class="cos" align="center" height="40px" width="400px">ESCOLA DE FP RAMON I CAJAL</td></tr>
-							<tr><td class="cos" align="center" height="120px" width="400px"><br>CICLES FORMATIUS DE GRAU SUPERIOR<br><br>CURS ACAD&Egrave;MIC: <?php echo $row_any["any"]; ?></td></tr>
-						</table>
-					</td>
-					<td width="20px">
-					</td>
-					<td width="400px">
-						<table class="cos2">
-							<tr><td class="cos" height="40px" width="400px" align="center"><?php printf("%s %s",$row["nomespecialitat"],$row["sessio"]); ?></td></tr>
-							<tr><td class="cos" height="40px" width="400px">1er Cognom <b><?php printf(" %s",$row["cognom1"]);?></b></td></tr>
-							<tr><td class="cos" height="40px" width="400px">2on Cognom <b><?php printf(" %s",$row["cognom2"]);?></b></td></tr>
-							<tr><td class="cos" height="40px" width="400px">Nom <b><?php printf(" %s",$row["nom"]);?></b></td></tr>
-						</table>
-					</td>
-					<td width="400px">
-						<table class="cap">
-							<tr><td></td></tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-			<br><br>
-			<table class="cap" >
-				<tr>
-					<td width="600px">
-						<table class="cos2">
-							<tr><td class="cos" height="40px" width="150px">Dades Personals</td><td class="cos" height="40px" width="450px">Tel&eacute;fon <b><?php printf(" %s",$row_alu["telefonfixe"])?></b></td></tr>
-							<tr><td class="cos" height="40px" width="150px"></td><td class="cos" height="40px" width="450px">Mobil <b><?php printf(" %s",$row_alu["telefon"])?></b></td></tr>
-							<tr><td></td><td class="cos" height="40px" width="450px">Adreça <b><?php printf(" %s",$row_alu["residenciahabitual"])?></b></td></tr>
-							<tr><td></td><td class="cos" height="40px" width="450px">Poblaci&ograve; <b><?php printf(" %s",$row_alu["ciutathabitual"])?></b></td></tr>
-							<tr><td></td><td class="cos" height="40px" width="450px">Cod&iacute; Postal <b><?php printf(" %s",$row_alu["codipostal"])?></b></td></tr>
-						</table>
-					</td>
-					<td width="45px">
-					</td>
-					<td width="300px">
-						<table class="cos2">
-							<tr><td class="cos" height="40px" width="300px"><b><?php printf(" %s",$row_alu["email"])?></b></td></tr>
-							<tr><td class="cos" height="40px" width="300px"></td></tr>
-							<tr><td class="cos" height="40px" width="300px"></td></tr>
-							<tr><td class="cos" height="40px" width="300px"></td></tr>
-							<tr><td class="cos" height="40px" width="300px"></td></tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-			<br><br>
-			<table class="cap" >
-				<tr>
-					<td width="100px">
-						<table class="cap">
-							<tr><td></td></tr>
-						</table>
-					</td>
-					<td width="750px">
-						<table class="cos2">
-							<tr><td class="cos" height="40px" width="250px" align="center">Estudis</td>
-								<td class="cos" height="40px" width="250px" align="center">Nom del Centre</td>
-								<td class="cos" height="40px" width="250px" align="center">Localitat</td></tr>
-							<tr><td class="cos" height="40px" width="250px"><b><?php printf(" %s",$row_alu["estudisrealitzats"])?></b></td>
-								<td class="cos" height="40px" width="250px"><b><?php printf(" %s",$row_alu["centreea"])?></b></td>
-								<td class="cos" height="40px" width="250px"><b><?php printf(" %s",$row_alu["poblacioea"])?></b></td></tr>
-							<tr><td class="cos" height="40px" width="250px"><b></b></td>
-								<td class="cos" height="40px" width="250px"><b></b></td>
-								<td class="cos" height="40px" width="250px"><b></b></td></tr>
-							<tr><td class="cos" height="40px" width="250px"><b></b></td>
-								<td class="cos" height="40px" width="250px"><b></b></td>
-								<td class="cos" height="40px" width="250px"><b></b></td></tr>
-							<tr><td class="cos" height="40px" width="250px"><b></b></td>
-								<td class="cos" height="40px" width="250px"><b></b></td>
-								<td class="cos" height="40px" width="250px"><b></b></td></tr>
-							<tr><td class="cos" height="40px" width="250px"><b></b></td>
-								<td class="cos" height="40px" width="250px"><b></b></td>
-								<td class="cos" height="40px" width="250px"><b></b></td></tr>												
-						</table>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<?php 	
+	global $ricca3_butons_editardades;
+//		pantalla inicial
+	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+	$image_attributes = ricca3_miniatura($_GET['ID']);
+//		missatge de capçalera de la pàgina
+	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Caràtula de l\'alumne','ricca3-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+//	ajuda al butons
+	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
+	$ricca3_butons_editardades['texte'][1] = __('ajuda-editardades-dadesalumne',   'ricca3-alum');
+	$ricca3_butons_editardades['texte'][2] = __('ajuda-editardades-alumnes', 'ricca3-alum');
+//		mostrar la filera de butons
+	ricca3_butons( $ricca3_butons_editardades, 6, $token );
+//
+	if(isset($_POST['accio']) && $_POST['accio'] == 'desar' && count($_POST['cbox']) == 1){
+		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s',
+				$_GET['ID'], $_POST['cbox']), ARRAY_A, 0);
+		ricca3_missatge(sprintf('%s %s', __('Caràtula per l\'especialitat:','ricca3-alum'), $row_espec['nomespecialitat'] ));
+		printf('<table><tr>', NULL);
+		printf('<td><a href="%s/%s/?ID=%s&esp=%s" target="POPUPW" onsubmit="POPUPW = window.open("about:blank","POPUPW","width=800,height=650" >',site_url(), 'ricca3-impcaratula', $_GET['ID'], $_POST['cbox']);
+		printf('<button type="button"><img src="%s/ricca3/imatges/ricca3-imprimir.png" border=0 /></button></a></td>',WP_PLUGIN_URL);
+		printf('</tr></table>', NULL);
 	}
+	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT idespecialitat, nomespecialitat, sessio FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idany ',$_GET['ID']), ARRAY_A);
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt400">', NULL);
+	for( $i = 0; $i < count( $data_view ); $i++ ){
+		printf('<tr><td><INPUT type="radio" name="cbox" value="%s" title="%s" /></td><td title="%s" >%s %s</td></tr>',
+		$data_view[$i]['idespecialitat'], __('ajuda-radio-butlleti','ricca3-alum'), __('ajuda-curs-butlleti','ricca3-alum'), $data_view[$i]['nomespecialitat'], $data_view[$i]['sessio'] );
+	}
+	printf('</table><table><tr><td>', NULL);
+	ricca3_desar('accio', 'desar', __('ajuda-desar-especbutlleti', 'ricca3-alum'));
+	printf('</td></tr></table></form>', NULL);	
 }	
 
+#############################################################################################
+/**
+ * imprimir caratula
+ * shortcode: [ricca3-caratula]
+ *
+ * @since ricca3.v.2013.19.1
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_impcaratula($atts, $content = null) {
+	global $wpdb;
+	$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE insc = 1', NULL),ARRAY_A,0);
+	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne = %s',$_GET['ID']),ARRAY_A,0);
+	$row     = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s',
+			$_GET['ID'], $_GET['esp']), ARRAY_A, 0);
+
+	
+}
+
+	
 #############################################################################################
 /**
  * Marcar com a repetidor d'una especialitat

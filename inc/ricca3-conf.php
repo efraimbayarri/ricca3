@@ -385,7 +385,7 @@ $ricca3_butons_especalum=array(
 	"imatge" =>array("afegirespecialitat", "baixaespecialitat", "creditsalumne",  "aplicarpla",          "dadesalumne",        "alumnes",        "butlleti",        "caratula",        "especrepe",        "canviany",        "afegircredit",        "notafinal"),
 	"enllac" =>array("ricca3-novaespec",   "ricca3-baixaespec", "ricca3-credalu", "ricca3-alumcreacred", "ricca3-dadesalumne", "ricca3-alumnes", "ricca3-butlleti", "ricca3-caratula", "ricca3-especrepe", "ricca3-canviany", "ricca3-afegircredit", "ricca3-notafinal"),
 	"id"     =>array(true,                 true,                true,             true,                  true,                 false,            true,              true,              true,               true,              true,                  true),
-	"nova"   =>array(false,                false,               false,            false,                 false,                false,            false,             true,              false,              false,             false,                 false),
+	"nova"   =>array(false,                false,               false,            false,                 false,                false,            false,             false,             false,              false,             false,                 false),
 	"texte"  =>array("",                   "" ,                 "",               "",                    "",                   "",               "",                "" ,               "",                 "",                "",                    "")
 );
 

@@ -17,6 +17,7 @@ table.center {text-align: center;width: 100%;border-width: 0px;border-spacing: 2
 table.cos {border-width: 1px;border-spacing: 2px;border-style: solid;border-color: gray;border-collapse: collapse;background-color: white;}
 table.cos th {border-width: 1px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
 table.cos td {border-width: 1px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
+table.cos td.cap {border-width: 0px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
 
 table.cosassist {border-width: 1px;border-spacing: 2px;border-style: solid;border-color: gray;border-collapse: collapse;background-color: white;}
 table.cosassist th {border-width: 1px;padding: 1px;border-style: solid;border-color: black;background-color: white;-moz-border-radius: ;}
