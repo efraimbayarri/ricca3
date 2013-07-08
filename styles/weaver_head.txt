@@ -19,7 +19,7 @@ function checkAll(){
 	$(function() {
 		$( document ).tooltip({
 			track: true, 
-			show: { duration: 800 } 
+			show: { duration: 800, delay: 2500 } 
 			});
 	});
 </script>
