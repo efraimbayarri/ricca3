@@ -48,7 +48,7 @@ $ricca3_alumcol=array(
 	"nombd"     =>array("nom",   "cognom1",   "cognom2",   "dni",               "datanai",          "llocnai",             "provnai",             "paisnai",        "email", "residenciahabitual", "ciutathabitual", "provinciahabitual", "codipostal", "telefon", "telefonfixe",  "datainscripcio",  "estudisanteriors",  "centreea",       "poblacioea",       "abonament"),
 	"visual"    =>array("Nom",   "1er Cognom","2on Cognom","DNI/NIE/passaport", "Data de naixement","Localitat naixement", "Província naixement", "País naixement", "email", "Domicili",           "Ciutat",         "Província",         "C.P.",       "Telefon", "Telefon fixe", "Inscripció",      "Estudis",           "Centre estudis", "Població estudis", "Abonament"),
 	"nomform"   =>array("Nom",   "Cog1",      "Cog2",      "DNI",               "FN",               "LocN",                "ProvN",               "PaisN",          "Email", "Resi",               "Ciutat",         "Prov",              "CP",         "Telf",    "Telf2",        "Insc",            "EstudA",            "CentEA",         "PobEA",            "Abono"),
-	"nomes-az"  =>array(true,    true,        true,        false,               false,              true,                  true,                  true,             false,   false,                true,             true,                false,        false,     false,          false,             false,               false,            true,               false),
+	"nomes-az"  =>array(false,   false,       false,       false,               false,              true,                  true,                  true,             false,   false,                true,             true,                false,        false,     false,          false,             false,               false,            true,               false),
 	"obliga"    =>array(true,    true,        false,	   true,                true,               false,                 false,                 false,            false,   false,                false,            false,               false,        false,     false,          false,             false,               false,            false,              false),
 	"data"      =>array(false,   false,       false,       false,               true,               false,                 false,                 false,            false,   false,                false,            false,               false,        false,     false,          true,              false,               false,            false,              false),
 	"nomeslect" =>array(false,   false,       false,       false,               false,              false,                 false,                 false,            false,   false,                false,            false,               false,        false,     false,          true,              false,               false,            false,              true)
@@ -352,10 +352,10 @@ $ricca3_butons_cercalumne=array(
 /**   */
 #############################################################################################
 $ricca3_butons_noualumne=array(
-	"imatge" =>array("especalum",            "buid",           "buid",           "buid",           "buid",           "buid"),
-	"enllac" =>array("ricca3-especalumnova", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes"),
-	"id"     =>array(true,                   false,            false,            false,            false,            false),
-	"texte"  =>array("",                     "" ,              "",               "",               "",                "")
+	"imatge" =>array("especalum",        "buid",           "buid",           "buid",           "buid",           "buid"),
+	"enllac" =>array("ricca3-especalum", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes"),
+	"id"     =>array(true,               false,            false,            false,            false,            false),
+	"texte"  =>array("",                 "" ,              "",               "",               "",                "")
 );
 
 #############################################################################################

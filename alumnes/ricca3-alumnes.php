@@ -2204,8 +2204,127 @@ function ricca3_shortcode_impcaratula($atts, $content = null) {
 	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne = %s',$_GET['ID']),ARRAY_A,0);
 	$row     = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s',
 			$_GET['ID'], $_GET['esp']), ARRAY_A, 0);
-
-	
+	printf('<table class="cap"> 
+				<tr>
+					<td width="350px">
+						<table class="cos2">
+							<tr>
+								<td class="cos" align="center" height="30px" width="350px">ESCOLA DE FP RAMON I CAJAL</td>
+							</tr>
+			                <tr>
+								<td class="cos" align="center" heigth="90px" width="350px"><br />CICLES FORMATIUS DE GRAU SUPERIOR<br /> <br />CURS ACADÉMIC:  %s<br /><br /></td>
+							</tr>
+						</table>
+					</td>
+					<td width="50px"></td>
+					<td width="350px">
+						<table class="cos2">
+							<tr>
+								<td class="cos" height="20px" width="350px" align="center" colspan="2">%s %s</td>
+							</tr>
+			                <tr>
+								<td class="cos" height="20px" width="60px">1er Cognom:</td><td class="cos" width="290px"><b>%s</b></td>
+							</tr>
+			                <tr>
+								<td class="cos" height="20px" >2on Cognom:</td><td class="cos"><b>%s</b></td>
+							</tr>
+			                <tr>
+								<td class="cos" height="20px" >Nom:       </td><td class="cos"><b>%s</b></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<table class="cap">
+				<tr>
+					<td width="600px">
+						<table class="cos2">
+							<tr>
+								<td class="cos" height="20px" width="150px" colspan="2" rowspan="2" >Dades Personals</td>
+								<td class="cos" height="20px" width="100px">Telèfon</td>
+								<td class="cos" height="20px" width="350px">%s</td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" width="100px">Mobil</td>
+								<td class="cos" height="20px" width="350px">%s</td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" width="150px" >Adreça</td>
+								<td class="cos" height="20px" colspan="3"   >%s</td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" width="150px" >Població</td>
+								<td class="cos" height="20px" colspan="3"   >%s</td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" width="150px" >Codi Postal</td>
+								<td class="cos" height="20px" colspan="3"   >%s</td>
+							</tr>
+						</table>
+					</td>
+					<td width="50px"></td>
+					<td width="300px">
+						<table class="cos2">
+							<tr>
+								<td class="cos" height="20px" width="300px">%s</td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" ><b></b></td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" ><b></b></td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" ><b></b></td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" ><b></b></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<table class="cap">
+				<tr>	
+					<td width="100px">
+					</td>
+					<td width="750px">
+						<table class="cos2" >
+							<tr>
+								<td class="cos" height="20px" width="250px" align="center">Estudis</td>
+								<td class="cos" height="20px" width="250px" align="center">Nom del Centre</td>
+								<td class="cos" height="20px" width="250px" align="center">Localitat</td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" >%s</td>
+								<td class="cos" height="20px" >%s</td>
+								<td class="cos" height="20px" >%s</td>
+							</tr>
+							<tr>
+								<td class="cos" height="20px" ></td>
+								<td class="cos" height="20px" ></td>
+								<td class="cos" height="20px" ></td>
+							<tr>
+							<tr>
+								<td class="cos" height="20px" ></td>
+								<td class="cos" height="20px" ></td>
+								<td class="cos" height="20px" ></td>
+							<tr>
+							<tr>
+								<td class="cos" height="20px" ></td>
+								<td class="cos" height="20px" ></td>
+								<td class="cos" height="20px" ></td>
+							<tr>
+						</table>
+					</td>
+				</tr>
+			</table>',
+			$row_any['any'], $row['nomespecialitat'], $row['sessio'], $row_alu['cognom1'], $row_alu['cognom2'], $row_alu['nom'],
+			$row_alu['telefonfixe'], $row_alu['telefon'], $row_alu['residenciahabitual'], $row_alu['ciutathabitual'], $row_alu['codipostal'],
+			$row_alu['email'], $row_alu['estudisrealitzats'], $row_alu['centreea'], $row_alu['poblacioea']
+	);
 }
 
 	
