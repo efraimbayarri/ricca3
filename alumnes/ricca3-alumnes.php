@@ -2212,7 +2212,7 @@ function ricca3_shortcode_impcaratula($atts, $content = null) {
 								<td class="cos" align="center" height="30px" width="350px">ESCOLA DE FP RAMON I CAJAL</td>
 							</tr>
 			                <tr>
-								<td class="cos" align="center" heigth="90px" width="350px"><br />CICLES FORMATIUS DE GRAU SUPERIOR<br /> <br />CURS ACADÉMIC:  %s<br /><br /></td>
+								<td class="cos" align="center" heigth="90px" width="350px"><br />CICLES FORMATIUS DE GRAU SUPERIOR<br /> <br />CURS ACADÈMIC:  %s<br /><br /></td>
 							</tr>
 						</table>
 					</td>
@@ -2469,7 +2469,6 @@ function ricca3_shortcode_mailings($atts, $content = null) {
 	global $wpdb;
 	global $ricca3_butons_cercalumne;
 	global $ricca3_mailings;
-	
 //		missatge de capçalera de la pàgina
 	ricca3_missatge(__('Mailings','ricca3-alum'));
 //		crear token
@@ -2530,12 +2529,25 @@ function ricca3_shortcode_mailings($atts, $content = null) {
 		printf('<form method="post" action="" target="_self" name="mail"><table class="menucurt400"><tr><td>', NULL);
 		printf('%s</td><td><textarea accesskey="" cols="20" rows="1" name="assumpte" title="assumpte">', __('<b>Assumpte:</b>', 'ric-ca-alum'));
 		printf('</textarea></td></tr></table>', NULL);
-		wp_editor( __('Hola!','ricca3-alum'), 'ricca3-mailings', array( 'textarea_name' => 'cos') );
+		
+		wp_editor( __('Hola!','ricca3-alum'), 'ricca3mailings', array( 'textarea_name' => 'cos', 'media_buttons' => false) );
 		printf('<table><tr><td>', NULL);
 		for( $i = 0; $i < count($_POST['cbox']); $i++ ){
 			printf('<input type="hidden" name="cbox[]" value=%s title="" class="" >', $_POST['cbox'][ $i ]);
 		}
-		printf('<button type="submit" name="cercar" value="enviar"><img src=%s/ricca3/imatges/ricca3-enviar.png " border="0" /></button></td></tr></table></form>',WP_PLUGIN_URL);
+		printf('<button type="submit" name="cercar" value="fitxer"><img src=%s/ricca3/imatges/ricca3-enviar.png " border="0" /></button></td></tr></table></form>',WP_PLUGIN_URL);
+	}
+	if(isset($_POST['cercar']) && $_POST['cercar'] == "fitxer" ){
+		ricca3_missatge(__('Desitja afegir un fitxer al correu electrónic?','ricca3-alum'));
+		printf('<form action="" method="POST" enctype="multipart/form-data"><label for="file">Fitxer:</label>', NULL);
+		printf('<input type="file" name="file" id="file" /><input type="submit" name="cercar" value="enviar" />
+				<input type="hidden" name="cos" value="%s" />
+				<input type="hidden" name="assumpte" value="%s" />',
+				$_POST['cos'], $_POST['assumpte'] );
+		for ($i=0; $i < count($_POST['cbox']); $i++){
+				printf('<input type="hidden" name="cbox[%s]" value="%s" />', $i, $_POST['cbox'][$i]);
+		}
+		printf('</form>', NULL);
 	}
 	if(isset($_POST['cercar']) && $_POST['cercar'] == "enviar" ){
 		if(strlen($_POST['assumpte'])< 1) $_POST['assumpte'] = '(Sense Asumpte)';
@@ -2554,18 +2566,28 @@ function ricca3_shortcode_mailings($atts, $content = null) {
 //		$headers[] = 'Return-Path: escolaramonicajal@gmail.com';
 //		$headers[] = 'Errors-To: escolaramonicajal@gmail.com';
 		add_filter('wp_mail_content_type',create_function('', 'return "text/html";'));
+//
+		move_uploaded_file($_FILES["file"]["tmp_name"], WP_CONTENT_DIR .'/uploads/'.basename($_FILES["file"]["name"]));
+		$attachments = array(WP_CONTENT_DIR ."/uploads/".$_FILES["file"]["name"]);
+		
 // ONLY FOR DEBUG
-//		wp_mail('efraim.bayarri@gmail.com', $_POST['assumpte'], $html_text, $headers );
+//		if ( wp_mail( 'efraim.bayarri@gmail.com' , $_POST['assumpte'], $html_text, $headers, $attachments ) ){
+//			printf('[OK] enviant correu a: efraim bayarri <br>');
+//		}else{
+//			printf('[Error] enviant correu a: efraim bayarri <br>');
+//		}
+// NO DEBUG
 		for( $i = 0; $i < count($_POST['cbox']) ; $i++){
-			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca_alumne WHERE idalumne=%s',$_POST['cbox'][$i]),ARRAY_A,0);
+			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s',$_POST['cbox'][$i]),ARRAY_A,0);
 			if( strlen( $row['email'] ) > 0){
-//				if ( wp_mail( $row['email'] , $_POST['assumpte'], $html_text, $headers ) ){
-//					printf('[OK enviant correu a: %s %s, %s <br>', $row['cognom1'] , $row['cognom2'] , $row['nom']);
-//				}else{
-//					printf('Error %s enviant correu a: %s %s, %s <br>', $error , $row['cognom1'] , $row['cognom2'] , $row['nom']);
-//				}
+				if ( wp_mail( $row['email'] , $_POST['assumpte'], $html_text, $headers, $attachments ) ){
+					printf('[OK] enviant correu a: %s %s, %s <br>', $row['cognom1'] , $row['cognom2'] , $row['nom']);
+				}else{
+					printf('[Error] enviant correu a: %s %s, %s <br>', $row['cognom1'] , $row['cognom2'] , $row['nom']);
+				}
 			}
 		}
+//	END
 		unset($_POST['cercar']);
 	}
 }
