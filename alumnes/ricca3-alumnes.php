@@ -903,24 +903,24 @@ function ricca3_shortcode_especalum($atts, $content = null) {
   							'prova'  => $prova,
   							'condic' => $_POST['hist']['condic'][$z],
   							'cicle_codi'   => $encoded_codi,
-  							'cile_nom'    => $encoded_nom,
+  							'cicle_nom'    => $encoded_nom,
   							'cicle_any_de' => $encoded_anyd,
   							'cicle_any_a'  => $encoded_anya,
   							'cicle_curs'   => $encoded_curs,
-  							'obs'         => $_POST['obs'][$z],
+  							'obs'         => stripslashes($_POST['obs'][$z]),
   							'stampuser'   => $current_user->user_login,
   							'stampplace'  => 'ricca_shortcode_historial'
   					) ,
   					array( 'idalumne' => $_GET['ID'], 'idespecialitat' => $idespec['idespecialitat'] )
   			);
-//	alumnes
+//	alumnes 
   			$data_naix=strftime("%Y-%m-%d",strtotime(str_replace('/',"-",$_POST['alumne']['FechaNac'][$z])));
   			$wpdb->update('ricca3_alumne',
   					array(	'tipusdni'      => $_POST['alumne']['tipoDNI'][$z],
   							'datanai'       => $data_naix,
-  							'llocnai'       => $_POST['alumne']['LocalidadNac'][$z],
-  							'paisnai'       => $_POST['alumne']['PaisNac'][$z],
-  							'nacionalitat'  => $_POST['alumne']['nacionalitat'][$z],
+  							'llocnai'       => stripslashes($_POST['alumne']['LocalidadNac'][$z]),
+  							'paisnai'       => stripslashes($_POST['alumne']['PaisNac'][$z]),
+  							'nacionalitat'  => stripslashes($_POST['alumne']['nacionalitat'][$z]),
   							'stampuser'     => $current_user->user_login,
   							'stampplace'    => 'ricca_shortcode_historial'
   					),
@@ -1382,42 +1382,26 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 	__('Crèdit','ricca3-alum'), __('Hores','ricca3-alum'), __('Convocatoria','ricca3-alum'), __('Qualificació','ricca3-alum') );
 	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 //		entrada qualificacions
-//
-//	han de sortir totes les convocatories d'un mateix crédit amb la nota de la convocatoria:
-//		Crédit                          Hores   Convocatoria     Qualificació
-//		C-1 Adminstració i gestio....   60      06/11            4
-//                                              06/12            NP
-//                                              06/13            5
-// 		C-2 Física de les.....         120      06/11            5
-//      C-3 Estudis radialògics....    210      06/11            7
-//		.....
-//
-	$query  = $wpdb->prepare('SELECT * FROM ricca3_credits WHERE idespecialitat = %s ORDER BY ordre_cr ',$row['idespecialitat']);
-	$result = $wpdb->query( $query );
-//	mirem si l'alumne te resultats del crèdit
-	for( $i = 0; $i < $result; $i++ ){
-		$row_cred = $wpdb->get_row( $query, ARRAY_A, $i);
-		$query_cre  = $wpdb->prepare('SELECT * FROM ricca3_alumcredit_view WHERE idalumne = %s AND idespecialitat = %s AND idcredit = %s ORDER BY idany DESC ', $_GET['ID'], $row['idespecialitat'], $row_cred['idcredit']);
-		$result_cre = $wpdb->query( $query_cre );
-		if( $result_cre > 0){
-//	mirem a quantes convocatories del crèdit en te notes.
-			$query_convord  = $wpdb->prepare('SELECT DISTINCT convord FROM ricca3_alumcredit_view WHERE idalumne = %s AND idespecialitat = %s AND idcredit = %s ORDER BY idany ASC ', $_GET['ID'], $row['idespecialitat'], $row_cred['idcredit']);
-			$result_convord = $wpdb->query( $query_convord );
-			for( $j = 0; $j < $result_convord; $j++ ){
-				$row_conv = $wpdb->get_row( $query_convord, ARRAY_A, $j);
-				$query_conv = $wpdb->prepare('SELECT * FROM ricca3_alumcredit_view WHERE idalumne = %s AND idespecialitat = %s AND idcredit = %s AND convord = %s ORDER BY idany DESC ',
-					$_GET['ID'], $row['idespecialitat'], $row_cred['idcredit'], $row_conv['convord']);
-				$row_convord = $wpdb->get_row( $query_conv, ARRAY_A, 0);
-				if($j == 0){
-					printf('<tr><td width="380px">%s</td><td width="100px">%s</td><td width="100px">%s</td><td width="100px">%s</td></tr>',
-						$row_convord['nomcredit'], $row_convord['hores_cr'], $row_convord['convtext1'], $row_convord['notaf_cr'] );
-				}else{
-					printf('<tr><td width="380px">  </td><td width="100px">  </td><td width="100px">%s</td><td width="100px">%s</td></tr>',
-						$row_convord['convtext1'], $row_convord['notaf_cr'] );
-				}	
-			}
-		}
-	}
+	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
+			'FROM ricca.ricca3_credits_avaluacions '.
+			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+			'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s '.
+			'ORDER BY ricca3_credits.ordre_cr', $_GET['ID'], $_GET['espec'] ), ARRAY_A);
+	for( $i = 0; $i < count($dades_cred); $i++ ){
+		$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+				'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp=ricca3_credits_avaluacions.idccomp '.
+				'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+				'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+				'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup '.
+				'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_credits_avaluacions.idany '.
+				'INNER JOIN ricca3_professors ON ricca3_professors.idprof = ricca3_ccomp.idprofessor '.
+				'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s AND ricca3_credits.idcredit=%s '.
+				'ORDER BY ordre_cr, ricca3_credits_avaluacions.idccomp, ricca3_credits_avaluacions.idany DESC',
+				$_GET['ID'], $_GET['espec'], $dades_cred[$i]['idcredit']), ARRAY_A);
+		printf('<tr><td width="380px">%s</td><td width="100px">%s</td><td width="100px">%s</td><td width="100px">%s</td></tr>',
+					$dades_ccomp[0]['nomcredit'], $dades_ccomp[0]['hores_cr'], $dades_ccomp[0]['convord'], $dades_ccomp[0]['notaf_cr'] );
+	}	
 	for( $j = $i; $j < 25; $j++ ){
 		printf('<tr><td width="680px" colspan="4">&nbsp;</td></tr>', NULL );
 	}
@@ -1467,17 +1451,28 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 		__('Crèdit','ricca3-alum'), __('Hores','ricca3-alum'), __('Convocatoria','ricca3-alum'), __('Qualificació','ricca3-alum') );
 	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 //		entrada qualificacions
-	$decoded_modul   = json_decode($row['modul'], true);
-	$decoded_m_hores = json_decode($row['m_hores'], true);
-	$decoded_m_qual  = json_decode($row['m_qual'], true);
-	$decoded_m_conv  = json_decode($row['m_conv'], true);
-	for( $i = 0; $i < 16; $i++){
-		if( isset( $decoded_modul[$i])){
-			printf('<tr><td width="380px">%s    </td><td width="100px">%s</td><td width="100px">%s</td><td width="100px">%s</td></tr>',
-			$decoded_modul[$i], $decoded_m_hores[$i], $decoded_m_conv[$i], $decoded_m_qual[$i] );
-		}else{
-			printf('<tr><td width="380px">&nbsp;</td><td width="100px">  </td><td width="100px">  </td><td width="100px">  </td></tr>', NULL);
-		}
+	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
+			'FROM ricca.ricca3_credits_avaluacions '.
+			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+			'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s '.
+			'ORDER BY ricca3_credits.ordre_cr', $_GET['ID'], $_GET['espec'] ), ARRAY_A);
+	for( $i = 0; $i < count($dades_cred); $i++ ){
+		$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+				'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp=ricca3_credits_avaluacions.idccomp '.
+				'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+				'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+				'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup '.
+				'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_credits_avaluacions.idany '.
+				'INNER JOIN ricca3_professors ON ricca3_professors.idprof = ricca3_ccomp.idprofessor '.
+				'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s AND ricca3_credits.idcredit=%s '.
+				'ORDER BY ordre_cr, ricca3_credits_avaluacions.idccomp, ricca3_credits_avaluacions.idany DESC',
+				$_GET['ID'], $_GET['espec'], $dades_cred[$i]['idcredit']), ARRAY_A);
+		printf('<tr><td width="380px">%s</td><td width="100px">%s</td><td width="100px">%s</td><td width="100px">%s</td></tr>',
+		$dades_ccomp[0]['nomcredit'], $dades_ccomp[0]['hores_cr'], $dades_ccomp[0]['convord'], $dades_ccomp[0]['notaf_cr'] );
+	}
+	for( $j = $i; $j < 16; $j++ ){
+		printf('<tr><td width="680px" colspan="4">&nbsp;</td></tr>', NULL );
 	}
 	printf('</table>', NULL);
 //		qualificació final
@@ -1489,7 +1484,8 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 		__('Qualificació final del cicle formatíu','ricca3-alum'), $nota );
 	printf('                   <tr><td width="400px"><b>%s</b></td><td width="200px"></td></tr></table>', __('Observacions','ricca3-alum') );
 	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
-	printf('<br /><br /><br /><br />', NULL);
+	printf('<table><tr><td>%s</tr></td></table>', $row['obs']);
+	printf('<br /><br /><br />', NULL);
 //		diligencia
 	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 	printf('<table class="cap"><tr><td width="680px"><b>%s</b></td></tr>', __('Diligència de la validesa de l\'historial acadèmic','ricca3-alum') );
