@@ -56,6 +56,10 @@ add_shortcode( 'ricca3-afegircredit', 'ricca3_shortcode_afegircredit' );
 add_shortcode( 'ricca3-notafinal',    'ricca3_shortcode_notafinal' );
 add_shortcode( 'ricca3-caratula',     'ricca3_shortcode_caratula' );
 add_shortcode( 'ricca3-impcaratula',  'ricca3_shortcode_impcaratula' );
+add_shortcode( 'ricca3-esborraalumne','ricca3_shortcode_esborraalumne' );
+add_shortcode( 'ricca3-alumnes-sense-especialitat','ricca3_shortcode_alumnes_sense_especialitat' );
+
+
 
 add_shortcode( 'ricca3-avaluacions',  'ricca3_shortcode_avaluacions' );
 add_shortcode( 'ricca3-actes',        'ricca3_shortcode_actes' );

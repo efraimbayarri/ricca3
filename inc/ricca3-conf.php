@@ -362,10 +362,10 @@ $ricca3_butons_noualumne=array(
 /**   */
 #############################################################################################
 $ricca3_butons_dadesalumne=array(
-	"imatge" =>array("especalum",        "editardades",        "esborraalumne",        "alumnes",        "buid",           "buid"),
-	"enllac" =>array("ricca3-especalum", "ricca3-editardades", "ricca3-esborraalumne", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes"),
-	"id"     =>array(true,               true,                 true,                   false,            false,            false),
-	"texte"  =>array("",                 "" ,                  "",                     "",               "",               "")
+	"imatge" =>array("especalum",        "editardades",        "esborraalumne",        "alumnes",        "buid",                              "buid"),
+	"enllac" =>array("ricca3-especalum", "ricca3-editardades", "ricca3-esborraalumne", "ricca3-alumnes", "ricca3-alumnes-sense-especialitat", "ricca3-alumnes"),
+	"id"     =>array(true,               true,                 true,                   false,            true,                                false),
+	"texte"  =>array("",                 "" ,                  "",                     "",               "",                                  "")
 );
 
 #############################################################################################

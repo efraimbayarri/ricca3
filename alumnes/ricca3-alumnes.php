@@ -2894,6 +2894,87 @@ function ricca3_shortcode_notafinal($atts, $content = null) {
 	}	
 }
 
+#############################################################################################
+/**
+ * Esborrar alumne
+ * shortcode: [ricca3-esborraalumne]
+ *
+ * @since ricca3.v.2013.32.1
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_esborraalumne($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_editardades;
+	
+//		buscar les dades del alumne
+	$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s ',$_GET['ID']),ARRAY_A,0);
+//		missatge de capçalera de la pàgina
+	ricca3_missatge(sprintf('%s %s', __('Esborrar dades de l\'Alumne','ricca3-alum'), $row['cognomsinom']));
+	
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+//		preparar ajudes als butons
+	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
+	$ricca3_butons_editardades['texte'][1] = __('ajuda-editardades-dadesalumne',   'ricca3-alum');
+	$ricca3_butons_editardades['texte'][2] = __('ajuda-editardades-alumnes', 'ricca3-alum');
+//		mostrar la filera de butons
+	ricca3_butons( $ricca3_butons_editardades, 6, $token );
+	if(isset($_POST['esborrar']) && $_POST['esborrar'] == 'esborrar'){
+		if( $wpdb->delete('ricca3_alumne', array('idalumne' => $_GET['ID']) ) ){
+			ricca3_missatge( __('Alumne esborrat amb exit!', 'ricca3-alum'));
+		}else{
+			ricca3_missatge( __('NO s\'ha pogut esborrar l\'alumne! Comproveu que no té ni crèdits ni especialitats assignades abans d\'esborrar.', 'ricca3-alum'));
+		}
+	}else{
+//	imatge
+		$attachment_id = $row['attachment_id'];
+		if( strlen($attachment_id < 1 )) $attachment_id = 228;
+		$image_attributes = wp_get_attachment_image_src( $attachment_id, 'full' ); // returns an array
+		printf('<img src="%s" width="141" height="177">', $image_attributes[0] );
+		printf('<form method="post" action="" target="_self" name="editardades" id="myform"><table><tr class="credit"><td>%s %s<button type="submit" name="esborrar" value="esborrar" title="%s"><font size ="1px" face="Arial, Helvetica, sans-serif">%s</font></button></td></tr></table></form>',
+			__('Esteu a punt d\'esborrar l\'alumne:', 'ricca3-alum'), $row['cognomsinom'], __('ajuda-esborra-esborra', 'ricca3-alum') , __('Esborrar alumne','ricca3-alum'));
+	}
+}
 
-
+#############################################################################################
+/**
+ * Alumnes sense especialitat
+ * shortcode: [ricca3-alumnes-sense-especialitat]
+ *
+ * @since ricca3.v.2013.32.1
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_alumnes_sense_especialitat($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_editardades;
+	
+	dump_r($_POST);
+	
+//		missatge de capçalera de la pàgina
+	ricca3_missatge(sprintf('%s', __('Alumnes sense especialitat','ricca3-alum')));
+	
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+//		preparar ajudes als butons
+	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
+	$ricca3_butons_editardades['texte'][1] = __('ajuda-editardades-dadesalumne',   'ricca3-alum');
+	$ricca3_butons_editardades['texte'][2] = __('ajuda-editardades-alumnes', 'ricca3-alum');
+//		mostrar la filera de butons
+	ricca3_butons( $ricca3_butons_editardades, 6, $token );
+//
+	$dades_alum = $wpdb->get_results( 'SELECT * FROM ricca3_alumne ORDER BY idalumne', ARRAY_A);	
+	printf('<table>', NULL);
+	for( $i=0; $i < count($dades_alum); $i++){
+		$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s', $dades_alum[$i]['idalumne']));
+		if($result == 0){
+//			echo 	$dades_alum[$i]['idalumne'],', ';
+			printf('<tr><td><a href="%s/%s%s&espec=%s&grup=%s&any=%s&estat=%s&repe=%s">%s</a></td>' ,
+				site_url(), 'ricca3-dadesalumne/?ID=', $dades_alum[$i]['idalumne'], $token['espec'], $token['grup'], $token['any'], $token['estat'], $token['repe'], $dades_alum[$i]['idalumne'] );
+			printf('<td>%s</td>', $dades_alum[$i]['cognomsinom']);		
+			
+			printf('</tr>', NULL);
+		}
+	}
+	printf('<table>', NULL);
+}
 
