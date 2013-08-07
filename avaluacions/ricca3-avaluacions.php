@@ -691,3 +691,188 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 	}	
 }
 
+#############################################################################################
+/**
+ * entrada impresió certificats 1 curs
+ * shortcode: [ricca3-certifcurs1]
+ *
+ * @since ricca3.v.2013.32.3
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_certifcurs1($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_actes;
+	
+	ricca3_missatge( __('Certificats Primer Curs','ricca3-aval'));
+	$ricca3_butons_actes['texte'][0] = __('ajuda-aval-aval', 'ricca3-aval');
+//		butons
+	ricca3_butons( $ricca3_butons_actes, 6 );
+//	
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt600"><tr>', NULL);
+	printf('<td><button type="submit" name="cercar" value="grup" title="%s">%s</td>',
+	__('ajuda-notes-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+//		drop per el any
+	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+	ricca3_drop_any( __('Any:','ricca3-aval'), 'any', $data_any, 'idany', 'any', __('ajuda_notes_any', 'ricca3-aval'), 'actual' );
+//		drop per el grup
+	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups INNER JOIN ricca3_especialitats ON ricca3_grups.idespecialitat = ricca3_especialitats.idespecialitat '.
+		'WHERE actiu_gr = 1 AND idcurs=1 AND cursos=2 ORDER BY grup ', ARRAY_A );
+	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_notes_grup', 'ricca3-aval'), TRUE );
+//	
+	if( !isset( $_POST['data'] ) ){
+		$data = strftime("%d/%m/%Y");
+	}else{
+		$data = $_POST['data'];
+	}
+	printf('<td><INPUT type="text" name="data"	size=15 value="%s"></td>', $data);
+	
+	if( isset( $_POST['cast']) && $_POST['cast'] == 'si'){
+		printf('<td>%s<input type="checkbox" accesskey="" name="cast" value="si" title="" class="" checked></td>' , __('Cast','ric-ca-aval') );
+	}else{
+		printf('<td>%s<input type="checkbox" accesskey="" name="cast" value="si" title="" class="" ></td>' , __('Cast','ric-ca-aval') );
+		$_POST['cast'] = 'no';
+	}
+	
+	printf('</tr></table></form>', NULL);
+//
+	if( isset( $_POST['grup'] ) && $_POST['grup'] != '-1'){
+		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup'] ), ARRAY_A, 0 );
+		ricca3_missatge(sprintf('%s %s %s %s', __('Certificats de','ric-ca-aval'), $row_grup['grup'], __('amb data','ric-ca-aval'), $_POST['data']) );
+		printf('<table><tr>', NULL);
+		printf('<td><a href="%s/%s/?grup=%s&any=%s&data=%s&local=%s" target="POPUPW" onsubmit="POPUPW = window.open("about:blank","POPUPW","width=800,height=650" >',
+		site_url(), 'ricca3-impcertifcurs1', $_POST['grup'], $_POST['any'], $_POST['data'], $_POST['cast']);
+		printf('<button type="button"><img src="%s/ricca3/imatges/ricca3-%s.png" border=0 /></button></a></td>',WP_PLUGIN_URL, 'impassist');
+		printf('</tr></table>', NULL);
+	}
+}
+
+#############################################################################################
+/**
+ * impresió certificats 1 curs
+ * shortcode: [ricca3-impcertifcurs1]
+ *
+ * @since ricca3.v.2013.32.3
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_impcertifcurs1($atts, $content = null) {
+	global $wpdb;
+	
+//	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any   WHERE idkey  = %s', $_GET['any'] ), ARRAY_A, 0);
+	$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_GET['grup'] ), ARRAY_A, 0 );
+	
+	$query_alum  = $wpdb->prepare( 'SELECT * FROM ricca3_alumespec_view WHERE idany = %s AND idgrup = %s AND idestat_es=1 AND repeteix !="R" ORDER BY cognomsinom ASC ',$_GET['any'], $_GET['grup'] );
+	$dades_alum = $wpdb->get_results( $query_alum, ARRAY_A);
+//
+	$cicle =  __('CICLE FORMATIU DE GRAU SUPERIOR','ricca3-aval');
+	$curs  =  __('CURS ACADÈMIC:','ricca3-aval');
+	$alumne = __('ALUMNE/A:','ricca3-aval');
+	$curs2 =  __('CURS:','ricca3-aval');
+	$primer = __('1er','ricca3-aval');
+	$linea1 = __('L\'alumne/a ha realitzat els següents crèdits durant el curs acadèmic','ricca3-aval');
+	$modul1 = __('L\'alumne/a ha realitzat els següents mòduls durant el curs acadèmic','ricca3-aval');
+	$linea2 = __('i ha obtingut les següents qualificacions:','ricca3-aval');
+	$capmodul = __('MÒDUL','ricca3-aval');
+	$nommodul = __('NOM DEL MÒDUL','ricca3-aval');
+	$capcredit = __('CRÈDIT','ricca3-aval');
+	$nomcredit = __('NOM DEL CRÈDIT','ricca3-aval');
+	$hores     = __('HORES','ricca3-aval');
+	$data      = __('Data:','ricca3-aval');
+	$segell    = __('Segell del Centre', 'ricca3-aval');
+	if( $_GET['local'] == 'si'){
+		$cicle =  __('CICLO FORMATIVO DE GRADO SUPERIOR','ricca3-aval');
+		$curs  =  __('CURSO ACADÉMICO:','ricca3-aval');
+		$alumne = __('ALUMNO/A:','ricca3-aval');
+		$curs2 =  __('CURSO:','ricca3-aval');
+		$primer = __('1º','ricca3-aval');
+		$linea1 = __('El alumno/a ha realizado los seguientes créditos durante el curso académico','ricca3-aval');
+		$modul1 = __('El alumno/a ha realizado los seguientes módulos durante el curso académico','ricca3-aval');
+		$linea2 = __('y ha obtenido las siguientes calificaciones:','ricca3-aval');
+		$capmodul = __('MÓDULO','ricca3-aval');
+		$nommodul = __('NOMBRE DEL MÓDULO','ricca3-aval');
+		$capcredit = __('CRÉDITO','ricca3-aval');
+		$nomcredit = __('NOMBRE DEL CRÉDITO','ricca3-aval');
+		$hores     = __('HORAS','ricca3-aval');
+		$data      = __('Fecha:','ricca3-aval');
+		$segell    = __('Sello del Centro', 'ricca3-aval');
+	}
+	for( $i = 0; $i < count($dades_alum); $i++){
+		printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
+		printf('<br /><table class="center"><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s ',	$cicle);
+//
+		if($_GET['local'] != 'si' && ($_GET['grup'] == '7' || $_GET['grup'] == '9')){
+			printf('D\'', NULL);
+		}else{
+			printf('DE ', NULL);
+		}
+		printf('%s</b></font></td></tr></table>', $dades_alum[$i]['nomespecialitat']);
+		printf('<br /><table><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s</b></font></td></tr></table>', $curs, $dades_alum[$i]['any']);
+		printf('<br /><table><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s </b></font></td></tr></table>', $alumne, mb_strtoupper($dades_alum[$i]["cognomsinom"], "utf-8"));
+		printf('<table><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s</b></font></td></tr></table>', __('DNI:','ricca3-aval'), $dades_alum[$i]['dni']);
+		printf('<table><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s</b></font></td></tr></table>', $curs2, $primer);
+// diferencia entre modul i crèdit
+		if($_GET['grup'] == '1' || $_GET['grup'] == '4'){
+			printf('<table><tr><td> &nbsp;</td></tr><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s %s</b></font></td></tr></table>', $modul1, $dades_alum['any'], $linea2 );
+		}else{
+			printf('<table><tr><td> &nbsp;</td></tr><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s %s</b></font></td></tr></table>', $linea1, $row['any'], $linea2);
+		}
+##
+##	FINAL DE CAPÇALERA
+##
+// diferencia entre modul i crèdit
+		if($_GET['grup'] == '1' || $_GET['grup'] == '10'){
+			printf('<table class="cos"><tr><td align="center" width="15%%">%s</td>', $capmodul);
+			printf('<td align="center" width="65%%">%s</td>',                        $nommodul);
+		}else{
+			printf('<table class="cos"><tr><td align="center" width="15%%">%s</td>', $capcredit);
+			printf('<td align="center" width="65%%">%s</td>',                        $nomcredit);
+		}
+		printf('<td align="center" width="10%%">%s</td>',                        $hores);
+		printf('<td align="center" width="10%%">%s</td></tr>',                   __('NOTA','ricca3-aval'));
+//	
+	$query_cred = $wpdb->prepare('SELECT DISTINCT ordre_cr, credit, hores_cr, notaf_cr FROM ricca3_credits_avaluacions '.
+		'INNER JOIN ricca3_any                 ON ricca3_any.idany                    = ricca3_credits_avaluacions.idany '.
+		'INNER JOIN ricca3_ccomp               ON ricca3_ccomp.idccomp                = ricca3_credits_avaluacions.idccomp '.
+		'INNER JOIN ricca3_credits             ON ricca3_credits.idcredit             = ricca3_ccomp.idcredit '.
+		'INNER JOIN ricca3_grups               ON ricca3_grups.idgrup                 = ricca3_ccomp.idgrup '.
+		'INNER JOIN ricca3_professors          ON ricca3_professors.idprof            = ricca3_ccomp.idprofessor '.
+		'INNER JOIN ricca3_tutors              ON ricca3_tutors.idprof                = ricca3_ccomp.idtutor '.
+		'INNER JOIN ricca3_alumne              ON ricca3_alumne.idalumne              = ricca3_credits_avaluacions.idalumne '.
+		'INNER JOIN ricca3_especialitats       ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+		'INNER JOIN ricca3_cursos              ON ricca3_cursos.idcurs                = ricca3_credits.idcurs '.
+		'INNER JOIN ricca3_alumne_especialitat ON ricca3_alumne_especialitat.idalumne = ricca3_alumne.idalumne '.
+		'AND ricca3_alumne_especialitat.idgrup   = ricca3_grups.idgrup '.
+		'WHERE ricca3_credits_avaluacions.idany=%s AND ricca3_especialitats.idespecialitat=%s and ricca3_alumne.idalumne=%s ORDER BY ordre_cr ASC, nomccomp ASC ', 
+		$_GET['any'], $row_grup['idespecialitat'], $dades_alum[$i]['idalumne']);
+	
+		$dades_cred = $wpdb->get_results( $query_cred, ARRAY_A);
+		for ( $j = 0; $j < count($dades_cred); $j++){
+//	no incloure el crèdit d'informàtica a pròtesis primer
+			if($dades_cred[$j]['ordre_cr'] == '20' && $_GET['grup'] == '1'){
+//	fi de no incloure
+			}else{
+				if($dades_cred[$j]['ordre_cr'] == '20'){
+					printf('<tr><td align="center"><b></b><br /></td><td>%s</td><td align="center">%s</td><td align="center">%s</td></tr>',
+						$dades_cred[$j]['credit'], $dades_cred[$j]['hores_cr'], $dades_cred[$j]['notaf_cr']);
+				}else{
+					printf('<tr><td align="center"><b>%s</b><br /></td><td>%s</td><td align="center">%s</td><td align="center">%s</td></tr>',
+						$dades_cred[$j]['ordre_cr'], $dades_cred[$j]['credit'], $dades_cred[$j]['hores_cr'], $dades_cred[$j]['notaf_cr']);
+				}
+			}
+		}
+	printf('</table>', NULL);
+##
+##	PEU DE PAGINA
+##
+	printf('<table class="cap"><tr><td width="81%%"> &nbsp; </td><td> &nbsp; </td></tr><tr><td>%s %s</td><td></td></tr>',
+			$data, $_GET['data']);
+	printf('<tr><td> &nbsp; </td><td></td></tr><tr><td> &nbsp; </td><td></td></tr><tr><td>%s</td><td>%s</td></tr></table>',
+			__('El/la director/a','ricca3-aval'), $segell);
+	
+	$table=" class=\"cap\" style=\"page-break-after: always;\" ";
+	if($i == $result_alum - 1) $table=" class=\"cap\" ";
+		printf('<table %s><tr><td></td></tr></table>',$table);
+	}	
+}
+

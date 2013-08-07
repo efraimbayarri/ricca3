@@ -1,0 +1,10 @@
+[ricca3-certifcurs1]    RICCA3 entrada impresió certificats 1 curs
+[ricca3-impcertifcurs1] RICCA3 impresió certificats primer curs (RAW)
+
+
+
+
+
+
+afegir ricca3_alumne.dni  a ricca3_alumespec_view
+
