@@ -2601,7 +2601,7 @@ function ricca3_shortcode_credpendents($atts, $content = null) {
 	global $wpdb;
 	global $current_user;
 	global $ricca3_alumpendi;
-	global $ricca3_butons_cercalumne;
+	global $ricca3_butons_credpendents;
 	get_currentuserinfo();
 	
 	if(isset($_POST['crear']) && $_POST['crear'] == 'guardar'){
@@ -2639,9 +2639,9 @@ function ricca3_shortcode_credpendents($atts, $content = null) {
 //		crear token
 	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
 //		preparar ajudes als butons
-	$ricca3_butons_cercalumne['texte'][0] = __('ajuda-alumnes', 'ricca3-alum');
+	$ricca3_butons_credpendents['texte'][0] = __('ajuda-alumnes', 'ricca3-alum');
 //		mostrar la filera de butons
-	ricca3_butons( $ricca3_butons_cercalumne, 6, $token );
+	ricca3_butons( $ricca3_butons_credpendents, 6, $token );
 //		ajuda a la graella
 	$ricca3_alumpendi['ajuda'][2] = __('ajuda-alumpendi-nom', 'ricca3-alum');
 	$ricca3_alumpendi['ajuda'][3] = __('ajuda-alumpendi-any', 'ricca3-alum');
@@ -2661,6 +2661,88 @@ function ricca3_shortcode_credpendents($atts, $content = null) {
 									'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup '.
 									'WHERE pendi="P" ORDER BY cognomsinom ASC', ARRAY_A); 
 //		llistat de les especialitats del alumne
+	printf('<form method="post" action="" target="_self" name="Baixes" id="especrepe">', NULL);
+	ricca3_graella( $ricca3_alumpendi, $data_view, $token );
+	printf('</table><table><tr><td><button type="submit" name="crear" value="guardar"><font size ="1px" face="Arial, Helvetica, sans-serif">', NULL);
+	printf('%s</td></tr></table></form>', __('Assignar crèdits als alumnes seleccionats','ricca3-alum'));
+}
+
+#############################################################################################
+/**
+ * Alumnes amb crèdits pendents per el curs actual
+ * shortcode: [ricca3-credpendentsactual]
+ *
+ * @since ricca3.v.2013.40.5
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_pendactual($atts, $content = null) {
+	global $wpdb;
+	global $current_user;
+	global $ricca3_alumpendi;
+	global $ricca3_butons_cercalumne;
+	get_currentuserinfo();
+
+	if(isset($_POST['crear']) && $_POST['crear'] == 'guardar'){
+		for( $i = 0; $i < count($_POST['cbox']); $i++){
+			$row_cre = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+					'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+					'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+					'WHERE idcredaval = %s', $_POST['cbox'][$i] ), ARRAY_A, 0);
+			$row_any = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1', ARRAY_A, 0);
+			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
+			$wpdb->insert('ricca3_credits_avaluacions',
+					array(
+							'idany'          => $row_any['idany'],
+							'idccomp'        => $row_cre['idccomp'],
+							'idalumne'       => $row_cre['idalumne'],
+							'repe'           => 'R',
+							'convord'        => $row_any['conv'],
+							'stampuser'      => $current_user->user_login,
+							'stampplace'     => 'ricca_shortcode_credpendents_insert'
+					)
+			);
+			$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idgrup=%s', $row_cre['idalumne'], $row_cre['idgrup'] ));
+			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ),
+					array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'] ) );
+			//	afegir especialitat als alumnes repetidors (no als que estan fent segon i tenen perndents de primer)
+			if(!$wpdb->query($wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s AND idany=%s ',
+					$row_cre['idalumne'], $row_cre['idespecialitat'], $row_any['idany']))){
+				$wpdb->insert('ricca3_alumne_especialitat', array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'], 'idany' => $row_any['idany'], 'idestat_es' => 1, 'repeteix' => 'R'));
+			}
+			ricca3_missatge( __('Crèdit afegit correctament','ricca3-alum') );
+		}
+	}
+	//		missatge de capçalera de la pàgina
+	ricca3_missatge(__('Alumnes amb crèdits pendents en el curs actual','ricca3-alum'));
+	//		crear token
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+	//		preparar ajudes als butons
+	$ricca3_butons_cercalumne['texte'][0] = __('ajuda-alumnes', 'ricca3-alum');
+	//		mostrar la filera de butons
+	ricca3_butons( $ricca3_butons_cercalumne, 6, $token );
+	//		ajuda a la graella
+	$ricca3_alumpendi['ajuda'][2] = __('ajuda-alumpendi-nom', 'ricca3-alum');
+	$ricca3_alumpendi['ajuda'][3] = __('ajuda-alumpendi-any', 'ricca3-alum');
+	$ricca3_alumpendi['ajuda'][4] = __('ajuda-alumpendi-cred', 'ricca3-alum');
+	//		buscar especialitats
+	$data_view = $wpdb->get_results('SELECT ricca3_credits_avaluacions.idcredaval, '.
+			'ricca3_alumne.idalumne, '.
+			'ricca3_alumne.cognomsinom, '.
+			'ricca3_credits_avaluacions.idany, '.
+			'ricca3_any.any, '.
+			'ricca3_ccomp.nomccomp, '.
+			'ricca3_grups.grup, '.
+			'ricca3_alumne_especialitat.idestat_es '.
+			'FROM ricca3_credits_avaluacions '.
+			'INNER JOIN ricca3_alumne ON ricca3_alumne.idalumne = ricca3_credits_avaluacions.idalumne '.
+			'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_credits_avaluacions.idany '.
+			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+			'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup '.
+			'INNER JOIN ricca3_alumne_especialitat ON ricca3_alumne_especialitat.idalumne = ricca3_alumne.idalumne '.
+			'AND ricca3_alumne_especialitat.idgrup = ricca3_grups.idgrup '.
+			'WHERE pendi="P" AND idestat_es = 1 ORDER BY cognomsinom ASC', ARRAY_A);
+	//		llistat de les especialitats del alumne
 	printf('<form method="post" action="" target="_self" name="Baixes" id="especrepe">', NULL);
 	ricca3_graella( $ricca3_alumpendi, $data_view, $token );
 	printf('</table><table><tr><td><button type="submit" name="crear" value="guardar"><font size ="1px" face="Arial, Helvetica, sans-serif">', NULL);

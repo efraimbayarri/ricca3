@@ -51,6 +51,7 @@ add_shortcode( 'ricca3-especrepe',    'ricca3_shortcode_especrepe' );
 add_shortcode( 'ricca3-canviany',     'ricca3_shortcode_canviany' );
 add_shortcode( 'ricca3-mailings',     'ricca3_shortcode_mailings' );
 add_shortcode( 'ricca3-credpendents', 'ricca3_shortcode_credpendents' );
+add_shortcode( 'ricca3-pendactual',   'ricca3_shortcode_pendactual' );
 add_shortcode( 'ricca3-pregrup',      'ricca3_shortcode_pregrup' );
 add_shortcode( 'ricca3-afegircredit', 'ricca3_shortcode_afegircredit' );
 add_shortcode( 'ricca3-notafinal',    'ricca3_shortcode_notafinal' );

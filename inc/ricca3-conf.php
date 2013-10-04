@@ -351,6 +351,16 @@ $ricca3_butons_cercalumne=array(
 #############################################################################################
 /**   */
 #############################################################################################
+$ricca3_butons_credpendents=array(
+"imatge" =>array("alumnes",        "pendactual",        "buid",           "buid",           "buid",           "buid"),
+"enllac" =>array("ricca3-alumnes", "ricca3-pendactual", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes"),
+"id"     =>array(false,            false,               false,            false,            false,             false),
+"texte"  =>array("",               "" ,                 "",               "",               "",                "")
+);
+
+#############################################################################################
+/**   */
+#############################################################################################
 $ricca3_butons_noualumne=array(
 	"imatge" =>array("especalum",        "buid",           "buid",           "buid",           "buid",           "buid"),
 	"enllac" =>array("ricca3-especalum", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes"),
