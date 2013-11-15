@@ -166,7 +166,7 @@ function ricca3_shortcode_cred($atts, $content = null) {
 	if(isset($_POST['cercar'])){
 		$query = "SELECT * FROM ricca3_credits WHERE 1 = 1";
 		if( $_POST['espec'] != "-1") $query = substr_replace( $query," AND idespecialitat = '".$_POST['espec']."' ",strlen( $query ) , 0 );
-		if( $_POST['estat'] != "-1") $query = substr_replace( $query," AND actiu_es='"  .$_POST['estat']."' ",strlen( $query ) , 0 );
+		if( $_POST['estat'] != "-1") $query = substr_replace( $query," AND actiu_cr='"  .$_POST['estat']."' ",strlen( $query ) , 0 );
 		if( $_POST['curs']  != "-1") $query = substr_replace( $query," AND idcurs='"   .$_POST['curs']."' ",strlen( $query ) , 0 );
 		$query = substr_replace( $query," ORDER BY ordre_cr ASC ",strlen( $query ), 0 );
 	}
@@ -521,7 +521,7 @@ function ricca3_shortcode_ccomp($atts, $content = null) {
 						'idprofessor' => $_POST['idprofessor'][$i],
 						'idtutor'     => $_POST['idtutor'][$i],
 						'actiu_cc'    => $_POST['actiu_cc'][$i],
-						'nomccomp'    => $_POST['nomccomp'][$i],
+						'nomccomp'    => stripslashes($_POST['nomccomp'][$i]),
 						'stampuser'   => $current_user->user_login,
 						'stampplace'  => 'ricca_shortcode_grups' ),
 				array( 'idccomp' => $_POST['idccomp'][$i]) 	) ;
@@ -783,7 +783,7 @@ function ricca3_shortcode_sensepla($atts, $content = null) {
 				"INNER JOIN ricca3_alumne ON ricca3_alumne.idalumne = ricca3_alumne_especialitat.idalumne ".
 				"INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup ".
 				"INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_grups.idespecialitat ".
-				"WHERE ricca3_alumne_especialitat.idany='".$row_any['idany']."' AND idestat_es = 1  ";
+				"WHERE ricca3_alumne_especialitat.idany='".$row_any['idany']."' AND idestat_es = 1 AND repeteix != 'R' ";
 		if( $_POST['grup']  != "-1") $query = substr_replace( $query," AND ricca3_alumne_especialitat.idgrup='".$_POST['grup']."' ",strlen( $query ) , 0 );
 		$query = substr_replace( $query," ORDER BY cognomsinom ASC ",strlen( $query ), 0 );
 		$data_view = $wpdb->get_results( $query, ARRAY_A);
