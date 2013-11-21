@@ -72,6 +72,8 @@ add_shortcode( 'ricca3-certif',       'ricca3_shortcode_certif' );
 add_shortcode( 'ricca3-impcertif',    'ricca3_shortcode_impcertif' );
 add_shortcode( 'ricca3-certifcurs1',  'ricca3_shortcode_certifcurs1' );
 add_shortcode( 'ricca3-impcertifcurs1','ricca3_shortcode_impcertifcurs1' );
+add_shortcode( 'ricca3-certiffinal',  'ricca3_shortcode_certiffinal' );
+add_shortcode( 'ricca3-impcertiffinal','ricca3_shortcode_impcertiffinal' );
 
 add_shortcode( 'ricca3-dades',        'ricca3_shortcode_dades' );
 add_shortcode( 'ricca3-espec',        'ricca3_shortcode_espec' );

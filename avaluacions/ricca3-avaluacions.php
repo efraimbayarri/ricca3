@@ -728,9 +728,9 @@ function ricca3_shortcode_certifcurs1($atts, $content = null) {
 	printf('<td><INPUT type="text" name="data"	size=15 value="%s"></td>', $data);
 	
 	if( isset( $_POST['cast']) && $_POST['cast'] == 'si'){
-		printf('<td>%s<input type="checkbox" accesskey="" name="cast" value="si" title="" class="" checked></td>' , __('Cast','ric-ca-aval') );
+		printf('<td>%s<input type="checkbox" accesskey="" name="cast" value="si" title="" class="" checked></td>' , __('Cast','ricca3-aval') );
 	}else{
-		printf('<td>%s<input type="checkbox" accesskey="" name="cast" value="si" title="" class="" ></td>' , __('Cast','ric-ca-aval') );
+		printf('<td>%s<input type="checkbox" accesskey="" name="cast" value="si" title="" class="" ></td>' , __('Cast','ricca3-aval') );
 		$_POST['cast'] = 'no';
 	}
 	
@@ -738,7 +738,7 @@ function ricca3_shortcode_certifcurs1($atts, $content = null) {
 //
 	if( isset( $_POST['grup'] ) && $_POST['grup'] != '-1'){
 		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup'] ), ARRAY_A, 0 );
-		ricca3_missatge(sprintf('%s %s %s %s', __('Certificats de','ric-ca-aval'), $row_grup['grup'], __('amb data','ric-ca-aval'), $_POST['data']) );
+		ricca3_missatge(sprintf('%s %s %s %s', __('Certificats de','ricca3-aval'), $row_grup['grup'], __('amb data','ricca3-aval'), $_POST['data']) );
 		printf('<table><tr>', NULL);
 		printf('<td><a href="%s/%s/?grup=%s&any=%s&data=%s&local=%s" target="POPUPW" onsubmit="POPUPW = window.open("about:blank","POPUPW","width=800,height=650" >',
 		site_url(), 'ricca3-impcertifcurs1', $_POST['grup'], $_POST['any'], $_POST['data'], $_POST['cast']);
@@ -876,3 +876,332 @@ function ricca3_shortcode_impcertifcurs1($atts, $content = null) {
 	}	
 }
 
+#############################################################################################
+/**
+ * entrada impresió certificats final
+ * shortcode: [ricca3-certiffinal]
+ *
+ * @since ricca3.v.2013.47.1
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_certiffinal($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_actes;
+
+	ricca3_missatge(__('Certificats Final','ricca3-aval'));	
+	ricca3_butons( $ricca3_butons_actes, 6 );
+//	
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt800"><tr>', NULL);
+	printf('<td><button type="submit" name="cercar" value="grup"><img src=%s/ric-ca/images/ric-ca-escollir.png " border="0" /></button></td>',WP_PLUGIN_URL);
+//	
+//		drop per el any
+	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+	ricca3_drop_any( __('Any:','ricca3-aval'), 'any', $data_any, 'idany', 'any', __('ajuda_notes_any', 'ricca3-aval'), 'actual' );
+//		drop per el grup
+	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups INNER JOIN ricca3_especialitats ON ricca3_grups.idespecialitat = ricca3_especialitats.idespecialitat '.
+		'WHERE actiu_gr = 1 AND ( idcurs=2 OR ricca3_grups.idespecialitat=6) ORDER BY grup ', ARRAY_A );
+	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_notes_grup', 'ricca3-aval'), TRUE );
+//	
+	if( !isset( $_POST['data'] ) ){
+		$data = strftime("%d/%m/%Y");
+	}else{
+		$data = $_POST['data'];
+	}
+	printf('<td><INPUT type="text" name="data"	size=15 value="%s"></td>', $data);
+	
+	
+	if( isset( $_POST['cast']) && $_POST['cast'] == 'si'){
+		printf('<td>%s<input type="checkbox" accesskey="" name="cast" value="si" title="" class="" checked></td>' , __('Cast','ricca3-aval') );
+	}else{
+		printf('<td>%s<input type="checkbox" accesskey="" name="cast" value="si" title="" class="" ></td>' , __('Cast','ricca3-aval') );
+		$_POST['cast'] = 'no';
+	}
+	
+	printf('</tr></table></form>', NULL);
+	if( isset( $_POST['grup'] ) && $_POST['grup'] != '-1'){
+		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup'] ), ARRAY_A, 0 );
+		ricca3_missatge(sprintf('%s %s %s %s', __('Certificats finals de','ricca3-aval'), $row_grup['grup'], __('amb data','ricca3-aval'), $_POST['data']) );
+		printf('<table><tr>', NULL);
+		printf('<td><a href="%s/%s/?grup=%s&any=%s&data=%s&local=%s" target="POPUPW" onsubmit="POPUPW = window.open("about:blank","POPUPW","width=800,height=650" >',
+		site_url(), 'ricca3-impcertiffinal', $_POST['grup'], $_POST['any'], $_POST['data'], $_POST['cast']);
+		printf('<button type="button"><img src="%s/ricca3/imatges/ricca3-%s.png" border=0 /></button></a></td>',WP_PLUGIN_URL, 'impassist');
+		printf('</tr></table>', NULL);
+	}
+}
+
+#############################################################################################
+/**
+ * impresió certificats finals
+ * shortcode: [ricca3-impcertiffinal]
+ *
+ * @since ricca3.v.2013.32.3
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_impcertiffinal($atts, $content = null) {
+	global $wpdb;
+//localització
+	$certif      = __('Certificat d\'estudis complerts de CFGS, per a l\'accès a estudis universitaris','ric-ca-aval');
+	$dadescentre = __('Dades del Centre','ric-ca-aval');
+	$codicentre  = __('Codi','ric-ca-aval');
+	$nomcentre   = __('Nom del centre','ric-ca-aval');
+	$adreca      = __('Adreça','ric-ca-aval');
+	$municipi    = __('Municipi','ric-ca-aval');
+	$carles      = __('CARLOS AYLAGAS MOLERO, secretari de centre ESCOLA RAMON I CAJAL, d\'acord amb la documentació que hi ha disponible en aquesta secretaria,','ric-ca-aval');
+	$dni         = __('amb DNI/NIE/Passaport Nº','ric-ca-aval');
+	$numdni      = __('amb el document de identificació','ric-ca-aval');
+	$cursat      = __('ha cursat i superat el cicle formatiu','ric-ca-aval');
+	$reial1      = __('regulat pel Reial decret número','ric-ca-aval');
+	$reial2      = __('/1995 de data 7 d\'abril','ric-ca-aval');
+	$qualifica   = __('l\'alumne/a ha obtingut la qualificació final de:','ric-ca-aval');
+	$consti      = __('I, per que consti, signo aquest certificat, amb el vist i plau de la directora del centre.','ric-ca-aval');
+	$firma       = __('Signatura del secretari','ric-ca-aval');
+	$vistiplau   = __('Vist i plau de la directora','ric-ca-aval');
+	$nom         = __('Nom i cognoms','ric-ca-aval');
+	$segell      = __('SEGELL DEL CENTRE','ric-ca-aval');
+//
+	$histo       = __('Historial acadèmic','ric-ca-aval');
+	$resultats   = __('Resultats de l\'avaluació dels crèdits','ric-ca-aval');
+	$forma       = __('Formació professional inicial','ric-ca-aval');
+	$dadesalum   = __('Dades de l\'alumne/a','ric-ca-aval');
+	$cognoms     = __('Cognoms i nom','ric-ca-aval');
+	$passap      = __('DNI/NIE/passaport','ric-ca-aval');
+	$numident    = __('Núm. d\'identificació','ric-ca-aval');
+	$dadesacad   = __('Dades acadèmiques','ric-ca-aval');
+	$codicicle   = __('Codi','ric-ca-aval');
+	$nomcicle    = __('Nom del cicle formatiu','ric-ca-aval');
+	$grau        = __('Grau','ric-ca-aval');
+	$quali       = __('Qualificacions','ric-ca-aval');
+	$nomcredit   = __('Crèdit','ric-ca-aval');
+	$hores       = __('Hores','ric-ca-aval');
+	$convo       = __('Convocatoria','ric-ca-aval');
+	$qualicred   =  __('Qualificació','ric-ca-aval');
+	$qualicf     = __('Qualificació final del cicle formatíu','ric-ca-aval');
+	$observa     = __('Observacions','ric-ca-aval');
+	$dili        = __('Diligència de la validesa de l\'historial acadèmic','ric-ca-aval');
+	$carles2     = __('CARLOS AYLAGAS MOLERO Secretari del centre ESCOLA RAMON I CAJAL amb codi 08035672 certifica que les dades que figuren en aquest historial 	reflecteixen les que consten en la documentació dipositada a la secretaria d\'aquest centre.', 'ric-ca-aval');
+	$llocidata   = __('Lloc i data','ric-ca-aval');
+	if( $_GET['local'] == 'si'){
+		$certif      = __('Certificado de estudios cumpletados de CFGS para el acceso a estudios universitarios','ric-ca-aval');
+		$dadescentre = __('Datos del Centro','ric-ca-aval');
+		$codicentre  = __('Código','ric-ca-aval');
+		$nomcentre   = __('Nombre del centro','ric-ca-aval');
+		$adreca      = __('Dirección','ric-ca-aval');
+		$municipi    = __('Municipio','ric-ca-aval');
+		$carles      = __('CARLOS AYLAGAS MOLERO, secretario del centro ESCOLA RAMON I CAJAL, de acuerdo con la documentación que hay disponible en esta secretaría,','ric-ca-aval');
+		$dni         = __('con DNI/NIE/Pasaporte Nº','ric-ca-aval');
+		$numdni      = __('con el número de identificación','ric-ca-aval');
+		$cursat      = __('ha cursado y superado el ciclo formativo','ric-ca-aval');
+		$reial1      = __('regulado por el Real decreto número','ric-ca-aval');
+		$reial2      = __('/1995 de fecha 7 de Abril','ric-ca-aval');
+		$qualifica   = __('El alumno/a ha obtenido la calificación final de:','ric-ca-aval');
+		$consti      = __('Y, para que conste, firmo este certificado, con el visto bueno de la directora del centro.','ric-ca-aval');
+		$firma       = __('Firma del secretario','ric-ca-aval');
+		$vistiplau   = __('Visto bueno de la directora','ric-ca-aval');
+		$nom         = __('Nombre y apellidos','ric-ca-aval');
+		$segell      = __('SELLO DEL CENTRO','ric-ca-aval');
+//
+		$histo       = __('Historial académico','ric-ca-aval');
+		$resultats   = __('Resultados de la evaluación de los créditos','ric-ca-aval');
+		$forma       = __('Formación profesional inicial','ric-ca-aval');
+		$dadesalum   = __('Datos del alumno/a','ric-ca-aval');
+		$cognoms     = __('Apellidos y nombre','ric-ca-aval');
+		$passap      = __('DNI/NIE/pasaporte','ric-ca-aval');
+		$numident    = __('Núm. de identificación','ric-ca-aval');
+		$dadesacad   = __('Datos académicos','ric-ca-aval');
+		$codicicle   = __('Código','ric-ca-aval');
+		$nomcicle    = __('Nombre del ciclo formativo','ric-ca-aval');
+		$grau        = __('Grado','ric-ca-aval');
+		$quali       = __('Calificaciones','ric-ca-aval');
+		$nomcredit   = __('Crédito','ric-ca-aval');
+		$hores       = __('Horas','ric-ca-aval');
+		$convo       = __('Convocatoria','ric-ca-aval');
+		$qualicred   = __('Calificación','ric-ca-aval');
+		$qualicf     = __('Calificación final del ciclo formativo','ric-ca-aval');
+		$observa     = __('Observaciones','ric-ca-aval');
+		$dili        = __('Diligencia de la validez del historial académico','ric-ca-aval');
+		$carles2     = __('CARLOS AYLAGAS MOLERO Secretario del centro ESCOLA RAMON I CAJAL con código 08035672 certifica que los datos que figuran en este historial reflejan los que constan en la documentación depositada en la secretaría de este centro.', 'ric-ca-aval');
+		$llocidata   = __('Lugar y fecha','ric-ca-aval');
+	}
+//
+	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any   WHERE idany  = %s', $_GET['any'] ), ARRAY_A, 0);
+	$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_GET['grup'] ), ARRAY_A, 0 );
+	$query_alum  = $wpdb->prepare( 'SELECT * FROM ricca3_alumespec_view WHERE idany = %s AND idgrup = %s AND estat="Alta" ORDER BY cognomsinom ASC ',$row_any['idany'], $_GET['grup'] );
+	$result_alum = $wpdb->query( $query_alum );
+//	echo $query_alum;
+	for( $i = 0; $i < $result_alum; $i++){
+		$row_alumespec = $wpdb->get_row( $query_alum, ARRAY_A, $i);
+		$row_alum = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_alumne WHERE idalumne=%s', $row_alumespec['idalumne']), ARRAY_A, 0);
+		printf('<table class="cap"> <tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
+		printf('<table class="cap"><tr><td width="680px" colspan="3" class="gran"><b>%s</b></td></tr>',	$histo );
+		printf('                   <tr><td width="460px" colspan="2"><b>%s</b></td><td width="230px" class="dereta"><b>%s</b></td>',
+		$resultats, $forma );
+		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+//	dades del alumne
+		printf('<table class="cap"><tr><td width="230px" colspan="3"><b>%s</b></td></tr>', $dadesalum );
+		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+		printf('                   <tr><td width="340px">%s</td><td width="170px">%s</td><td width="170px">%s</td></tr>',
+		$cognoms, $passap, $numident );
+		printf('<tr><td class="gran">%s</td><td class="gran">%s</td><td class="gran">%s</td></tr>',
+		$row_alum['cognomsinom'], $row_alum['dni'], $row_alum['idalumne'] );
+		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+//	dades acadèmiques
+		$row_espec = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_especialitats WHERE idespecialitat= %s', $row_alumespec['idespecialitat']), ARRAY_A, 0);
+		printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>', $dadesacad );
+		printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+		printf('                   <tr><td width="100px">%s</td><td width="480px" colspan="2">%s</td><td width="100px">%s</td></tr>',
+		$codicicle, $nomcicle, $grau );
+		printf('<tr><td class="gran">%s</td>', $row_espec['codiespecialitat']);
+		if( $_GET['local'] == 'si'){
+			printf('<td class="gran" colspan="2">%s</td>',$row_espec['nomespecialitat_cast']);
+		}else{
+			printf('<td class="gran" colspan="2">%s</td>',$row_espec['nomespecialitat']);
+		}
+		printf('<td class="gran">%s</td></tr>', __('SUPERIOR','ric-ca-alum') );
+		printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+//	qualificacions
+		printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>', $quali);
+		printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+		printf('                   <tr><td width="380px">%s</td><td width="100px" >%s</td><td width="100px" >%s</td><td width="100px" >%s</td></tr>',
+		$nomcredit, $hores, $convo, $qualicred );
+		printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+//	entrada qualificacions
+		$query  = $wpdb->prepare('SELECT * FROM ricca3_credits WHERE idespecialitat = %s ORDER BY ordre_cr ',$row_alumespec['idespecialitat']);
+		$result = $wpdb->query( $query );
+//			mirem si l'alumne te resultats del crèdit
+		for( $j = 0; $j < $result; $j++ ){
+			$row_cred = $wpdb->get_row( $query, ARRAY_A, $j);
+//			$query_cre  = $wpdb->prepare('SELECT * FROM ricca3_alumcredit_view WHERE idalumne = %s AND idespecialitat = %s AND idcredit = %s ORDER BY idany DESC ',
+//					$row_alumespec['idalumne'], $row_alumespec['idespecialitat'], $row_cred['idcredit']);
+			$query_cre = $wpdb->prepare('SELECT ricca3_credits_avaluacions.idcredaval, '.
+										'ricca3_credits_avaluacions.idany, '.
+										'ricca3_credits_avaluacions.idalumne, '.
+										'ricca3_credits_avaluacions.idccomp, '.
+										'ricca3_credits_avaluacions.convord, '.
+										'ricca3_credits_avaluacions.notaf_cr, '.
+										'ricca3_ccomp.idcredit, '.
+										'ricca3_credits.idcredit, '.
+										'ricca3_credits.nomcredit, '.
+										'ricca3_credits.hores_cr, '.
+										'ricca3_credits.idespecialitat '.
+										'FROM ricca3_credits_avaluacions '.
+										'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+										'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+										'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+										'WHERE idalumne = %s AND ricca3_credits.idespecialitat = %s AND ricca3_ccomp.idcredit = %s ORDER BY idany DESC ',
+										$row_alumespec['idalumne'], $row_alumespec['idespecialitat'], $row_cred['idcredit']);
+//			echo $query_cre;
+			$result_cre = $wpdb->query( $query_cre );
+//			echo '<br />',$row_cred['idcredit'],' -> ', $result_cre;
+			if( $result_cre > 0){
+				$row = $wpdb->get_row( $query_cre, ARRAY_A, 0 );
+				if( $_GET['local'] == 'si'){
+					$row_local=$wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_credits WHERE idcredit=%s', $row_cred['idcredit']), ARRAY_A,0);
+					printf('<tr><td width="380px" >%s</td>',$row_local['nomcredit_cast']);
+				}else{
+					printf('<tr><td width="380px" >%s</td>',$row['nomcredit']);
+				}
+				printf('<td width="100px" >%s</td><td width="100px" >%s</td>',
+				$row['hores_cr'], $row['convord'] );
+				if( $_GET['local'] == 'si' && ( strtoupper($row['notaf_cr']) == 'APTE: MOLT BÉ' || strtoupper($row['notaf_cr']) == 'APTE: BÉ') ){
+					if( strtoupper($row['notaf_cr']) == 'APTE: MOLT BÉ' ) printf('<td width="100px" >%s</td></tr>', 'APTO: MUY BIEN');
+					if( strtoupper($row['notaf_cr']) == 'APTE: BÉ' )      printf('<td width="100px" >%s</td></tr>', 'APTO: BIEN');
+				}else{
+					printf('<td width="100px" >%s</td></tr>', $row['notaf_cr']);
+				}
+			}
+		}
+		for( $k = $j; $k < 14; $k++ ){
+			printf('<tr><td width="680px" colspan="4">&nbsp;</td></tr>', NULL );
+		}
+		printf('</table>', NULL);
+//	qualificació final
+		printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+		printf('<tr><td width="680px" colspan="3">&nbsp;</td></tr>', NULL);
+		if(strlen($row_alumespec['notaf_es_manual']) > 1){
+			printf('                   <tr><td width="400px"></td><td width="200px"><b>%s</b></td><td width="80px" rowspan="2" class="notaf">&nbsp; %s</td></tr>',
+			$qualicf, $row_alumespec['notaf_es_manual'] );
+		}elseif (strlen($row_alumespec['notaf_es']) > 1){
+			printf('                   <tr><td width="400px"></td><td width="200px"><b>%s</b></td><td width="80px" rowspan="2" class="notaf">&nbsp; %s</td></tr>',
+			$qualicf, $row_alumespec['notaf_es'] );
+		}
+		printf('                   <tr><td width="400px"><b>%s</b></td><td width="200px"></td></tr></table>', $observa );
+		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+		printf('<br /><br /><br /><br />', NULL);
+//	diligencia
+		printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+		printf('<table class="cap"><tr><td width="680px"><b>%s</b></td></tr>', $dili );
+		printf('<table class="cap"><tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+		printf('<table class="cap"><tr><td>%s</td></tr></table>', $carles2);
+//	peu de pàgina
+		printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+		printf('                   <tr><td width="230px">%s</td><td width="230px">%s</td><td width="230px">%s</td></tr>',
+		$firma, $segell, $vistiplau );
+		printf('                   <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>', NULL);
+		printf('                   <tr><td width="230px">%s</td><td width="230px"></td><td width="230px">%s</td></tr>',
+		$nom, $nom );
+		printf('                   <tr><td width="230px">%s</td><td width="230px"></td><td width="230px">%s</td></tr>',
+		__('Carlos Aylagas Molero','ric-ca-aval'), __('Teresa Llirinós Sopena','ric-ca-aval') );
+		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+		printf('                   <tr><td width="230px">%s</td><td width="460" colspan="2">%s %s</tr>',
+		$llocidata, __('Barcelona, a'), $_GET['data']);
+		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-ampla.png"></td></tr></table>', WP_PLUGIN_URL);
+		printf('<table style="page-break-after: always;"><tr><td class="dereta" width="680px">%s</td></tr></table>', __('___/___', 'ric-ca-aval'));
+	}		
+//	segona fulla
+	for( $i = 0; $i < $result_alum; $i++){
+		$row_alumespec = $wpdb->get_row( $query_alum, ARRAY_A, $i);
+		$row_alum = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_alumne WHERE idalumne=%s', $row_alumespec['idalumne']), ARRAY_A, 0);
+		if( $row_alumespec['notaf_es'] > 0 ){
+			printf('<table class="cap"> <tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
+			printf('<br /><br /><br /><br />', NULL);
+			printf('<table class="cap"><tr><td class="gran"><b>%s</b></td></tr>',$certif);
+			printf('                   <tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr></table><br />', WP_PLUGIN_URL);
+			printf('<table class="cap"><tr><td><b>%s</b></td></tr>', $dadescentre);
+			printf('                   <tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr></table>', WP_PLUGIN_URL);
+//	Dades del centre
+			printf('<table class="cap"><tr><td width="50px">%s</td><td width="150px"><b>%s</b></td><td width="150px">%s</td><td width="330px"><b>%s</b></td></tr>',
+			$codicentre, __('08035672','ricca3-aval'), $nomcentre, __('ESCOLA RAMON I CAJAL','ricca3-aval'));
+			printf('                   <tr><td width="50px">%s</td><td width="150px"><b>%s</b></td><td width="150px">%s</td><td width="330px"><b>%s</b></td></tr>',
+			$adreca, __('Rosselló, 303','ricca3-aval'), $municipi, __('Barcelona','ricca3-aval'));
+			printf('                   <tr class="linea"><td width="680px" colspan="4" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr></table><br />', WP_PLUGIN_URL);
+//	diligencia
+			printf('<table class="cap"><tr><td class="gran">%s</td></tr></table><br />', $carles);
+//	certifico
+			printf('<table class="cap"><tr><td class="gran"><b>%s</b></td></tr>', __('Certifico','ricca3-aval') );
+			printf('                  <tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr><br />', WP_PLUGIN_URL);
+			printf('                  <tr><td class="gran">%s <b>%s,</b> %s <b>%s</b> %s %s %s %s',
+			__('Que','ricca3-aval'), $row_alum['nomicognoms'], $dni, $row_alum['dni'], $numdni,$row_alum['idalumne'],$cursat, $row_espec['codiespecialitat']);
+			if( $_GET['local'] == 'si'){
+				printf( ' %s %s %s%s</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>'
+						, $row_espec['nomespecialitat_cast'], $reial1, $row_espec['reialdecret'], $reial2 );
+			}else{
+				printf( ' %s %s %s%s</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>'
+						, $row_espec['nomespecialitat'], $reial1, $row_espec['reialdecret'], $reial2 );
+			}
+			if(strlen($row_alumespec['notaf_es_manual']) > 1){
+				printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %s</b></td></tr>', $qualifica, $row_alumespec['notaf_es_manual']);
+			}elseif (strlen($row_alumespec['notaf_es']) > 1){
+				printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %s</b></td></tr>', $qualifica, $row_alumespec['notaf_es']);
+			}
+//			printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %s</b></td></tr>', $qualifica, $row_alumespec['nota']);
+			printf('                  <tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr></table><br />', WP_PLUGIN_URL);
+//	signatures
+			printf('<br /><br /><br /><table class="cap"><tr><td class="gran">%s</td></tr></table>', $consti);
+			printf('<br /><br /><table class="cap"> <tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr></table><br />', WP_PLUGIN_URL);
+			printf('<table class="cap"><tr><td class="gran" width="340px">%s</td><td class="gran" width="340px">%s</td></tr></table>',
+			$firma, $vistiplau);
+			printf('<br /><br /><br /><br /><br /><table class="cap"><tr><td class="gran" width="340px">%s</td><td class="gran" width="340px">%s</td></tr>',
+			$nom, $nom);
+			printf('                                           <tr><td class="gran" width="340px">%s</td><td class="gran" width="340px">%s</td></tr></table>',
+			__('Carlos Aylagas Molero','ricca3-aval'), __('Teresa Llirinós Sopena','ricca3-aval'));
+//	data i peu
+			printf('<br /><br /><br /><br /><table class="cap"><tr><td class="gran" width="70px">%s,</td><td class="gran" width="610px">%s</td></tr></table>',
+			__('Barcelona','ricca3-aval'), $_GET['data']);
+			printf('<br /><br /><br /><br /><table class="cap"><tr><td class="gran" width="340px"></td><td class="gran" width="340px">%s</td></tr></table>',
+			$segell);
+			printf('<table style="page-break-after: always;"><tr><td class="dereta" width="680px"></td></tr></table>', NULL);
+		}
+	}
+}
