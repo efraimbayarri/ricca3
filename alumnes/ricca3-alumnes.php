@@ -791,6 +791,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
   		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
   		$nom = str_word_count($row_espec['nomespecialitat'], 1, 'ÀÈÒÓ');
   		$query_cred = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+
   				'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp=ricca3_credits_avaluacions.idccomp '.
   				'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
   				'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
@@ -1224,56 +1225,56 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 	$row_alum = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_alumne WHERE idalumne=%s',    $_GET['ID']), ARRAY_A, 0);
 	$row      = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_historial WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $_GET['espec']), ARRAY_A, 0);
 //		logo
-	printf('<table class="cap"><tr><td><IMG SRC="%s/ric-ca/images/ric-ca-logo.jpg" ALIGN=left><IMG SRC="%s/ric-ca/images/ric-ca-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
+	printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
 //		historial acadèmic
 	printf('<table class="cap"><tr><td width="340px" class="gran"> <b>%s</b></td><td width="340px" class="dereta"><b>%s</b></td></tr>',
 	__('Historial acadèmic de l\'alumne/a','ricca3-alum'), __('Formació professional inicial','ricca3-alum'));
-	printf('                   <tr class="linea"><td colspan="2" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-ampla.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="2" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-ampla.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr>              <td colspan="2">&nbsp;</td></tr></table>', NULL);
 //		dades del centre
 	printf('<table class="cap"><tr><td width="680px" colspan="3"><b>%s</b></td></tr>',
 	__('Dades del centre','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px"  class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px"  class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr>              <td width="230px">%s</td><td width="230px">%s</td><td width="230px">%s</td></tr>',
 	__('Nom','ricca3-alum'), __('Codi','ricca3-alum'), __('Municipi','ricca3-alum') );
 	printf('<tr><td class="gran">%s</td><td class="gran">%s</td><td class="gran">%s</td></tr>',
 	__('Escola Ramon i Cajal','ricca3-alum'), __('08035672','ricca3-alum'), __('Barcelona','ricca3-alum'));
-	printf('                   <tr class="linea"><td width="680px" colspan="3" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td width="680px" colspan="3" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('<tr><td>&nbsp;</td></tr></table>', NULL);
 //		dades del alumne
 	printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>',
 	__('Dades de l\'alumne','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="520px" colspan="3">%s</td><td width="160px">%s</td></tr>',
 	__('Cognoms i nom','ricca3-alum'), __('Núm. d\'identificació','ricca3-alum') );
 	printf('<tr><td colspan="3" class="gran">%s</td><td class="gran">%s</td></tr>',
 	$row_alum['cognomsinom'], $row_alum['idalumne'] );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="200px">%s</td><td width="480px" colspan="3">%s</td></tr>',
 	__('Document d\'identificació','ricca3-alum'), __('Número','ricca3-alum') );
 	printf('<tr><td class="gran">%s</td><td colspan="3" class="gran">%s</td></tr>',
 	$row_alum['tipusdni'], $row_alum['dni']);
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="200px">%s</td><td width="160px">%s</td><td width="160px">%s</td><td width="170px">%s</td></tr>',
 	__('Data de naixement','ricca3-alum'), __('Lloc de naixement','ricca3-alum'), __('País','ricca3-alum'), __('Nacionalitat','ricca3-alum') );
 	printf('<tr><td class="gran">%s</td><td class="gran">%s</td><td class="gran">%s</td><td class="gran">%s</td></tr>',
 	date( 'd/m/Y' , strtotime( $row_alum['datanai'] ) ), $row_alum['llocnai'], $row_alum['paisnai'], $row_alum['nacionalitat'] );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('<tr><td width="680px" colspan="4">&nbsp;</td></tr></table>', NULL);
 //		dades acadèmiques
 	printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>',
 	__('Dades acadèmiques','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="100px">%s</td><td width="480px" colspan="2">%s</td><td width="100px">%s</td></tr>',
 	__('Codi','ricca3-alum'), __('Nom del cicle formatiu','ricca3-alum'), __('Grau','ricca3-alum') );
 	printf('<tr><td class="gran">%s</td><td class="gran" colspan="2">%s</td><td class="gran">%s</td></tr>',
 	$row['codi_c'], $row['nom_c'], __('SUPERIOR','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 	printf('<tr><td width="680px" colspan="4">&nbsp;</td></tr></table>', NULL);	// dades
 //		condicions d'accès
 	printf('<table class="cap"><tr><td width="680px" colspan="3"><b>%s</b></td></tr>',
 	__('Condicions d\'accés','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 	if( $row['condic'] == 'titol' ){
 		printf('<tr><td width="230px">%s</td><td width="230px">%s</td><td width="230px">%s</td></tr>',
 		__('[x] Títol de:','ricca3-alum'), __('Prova d\'accés a:','ricca3-alum'), __('Sense requisits amb autorització','ricca3-alum') );
@@ -1290,7 +1291,7 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 		printf('<tr><td class="gran">%s</td><td class="gran">%s</td><td class="gran">%s</td></tr>',
 		__(' ', 'ricca3-alum'), __(' ', 'ricca3-alum'),  __(' ', 'ricca3-alum'));
 	}
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('<tr><td width="680px" colspan="3">&nbsp;</td></tr></table>', NULL);
 //		Matriculacions
 	$decoded_codi = json_decode($row['cicle_codi'], true);
@@ -1301,10 +1302,10 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 
 	printf('<table class="cap"><tr><td width="320px" colspan="7"><b>%s</b></td></tr>',
 	__('Matriculacions en el cicle formatiu','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="7" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="7" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="100px">%s</td><td width="180px">%s</td><td width="250px">&nbsp;</td><td width="20px" colspan="4">%s</td></tr>',
 	__('Codi del centre','ricca3-alum'), __('Nom del centre','ricca3-alum'), __('Anys acadèmics','ricca3-alum'));
-	printf('                   <tr><td colspan="7" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr><td colspan="7" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 	if( isset( $decoded_curs[0])){
 		printf('<tr><td class="gran">%s</td><td class="gran">%s</td><td class="gran">%s</td><td>%s</td>             <td class="gran">%s</td><td>%s</td>          <td class="gran">%s</td></tr> ',
 		$decoded_codi[0],        $decoded_nom[0],       $decoded_curs[0],     __('de','ricca3-alum'), $decoded_anyd[0],       __('a','ricca3-alum'), $decoded_anya[0] );
@@ -1338,7 +1339,7 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 //		espai en blanc
 	printf('<br /><br /><br /><br /><br />', NULL);
 //		peu de pàgina
-	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="230px">%s</td><td width="230px">%s</td><td width="230px">%s</td></tr>',
 	__('Signatura del secretari','ricca3-alum'), __('Segell del centre','ricca3-alum'), __('Vist i plau de la directora','ricca3-alum') );
 	printf('                   <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>', NULL);
@@ -1346,41 +1347,41 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 	__('Nom i cognoms','ricca3-alum'), __('Nom i cognoms','ricca3-alum') );
 	printf('                   <tr><td width="230px">%s</td><td width="230px"></td><td width="230px">%s</td></tr>',
 	__('Carlos Aylagas Molero','ricca3-alum'), __('Teresa Llirinós Sopena','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 	printf('<table style="page-break-after: always;"><tr><td class="dereta" width="680px">%s</td></tr></table>', __('___/___', 'ricca3-alum'));
 //
 //		SEGONA PÀGINA
 //
-	printf('<table class="cap"> <tr><td><IMG SRC="%s/ric-ca/images/ric-ca-logo.jpg" ALIGN=left><IMG SRC="%s/ric-ca/images/ric-ca-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
+	printf('<table class="cap"> <tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
 	printf('<table class="cap"><tr><td width="680px" colspan="3" class="gran"><b>%s</b></td></tr>',
 	__('Historial acadèmic','ricca3-alum') );
 	printf('                   <tr><td width="460px" colspan="2"><b>%s</b></td><td width="230px" class="dereta"><b>%s</b></td>',
 	__('Resultats de l\'avaluació dels crèdits','ricca3-alum'), __('Formació professional inicial','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 //		dades del alumne
 	printf('<table class="cap"><tr><td width="230px" colspan="3"><b>%s</b></td></tr>',
 	__('Dades de l\'alumne/a','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="340px">%s</td><td width="170px">%s</td><td width="170px">%s</td></tr>',
 	__('Cognoms i nom','ricca3-alum'),__('DNI/NIE/passaport','ricca3-alum'), __('Núm. d\'identificació','ricca3-alum') );
 	printf('<tr><td class="gran">%s</td><td class="gran">%s</td><td class="gran">%s</td></tr>',
 	$row_alum['cognomsinom'], $row_alum['dni'], $row_alum['idalumne'] );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 //		dades acadèmiques
 	printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>',
 	__('Dades acadèmiques','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="100px">%s</td><td width="480px" colspan="2">%s</td><td width="100px">%s</td></tr>',
 	__('Codi','ricca3-alum'), __('Nom del cicle formatiu','ricca3-alum'), __('Grau','ricca3-alum') );
 	printf('<tr><td class="gran">%s</td><td class="gran" colspan="2">%s</td><td class="gran">%s</td></tr>',
 	$row['codi_c'], $row['nom_c'], __('SUPERIOR','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 //		qualificacions
 	printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>', __('Qualificacions','ricca3-alum'));
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="380px">%s</td><td width="100px">%s</td><td width="100px">%s</td><td width="100px">%s</td></tr>',
 	__('Crèdit','ricca3-alum'), __('Hores','ricca3-alum'), __('Convocatoria','ricca3-alum'), __('Qualificació','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 //		entrada qualificacions
 	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
 			'FROM ricca.ricca3_credits_avaluacions '.
@@ -1407,7 +1408,7 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 	}
 	printf('</table>', NULL);
 //		peu de pàgina
-	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="230px">%s</td><td width="230px">%s</td><td width="230px">%s</td></tr>',
 	__('Signatura del secretari','ricca3-alum'), __('Segell del centre','ricca3-alum'), __('Vist i plau de la directora','ricca3-alum') );
 	printf('                   <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>', NULL);
@@ -1415,41 +1416,41 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 	__('Nom i cognoms','ricca3-alum'), __('Nom i cognoms','ricca3-alum') );
 	printf('                   <tr><td width="230px">%s</td><td width="230px"></td><td width="230px">%s</td></tr>',
 	__('Carlos Aylagas Molero','ricca3-alum'), __('Teresa Llirinós Sopena','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 	printf('<table style="page-break-after: always;"><tr><td class="dereta" width="680px">%s</td></tr></table>', __('___/___', 'ricca3-alum'));
 //
 //		TERCERA PÀGINA
 //
-	printf('<table class="cap"> <tr><td><IMG SRC="%s/ric-ca/images/ric-ca-logo.jpg" ALIGN=left><IMG SRC="%s/ric-ca/images/ric-ca-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
+	printf('<table class="cap"> <tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
 	printf('<table class="cap"><tr><td width="680px" colspan="3" class="gran"><b>%s</b></td></tr>',
 		__('Historial acadèmic','ricca3-alum') );
 	printf('                   <tr><td width="460px" colspan="2"><b>%s</b></td><td width="230px" class="dereta"><b>%s</b></td>',
 		__('Resultats de l\'avaluació dels crèdits','ricca3-alum'), __('Formació professional inicial','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 //		dades del alumne
 	printf('<table class="cap"><tr><td width="230px" colspan="3"><b>%s</b></td></tr>',
 		__('Dades de l\'alumne/a','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="340px">%s</td><td width="170px">%s</td><td width="170px">%s</td></tr>',
 		__('Cognoms i nom','ricca3-alum'),__('DNI/NIE/passaport','ricca3-alum'), __('Núm. d\'identificació','ricca3-alum') );
 	printf('<tr><td class="gran">%s</td><td class="gran">%s</td><td class="gran">%s</td></tr>',
 		$row_alum['cognomsinom'], $row_alum['dni'], $row_alum['idalumne'] );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 //		dades acadèmiques
 	printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>',
 		__('Dades acadèmiques','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="100px">%s</td><td width="480px" colspan="2">%s</td><td width="100px">%s</td></tr>',
 		__('Codi','ricca3-alum'), __('Nom del cicle formatiu','ricca3-alum'), __('Grau','ricca3-alum') );
 	printf('<tr><td class="gran">%s</td><td class="gran" colspan="2">%s</td><td class="gran">%s</td></tr>',
 		$row['codi_c'], $row['nom_c'], __('SUPERIOR','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 //		qualificacions
 	printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>', __('Qualificacions','ricca3-alum'));
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="380px">%s</td><td width="100px">%s</td><td width="100px">%s</td><td width="100px">%s</td></tr>',
 		__('Crèdit','ricca3-alum'), __('Hores','ricca3-alum'), __('Convocatoria','ricca3-alum'), __('Qualificació','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 //		entrada qualificacions
 	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
 			'FROM ricca.ricca3_credits_avaluacions '.
@@ -1476,23 +1477,23 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 	}
 	printf('</table>', NULL);
 //		qualificació final
-	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('<tr><td width="680px" colspan="3">&nbsp;</td></tr>', NULL);
 	$nota = $row['qual_final'];
 	if( $row['qual_final'] < 5) $nota='';
 	printf('                   <tr><td width="400px"></td><td width="200px"><b>%s</b></td><td width="80px" rowspan="2" class="notaf">%s</td></tr>',
 		__('Qualificació final del cicle formatíu','ricca3-alum'), $nota );
 	printf('                   <tr><td width="400px"><b>%s</b></td><td width="200px"></td></tr></table>', __('Observacions','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 	printf('<table><tr><td>%s</tr></td></table>', $row['obs']);
 	printf('<br /><br /><br />', NULL);
 //		diligencia
-	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 	printf('<table class="cap"><tr><td width="680px"><b>%s</b></td></tr>', __('Diligència de la validesa de l\'historial acadèmic','ricca3-alum') );
-	printf('<table class="cap"><tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('<table class="cap"><tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 	printf('<table class="cap"><tr><td>%s</td></tr></table>', __('CARLOS AYLAGAS MOLERO Secretari del centre ESCOLA RAMON I CAJAL amb codi 08035672 certifica que les dades que figuren en aquest historial reflecteixen les que consten en la documentació dipositada a la secretaria d\'aquest centre.', 'ricca3-alum'));
 //		peu de pàgina
-	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
+	printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="230px">%s</td><td width="230px">%s</td><td width="230px">%s</td></tr>',
 		__('Signatura del secretari','ricca3-alum'), __('Segell del centre','ricca3-alum'), __('Vist i plau de la directora','ricca3-alum') );
 	printf('                   <tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>', NULL);
@@ -1500,10 +1501,10 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 		__('Nom i cognoms','ricca3-alum'), __('Nom i cognoms','ricca3-alum') );
 	printf('                   <tr><td width="230px">%s</td><td width="230px"></td><td width="230px">%s</td></tr>',
 		__('Carlos Aylagas Molero','ricca3-alum'), __('Teresa Llirinós Sopena','ricca3-alum') );
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 	printf('                   <tr><td width="680px" colspan="3">%s</td></tr>',
 		__('Lloc i data','ricca3-alum'));
-	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ric-ca/images/ric-ca-linea-ampla.png"></td></tr></table>', WP_PLUGIN_URL);
+	printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-ampla.png"></td></tr></table>', WP_PLUGIN_URL);
 	printf('<table style="page-break-after: always;"><tr><td class="dereta" width="680px">%s</td></tr></table>', __('___/___', 'ricca3-alum'));
 }
 
@@ -1536,7 +1537,7 @@ function ricca3_shortcode_novaespec($atts, $content = null) {
 //
 		if( $row_espec['cursos'] == 1){
 // 	Si la especialitat no mes te un curs
-			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca_grups WHERE idgrup= %s' , $_POST['grup'] ),ARRAY_A,0);
+			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup= %s' , $_POST['grup'] ),ARRAY_A,0);
 
 			$result = $wpdb->insert('ricca3_alumne_especialitat',array( 'idany' => $_POST['any'],
 					'idgrup' => $row['idgrup'] , 'idalumne' => $_GET['ID'] , 'idestat_es' => $row_estat['idestat'],
@@ -2105,39 +2106,39 @@ function ricca3_shortcode_impbutlleti($atts, $content = null) {
 ##
 	printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
 	printf('<br><br><table class="cap"><tr><td align="center" width="900">', NULL);
-	printf('%s <b>%s</b></td></tr></table><br><br><table class="cap"><tr><td>', __('<b>PREINSCRIPCIÓ</b> CURS','ric-ca-alum'), $row_any["any"] );
-	printf('%s<b> %s %s %s</b></td></tr></table><table><tr><td>', __('Nom i cognoms','ric-ca-alum'),$row_alu["nom"],$row_alu["cognom1"],$row_alu["cognom2"]);
-	printf('%s<b> %s</b></td><td width="350">',                   __('Data de naixement','ric-ca-alum'), date("d-m-Y",strtotime($row_alu["datanai"])));
-	printf('%s<b> %s</b>', __('Lloc de naixement','ric-ca-alum'), $row_alu["llocnai"]);
+	printf('%s <b>%s</b></td></tr></table><br><br><table class="cap"><tr><td>', __('<b>PREINSCRIPCIÓ</b> CURS','ricca3-alum'), $row_any["any"] );
+	printf('%s<b> %s %s %s</b></td></tr></table><table><tr><td>', __('Nom i cognoms','ricca3-alum'),$row_alu["nom"],$row_alu["cognom1"],$row_alu["cognom2"]);
+	printf('%s<b> %s</b></td><td width="350">',                   __('Data de naixement','ricca3-alum'), date("d-m-Y",strtotime($row_alu["datanai"])));
+	printf('%s<b> %s</b>', __('Lloc de naixement','ricca3-alum'), $row_alu["llocnai"]);
 	if(trim(strtolower($row_alu['paisnai'])) != 'españa' && trim(strtolower($row_alu['paisnai'])) != 'espanya') printf(', <b>%s</b>', $row_alu['paisnai']);
 	printf('</td></tr><tr><td>', NULL);
-	printf('%s<b> %s</b></td><td width="350">',             __('DNI/Passaport','ric-ca-alum'), $row_alu["dni"] );
-	printf('%s<b> %s</b></td></tr><tr><td>',                __('Professió','ric-ca-alum'), $row_alu["professio"] );
-	printf('%s<b> %s</b></td><td width="350">',             __('Telèfon fixe','ric-ca-alum'), $row_alu["telefonfixe"] );
-	printf('%s<b> %s</b></td></tr></table><table><tr><td>', __('Telèfon mòbil','ric-ca-alum'), $row_alu["telefon"]);
-	printf('%s<b> %s</b></td><td width="350"></td></tr></table><table><tr><td>', __('Domicili','ric-ca-alum'), $row_alu["residenciahabitual"] );
-	printf('%s<b> %s</b></td><td width="350">',             __('Població','ric-ca-alum'), $row_alu["ciutathabitual"] );
-	printf('%s<b> %s</b></td></tr><tr><td>',                __('Codi postal','ric-ca-alum'), $row_alu["codipostal"] );
-	printf('%s<b> %s</b></td><td></td></tr></table><table class="cap"><tr><td>', __('Email','ric-ca-alum'), $row_alu["email"] );
-	printf('%s</td></tr></table><table class="cap"><tr><td><b> %s %s</b></td></tr></table>', __('EL ALUMNE S\'HA MATRICULAT A L\'ESPECIALITAT','ric-ca-alum'), $row["nomespecialitat"],strtoupper($row["sessio"]));
+	printf('%s<b> %s</b></td><td width="350">',             __('DNI/Passaport','ricca3-alum'), $row_alu["dni"] );
+	printf('%s<b> %s</b></td></tr><tr><td>',                __('Professió','ricca3-alum'), $row_alu["professio"] );
+	printf('%s<b> %s</b></td><td width="350">',             __('Telèfon fixe','ricca3-alum'), $row_alu["telefonfixe"] );
+	printf('%s<b> %s</b></td></tr></table><table><tr><td>', __('Telèfon mòbil','ricca3-alum'), $row_alu["telefon"]);
+	printf('%s<b> %s</b></td><td width="350"></td></tr></table><table><tr><td>', __('Domicili','ricca3-alum'), $row_alu["residenciahabitual"] );
+	printf('%s<b> %s</b></td><td width="350">',             __('Població','ricca3-alum'), $row_alu["ciutathabitual"] );
+	printf('%s<b> %s</b></td></tr><tr><td>',                __('Codi postal','ricca3-alum'), $row_alu["codipostal"] );
+	printf('%s<b> %s</b></td><td></td></tr></table><table class="cap"><tr><td>', __('Email','ricca3-alum'), $row_alu["email"] );
+	printf('%s</td></tr></table><table class="cap"><tr><td><b> %s %s</b></td></tr></table>', __('EL ALUMNE S\'HA MATRICULAT A L\'ESPECIALITAT','ricca3-alum'), $row["nomespecialitat"],strtoupper($row["sessio"]));
 	printf('<br><table class="cap"><tr><td width="650">', NULL);
-	printf('%s<b> %s</b></td><td width="250"></td></tr><tr><td>', __('Domicili durant el curs','ric-ca-alum'), $row_alu["residenciacurs"] );
-	printf('%s<b> %s</b></td><td>',                               __('Població','ric-ca-alum'), $row_alu['ciutatcurs'] );
-	printf('%s<b> %s</b></td></tr><tr><td>',                      __('Codi Postal','ric-ca-alum'), $row_alu['codpostalcurs'] );
-	printf('%s<b> %s</b></td><td></td></tr><tr><td>',             __('Estudis anteriors','ric-ca-alum'), $row_alu['estudisrealitzats'] );
-	printf('%s<b> %s</b></td><td></td></tr><tr><td>',             __('Centre estudis anteriors','ric-ca-alum'), $row_alu['centreea'] );
-	printf('%s<b> %s</b></td><td></td></tr></table><table class="cap"><tr><td width="100"></td><td width="400"><table class="cap"><tr><td>', __('Població estudis anteriors','ric-ca-alum'), $row_alu['poblacioea'] );
+	printf('%s<b> %s</b></td><td width="250"></td></tr><tr><td>', __('Domicili durant el curs','ricca3-alum'), $row_alu["residenciacurs"] );
+	printf('%s<b> %s</b></td><td>',                               __('Població','ricca3-alum'), $row_alu['ciutatcurs'] );
+	printf('%s<b> %s</b></td></tr><tr><td>',                      __('Codi Postal','ricca3-alum'), $row_alu['codpostalcurs'] );
+	printf('%s<b> %s</b></td><td></td></tr><tr><td>',             __('Estudis anteriors','ricca3-alum'), $row_alu['estudisrealitzats'] );
+	printf('%s<b> %s</b></td><td></td></tr><tr><td>',             __('Centre estudis anteriors','ricca3-alum'), $row_alu['centreea'] );
+	printf('%s<b> %s</b></td><td></td></tr></table><table class="cap"><tr><td width="100"></td><td width="400"><table class="cap"><tr><td>', __('Població estudis anteriors','ricca3-alum'), $row_alu['poblacioea'] );
 	printf('%s</td></tr></table></td><td width="300"><table class="cos"><tr><td width="300" align="right">%s € </td></tr></table></td></tr></table><table class="cap"><tr><td>', 
-		__('Abonament en concepte<br>d\'inscripció (*):','ric-ca-alum'), $_GET['abona'] );
-	printf('%s</td></tr></table><br><table class="cap"><tr><td width="500">', __('* L\'inscripció no es retornarà en cas de baixa.','ric-ca-alum'));
-	printf('%s %s</td><td>', __('Data d\'inscripció','ric-ca-alum'), $_GET['data']);
-	printf('%s</td></tr></table><br><br><br><br><br><p style="text-align: justify;">', __('Signatura','ric-ca-alum'));
+		__('Abonament en concepte<br>d\'inscripció (*):','ricca3-alum'), $_GET['abona'] );
+	printf('%s</td></tr></table><br><table class="cap"><tr><td width="500">', __('* L\'inscripció no es retornarà en cas de baixa.','ricca3-alum'));
+	printf('%s %s</td><td>', __('Data d\'inscripció','ricca3-alum'), $_GET['data']);
+	printf('%s</td></tr></table><br><br><br><br><br><p style="text-align: justify;">', __('Signatura','ricca3-alum'));
 	_e('<b>Clàusula de Protecció de Dades Personals:</b> D\'acord amb els principis disposats en la Llei Orgànica 15/1999, de 13 de desembre,
 		de Protecció de Dades Personals, l\'informem que les seves dades personals s\'incorporaran a un fitxer de dades personals, titularitat de
 		ESCOLA DE FORMACIÓ PROFESSIONAL RAMON I CAJAL, SCCL, amb domicili a C/Roselló 303 Baixos, Barcelona (08037), degudament inscrit al
 		registre de Fitxers de l\'Agència Espanyola de Protecció de Dades. L\'informem que les seves dades són tractats confidencialment i són
 		utilitzats exclusivament de manera interna i per a les finalitats indicades. Per tant, no cedim ni comuniquem a cap tercer les seves
-		dades, llevat que siguin necessaris per a la prestació del servei contractat, o en els casos legalment previstos.','ric-ca-alum');
+		dades, llevat que siguin necessaris per a la prestació del servei contractat, o en els casos legalment previstos.','ricca3-alum');
 }
 
 #############################################################################################
@@ -2353,7 +2354,7 @@ function ricca3_shortcode_especrepe($atts, $content = null) {
 	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
 	$image_attributes = ricca3_miniatura($_GET['ID']);
 //		missatge de capçalera de la pàgina
-	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Marcar com a repetidor d\'una especialitat o curs de l\'alumne','ric-ca-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
+	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Marcar com a repetidor d\'una especialitat o curs de l\'alumne','ricca3-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
 	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
 //	ajuda al butons
 	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
@@ -2414,7 +2415,7 @@ function ricca3_shortcode_canviany($atts, $content = null) {
 	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
 	$image_attributes = ricca3_miniatura($_GET['ID']);
 //		missatge de capçalera de la pàgina
-	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Canviar any d\'especialitat de l\'alumne','ric-ca-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
+	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Canviar any d\'especialitat de l\'alumne','ricca3-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
 	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
 //	ajuda al butons
 	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
@@ -2523,7 +2524,7 @@ function ricca3_shortcode_mailings($atts, $content = null) {
 	}
 	if( isset($_POST['cercar'] ) && $_POST['cercar'] == "escriure" ){
 		printf('<form method="post" action="" target="_self" name="mail"><table class="menucurt400"><tr><td>', NULL);
-		printf('%s</td><td><textarea accesskey="" cols="20" rows="1" name="assumpte" title="assumpte">', __('<b>Assumpte:</b>', 'ric-ca-alum'));
+		printf('%s</td><td><textarea accesskey="" cols="20" rows="1" name="assumpte" title="assumpte">', __('<b>Assumpte:</b>', 'ricca3-alum'));
 		printf('</textarea></td></tr></table>', NULL);
 		
 		wp_editor( __('Hola!','ricca3-alum'), 'ricca3mailings', array( 'textarea_name' => 'cos', 'media_buttons' => false) );
@@ -2799,8 +2800,8 @@ function ricca3_shortcode_pregrup($atts, $content = null) {
 		printf('<tr><td width="100px">%s</td><td><b>%s</b></td></tr>', $row_grup['grup'], $result);
 	}
 	printf('</table><table><tr><td>%s <b>%s</b> %s %s (%s %s, %s %s)  %s %s (%s %s, %s %s)</td></tr></table> ',
-	__('TOTAL:','ric-ca-alum'), $tot, __('Curs I:','ric-ca-alum'), $tot1, __('Matí:','ric-ca'), $tot1mati, __('Tarda:','ric-ca-alum'),$tot1tarda,
-	__('Curs II:','ric-ca-alum'), $tot2, __('Matí:','ric-ca-alum'), $tot2mati, __('Tarda:','ric-ca-alum'), $tot2tarda);
+	__('TOTAL:','ricca3-alum'), $tot, __('Curs I:','ricca3-alum'), $tot1, __('Matí:','ricca3'), $tot1mati, __('Tarda:','ricca3-alum'),$tot1tarda,
+	__('Curs II:','ricca3-alum'), $tot2, __('Matí:','ricca3-alum'), $tot2mati, __('Tarda:','ricca3-alum'), $tot2tarda);
 }
 
 #############################################################################################
@@ -2825,7 +2826,7 @@ function ricca3_shortcode_afegircredit($atts, $content = null) {
 	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
 	$image_attributes = ricca3_miniatura($_GET['ID']);
 //		missatge de capçalera de la pàgina
-	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Afegir o esborrar crèdits a l\'alumne','ric-ca-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
+	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Afegir o esborrar crèdits a l\'alumne','ricca3-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
 	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
 //	ajuda al butons
 	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
@@ -2925,7 +2926,7 @@ function ricca3_shortcode_notafinal($atts, $content = null) {
 	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
 	$image_attributes = ricca3_miniatura($_GET['ID']);
 //		missatge de capçalera de la pàgina
-	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Entrada manual de la nota final de l\'alumne','ric-ca-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
+	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">', __('Entrada manual de la nota final de l\'alumne','ricca3-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
 	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
 //	ajuda al butons
 	$ricca3_butons_editardades['texte'][0] = __('ajuda-editardades-especialitats', 'ricca3-alum');
@@ -3002,6 +3003,9 @@ function ricca3_shortcode_esborraalumne($atts, $content = null) {
 //		mostrar la filera de butons
 	ricca3_butons( $ricca3_butons_editardades, 6, $token );
 	if(isset($_POST['esborrar']) && $_POST['esborrar'] == 'esborrar'){
+//		esborrar primer l'historial
+		$wpdb->delete('ricca3_historial', array('idalumne' => $_GET['ID']));
+//		
 		if( $wpdb->delete('ricca3_alumne', array('idalumne' => $_GET['ID']) ) ){
 			ricca3_missatge( __('Alumne esborrat amb exit!', 'ricca3-alum'));
 		}else{

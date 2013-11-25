@@ -155,8 +155,8 @@ function ricca3_shortcode_cred($atts, $content = null) {
 	ricca3_butons( $ricca3_butons_espec, 6 );
 //	drop	
 	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt600"><tr>', NULL);
-	ricca3_drop_fixe( __('Estat:','ric-ca-dades'), 'estat', array( "1" , "0"), array( "actiu", "inactiu"),  __('ajuda-credits-estat', 'ricca3-dades') );
-	ricca3_drop_fixe( __('Curs:','ric-ca-dades'),  'curs',  array( "1" , "2"), array( "Curs I", "Curs II"), __('ajuda-credits-curs', 'ricca3-dades')  );
+	ricca3_drop_fixe( __('Estat:','ricca3-dades'), 'estat', array( "1" , "0"), array( "actiu", "inactiu"),  __('ajuda-credits-estat', 'ricca3-dades') );
+	ricca3_drop_fixe( __('Curs:','ricca3-dades'),  'curs',  array( "1" , "2"), array( "Curs I", "Curs II"), __('ajuda-credits-curs', 'ricca3-dades')  );
 //		drop per a especialitat
 	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
 	ricca3_drop( __('Especialitat:','ricca3-dades'), 'espec', $data_espec, 'idespecialitat', 'nomespecialitat', __('ajuda_drop_especialitat', 'ricca3-dades'), FALSE );
@@ -280,8 +280,8 @@ function ricca3_shortcode_grups($atts, $content = null) {
 	ricca3_butons( $ricca3_butons_espec, 6 );
 //	drop
 	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt600"><tr>', NULL);
-	ricca3_drop_fixe( __('Estat:','ric-ca-dades'), 'estat', array( "1" , "0"), array( "actiu", "inactiu"),  __('ajuda-credits-estat', 'ricca3-dades') );
-	ricca3_drop_fixe( __('Curs:','ric-ca-dades'),  'curs',  array( "1" , "2"), array( "Curs I", "Curs II"), __('ajuda-credits-curs', 'ricca3-dades')  );
+	ricca3_drop_fixe( __('Estat:','ricca3-dades'), 'estat', array( "1" , "0"), array( "actiu", "inactiu"),  __('ajuda-credits-estat', 'ricca3-dades') );
+	ricca3_drop_fixe( __('Curs:','ricca3-dades'),  'curs',  array( "1" , "2"), array( "Curs I", "Curs II"), __('ajuda-credits-curs', 'ricca3-dades')  );
 //		drop per a especialitat
 	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
 	ricca3_drop( __('Especialitat:','ricca3-dades'), 'espec', $data_espec, 'idespecialitat', 'nomespecialitat', __('ajuda_drop_especialitat', 'ricca3-dades'), FALSE );

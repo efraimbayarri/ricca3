@@ -140,14 +140,14 @@ function ricca3_shortcode_impactes($atts, $content = null) {
 			for( $j = 0; $j < count($dades_ccomp); $j++){
 				if($j == 0 || $j == 20 ){
 					printf('<table class="cap">   <tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
-					printf('<table class="center"><tr><td><font face="Arial, Helvetica, sans-serif">%s</font></td></tr></table>', __('ACTA D\'AVALUACIÓ','ric-ca-aval'));
-					printf('<table class="cap"><tr><td>%s %s</td></tr></table>',       __('CRÉDIT:','ric-ca-aval'), $dades_pla[$i]['nomcredit']);
-					printf('<table class="cap"><tr><td width="400px">%s %s</td>',      __('CURS:','ric-ca-aval'), $dades_pla[$i]['any'] );
-					printf('                       <td width="400px">%s %s</td></tr>', __('DATA:','ric-ca-aval'), $_GET['data']);
-					printf('                   <tr><td              >%s %s</td>',      __('ESPECIALITAT:','ric-ca-aval'), $dades_pla[$i]['nomespecialitat']);
-					printf('                       <td              >%s %s</td></tr>', __('GRUP:','ric-ca-aval'), $dades_pla[$i]['grup'] );
-					printf('                   <tr><td              >%s %s</td>',      __('PROFESSOR/A:','ric-ca-aval'), $dades_pla[$i]['nomicognoms']);
-					printf('                       <td              >%s %s</td></tr>', __('TUTOR/A:','ric-ca-aval'), $dades_pla[$i]['nomicognomstut']);
+					printf('<table class="center"><tr><td><font face="Arial, Helvetica, sans-serif">%s</font></td></tr></table>', __('ACTA D\'AVALUACIÓ','ricca3-aval'));
+					printf('<table class="cap"><tr><td>%s %s</td></tr></table>',       __('CRÉDIT:','ricca3-aval'), $dades_pla[$i]['nomcredit']);
+					printf('<table class="cap"><tr><td width="400px">%s %s</td>',      __('CURS:','ricca3-aval'), $dades_pla[$i]['any'] );
+					printf('                       <td width="400px">%s %s</td></tr>', __('DATA:','ricca3-aval'), $_GET['data']);
+					printf('                   <tr><td              >%s %s</td>',      __('ESPECIALITAT:','ricca3-aval'), $dades_pla[$i]['nomespecialitat']);
+					printf('                       <td              >%s %s</td></tr>', __('GRUP:','ricca3-aval'), $dades_pla[$i]['grup'] );
+					printf('                   <tr><td              >%s %s</td>',      __('PROFESSOR/A:','ricca3-aval'), $dades_pla[$i]['nomicognoms']);
+					printf('                       <td              >%s %s</td></tr>', __('TUTOR/A:','ricca3-aval'), $dades_pla[$i]['nomicognomstut']);
 					printf('                   <tr><td align="center" colspan="2"> %s</td></tr></table>',$row_aval['nomaval']);
 				}
 				if($j == 0 || $j == 20 ){
@@ -157,9 +157,9 @@ function ricca3_shortcode_impactes($atts, $content = null) {
 				}
 				if($j == 0 || $j == 20){
 					printf('<table %s>', $table);
-					printf('<tr><td width="560px" align="center">%s</td>',      __('Alumnes','ric-ca-aval'));
-					printf('    <td width="120px" align="center">%s</td>',      __('Qualificació','ric-ca-aval') );
-					printf('    <td width="120px" align="center">%s</td></tr>', __('Actitud','ric-ca-aval'));
+					printf('<tr><td width="560px" align="center">%s</td>',      __('Alumnes','ricca3-aval'));
+					printf('    <td width="120px" align="center">%s</td>',      __('Qualificació','ricca3-aval') );
+					printf('    <td width="120px" align="center">%s</td></tr>', __('Actitud','ricca3-aval'));
 				}
 				printf('<tr><td height="30">%s - %s</td><td></td><td></td></tr>', $j+1, $dades_ccomp[$j]["cognomsinom"]);
 			}
@@ -188,22 +188,22 @@ function ricca3_shortcode_impactesrepe($atts, $content = null) {
 		if($dades[0]['aval3nomes'] == '0' || $_GET['aval'] == '4' || $_GET['aval'] == '5'){
 //			dump_r($dades);
 			printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
-			printf('<table class="center"><tr><td><font face="Arial, Helvetica, sans-serif">%s</font></td></tr></table>',  __('ACTA D\'AVALUACIÓ','ric-ca-aval'));
-			printf('<table class="cap"><tr><td>%s %s</td></tr></table>',       __('CRÉDIT:','ric-ca-aval'), $dades[0]['nomccomp'] );
-			printf('<table class="cap"><tr><td width="400px">%s %s</td>',      __('CURS:','ric-ca-aval'), $dades[0]['any']);
-			printf('                       <td width="400px">%s %s</td></tr>', __('DATA:','ric-ca-aval'), $_GET['data'] );
-			printf('                   <tr><td              >%s %s</td>',      __('ESPECIALITAT:','ric-ca-aval'), $dades[0]['nomespecialitat'] );
-			printf('                       <td              >%s %s</td></tr>', __('GRUP:','ric-ca-aval'), $dades[0]['grup'] );
-			printf('                   <tr><td              >%s %s</td>',      __('PROFESSOR/A:','ric-ca-aval'), $dades[0]['nomicognoms']);
-			printf('                       <td              >%s %s</td></tr>', __('TUTOR/A:','ric-ca-aval'), $dades[0]['nomicognomstut']);
+			printf('<table class="center"><tr><td><font face="Arial, Helvetica, sans-serif">%s</font></td></tr></table>',  __('ACTA D\'AVALUACIÓ','ricca3-aval'));
+			printf('<table class="cap"><tr><td>%s %s</td></tr></table>',       __('CRÉDIT:','ricca3-aval'), $dades[0]['nomccomp'] );
+			printf('<table class="cap"><tr><td width="400px">%s %s</td>',      __('CURS:','ricca3-aval'), $dades[0]['any']);
+			printf('                       <td width="400px">%s %s</td></tr>', __('DATA:','ricca3-aval'), $_GET['data'] );
+			printf('                   <tr><td              >%s %s</td>',      __('ESPECIALITAT:','ricca3-aval'), $dades[0]['nomespecialitat'] );
+			printf('                       <td              >%s %s</td></tr>', __('GRUP:','ricca3-aval'), $dades[0]['grup'] );
+			printf('                   <tr><td              >%s %s</td>',      __('PROFESSOR/A:','ricca3-aval'), $dades[0]['nomicognoms']);
+			printf('                       <td              >%s %s</td></tr>', __('TUTOR/A:','ricca3-aval'), $dades[0]['nomicognomstut']);
 			printf('                   <tr><td align="center" colspan="2">%s</td></tr></table>',$row_aval['nomaval']);
 			$table = " class=\"cos\" style=\"page-break-after: always;\" ";
 			if($i == count($dades_ccomp) - 1) $table=" class=\"cos\" ";
 			printf('<table %s border="1" >', $table);
 			printf('', NULL);
-			printf('<tr><td width="560px" align="center">%s</td>',      __('Alumnes','ric-ca-aval'));
-			printf('    <td width="120px" align="center">%s</td>',      __('Qualificació','ric-ca-aval') );
-			printf('    <td width="120px" align="center">%s</td></tr>', __('Actitud','ric-ca-aval'));
+			printf('<tr><td width="560px" align="center">%s</td>',      __('Alumnes','ricca3-aval'));
+			printf('    <td width="120px" align="center">%s</td>',      __('Qualificació','ricca3-aval') );
+			printf('    <td width="120px" align="center">%s</td></tr>', __('Actitud','ricca3-aval'));
 			for( $j = 0; $j < count($dades); $j++){
 				printf('<tr><td height="30">%s - %s</td><td></td><td></td></tr>', $j+1, $dades[$j]['cognomsinom']);
 			}
@@ -524,7 +524,7 @@ function ricca3_shortcode_obser($atts, $content = null) {
 //		Entrar observacions a l'alumne
 	if( isset( $_POST['input']) && $_POST['input'] == 'alumne'){
 		if(!isset($_POST['cbox'])){
-			ricca_missatge( __('No hi han alumnes seleccionats. Si us plau selecioneu-ne un.','ric-ca-aval'));
+			ricca_missatge( __('No hi han alumnes seleccionats. Si us plau selecioneu-ne un.','ricca3-aval'));
 			return;
 		}
 		$row_any  = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1',  ARRAY_A, 0);
@@ -602,7 +602,7 @@ function ricca3_shortcode_certif($atts, $content = null) {
 //
 	if( isset( $_POST['grup'] ) && $_POST['grup'] != '-1'){
 		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup'] ), ARRAY_A, 0 );
-		ricca3_missatge(sprintf('%s %s %s %s', __('Certificats de','ric-ca-aval'), $row_grup['grup'], __('amb data','ric-ca-aval'), $_POST['data']) );
+		ricca3_missatge(sprintf('%s %s %s %s', __('Certificats de','ricca3-aval'), $row_grup['grup'], __('amb data','ricca3-aval'), $_POST['data']) );
 		printf('<table><tr>', NULL);
 		printf('<td><a href="%s/%s/?grup=%s&any=%s&data=%s" target="POPUPW" onsubmit="POPUPW = window.open("about:blank","POPUPW","width=800,height=650" >',
 			site_url(), 'ricca3-impcertif', $_POST['grup'], $_POST['any'], $_POST['data']);
@@ -642,14 +642,14 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 		printf('%s %s</td><td width="20%%"></td></tr><tr><td></td><td></td></tr><tr><td width="80%%">', 
 			__('CURS:','ricca3-aval'), $dades_espec[$i]['curs'] );
 		printf('%s %s</td><td></td></tr></table>',
-			__('ALUMNE/A:','ric-ca-aval'), $dades_espec[$i]['cognomsinom']);
+			__('ALUMNE/A:','ricca3-aval'), $dades_espec[$i]['cognomsinom']);
 ##
 ##	FINAL DE CAPÇALERA
 ##
-		printf('<table class="cos"><tr><td align="center" width="70%%">%s', __('Nom del crèdit','ric-ca-aval'));
-		printf('</td><td align="center" width="10%%">%s', __('1ª ava.','ric-ca-aval'));
-		printf('</td><td align="center" width="10%%">%s', __('2ª ava.','ric-ca-aval'));
-		printf('</td><td align="center" width="10%%">%s', __('Actitud','ric-ca-aval'));
+		printf('<table class="cos"><tr><td align="center" width="70%%">%s', __('Nom del crèdit','ricca3-aval'));
+		printf('</td><td align="center" width="10%%">%s', __('1ª ava.','ricca3-aval'));
+		printf('</td><td align="center" width="10%%">%s', __('2ª ava.','ricca3-aval'));
+		printf('</td><td align="center" width="10%%">%s', __('Actitud','ricca3-aval'));
 		printf('</td></tr>', NULL);
 			
 		$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
@@ -685,9 +685,9 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 		$table=" class=\"cap\" style=\"page-break-after: always;\" ";
 		if($i == count($dades_espec) - 1) $table=" class=\"cap\" ";
 		printf('<table %s><tr><td></td></tr><tr><td width="80%%">',$table);
-		printf('%s</td><td width="20%%">', __('Vist i plau','ric-ca-aval'));
-		printf('%s</td></tr><tr><td>',     __('Segell del centre','ric-ca-aval'));
-		printf('%s</td></tr></table>',     __('Direcció Docent','ric-ca-aval'));
+		printf('%s</td><td width="20%%">', __('Vist i plau','ricca3-aval'));
+		printf('%s</td></tr><tr><td>',     __('Segell del centre','ricca3-aval'));
+		printf('%s</td></tr></table>',     __('Direcció Docent','ricca3-aval'));
 	}	
 }
 
@@ -893,7 +893,7 @@ function ricca3_shortcode_certiffinal($atts, $content = null) {
 	ricca3_butons( $ricca3_butons_actes, 6 );
 //	
 	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt800"><tr>', NULL);
-	printf('<td><button type="submit" name="cercar" value="grup"><img src=%s/ric-ca/images/ric-ca-escollir.png " border="0" /></button></td>',WP_PLUGIN_URL);
+	printf('<td><button type="submit" name="cercar" value="grup"><img src=%s/ricca3/imatges/ricca3-escollir.png " border="0" /></button></td>',WP_PLUGIN_URL);
 //	
 //		drop per el any
 	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
@@ -942,87 +942,87 @@ function ricca3_shortcode_certiffinal($atts, $content = null) {
 function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 	global $wpdb;
 //localització
-	$certif      = __('Certificat d\'estudis complerts de CFGS, per a l\'accès a estudis universitaris','ric-ca-aval');
-	$dadescentre = __('Dades del Centre','ric-ca-aval');
-	$codicentre  = __('Codi','ric-ca-aval');
-	$nomcentre   = __('Nom del centre','ric-ca-aval');
-	$adreca      = __('Adreça','ric-ca-aval');
-	$municipi    = __('Municipi','ric-ca-aval');
-	$carles      = __('CARLOS AYLAGAS MOLERO, secretari de centre ESCOLA RAMON I CAJAL, d\'acord amb la documentació que hi ha disponible en aquesta secretaria,','ric-ca-aval');
-	$dni         = __('amb DNI/NIE/Passaport Nº','ric-ca-aval');
-	$numdni      = __('amb el document de identificació','ric-ca-aval');
-	$cursat      = __('ha cursat i superat el cicle formatiu','ric-ca-aval');
-	$reial1      = __('regulat pel Reial decret número','ric-ca-aval');
-	$reial2      = __('/1995 de data 7 d\'abril','ric-ca-aval');
-	$qualifica   = __('l\'alumne/a ha obtingut la qualificació final de:','ric-ca-aval');
-	$consti      = __('I, per que consti, signo aquest certificat, amb el vist i plau de la directora del centre.','ric-ca-aval');
-	$firma       = __('Signatura del secretari','ric-ca-aval');
-	$vistiplau   = __('Vist i plau de la directora','ric-ca-aval');
-	$nom         = __('Nom i cognoms','ric-ca-aval');
-	$segell      = __('SEGELL DEL CENTRE','ric-ca-aval');
+	$certif      = __('Certificat d\'estudis complerts de CFGS, per a l\'accès a estudis universitaris','ricca3-aval');
+	$dadescentre = __('Dades del Centre','ricca3-aval');
+	$codicentre  = __('Codi','ricca3-aval');
+	$nomcentre   = __('Nom del centre','ricca3-aval');
+	$adreca      = __('Adreça','ricca3-aval');
+	$municipi    = __('Municipi','ricca3-aval');
+	$carles      = __('CARLOS AYLAGAS MOLERO, secretari de centre ESCOLA RAMON I CAJAL, d\'acord amb la documentació que hi ha disponible en aquesta secretaria,','ricca3-aval');
+	$dni         = __('amb DNI/NIE/Passaport Nº','ricca3-aval');
+	$numdni      = __('amb el document de identificació','ricca3-aval');
+	$cursat      = __('ha cursat i superat el cicle formatiu','ricca3-aval');
+	$reial1      = __('regulat pel Reial decret número','ricca3-aval');
+	$reial2      = __('/1995 de data 7 d\'abril','ricca3-aval');
+	$qualifica   = __('l\'alumne/a ha obtingut la qualificació final de:','ricca3-aval');
+	$consti      = __('I, per que consti, signo aquest certificat, amb el vist i plau de la directora del centre.','ricca3-aval');
+	$firma       = __('Signatura del secretari','ricca3-aval');
+	$vistiplau   = __('Vist i plau de la directora','ricca3-aval');
+	$nom         = __('Nom i cognoms','ricca3-aval');
+	$segell      = __('SEGELL DEL CENTRE','ricca3-aval');
 //
-	$histo       = __('Historial acadèmic','ric-ca-aval');
-	$resultats   = __('Resultats de l\'avaluació dels crèdits','ric-ca-aval');
-	$forma       = __('Formació professional inicial','ric-ca-aval');
-	$dadesalum   = __('Dades de l\'alumne/a','ric-ca-aval');
-	$cognoms     = __('Cognoms i nom','ric-ca-aval');
-	$passap      = __('DNI/NIE/passaport','ric-ca-aval');
-	$numident    = __('Núm. d\'identificació','ric-ca-aval');
-	$dadesacad   = __('Dades acadèmiques','ric-ca-aval');
-	$codicicle   = __('Codi','ric-ca-aval');
-	$nomcicle    = __('Nom del cicle formatiu','ric-ca-aval');
-	$grau        = __('Grau','ric-ca-aval');
-	$quali       = __('Qualificacions','ric-ca-aval');
-	$nomcredit   = __('Crèdit','ric-ca-aval');
-	$hores       = __('Hores','ric-ca-aval');
-	$convo       = __('Convocatoria','ric-ca-aval');
-	$qualicred   =  __('Qualificació','ric-ca-aval');
-	$qualicf     = __('Qualificació final del cicle formatíu','ric-ca-aval');
-	$observa     = __('Observacions','ric-ca-aval');
-	$dili        = __('Diligència de la validesa de l\'historial acadèmic','ric-ca-aval');
-	$carles2     = __('CARLOS AYLAGAS MOLERO Secretari del centre ESCOLA RAMON I CAJAL amb codi 08035672 certifica que les dades que figuren en aquest historial 	reflecteixen les que consten en la documentació dipositada a la secretaria d\'aquest centre.', 'ric-ca-aval');
-	$llocidata   = __('Lloc i data','ric-ca-aval');
+	$histo       = __('Historial acadèmic','ricca3-aval');
+	$resultats   = __('Resultats de l\'avaluació dels crèdits','ricca3-aval');
+	$forma       = __('Formació professional inicial','ricca3-aval');
+	$dadesalum   = __('Dades de l\'alumne/a','ricca3-aval');
+	$cognoms     = __('Cognoms i nom','ricca3-aval');
+	$passap      = __('DNI/NIE/passaport','ricca3-aval');
+	$numident    = __('Núm. d\'identificació','ricca3-aval');
+	$dadesacad   = __('Dades acadèmiques','ricca3-aval');
+	$codicicle   = __('Codi','ricca3-aval');
+	$nomcicle    = __('Nom del cicle formatiu','ricca3-aval');
+	$grau        = __('Grau','ricca3-aval');
+	$quali       = __('Qualificacions','ricca3-aval');
+	$nomcredit   = __('Crèdit','ricca3-aval');
+	$hores       = __('Hores','ricca3-aval');
+	$convo       = __('Convocatoria','ricca3-aval');
+	$qualicred   =  __('Qualificació','ricca3-aval');
+	$qualicf     = __('Qualificació final del cicle formatíu','ricca3-aval');
+	$observa     = __('Observacions','ricca3-aval');
+	$dili        = __('Diligència de la validesa de l\'historial acadèmic','ricca3-aval');
+	$carles2     = __('CARLOS AYLAGAS MOLERO Secretari del centre ESCOLA RAMON I CAJAL amb codi 08035672 certifica que les dades que figuren en aquest historial 	reflecteixen les que consten en la documentació dipositada a la secretaria d\'aquest centre.', 'ricca3-aval');
+	$llocidata   = __('Lloc i data','ricca3-aval');
 	if( $_GET['local'] == 'si'){
-		$certif      = __('Certificado de estudios cumpletados de CFGS para el acceso a estudios universitarios','ric-ca-aval');
-		$dadescentre = __('Datos del Centro','ric-ca-aval');
-		$codicentre  = __('Código','ric-ca-aval');
-		$nomcentre   = __('Nombre del centro','ric-ca-aval');
-		$adreca      = __('Dirección','ric-ca-aval');
-		$municipi    = __('Municipio','ric-ca-aval');
-		$carles      = __('CARLOS AYLAGAS MOLERO, secretario del centro ESCOLA RAMON I CAJAL, de acuerdo con la documentación que hay disponible en esta secretaría,','ric-ca-aval');
-		$dni         = __('con DNI/NIE/Pasaporte Nº','ric-ca-aval');
-		$numdni      = __('con el número de identificación','ric-ca-aval');
-		$cursat      = __('ha cursado y superado el ciclo formativo','ric-ca-aval');
-		$reial1      = __('regulado por el Real decreto número','ric-ca-aval');
-		$reial2      = __('/1995 de fecha 7 de Abril','ric-ca-aval');
-		$qualifica   = __('El alumno/a ha obtenido la calificación final de:','ric-ca-aval');
-		$consti      = __('Y, para que conste, firmo este certificado, con el visto bueno de la directora del centro.','ric-ca-aval');
-		$firma       = __('Firma del secretario','ric-ca-aval');
-		$vistiplau   = __('Visto bueno de la directora','ric-ca-aval');
-		$nom         = __('Nombre y apellidos','ric-ca-aval');
-		$segell      = __('SELLO DEL CENTRO','ric-ca-aval');
+		$certif      = __('Certificado de estudios cumpletados de CFGS para el acceso a estudios universitarios','ricca3-aval');
+		$dadescentre = __('Datos del Centro','ricca3-aval');
+		$codicentre  = __('Código','ricca3-aval');
+		$nomcentre   = __('Nombre del centro','ricca3-aval');
+		$adreca      = __('Dirección','ricca3-aval');
+		$municipi    = __('Municipio','ricca3-aval');
+		$carles      = __('CARLOS AYLAGAS MOLERO, secretario del centro ESCOLA RAMON I CAJAL, de acuerdo con la documentación que hay disponible en esta secretaría,','ricca3-aval');
+		$dni         = __('con DNI/NIE/Pasaporte Nº','ricca3-aval');
+		$numdni      = __('con el número de identificación','ricca3-aval');
+		$cursat      = __('ha cursado y superado el ciclo formativo','ricca3-aval');
+		$reial1      = __('regulado por el Real decreto número','ricca3-aval');
+		$reial2      = __('/1995 de fecha 7 de Abril','ricca3-aval');
+		$qualifica   = __('El alumno/a ha obtenido la calificación final de:','ricca3-aval');
+		$consti      = __('Y, para que conste, firmo este certificado, con el visto bueno de la directora del centro.','ricca3-aval');
+		$firma       = __('Firma del secretario','ricca3-aval');
+		$vistiplau   = __('Visto bueno de la directora','ricca3-aval');
+		$nom         = __('Nombre y apellidos','ricca3-aval');
+		$segell      = __('SELLO DEL CENTRO','ricca3-aval');
 //
-		$histo       = __('Historial académico','ric-ca-aval');
-		$resultats   = __('Resultados de la evaluación de los créditos','ric-ca-aval');
-		$forma       = __('Formación profesional inicial','ric-ca-aval');
-		$dadesalum   = __('Datos del alumno/a','ric-ca-aval');
-		$cognoms     = __('Apellidos y nombre','ric-ca-aval');
-		$passap      = __('DNI/NIE/pasaporte','ric-ca-aval');
-		$numident    = __('Núm. de identificación','ric-ca-aval');
-		$dadesacad   = __('Datos académicos','ric-ca-aval');
-		$codicicle   = __('Código','ric-ca-aval');
-		$nomcicle    = __('Nombre del ciclo formativo','ric-ca-aval');
-		$grau        = __('Grado','ric-ca-aval');
-		$quali       = __('Calificaciones','ric-ca-aval');
-		$nomcredit   = __('Crédito','ric-ca-aval');
-		$hores       = __('Horas','ric-ca-aval');
-		$convo       = __('Convocatoria','ric-ca-aval');
-		$qualicred   = __('Calificación','ric-ca-aval');
-		$qualicf     = __('Calificación final del ciclo formativo','ric-ca-aval');
-		$observa     = __('Observaciones','ric-ca-aval');
-		$dili        = __('Diligencia de la validez del historial académico','ric-ca-aval');
-		$carles2     = __('CARLOS AYLAGAS MOLERO Secretario del centro ESCOLA RAMON I CAJAL con código 08035672 certifica que los datos que figuran en este historial reflejan los que constan en la documentación depositada en la secretaría de este centro.', 'ric-ca-aval');
-		$llocidata   = __('Lugar y fecha','ric-ca-aval');
+		$histo       = __('Historial académico','ricca3-aval');
+		$resultats   = __('Resultados de la evaluación de los créditos','ricca3-aval');
+		$forma       = __('Formación profesional inicial','ricca3-aval');
+		$dadesalum   = __('Datos del alumno/a','ricca3-aval');
+		$cognoms     = __('Apellidos y nombre','ricca3-aval');
+		$passap      = __('DNI/NIE/pasaporte','ricca3-aval');
+		$numident    = __('Núm. de identificación','ricca3-aval');
+		$dadesacad   = __('Datos académicos','ricca3-aval');
+		$codicicle   = __('Código','ricca3-aval');
+		$nomcicle    = __('Nombre del ciclo formativo','ricca3-aval');
+		$grau        = __('Grado','ricca3-aval');
+		$quali       = __('Calificaciones','ricca3-aval');
+		$nomcredit   = __('Crédito','ricca3-aval');
+		$hores       = __('Horas','ricca3-aval');
+		$convo       = __('Convocatoria','ricca3-aval');
+		$qualicred   = __('Calificación','ricca3-aval');
+		$qualicf     = __('Calificación final del ciclo formativo','ricca3-aval');
+		$observa     = __('Observaciones','ricca3-aval');
+		$dili        = __('Diligencia de la validez del historial académico','ricca3-aval');
+		$carles2     = __('CARLOS AYLAGAS MOLERO Secretario del centro ESCOLA RAMON I CAJAL con código 08035672 certifica que los datos que figuran en este historial reflejan los que constan en la documentación depositada en la secretaría de este centro.', 'ricca3-aval');
+		$llocidata   = __('Lugar y fecha','ricca3-aval');
 	}
 //
 	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any   WHERE idany  = %s', $_GET['any'] ), ARRAY_A, 0);
@@ -1058,7 +1058,7 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 		}else{
 			printf('<td class="gran" colspan="2">%s</td>',$row_espec['nomespecialitat']);
 		}
-		printf('<td class="gran">%s</td></tr>', __('SUPERIOR','ric-ca-alum') );
+		printf('<td class="gran">%s</td></tr>', __('SUPERIOR','ricca3-alum') );
 		printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 //	qualificacions
 		printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>', $quali);
@@ -1142,12 +1142,12 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 		printf('                   <tr><td width="230px">%s</td><td width="230px"></td><td width="230px">%s</td></tr>',
 		$nom, $nom );
 		printf('                   <tr><td width="230px">%s</td><td width="230px"></td><td width="230px">%s</td></tr>',
-		__('Carlos Aylagas Molero','ric-ca-aval'), __('Teresa Llirinós Sopena','ric-ca-aval') );
+		__('Carlos Aylagas Molero','ricca3-aval'), __('Teresa Llirinós Sopena','ricca3-aval') );
 		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 		printf('                   <tr><td width="230px">%s</td><td width="460" colspan="2">%s %s</tr>',
 		$llocidata, __('Barcelona, a'), $_GET['data']);
 		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-ampla.png"></td></tr></table>', WP_PLUGIN_URL);
-		printf('<table style="page-break-after: always;"><tr><td class="dereta" width="680px">%s</td></tr></table>', __('___/___', 'ric-ca-aval'));
+		printf('<table style="page-break-after: always;"><tr><td class="dereta" width="680px">%s</td></tr></table>', __('___/___', 'ricca3-aval'));
 	}		
 //	segona fulla
 	for( $i = 0; $i < $result_alum; $i++){
