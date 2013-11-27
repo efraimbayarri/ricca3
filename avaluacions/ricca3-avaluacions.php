@@ -893,7 +893,7 @@ function ricca3_shortcode_certiffinal($atts, $content = null) {
 	ricca3_butons( $ricca3_butons_actes, 6 );
 //	
 	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt800"><tr>', NULL);
-	printf('<td><button type="submit" name="cercar" value="grup"><img src=%s/ricca3/imatges/ricca3-escollir.png " border="0" /></button></td>',WP_PLUGIN_URL);
+	printf('<td><button type="submit" name="cercar" value="grup"><img src=%s/ricca3/imatges/ricca3-escollirgrup.png " border="0" /></button></td>',WP_PLUGIN_URL);
 //	
 //		drop per el any
 	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
