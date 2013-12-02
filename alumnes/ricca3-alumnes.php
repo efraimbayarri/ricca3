@@ -886,6 +886,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
   			$encoded_nom      = json_encode($_POST['cicle_nom'][$z],   JSON_FORCE_OBJECT);
   			$encoded_anyd     = json_encode($_POST['cicle_any_de'][$z],JSON_FORCE_OBJECT);
   			$encoded_anya     = json_encode($_POST['cicle_any_a'][$z], JSON_FORCE_OBJECT);
+//  			$encoded_curs     = json_encode(stripslashes($_POST['cicle_curs'][$z]),  JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
   			$encoded_curs     = json_encode($_POST['cicle_curs'][$z],  JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
 //		radio buttons
   			$titol="";

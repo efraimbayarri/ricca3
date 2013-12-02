@@ -288,8 +288,8 @@ function ricca3_shortcode_notes($atts, $content = null) {
 				'INNER JOIN ricca3_cursos              ON ricca3_cursos.idcurs                = ricca3_credits.idcurs '.
 				'INNER JOIN ricca3_alumne_especialitat ON ricca3_alumne_especialitat.idalumne = ricca3_alumne.idalumne '.
 				'AND ricca3_alumne_especialitat.idgrup   = ricca3_grups.idgrup '.
-				'WHERE ricca3_credits_avaluacions.idccomp = %s and ricca3_credits_avaluacions.idany = %s and idestat_es = 1 ORDER BY cognomsinom ASC ',
-				$_POST['ccomp'], $row_any['idany'] );
+				'WHERE ricca3_credits_avaluacions.idccomp = %s AND ricca3_credits_avaluacions.idany = %s AND idestat_es = 1 AND ricca3_alumne_especialitat.idany = %s ORDER BY cognomsinom ASC ',
+				$_POST['ccomp'], $row_any['idany'], $row_any['idany'] );
 		$dades_cred = $wpdb->get_results( $query, ARRAY_A );
 		$row_prof = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_professors WHERE idprof=%s ', $dades_cred[0]['idprofessor']), ARRAY_A, 0);
 //
@@ -320,8 +320,8 @@ function ricca3_shortcode_notes($atts, $content = null) {
 				if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 					printf('<tr><td><INPUT type="hidden" name="RECORD[]" value="%s"> %s - %s</td>',
 						$dades_cred[$i]['idcredaval'],$z+1,$dades_cred[$i]['cognomsinom'] );
-					printf('<td><INPUT type="text" name="nota1[]" value="%s" ></td>', $dades_cred[$i]['nota1']);
-					printf('<td><INPUT type="text" name="act1[]"  value="%s" ></td></tr>', $dades_cred[$i]['act1']);
+					printf('<td><INPUT type="text" name="nota1[]" value="%s" autocomplete="off" tabindex=%s></td>', $dades_cred[$i]['nota1'], $i + 1);
+					printf('<td><INPUT type="text" name="act1[]"  value="%s" autocomplete="off" tabindex=%s></td></tr>', $dades_cred[$i]['act1'], $i + count($dades_cred) + 1);
 					$z++;
 				}				
 			}
@@ -339,10 +339,10 @@ function ricca3_shortcode_notes($atts, $content = null) {
 			for( $i=0; $i < count($dades_cred); $i++){
 				if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 					printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
-					printf('<td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="nota2[]" value="%s" ></td>', 
-						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2']);
-					printf('<td><INPUT type="text" name="act2[]"  value="%s" ></td></tr>', 
-						$dades_cred[$i]['act2']);
+					printf('<td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="nota2[]" value="%s" autocomplete="off" tabindex=%s></td>', 
+						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'],$i + 1);
+					printf('<td><INPUT type="text" name="act2[]"  value="%s" autocomplete="off" tabindex=%s></td></tr>', 
+						$dades_cred[$i]['act2'], $i + count($dades_cred) + 1);
 					$z++;
 				}
 			}
@@ -360,9 +360,9 @@ function ricca3_shortcode_notes($atts, $content = null) {
 			for( $i=0; $i < count($dades_cred); $i++){
 				if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 					printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
-					printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="nota3[]" value="%s" ></td>', 
-						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3']);
-					printf('<td><INPUT type="text" name="actf[]"  value="%s" ></td></tr>', $dades_cred[$i]['actf']);
+					printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="nota3[]" value="%s" autocomplete="off" tabindex=%s></td>', 
+						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3'],$i + 1);
+					printf('<td><INPUT type="text" name="actf[]"  value="%s" autocomplete="off" tabindex=%s></td></tr>', $dades_cred[$i]['actf'], $i + count($dades_cred) + 1);
 					$z++;
 				}
 			}
@@ -382,8 +382,8 @@ function ricca3_shortcode_notes($atts, $content = null) {
 				for( $i=0; $i < count($dades_cred); $i++){
 					if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 						printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
-						printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="notaf_cc[]" value="%s" ><INPUT type="hidden" name="notaf_cr[]" value="%s" ></td></tr>', 
-							$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3'], $dades_cred[$i]['actf'], $dades_cred[$i]['notaf_cc'], $dades_cred[$i]['notaf_cr']);
+						printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="notaf_cc[]" value="%s" ><INPUT type="hidden" name="notaf_cr[]" value="%s" autocomplete="off" tabindex=%s></td></tr>', 
+							$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3'], $dades_cred[$i]['actf'], $dades_cred[$i]['notaf_cc'], $dades_cred[$i]['notaf_cr'],$i + 1);
 						$z++;
 					}
 				}
@@ -393,8 +393,8 @@ function ricca3_shortcode_notes($atts, $content = null) {
 				for( $i=0; $i < count($dades_cred); $i++){
 					if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 						printf('<tr><td>%s - %s</td>', $z+1,$dades_cred[$i]['cognomsinom'] );
-						printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="notaf_cc[]" value="%s" ></td><td><INPUT type="text" name="notaf_cr[]" value="%s" ></td></tr>',
-						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3'], $dades_cred[$i]['actf'], $dades_cred[$i]['notaf_cc'], $dades_cred[$i]['notaf_cr']);
+						printf('<td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td>%s</td><td>%s</td><td> - </td><td><INPUT type="text" name="notaf_cc[]" value="%s" autocomplete="off" tabindex=%s></td><td><INPUT type="text" name="notaf_cr[]" value="%s" autocomplete="off" tabindex=%s></td></tr>',
+						$dades_cred[$i]['nota1'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota2'], $dades_cred[$i]['act1'], $dades_cred[$i]['nota3'], $dades_cred[$i]['actf'], $dades_cred[$i]['notaf_cc'],$i + 1, $dades_cred[$i]['notaf_cr'], $i + count($dades_cred) + 1);
 						$z++;
 					}
 				}
