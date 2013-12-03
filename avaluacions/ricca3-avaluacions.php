@@ -276,7 +276,23 @@ function ricca3_shortcode_notes($atts, $content = null) {
 		$row_grup   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_POST['grup'] ),  ARRAY_A, 0);
 		$row_any    = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_POST['any'] ),   ARRAY_A, 0);
 		$row_ccomp  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_POST['ccomp']),  ARRAY_A, 0);
-		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+		if( $row_grup['idgrup'] == 17){
+			$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+				'INNER JOIN ricca3_any                 ON ricca3_any.idany                    = ricca3_credits_avaluacions.idany '.
+				'INNER JOIN ricca3_ccomp               ON ricca3_ccomp.idccomp                = ricca3_credits_avaluacions.idccomp '.
+				'INNER JOIN ricca3_credits             ON ricca3_credits.idcredit             = ricca3_ccomp.idcredit '.
+				'INNER JOIN ricca3_grups               ON ricca3_grups.idgrup                 = ricca3_ccomp.idgrup '.
+				'INNER JOIN ricca3_professors          ON ricca3_professors.idprof            = ricca3_ccomp.idprofessor '.
+				'INNER JOIN ricca3_tutors              ON ricca3_tutors.idprof                = ricca3_ccomp.idtutor '.
+				'INNER JOIN ricca3_alumne              ON ricca3_alumne.idalumne              = ricca3_credits_avaluacions.idalumne '.
+				'INNER JOIN ricca3_especialitats       ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+				'INNER JOIN ricca3_cursos              ON ricca3_cursos.idcurs                = ricca3_credits.idcurs '.
+				'INNER JOIN ricca3_alumne_especialitat ON ricca3_alumne_especialitat.idalumne = ricca3_alumne.idalumne '.
+				'AND ricca3_alumne_especialitat.idgrup   = ricca3_grups.idgrup '.
+				'WHERE ricca3_credits_avaluacions.idccomp = %s AND ricca3_credits_avaluacions.idany = %s AND idestat_es = 1 ORDER BY cognomsinom ASC ',
+				$_POST['ccomp'], $row_any['idany'] );
+		}else{
+			$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 				'INNER JOIN ricca3_any                 ON ricca3_any.idany                    = ricca3_credits_avaluacions.idany '.
 				'INNER JOIN ricca3_ccomp               ON ricca3_ccomp.idccomp                = ricca3_credits_avaluacions.idccomp '.
 				'INNER JOIN ricca3_credits             ON ricca3_credits.idcredit             = ricca3_ccomp.idcredit '.
@@ -290,6 +306,7 @@ function ricca3_shortcode_notes($atts, $content = null) {
 				'AND ricca3_alumne_especialitat.idgrup   = ricca3_grups.idgrup '.
 				'WHERE ricca3_credits_avaluacions.idccomp = %s AND ricca3_credits_avaluacions.idany = %s AND idestat_es = 1 AND ricca3_alumne_especialitat.idany = %s ORDER BY cognomsinom ASC ',
 				$_POST['ccomp'], $row_any['idany'], $row_any['idany'] );
+		}
 		$dades_cred = $wpdb->get_results( $query, ARRAY_A );
 		$row_prof = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_professors WHERE idprof=%s ', $dades_cred[0]['idprofessor']), ARRAY_A, 0);
 //
