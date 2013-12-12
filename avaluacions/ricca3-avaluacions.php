@@ -276,7 +276,7 @@ function ricca3_shortcode_notes($atts, $content = null) {
 		$row_grup   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_POST['grup'] ),  ARRAY_A, 0);
 		$row_any    = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_POST['any'] ),   ARRAY_A, 0);
 		$row_ccomp  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_POST['ccomp']),  ARRAY_A, 0);
-		if( $row_grup['idgrup'] == 17){
+		if( $row_grup['idgrup'] == 17 ){
 			$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 				'INNER JOIN ricca3_any                 ON ricca3_any.idany                    = ricca3_credits_avaluacions.idany '.
 				'INNER JOIN ricca3_ccomp               ON ricca3_ccomp.idccomp                = ricca3_credits_avaluacions.idccomp '.
@@ -307,6 +307,7 @@ function ricca3_shortcode_notes($atts, $content = null) {
 				'WHERE ricca3_credits_avaluacions.idccomp = %s AND ricca3_credits_avaluacions.idany = %s AND idestat_es = 1 AND ricca3_alumne_especialitat.idany = %s ORDER BY cognomsinom ASC ',
 				$_POST['ccomp'], $row_any['idany'], $row_any['idany'] );
 		}
+
 		$dades_cred = $wpdb->get_results( $query, ARRAY_A );
 		$row_prof = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_professors WHERE idprof=%s ', $dades_cred[0]['idprofessor']), ARRAY_A, 0);
 //
@@ -648,17 +649,17 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 ##
 ##	CAPÇALERA
 ##
+		printf('<table class="cap"><tr><td>&nbsp</td></tr></table>');
 		printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
-		printf('<table class="center"><tr><td><font face="Arial, Helvetica, sans-serif">%s',
+		printf('<table class="center"><tr><td>&nbsp</td></tr><tr><td><font face="Arial, Helvetica, sans-serif">%s</font></td></tr><tr><td>&nbsp</td></tr></table>',
 			__('BUTLLETÍ DE NOTES','ricca3-aval'));
-		printf('</font></td></tr></table><table class="cap"><tr><td width="80%%">', NULL);
-		printf('%s %s</td><td width="20%%">',
+		printf('<table class="cap"><tr><td width="80%%">%s %s</td><td width="20%%">', 
 			__('ESPECIALITAT:','ricca3-aval'), $dades_espec[$i]['nomespecialitat']);
-		printf('%s %s</td></tr><tr><td width="80%%">',
+		printf('%s %s</td></tr><tr><tr><td>&nbsp</td></tr><td width="80%%">',
 			__('ANY:','ricca3-aval'), $row_any['any'] );
-		printf('%s %s</td><td width="20%%"></td></tr><tr><td></td><td></td></tr><tr><td width="80%%">', 
+		printf('%s %s</td><td width="20%%"></td></tr><tr><td></td><td></td></tr><tr><td>&nbsp</td></tr><tr><td width="80%%">', 
 			__('CURS:','ricca3-aval'), $dades_espec[$i]['curs'] );
-		printf('%s %s</td><td></td></tr></table>',
+		printf('%s %s</td><td></td></tr><tr><td>&nbsp</td></tr></table>',
 			__('ALUMNE/A:','ricca3-aval'), $dades_espec[$i]['cognomsinom']);
 ##
 ##	FINAL DE CAPÇALERA
@@ -671,7 +672,8 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 			
 		$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
-			'WHERE idany=%s AND idgrup=%s and idalumne=%s',
+			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+			'WHERE idany=%s AND idgrup=%s and idalumne=%s ORDER BY ordre_cr',
 			$_GET['any'], $_GET['grup'], $dades_espec[$i]['idalumne']), ARRAY_A);
 		for( $j=0; $j < count($dades_ccomp); $j++ ){
 			printf('<tr><td>%s</td><td align="center">%s</td><td align="center">%s</td><td align="center">',
@@ -687,21 +689,21 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 ##
 ##	PEU DE PAGINA
 ##
-		printf('<table class="cap"><tr><td></td></tr><tr><td>%s', 
+		printf('<table class="cap"><tr><td>&nbsp</td></tr><tr><td>%s', 
 			__('VALORACIÓ DE L\'ACTITUD ( A: Molt bona, B: Bona, C: Normal, D: Passiva, E: Negativa)','ricca3-aval'));
-		printf('</td></tr><tr><td></td></tr><tr><td></td></tr></table><table class="cap"><tr><td>%s', 
+		printf('</td></tr><tr><td>&nbsp</td></tr><tr><td>&nbsp</td></tr></table><table class="cap"><tr><td>%s', 
 			__('OBSERVACIONS:','ricca3-aval'));
 		printf('</td><td></td></tr><tr><td></td><td>%s</td></tr><tr><td></td><td></td></tr>', 
 			$dades_espec[$i]['observ3']);
 		printf('<tr><td align="right"></td><td>%s</td></tr>', 
 			$dades_espec[$i]['observ1']);
-		printf('<tr><td align="right"></td><td>%s</td></tr></table><table class="cap"><tr><td>', 
+		printf('<tr><td align="right"></td><td>%s</td></tr></table><table class="cap"><tr><td>&nbsp</td></tr><tr><td>', 
 			$dades_espec[$i]['observ2']);
 		printf('%s %s</td></tr></table>',  
 			__('Barcelona, a','ricca3-aval'), $_GET['data']);
 		$table=" class=\"cap\" style=\"page-break-after: always;\" ";
 		if($i == count($dades_espec) - 1) $table=" class=\"cap\" ";
-		printf('<table %s><tr><td></td></tr><tr><td width="80%%">',$table);
+		printf('<table %s><tr><td>&nbsp</td></tr><tr><td width="80%%">',$table);
 		printf('%s</td><td width="20%%">', __('Vist i plau','ricca3-aval'));
 		printf('%s</td></tr><tr><td>',     __('Segell del centre','ricca3-aval'));
 		printf('%s</td></tr></table>',     __('Direcció Docent','ricca3-aval'));
@@ -917,7 +919,7 @@ function ricca3_shortcode_certiffinal($atts, $content = null) {
 	ricca3_drop_any( __('Any:','ricca3-aval'), 'any', $data_any, 'idany', 'any', __('ajuda_notes_any', 'ricca3-aval'), 'actual' );
 //		drop per el grup
 	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups INNER JOIN ricca3_especialitats ON ricca3_grups.idespecialitat = ricca3_especialitats.idespecialitat '.
-		'WHERE actiu_gr = 1 AND ( idcurs=2 OR ricca3_grups.idespecialitat=6) ORDER BY grup ', ARRAY_A );
+		'WHERE actiu_gr = 1 AND ( idcurs=2 OR ricca3_grups.idespecialitat=6 OR ricca3_grups.idespecialitat=7) ORDER BY grup ', ARRAY_A );
 	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_notes_grup', 'ricca3-aval'), TRUE );
 //	
 	if( !isset( $_POST['data'] ) ){

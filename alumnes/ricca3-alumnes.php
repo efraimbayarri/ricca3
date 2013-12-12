@@ -1849,9 +1849,11 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 				$j, $data_cred[$j]['nota3'],  __('ajuda-graella-credalu-N3', 'ricca3-alum'));
 			printf('<td width="10px"><INPUT type="text" size="1" name="actf[%s]"   value="%s" title="%s" pattern="[ABCDEabcde ]{1,1}" /></td>',
 				$j, $data_cred[$j]['actf'],   __('ajuda-graella-credalu-A3', 'ricca3-alum'));
-			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cc[%s]"  value="%s" title="%s" pattern="[0-9A-Za-zèéÈÉ: ]{1,15}" /></td>',
+//			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cc[%s]"  value="%s" title="%s" pattern="[0-9A-Za-zèéÈÉ: ]{1,15}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cc[%s]"  value="%s" title="%s" /></td>',
 				$j, $data_cred[$j]['notaf_cc'],  __('ajuda-graella-credalu-NFCC', 'ricca3-alum'));
-			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cr[%s]"  value="%s" title="%s" pattern="[0-9A-Za-zèéÈÉ: ]{1,15}" /></td>',
+//			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cr[%s]"  value="%s" title="%s" pattern="[0-9A-Za-zèéÈÉ: ]{1,15}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cr[%s]"  value="%s" title="%s" /></td>',
 				$j, $data_cred[$j]['notaf_cr'],  __('ajuda-graella-credalu-NFCR', 'ricca3-alum'));
 			printf('<td>%s</td><td>%s</td><td>%s<input type="hidden" name="idcredaval[%s]" value="%s"></td></tr>', $data_cred[$j]['nomicognoms'], $data_cred[$j]['hores_cc'], $data_cred[$j]['hores_cr'], $j, $data_cred[$j]['idcredaval']);
 		}
