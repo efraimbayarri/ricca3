@@ -1,0 +1,9 @@
+SELECT * FROM ricca.ricca3_alumne
+INNER JOIN ricca3_alumne_especialitat on ricca3_alumne_especialitat.idalumne=ricca3_alumne.idalumne 
+INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_alumne_especialitat.idany
+INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup
+INNER JOIN ricca3_cursos ON ricca3_cursos.idcurs = ricca3_grups.idcurs
+INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_grups.idespecialitat
+INNER JOIN ricca3_estat ON ricca3_estat.idestat = ricca3_alumne_especialitat.idestat_es
+WHERE ricca3_alumne_especialitat.idany=13
+ORDER BY ricca3_especialitats.idespecialitat, cognomsinom
