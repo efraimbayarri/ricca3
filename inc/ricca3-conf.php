@@ -440,3 +440,14 @@ $ricca3_butons_espec=array(
 	"id"     =>array(false,          false,          false,          false,          false,          false),
 	"texte"  =>array("",             "" ,            "",             "",             "",             "")
 );
+
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_butons_sii=array(
+	"imatge" =>array("sii-options",        "sii-fitxers",        "buid",       "buid",       "buid",       "buid"),
+	"enllac" =>array("ricca3-sii-opcions", "ricca3-sii-fitxers", "ricca3-sii", "ricca3-sii", "ricca3-sii", "ricca3-sii"),
+	"id"     =>array(false,                false,                false,        false,        false,        false),
+	"nova"   =>array(false,                false,                false,        false,        false,        false),
+	"texte"  =>array("",                   "" ,                  "",           "",           "",           "")
+);

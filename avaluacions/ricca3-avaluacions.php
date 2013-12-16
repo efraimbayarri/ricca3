@@ -1,5 +1,5 @@
 <?php
-## Release build 2013.27.5
+## Release build 2013.27.5 
 #############################################################################################
 /**
  * Avaluacions
@@ -13,7 +13,7 @@ function ricca3_shortcode_avaluacions($atts, $content = null) {
 	global $ricca3_butons_avaluacions;
 
 	ricca3_missatge(__('Avaluacions dels alumnes','ricca3-aval'));
-//		preparar ajudes als butons
+//	preparar ajudes als butons
 	$ricca3_butons_avaluacions['texte'][0] = __('ajuda-aval-actes', 'ricca3-aval');
 	$ricca3_butons_avaluacions['texte'][1] = __('ajuda-aval-notes', 'ricca3-aval');
 	$ricca3_butons_avaluacions['texte'][2] = __('ajuda-aval-obs', 'ricca3-aval');
@@ -670,11 +670,19 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 		printf('</td><td align="center" width="10%%">%s', __('Actitud','ricca3-aval'));
 		printf('</td></tr>', NULL);
 			
+		$dades_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_GET['grup']), ARRAY_A, 0);
+		
 		$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
-			'WHERE idany=%s AND idgrup=%s and idalumne=%s ORDER BY ordre_cr',
-			$_GET['any'], $_GET['grup'], $dades_espec[$i]['idalumne']), ARRAY_A);
+//			'WHERE idany=%s AND idgrup=%s and idalumne=%s ORDER BY ordre_cr',
+//			$_GET['any'], $_GET['grup'], $dades_espec[$i]['idalumne']), ARRAY_A);
+			'WHERE idany=%s AND idespecialitat=%s and idalumne=%s ORDER BY ordre_cr',
+			$_GET['any'], $dades_grup['idespecialitat'], $dades_espec[$i]['idalumne']), ARRAY_A);
+		
+//		dump_r($dades_grup);
+//		dump_r($dades_ccomp);
+		
 		for( $j=0; $j < count($dades_ccomp); $j++ ){
 			printf('<tr><td>%s</td><td align="center">%s</td><td align="center">%s</td><td align="center">',
 				$dades_ccomp[$j]['nomccomp'], $dades_ccomp[$j]['nota1'], $dades_ccomp[$j]['nota2']);
