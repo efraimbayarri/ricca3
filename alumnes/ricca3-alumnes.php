@@ -308,6 +308,21 @@ function ricca3_shortcode_noualumne($atts, $content = null) {
 //	afegim els stamp
 		$_POST['stampuser'] = $current_user->user_login;
 		$_POST['stampplace'] = 'ricca3_shortcode_noualumne_insert';
+//	calculem el camps 'tipus de document d identificacio'
+		if( strlen(trim($_POST['dni'])) == 9
+				&& (ord(trim($_POST['dni'])) > 47 && ord(trim($_POST['dni'])) < 58 )
+				&& (ord(strrev(trim($_POST['dni']))) > 64 )){
+			$_POST['tipusdni']="DNI";
+			$_POST['SII_TipusDocumentIdentitat']="A";
+		}elseif( strlen(trim($_POST['dni'])) == 9
+				&& (ord(trim($_POST['dni'])) > 64)
+				&& (ord(strrev(trim($_POST['dni']))) > 64 )){
+			$_POST['tipusdni']="NIE";
+			$_POST['SII_TipusDocumentIdentitat']="B";
+		}else{
+			$_POST['tipusdni']="Passaport";
+			$_POST['SII_TipusDocumentIdentitat']="C";
+		}
 //	insertem el registre
 		if( $wpdb->insert('ricca3_alumne',$_POST) ){
 			ricca3_missatge( __('Entrada dades del nou alumne existosa!','ricca3-alum'));
@@ -1837,17 +1852,17 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 			}else{
 				printf('<td>%s</td>', $data_cred[$j]['nomccomp']);
 			}
-			printf('<td width="10px"><INPUT type="text" size="1" name="nota1[%s]"  value="%s" title="%s" pattern="[0-9NPCOEXnpcoex ]{1,2}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="1" name="nota1[%s]"  value="%s" title="%s" pattern="[0-9NPCOEXnpcoex \-]{1,2}" /></td>',
 				$j, $data_cred[$j]['nota1'],  __('ajuda-graella-credalu-N1', 'ricca3-alum'));
-			printf('<td width="10px"><INPUT type="text" size="1" name="act1[%s]"  value="%s" title="%s" pattern="[ABCDEabcde ]{1,1}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="1" name="act1[%s]"  value="%s" title="%s" pattern="[ABCDEabcde \-]{1,2}" /></td>',
 				$j, $data_cred[$j]['act1'],  __('ajuda-graella-credalu-A1', 'ricca3-alum'));
-			printf('<td width="10px"><INPUT type="text" size="1" name="nota2[%s]"  value="%s" title="%s" pattern="[0-9NPCOEXnpcoex ]{1,2}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="1" name="nota2[%s]"  value="%s" title="%s" pattern="[0-9NPCOEXnpcoex \-]{1,2}" /></td>',
 				$j, $data_cred[$j]['nota2'],  __('ajuda-graella-credalu-N2', 'ricca3-alum'));
-			printf('<td width="10px"><INPUT type="text" size="1" name="act2[%s]"  value="%s" title="%s" pattern="[ABCDEabcde ]{1,1}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="1" name="act2[%s]"  value="%s" title="%s" pattern="[ABCDEabcde \-]{1,2}" /></td>',
 				$j, $data_cred[$j]['act2'],  __('ajuda-graella-credalu-A2', 'ricca3-alum'));
-			printf('<td width="10px"><INPUT type="text" size="1" name="nota3[%s]"  value="%s" title="%s" pattern="[0-9NPCOEXnpcoex ]{1,2}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="1" name="nota3[%s]"  value="%s" title="%s" pattern="[0-9NPCOEXnpcoex \-]{1,2}" /></td>',
 				$j, $data_cred[$j]['nota3'],  __('ajuda-graella-credalu-N3', 'ricca3-alum'));
-			printf('<td width="10px"><INPUT type="text" size="1" name="actf[%s]"   value="%s" title="%s" pattern="[ABCDEabcde ]{1,1}" /></td>',
+			printf('<td width="10px"><INPUT type="text" size="1" name="actf[%s]"   value="%s" title="%s" pattern="[ABCDEabcde \-]{1,2}" /></td>',
 				$j, $data_cred[$j]['actf'],   __('ajuda-graella-credalu-A3', 'ricca3-alum'));
 //			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cc[%s]"  value="%s" title="%s" pattern="[0-9A-Za-zèéÈÉ: ]{1,15}" /></td>',
 			printf('<td width="10px"><INPUT type="text" size="10" name="notaf_cc[%s]"  value="%s" title="%s" /></td>',
