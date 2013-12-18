@@ -324,6 +324,22 @@ $ricca3_afegircredit_ccomp=array(
 		"camp"    =>array( "",        "",         "",     "",            "",         "" )
 );
 
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_sii_modif=array(
+		"tipus"     =>array("ordre", "hidden",   "bd",       "bd",          "bd",  "bd",                         "bd",       "bd",      "bd",                        "bd",      "bd",                         "bd",      "bd",                    "bd",                   "bd",                 "bd",             "bd",               "bd",         "bd",           "bd"),
+		"nombd"     =>array("",      "idalumne", "idalumne", "cognomsinom", "dni", "SII_TipusDocumentIdentitat", "SII_Sexe", "llocnai", "SII_CodiMunicipiNaixement", "provnai", "SII_CodiProvinciaNeixement", "paisnai", "SII_CodiPaisNeixement", "SII_CodiNacionalitat", "residenciahabitual", "ciutathabitual", "SII_CodiMunicipi", "codipostal", "SII_CodiPais", "SII_SituacioLaboral"),
+		"nomupdate" =>array("",      "idalumne", "idalumne", "cognomsinom", "dni", "SII_TipusDocumentIdentitat", "SII_Sexe", "llocnai", "SII_CodiMunicipiNaixement", "provnai", "SII_CodiProvinciaNeixement", "paisnai", "SII_CodiPaisNeixement", "SII_CodiNacionalitat", "residenciahabitual", "ciutathabitual", "SII_CodiMunicipi", "codipostal", "SII_CodiPais", "SII_SituacioLaboral"),
+		"visual"    =>array("",      "",         "ID",       "Nom",         "DNI", "Tipus",                      "Sexe",     "MunNaix", "CMunNaix",                  "ProvNai", "CProvNai",                   "PaisNai", "CPaisNai",              "CNacio",               "Adreça",             "Municipi",       "CMun",             "CP",         "País",          "Treball"),
+		"enllac"    =>array("",      "",         "",         "",            "",    "",                           "",         "",        "",                          "",        "",                           "",        "",                      "",                     "",                   "",               "",                 "",           "",              ""),
+		"camp"      =>array("",      "",         "",         "",            "",    "",                           "",         "",        "",                          "",        "",                           "",        "",                      "",                     "",                   "",               "",                 "",           "",              ""),
+		"texte"     =>array("",      "",         "",         "",            "",    "",                           "",         "",        "",                          "",        "",                           "",        "",                      "",                     "",                   "",               "",                 "",           "",              ""),
+		"nomeslect" =>array(true,    true,       true,       true,          true,  false,                        false,      false,     false,                       true,      false,                        true,      false,                   false,                  true,                 true,             false,              false,        false,           false),
+		"tamany"    =>array(5,       5,          5,          5,             5,     3,                            3,          30,        5,                           5,         2,                            5,         3,                       3,                      5,                    5,                5,                  5,            3,               1),
+		"ajuda"     =>array("",      "",         "",         "",            "",    "",                           "",         "",        "",                          "",        "",                           "",        "",                      "",                     "",                   "",               "",                 "",           "",              "")
+);
+
 ######################################################
 ######################################################
 ##
