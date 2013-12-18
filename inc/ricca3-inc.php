@@ -28,6 +28,7 @@
 function ricca3_graella( $matriu, $data, $token = null){
 	global $wpdb;
 	$num_cols = count( $matriu,1 ) / count( $matriu , 0 ) -1;
+
 	if( count( $data ) == 0 ) return'';
 //		capçalera	
 	printf('<table id="datatable">', NULL);
@@ -35,7 +36,11 @@ function ricca3_graella( $matriu, $data, $token = null){
 	printf('<tr>', NULL);
 	for( $i = 0; $i < $num_cols; $i++ ){
 		if($matriu['tipus'][ $i ] == "checkall" ){
-			printf('<th><input type="checkbox" value="on" name="allbox" onclick="checkAll();"/></th>');
+			if($matriu['nomeslect'][$i]){
+				printf('<th><input type="checkbox" value="on" name="allbox" onclick="checkAll();"/></th>');
+			}else{
+				printf('<th><input type="checkbox" value="on" name="allbox" onclick="checkAll2();"/></th>');
+			}
 		}else{
 			if(isset($matriu['ajuda'][ $i ])){
 				printf('<th title="%s">%s</th>', $matriu['ajuda'][ $i ], $matriu['visual'][ $i ]);
