@@ -89,7 +89,15 @@ function ricca3_graella( $matriu, $data, $token = null){
 						printf('<td><INPUT type="text" name="%s[]" size="%s" value="%s" title="%s" /></td>' , $matriu['nombd'][ $j ] , $matriu['tamany'][ $j ] , $data[ $i ][ $matriu['nombd'][ $j ] ], $ajuda);
 					}
 				}else{
-					printf('<td>%s</td>', $data[ $i ][ $matriu['nombd'][ $j ] ]);
+					if( isset($matriu['unic'][ $j ] ) && $matriu['unic'][$j]){
+						if(count( $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idany=13 AND idestat_es=1 ', $data[$i]['idalumne']))) > 1){
+ 							printf('<td><b>%s</b></td>', $data[ $i ][ $matriu['nombd'][ $j ] ]);
+						}else{
+							printf('<td>%s</td>', $data[ $i ][ $matriu['nombd'][ $j ] ]);							
+						}
+					}else{
+						printf('<td>%s</td>', $data[ $i ][ $matriu['nombd'][ $j ] ]);
+					}
 				}
 //	hidden
 			}elseif( $matriu['tipus'][ $j ] == 'hidden'){
