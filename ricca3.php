@@ -92,6 +92,7 @@ add_shortcode( 'ricca3-sii',          'ricca3_shortcode_sii' );
 add_shortcode( 'ricca3-sii-opcions',  'ricca3_shortcode_sii_opcions' );
 add_shortcode( 'ricca3-sii-fitxers',  'ricca3_shortcode_sii_fitxers' );
 add_shortcode( 'ricca3-sii-modif',    'ricca3_shortcode_sii_modif' );
+add_shortcode( 'ricca3-sii-xml',      'ricca3_shortcode_sii_xml' );
 
 function ricca3_init() {
 	global $wpdb;
