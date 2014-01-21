@@ -111,16 +111,20 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 			printf('%sp:NumeroDocumentIdentitat%s%s%s/p:NumeroDocumentIdentitat%s', '&lt;', '&gt;',$data_view[0]['dni'], '&lt;', '&gt;');
 //	CIP
 			printf('</td></tr><tr><td>');
-			printf('%sp:CIP%s%s%s/p:CIP%s', '&lt;', '&gt;','', '&lt;', '&gt;');
+			printf('%sp:CIP xsi:nil="true"/%s', '&lt;', '&gt;');
 //	NomAlumne
 			printf('</td></tr><tr><td>');
-			printf('%sp:NomAlumne%s%s%s/p:NomAlumne%s', '&lt;', '&gt;',$data_view[0]['nom'], '&lt;', '&gt;');
+			printf('%sp:NomAlumne%s%s%s/p:NomAlumne%s', '&lt;', '&gt;',strtoupper($data_view[0]['nom']), '&lt;', '&gt;');
 //	PrimerCognomAlumne
 			printf('</td></tr><tr><td>');
-			printf('%sp:PrimerCognomAlumne%s%s%s/p:PrimerCognomAlumne%s', '&lt;', '&gt;',$data_view[0]['cognom1'], '&lt;', '&gt;');
+			printf('%sp:PrimerCognomAlumne%s%s%s/p:PrimerCognomAlumne%s', '&lt;', '&gt;',strtoupper($data_view[0]['cognom1']), '&lt;', '&gt;');
 //	SegonCognomAlumne
 			printf('</td></tr><tr><td>');
-			printf('%sp:SegonCognomAlumne%s%s%s/p:SegonCognomAlumne%s', '&lt;', '&gt;',$data_view[0]['cognom2'], '&lt;', '&gt;');
+			if(strlen($data_view[0]['cognom2'])!=0){
+				printf('%sp:SegonCognomAlumne%s%s%s/p:SegonCognomAlumne%s', '&lt;', '&gt;',strtoupper($data_view[0]['cognom2']), '&lt;', '&gt;');
+			}else{
+				printf('%sp:SegonCognomAlumne xsi:nil="true"/%s', '&lt;', '&gt;');
+			}
 //	Sexe
 			printf('</td></tr><tr><td>');
 			printf('%sp:Sexe%s%s%s/p:Sexe%s', '&lt;', '&gt;',$data_view[0]['SII_Sexe'], '&lt;', '&gt;');			
@@ -132,9 +136,13 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 			printf('</td></tr><tr><td>');
 			printf('%sp:CodiMunicipiNaixement%s%s%s/p:CodiMunicipiNaixement%s', '&lt;', '&gt;',$data_view[0]['SII_CodiMunicipiNaixement'], '&lt;', '&gt;');			
 //	NomMunicipiNaixementFora
-			if($data_view[0]['SII_TipusDocumentIdentitat'] != "A"){
+			if($data_view[0]['SII_CodiPaisNeixement'] != "108"){
 				printf('</td></tr><tr><td>');
-				printf('%sp:NomMunicipiNaixementFora%s%s%s/p:NomMunicipiNaixementFora%s', '&lt;', '&gt;',$data_view[0]['llocnai'], '&lt;', '&gt;');
+				printf('%sp:NomMunicipiNaixementFora%s%s%s/p:NomMunicipiNaixementFora%s', '&lt;', '&gt;',substr($data_view[0]['llocnai'],0,30), '&lt;', '&gt;');
+			}else{
+				printf('</td></tr><tr><td>');
+				printf('%sp:NomMunicipiNaixementFora xsi:nil="true"/%s', '&lt;', '&gt;');
+//				printf('%sp:NomMunicipiNaixementFora%s%s%s/p:NomMunicipiNaixementFora%s', '&lt;', '&gt;','' , '&lt;', '&gt;');
 			}
 //	CodiProvinciaNaixement
 			printf('</td></tr><tr><td>');
@@ -147,7 +155,7 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 			printf('%sp:CodiNacionalitat%s%s%s/p:CodiNacionalitat%s', '&lt;', '&gt;',$data_view[0]['SII_CodiNacionalitat'], '&lt;', '&gt;');
 //	Adreca
 			printf('</td></tr><tr><td>');
-			printf('%sp:Adreca%s%s%s/p:Adreca%s', '&lt;', '&gt;',$data_view[0]['residenciahabitual'], '&lt;', '&gt;');
+			printf('%sp:Adreca%s%s%s/p:Adreca%s', '&lt;', '&gt;',substr($data_view[0]['residenciahabitual'],0,30), '&lt;', '&gt;');
 //	CodiMunicipi
 			printf('</td></tr><tr><td>');
 			printf('%sp:CodiMunicipi%s%s%s/p:CodiMunicipi%s', '&lt;', '&gt;',$data_view[0]['SII_CodiMunicipi'], '&lt;', '&gt;');
@@ -157,9 +165,15 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 //	CodiPais
 			printf('</td></tr><tr><td>');
 			printf('%sp:CodiPais%s%s%s/p:CodiPais%s', '&lt;', '&gt;',$data_view[0]['SII_CodiPais'], '&lt;', '&gt;');
+//	Telefon ++VOID++
+			printf('</td></tr><tr><td>');
+			printf('%sp:Telefon xsi:nil="true"/%s', '&lt;', '&gt;');
 //	NEE
 			printf('</td></tr><tr><td>');
 			printf('%sp:NEE%s%s%s/p:NEE%s', '&lt;', '&gt;','e', '&lt;', '&gt;');
+//	ACI
+			printf('</td></tr><tr><td>');
+			printf('%sp:ACI xsi:nil="true"/%s', '&lt;', '&gt;');
 //	SituacioLaboral
 			printf('</td></tr><tr><td>');
 			printf('%sp:SituacioLaboral%s%s%s/p:SituacioLaboral%s', '&lt;', '&gt;','D', '&lt;', '&gt;');
@@ -180,7 +194,46 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 				printf('%sp:MarcNormatiu%s%s%s/p:MarcNormatiu%s', '&lt;', '&gt;','L', '&lt;', '&gt;');
 			}
 //	CodiEnsenyament
-//
+//	***** Imatge
+			if($data_view[0]['idgrup']==7 || $data_view[0]['idgrup']==9 || $data_view[0]['idgrup']==10 || $data_view[0]['idgrup']==12){
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%s%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;','CFPS&nbsp;&nbsp;&nbsp;&nbsp1660', '&lt;', '&gt;');
+			}
+//	***** Laboratori
+			if($data_view[0]['idgrup']==13 || $data_view[0]['idgrup']==14 ){
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%s%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;','CFPS&nbsp;&nbsp;&nbsp;&nbsp1654', '&lt;', '&gt;');
+			}
+//	***** Ortesis
+			if($data_view[0]['idgrup']==15 || $data_view[0]['idgrup']==16 ){
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%s%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;','CFPS&nbsp;&nbsp;&nbsp;&nbsp1657', '&lt;', '&gt;');
+			}
+//	***** Dietètica
+			if($data_view[0]['idgrup']==17 || $data_view[0]['idgrup']==18 ){
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%s%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;','CFPS&nbsp;&nbsp;&nbsp;&nbsp1651', '&lt;', '&gt;');
+			}
+//	***** Higiene
+			if($data_view[0]['idgrup']==19 || $data_view[0]['idgrup']==20 ){
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%s%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;','CFPS&nbsp;&nbsp;&nbsp;&nbsp1652', '&lt;', '&gt;');
+			}
+//	***** Documentació
+			if($data_view[0]['idgrup']==23 ){
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%s%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;','CFPS&nbsp;&nbsp;&nbsp;&nbsp1658', '&lt;', '&gt;');
+			}
+//	***** Pròtesis
+			if($data_view[0]['idgrup']==37 || $data_view[0]['idgrup']==38 ){
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%s%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;','CFPS&nbsp;&nbsp;&nbsp;&nbspSAA0', '&lt;', '&gt;');
+			}
+//	***** Pròtesis LOGSE
+			if($data_view[0]['idgrup']==1 || $data_view[0]['idgrup']==4 ){
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%s%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;','CFPS&nbsp;&nbsp;&nbsp;&nbsp1656', '&lt;', '&gt;');
+			}			
 //	DataMatricula
 //			$DataMatricula=date('dmY', strtotime( $data_view[0]['datainscripcio']));
 			printf('</td></tr><tr><td>');
@@ -203,6 +256,16 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 //	EscolaritzacioCompartida
 			printf('</td></tr><tr><td>');
 			printf('%sp:EscolaritzacioCompartida%s%s%s/p:EscolaritzacioCompartida%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+//	CodiCentreExpedient	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:CodiCentreExpedient xsi:nil="true"/%s', '&lt;', '&gt;');
+//	AlumneConveni ++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:AlumneConveni%s%s%s/p:AlumneConveni%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+//			printf('%sp:AlumneConveni xsi:nil="true"/%s', '&lt;', '&gt;');
+//	NIFEntitatConveni ++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:NIFEntitatConveni xsi:nil="true"/%s', '&lt;', '&gt;');
 //	Torn
 			if($data_view[0]['sessio']=='Tarda'){
 				printf('</td></tr><tr><td>');
@@ -231,7 +294,7 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','K', '&lt;', '&gt;');
 			}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"homol",5)==0){
 				printf('</td></tr><tr><td>');
-				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','K', '&lt;', '&gt;');
+				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','E', '&lt;', '&gt;');
 			}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"prova",5)==0){
 				printf('</td></tr><tr><td>');
 				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','1', '&lt;', '&gt;');
@@ -241,272 +304,2392 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 			}
 //	UltimEstudiMatriculat
 			printf('</td></tr><tr><td>');
-			printf('%sp:UltimEstudiMatriculat%s%s%s/p:UltimEstudiMatriculat%s', '&lt;', '&gt;','9', '&lt;', '&gt;');				
+			printf('%sp:UltimEstudiMatriculat%s%s%s/p:UltimEstudiMatriculat%s', '&lt;', '&gt;','9', '&lt;', '&gt;');
+//	CursUltimEstudiMatriculat	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:CursUltimEstudiMatriculat xsi:nil="true"/%s', '&lt;', '&gt;');
+//	CodiPaisUltimEstudiMatriculat	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:CodiPaisUltimEstudiMatriculat xsi:nil="true"/%s', '&lt;', '&gt;');
+//	TipusPrograma	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:Programa xsi:nil="true"/%s', '&lt;', '&gt;');
 //	GrupEnsenyamentAlumne
 			printf('</td></tr><tr><td>');
-			printf('%sp:GrupEnsenyamentAlumne%s%s%s/p:GrupEnsenyamentAlumne%s', '&lt;', '&gt;','1', '&lt;', '&gt;');	
+			printf('%sp:GrupEnsenyamentAlumne%s%s%s/p:GrupEnsenyamentAlumne%s', '&lt;', '&gt;','1', '&lt;', '&gt;');
+//	DataBaixa	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:DataBaixa xsi:nil="true"/%s', '&lt;', '&gt;');
 //	#########		Credits i Moduls
 //	################### fixe per el curs 2013-2014 ########### canviar a contigut de base de dades amb unitats formatives per LOE
-//			
+//	
+//	Moduls
 			printf('</td></tr><tr><td>');
-			printf('%sp:Credits%s', '&lt;', '&gt;');
+			printf('%sp:Moduls%s', '&lt;', '&gt;');
 //	***** 1 Imatge
 			if($data_view[0]['idgrup']==7 || $data_view[0]['idgrup']==9){
-//	C02
+
+//	Modul	MP02
 				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','390', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C02				
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C02', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','390', '&lt;', '&gt;');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','120', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C03
-				printf('</td></tr><tr><td>');
+//	Credit	C03
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C03', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','390', '&lt;', '&gt;');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C04
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');				
+//	Credit	C04
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C04', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','390', '&lt;', '&gt;');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C08
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');	
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP05
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP05', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C09
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');			
+//	Modul	MP06
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','150', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C09
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C09', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','150', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C10
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP07
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C10', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-			}
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+			}				
 //	***** 2 Imatge
 			if($data_view[0]['idgrup']==10 || $data_view[0]['idgrup']==12){
-//	C01
+//	Modul	MP01
 				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C01
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C05
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP03
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','120', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C05
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C05', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','120', '&lt;', '&gt;');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C06
-				printf('</td></tr><tr><td>');
+//	Credit	C06
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C06', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','120', '&lt;', '&gt;');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C07
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP04
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','100', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C07
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','100', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C11
-				printf('</td></tr><tr><td>');
-				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
-				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C11', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C13
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP09
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP09', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','710', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C13
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C13', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','710', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C14
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+  				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	ANATOMIA
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C11
 				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C11', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//	Credit	C14
+				printf('%sp:Credit%s', '&lt;', '&gt;');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C14', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-			}
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+			}				
 //	***** 1 Laboratori
 			if($data_view[0]['idgrup']==13){
-//	C01
+//	Modul	MP01
 				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C01
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C01', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C02
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP02
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C02
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C02', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','190', '&lt;', '&gt;');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C03
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP03
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','420', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C03
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C03', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C04
-				printf('</td></tr><tr><td>');
+//	Credit	C04
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C04', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C06
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP04
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','300', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C06
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C06', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','300', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C08
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	ANATOMIA
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C14
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
 			}
 //	***** 2 Laboratori
 			if($data_view[0]['idgrup']==14){
-//	C02
+//	Modul	MP02
 				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C02
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C02', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','190', '&lt;', '&gt;');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
-				printf('%s/p:Credit%s', '&lt;', '&gt;');			
-//	C04
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP03
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','420', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C06
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP04
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','300', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C06
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C09
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP06
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C09
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C09', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C10
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP07
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','440', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C10
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C10', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','440', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
-//	C11
+//
 				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	SINTESI
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C11
 				printf('%sp:Credit%s', '&lt;', '&gt;');
-				printf('</td></tr><tr><td>');
 				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C11', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
 				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+			}				
+//	***** 1 Ortesis
+			if($data_view[0]['idgrup']==15){
+//	Modul	MP01
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C01
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP03
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C03
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP06
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','150', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C06
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','150', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP07
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C07
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP08
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C09
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C09', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP09
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP09', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C10
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C10', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	ANATOMIA
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+			}			
+//	***** 2 Ortesis
+			if($data_view[0]['idgrup']==16){
+//	Modul	MP02
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C02
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP04
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','300', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C04
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','300', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP05
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP05', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C05
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C05', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP08
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C09
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C09', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP10
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP10', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','410', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C11
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C11', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','410', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	SINTESI
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C12
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C12', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+				//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+			}			
+//	***** 1 Dietètica
+			if($data_view[0]['idgrup']==17){
+//	Modul	MP02
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','270', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C02
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','270', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP04
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C04
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP07
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','240', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C07
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','240', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP08
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+			}			
+//	***** 2 Dietètica
+			if($data_view[0]['idgrup']==18){
+//	Modul	MP02
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','270', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C02
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','270', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP04
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C04
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','180', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP07
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','240', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C07
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','240', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP08
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP10
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP10', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','410', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C10', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','410', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	SINTESI
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C11
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C11', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+			}				
+//	***** Higiene
+			if($data_view[0]['idgrup']==19 || $data_view[0]['idgrup']==20){
+//	Modul	MP01
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C01
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP02
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C02
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP03
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','240', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C03
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','240', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP04
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','120', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C04
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','120', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');								
+//	Modul	MP05
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP05', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C05
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C05', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP06
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C07
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP07
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','410', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','410', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	ANATOMIA
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C06
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//	Credit	C09
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C09', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+			}		
+//	***** Documentació
+			if($data_view[0]['idgrup']==23){
+//	Modul	MP01
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C01
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C01', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP02
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C02
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C02', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','90', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP03
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C03
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C03', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','210', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP04
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','150', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C04
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C04', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP05
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP05', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','120', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C05
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C05', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','120', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP06
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C07
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP07
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP07', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C08
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	MP08
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','MP08', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','410', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C09
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C09', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','410', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');	
+//	Modul	ANATOMIA
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C06
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C06', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	Credit	C10
+				printf('%sp:Credit%s', '&lt;', '&gt;');
+				printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;','C10', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credit%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Credits%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
 			}
-			
-			
-			
-			
-			
-			
-//	#########		FI Credits i Moduls
-			printf('</td></tr><tr><td>');
-			printf('%s/p:Credits%s', '&lt;', '&gt;');
+//	***** 1 Pròtesis
+			if($data_view[0]['idgrup']==37){
+//	Modul	SAA0002
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0002', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','132', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000201
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000201', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','82', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000202
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000202', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','30', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000203
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000203', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','20', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');				
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	SAA0003
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0003', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','165', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000301
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000301', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','80', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000302
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000302', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','65', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000303
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000303', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','20', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+//	Modul	SAA0006
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0006', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','165', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000601
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000601', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','55', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000602
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000602', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','40', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000603
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000603', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','20', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000604
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000604', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','50', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	SAA0009
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0009', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','99', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000901
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000901', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','66', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000902
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000902', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','33', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	SAA0010
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0010', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','66', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA001001
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA001001', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','66', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+			}			
+//	***** 2 Pròtesis
+			if($data_view[0]['idgrup']==38){
+//	Modul	SAA0001
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0001', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','66', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000101
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000101', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','33', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000102
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000102', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','33', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+				//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	SAA0004
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0004', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','165', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000401
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000401', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','30', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000402
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000402', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','65', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000403
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000403', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','55', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000404
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000404', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','15', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+//	Modul	SAA0005
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0005', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','198', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000501
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000501', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','49', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000502
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000502', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','69', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000503
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000503', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','20', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');	
+//	UF	SAA000504
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000504', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','30', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+//	Modul	SAA0007
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0007', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','165', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000701
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000701', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','40', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000702
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000702', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','65', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000703
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000703', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','60', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+//	Modul	SAA0008
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0008', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','165', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA000801
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000801', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','30', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000802
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000802', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','40', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000803
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000803', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','43', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//	UF	SAA000804
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA000804', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','52', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');				
+//	Modul	SAA0011
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0011', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','66', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA001101
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA001101', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','66', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');			
+//	Modul	SAA0012
+				printf('</td></tr><tr><td>');
+				printf('%sp:Modul%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;','SAA0012', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;','416', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+//	UF	SAA001201
+				printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+				printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;','SAA001201', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;','416', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+//
+				printf('</td></tr><tr><td>');
+				printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Modul%s', '&lt;', '&gt;');
+			}
 				
+			printf('</td></tr><tr><td>');
+			printf('%s/p:Moduls%s', '&lt;', '&gt;');
+			
 //	#########		FI Curriculum
 			printf('</td></tr><tr><td>');
 			printf('%s/p:Matricula%s', '&lt;', '&gt;');
 			printf('</td></tr><tr><td>');
 			printf('%s/p:Matricules%s', '&lt;', '&gt;');
 //				
-			
+			printf('</td></tr><tr><td>');
+			printf('%sp:Avaluacions xsi:nil="true"/%s', '&lt;', '&gt;');
+//				
 			printf('</td></tr><tr><td>');
 			printf('%s/p:Alumne%s', '&lt;', '&gt;');
-
 		}
 		printf('</td></tr><tr><td>');
 		printf('%s/p:Alumnes%s', '&lt;', '&gt;');
