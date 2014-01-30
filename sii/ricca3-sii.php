@@ -273,10 +273,133 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 			printf('</td></tr><tr><td>');
 			printf('%s/p:DadesAlumne%s', '&lt;', '&gt;');
 //	#########		Curriculum
+			printf('</td></tr><tr><td>');
+			printf('%sp:Matricules%s', '&lt;', '&gt;');
+			printf('</td></tr><tr><td>');
+			printf('%sp:Matricula%s', '&lt;', '&gt;');
+// MarcNormatiu
+			printf('</td></tr><tr><td>');
+			$MarcNormatiu='L';
+			if($data_view[0]['pla']=='LOGSE')$MarcNormatiu='LG';
+			printf('%sp:MarcNormatiu%s%s%s/p:MarcNormatiu%s', '&lt;', '&gt;',$MarcNormatiu, '&lt;', '&gt;');
+//	CodiEnsenyament			
+			printf('</td></tr><tr><td>');
+			printf('%sp:CodiEnsenyament%sCFPS&nbsp;&nbsp;&nbsp;&nbsp;%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;',$data_view[0]['codiespecialitat'], '&lt;', '&gt;');
+//  ******************************************************
+//  ******************************************************
+//	DataMatricula   **************************************
+			printf('</td></tr><tr><td>');
+			printf('%sp:DataMatricula%s%s%s/p:DataMatricula%s', '&lt;', '&gt;','16092013', '&lt;', '&gt;');
+//	CursAcademicIniciCicle
+			printf('</td></tr><tr><td>');
+			$CursAcademicIniciCicle='1213';
+			if($data_view[0]['idcurs']==1)$CursAcademicIniciCicle='1314';
+			printf('%sp:CursAcademicIniciCicle%s%s%s/p:CursAcademicIniciCicle%s', '&lt;', '&gt;',$CursAcademicIniciCicle, '&lt;', '&gt;');
+//  ******************************************************
+//  ******************************************************			
 
-			
-			
-		
+//	Nivell
+			printf('</td></tr><tr><td>');
+			$Nivell='2';
+			if($data_view[0]['idcurs']==1)$Nivell='1';
+			printf('%sp:Nivell%s%s%s/p:Nivell%s', '&lt;', '&gt;',$Nivell, '&lt;', '&gt;');
+//	ModalitatCursa
+			printf('</td></tr><tr><td>');
+			printf('%sp:ModalitatCursa%s%s%s/p:ModalitatCursa%s', '&lt;', '&gt;','P', '&lt;', '&gt;');
+//	EscolaritzacioCompartida
+			printf('</td></tr><tr><td>');
+			printf('%sp:EscolaritzacioCompartida%s%s%s/p:EscolaritzacioCompartida%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+//	CodiCentreExpedient	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:CodiCentreExpedient xsi:nil="true"/%s', '&lt;', '&gt;');
+//	AlumneConveni ++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:AlumneConveni%s%s%s/p:AlumneConveni%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+//	NIFEntitatConveni ++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:NIFEntitatConveni xsi:nil="true"/%s', '&lt;', '&gt;');			
+//	Torn
+			printf('</td></tr><tr><td>');
+			$Torn='M';
+			if($data_view[0]['sessio']=='Tarda')$Torn='V';
+			printf('%sp:Torn%s%s%s/p:Torn%s', '&lt;', '&gt;',$Torn, '&lt;', '&gt;');
+//	RequisitsAcademicsAcces
+			printf('</td></tr><tr><td>');
+			if(strncmp(strtolower($data_view[0]['estudisrealitzats']),"batxi",5)==0){
+				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','K', '&lt;', '&gt;');
+			}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"cfgs",4)==0){
+				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','Q', '&lt;', '&gt;');
+			}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"cou",3)==0){
+				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','K', '&lt;', '&gt;');
+			}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"homol",5)==0){
+				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','E', '&lt;', '&gt;');
+			}else{
+				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','1', '&lt;', '&gt;');
+			}
+//	UltimEstudiMatriculat
+			printf('</td></tr><tr><td>');
+			printf('%sp:UltimEstudiMatriculat%s%s%s/p:UltimEstudiMatriculat%s', '&lt;', '&gt;','9', '&lt;', '&gt;');
+//	CursUltimEstudiMatriculat	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:CursUltimEstudiMatriculat xsi:nil="true"/%s', '&lt;', '&gt;');
+//	CodiPaisUltimEstudiMatriculat	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:CodiPaisUltimEstudiMatriculat xsi:nil="true"/%s', '&lt;', '&gt;');
+//	TipusPrograma	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:Programa xsi:nil="true"/%s', '&lt;', '&gt;');
+//	GrupEnsenyamentAlumne
+			printf('</td></tr><tr><td>');
+			printf('%sp:GrupEnsenyamentAlumne%s%s%s/p:GrupEnsenyamentAlumne%s', '&lt;', '&gt;','1', '&lt;', '&gt;');
+//	DataBaixa	++VOID
+			printf('</td></tr><tr><td>');
+			printf('%sp:DataBaixa xsi:nil="true"/%s', '&lt;', '&gt;');
+//	#########		Credits i Moduls			
+//	Moduls
+			printf('</td></tr><tr><td>');
+			printf('%sp:Moduls%s', '&lt;', '&gt;');
+//			Any actual
+			$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
+//	Moduls de l'especialitat
+			$query = $wpdb->prepare('SELECT idcredit, SII_CodiModul, SII_NombreHoresModul, SII_CodiCredit, SII_NombreHoresCredit '.
+					'FROM ricca3_credits WHERE idespecialitat=%s AND actiu_cr=1 ORDER BY SII_CodiModul, SII_CodiCredit', $data_view[0]['idespecialitat']	);
+			$data_modul = $wpdb->get_results($query, ARRAY_A);
+//	Crèdits de l'alumne			
+			$query = $wpdb->prepare('SELECT DISTINCT ricca3_ccomp.idcredit '.
+					'FROM ricca.ricca3_credits_avaluacions '. 
+					'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+					'WHERE idalumne=%s AND idany=%s ORDER BY idcredit',
+					$data_view[0]['idalumne'],$row_any['idany']);
+			$data_credit = $wpdb->get_results( $query, ARRAY_A);
+//			
+			dump_r($data_credit);
+			dump_r($data_modul);
+//	LOGSE
+			if($data_view[0]['pla'] == 'LOGSE'){
+				for($j=0; $j<count($data_credit); $j++){
+				
+					
+					
+				}					
+//	LOE				
+			}else{
+
+				
+				
+				
+				
+			}	
+//	######### FI MODULS			
+			printf('</td></tr><tr><td>');
+			printf('%s/p:Moduls%s', '&lt;', '&gt;');			
+//	#########		FI Curriculum
+			printf('</td></tr><tr><td>');
+			printf('%s/p:Matricula%s', '&lt;', '&gt;');
+			printf('</td></tr><tr><td>');
+			printf('%s/p:Matricules%s', '&lt;', '&gt;');
+//	#########		AVALUACIONS
+			printf('</td></tr><tr><td>');
+			printf('%sp:Avaluacions xsi:nil="true"/%s', '&lt;', '&gt;');			
 //		TANQUEM ALUMNE
 			printf('</td></tr><tr><td>');
 			printf('%s/p:Alumne%s', '&lt;', '&gt;');
