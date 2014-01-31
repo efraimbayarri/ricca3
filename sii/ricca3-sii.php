@@ -360,27 +360,110 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 			printf('%sp:Moduls%s', '&lt;', '&gt;');
 //			Any actual
 			$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
-//	Moduls de l'especialitat
-			$query = $wpdb->prepare('SELECT idcredit, SII_CodiModul, SII_NombreHoresModul, SII_CodiCredit, SII_NombreHoresCredit '.
-					'FROM ricca3_credits WHERE idespecialitat=%s AND actiu_cr=1 ORDER BY SII_CodiModul, SII_CodiCredit', $data_view[0]['idespecialitat']	);
-			$data_modul = $wpdb->get_results($query, ARRAY_A);
-//	Crèdits de l'alumne			
-			$query = $wpdb->prepare('SELECT DISTINCT ricca3_ccomp.idcredit '.
-					'FROM ricca.ricca3_credits_avaluacions '. 
-					'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
-					'WHERE idalumne=%s AND idany=%s ORDER BY idcredit',
-					$data_view[0]['idalumne'],$row_any['idany']);
-			$data_credit = $wpdb->get_results( $query, ARRAY_A);
-//			
-			dump_r($data_credit);
-			dump_r($data_modul);
+//	Nom de moduls de l'especialitat
+			$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul '.
+					'FROM ricca3_credits WHERE idespecialitat=%s AND actiu_cr=1 ORDER BY SII_CodiModul, SII_CodiCredit',
+					$data_view[0]['idespecialitat']	);
+			$data_modul_nom = $wpdb->get_results($query, ARRAY_A);						
+//			dump_r($data_modul_nom);
 //	LOGSE
 			if($data_view[0]['pla'] == 'LOGSE'){
-				for($j=0; $j<count($data_credit); $j++){
-				
-					
-					
-				}					
+				for($j=0; $j<count($data_modul_nom); $j++){
+					if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 4){
+//	Crèdits de l'alumne
+						$query = $wpdb->prepare('SELECT DISTINCT SII_CodiCredit FROM ricca.ricca3_credits_avaluacions '.
+								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s ',
+								$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul']);
+						$data_credit = $wpdb->get_results( $query, ARRAY_A);
+						if(count($data_credit)>0){
+//	Modul
+							$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+									'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+									'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+									'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit = %s',
+							$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul'], $data_credit[0]['SII_CodiCredit']);
+							$data_modul_hores = $wpdb->get_results( $query, ARRAY_A);
+							printf('</td></tr><tr><td>');
+							printf('%sp:Modul%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_modul_nom[$j]['SII_CodiModul'], '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;',$data_modul_hores[0]['SII_NombreHoresModul'], '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+//	crèdits							
+							printf('%sp:Credits%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');	
+							for( $k=0; $k<count($data_credit); $k++){
+								$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+										'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+										'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+										'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit = %s',
+										$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul'], $data_credit[$k]['SII_CodiCredit']);
+								$data_credit_hores = $wpdb->get_results( $query, ARRAY_A);
+								printf('</td></tr><tr><td>');
+								printf('%sp:Credit%s', '&lt;', '&gt;');
+								printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit[$k]['SII_CodiCredit'], '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;',$data_credit_hores[0]['SII_NombreHoresCredit'], '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%s/p:Credit%s', '&lt;', '&gt;');
+							}
+//  fi crédits
+							printf('</td></tr><tr><td>');
+							printf('%s/p:Credits%s', '&lt;', '&gt;');	
+//	fi modul
+							printf('</td></tr><tr><td>');
+							printf('%s/p:Modul%s', '&lt;', '&gt;');
+						}
+					}
+// sense modul
+					if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 2){
+						$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit != %s',
+								$data_view[0]['idalumne'],$row_any['idany'], 'NO', 'NO');
+						$data_credit_no = $wpdb->get_results( $query, ARRAY_A);
+//						dump_r($data_credit_no);
+						if(count($data_credit_no) > 0){
+							printf('</td></tr><tr><td>');
+							printf('%sp:Modul%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:Credits%s', '&lt;', '&gt;');
+							for($k=0; $k<count($data_credit_no); $k++){
+								printf('</td></tr><tr><td>');
+								printf('%sp:Credit%s', '&lt;', '&gt;');
+								printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_CodiCredit'], '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_NombreHoresCredit'], '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%s/p:Credit%s', '&lt;', '&gt;');
+							}
+							printf('</td></tr><tr><td>');
+							printf('%s/p:Credits%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%s/p:Modul%s', '&lt;', '&gt;');							
+						}
+					}
+				}
 //	LOE				
 			}else{
 
