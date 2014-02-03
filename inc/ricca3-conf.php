@@ -183,20 +183,20 @@ $ricca3_editespec=array(
 /**   */
 #############################################################################################
 $ricca3_listcredit=array(
-		"tipus"  => array('bd',       'bd',        'bd',       'bd',         'bd',             'bd',     'bd',       'bd',       'bd'),
-		"nombd"	 => array('idcredit', 'nomcredit', 'actiu_cr', 'aval3nomes', 'idespecialitat', 'idcurs', 'hores_cr', 'ordre_cr', 'credit'),
-		"visual" => array('id',       'Nom',       'Act.',     '3ava.',      'Espec.',         'Curs',   'hores',    'ord.',     '..')
+		"tipus"  => array('bd',       'bd',        'bd',       'bd',         'bd',             'bd',     'bd',       'bd',       'bd',    'bd',            'bd',                    'bd',             'bd'),
+		"nombd"	 => array('idcredit', 'nomcredit', 'actiu_cr', 'aval3nomes', 'idespecialitat', 'idcurs', 'hores_cr', 'ordre_cr', 'credit', 'SII_CodiModul', 'SII_NombreHoresModul', 'SII_CodiCredit', 'SII_NombreHoresCredit'),
+		"visual" => array('id',       'Nom',       'Act.',     '3ava.',      'Espec.',         'Curs',   'hores',    'ord.',     '..',     'CodiModul',     'Hores',                'CodiCredit',     'Hores')
 );
 
 #############################################################################################
 /**   */
 #############################################################################################
 $ricca3_editcredit=array(
-		"tipus"     => array('bd',       'bd',        'bd',       'bd',         'bd',             'bd',     'bd',       'bd',       'bd'),
-		"nombd"	    => array('idcredit', 'nomcredit', 'actiu_cr', 'aval3nomes', 'idespecialitat', 'idcurs', 'hores_cr', 'ordre_cr', 'credit'),
-		"visual"    => array('id',       'Nom',       'Act.',     '3ava.',      'Espec.',         'Curs',   'hores',    'ord.',     '..'),
-		"nomeslect" => array(false,      false,       false,      false,        false,            false,    false,      false,      false),
-		"tamany"    => array(5,          45,          5,          5,            5,                10,        5,         5,          45)
+		"tipus"     => array('bd',       'bd',        'bd',       'bd',         'bd',             'bd',     'bd',       'bd',       'bd',     'bd',            'bd',                    'bd',             'bd'),
+		"nombd"	    => array('idcredit', 'nomcredit', 'actiu_cr', 'aval3nomes', 'idespecialitat', 'idcurs', 'hores_cr', 'ordre_cr', 'credit', 'SII_CodiModul', 'SII_NombreHoresModul', 'SII_CodiCredit', 'SII_NombreHoresCredit'),
+		"visual"    => array('id',       'Nom',       'Act.',     '3ava.',      'Espec.',         'Curs',   'hores',    'ord.',     '..',     'CodiModul',     'Hores',                'CodiCredit',     'Hores'),
+		"nomeslect" => array(false,      false,       false,      false,        false,            false,    false,      false,      false,    false,           false,                  false,            false),
+		"tamany"    => array(4,          40,          4,          4,            4,                4,        4,         4,          40,       4,               4,                      4,                4)
 );
 
 #############################################################################################

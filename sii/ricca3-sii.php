@@ -53,7 +53,7 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 	global $ricca3_butons_sii;
 	global $ricca3_sii_fitxers;
 	global $wpdb;
-	dump_r($_POST);
+//	dump_r($_POST);
 	ricca3_missatge(__('Sistema d\'Intercanvi d\'Informació (SII) - FITXERS','ricca3-sii'));
 	ricca3_butons( $ricca3_butons_sii, 6 );
 	$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
