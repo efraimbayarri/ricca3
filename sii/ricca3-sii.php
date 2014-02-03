@@ -466,11 +466,54 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 				}
 //	LOE				
 			}else{
-
-				
-				
-				
-				
+				for($j=0; $j<count($data_modul_nom); $j++){
+//	Crèdits de l'alumne
+					$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul FROM ricca.ricca3_credits_avaluacions '.
+							'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
+							'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+							'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s ',
+							$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul']);
+					$data_credit = $wpdb->get_results( $query, ARRAY_A);
+					if(count($data_credit)>0){
+//						dump_r($data_credit);
+						$query=$wpdb->prepare('SELECT * FROM ricca3_sii_loe WHERE codimodul=%s', $data_credit[0]['SII_CodiModul']);
+						$data_uf = $wpdb->get_results( $query, ARRAY_A);
+//
+//						dump_r($data_uf);
+//
+//	MODUL												
+						printf('</td></tr><tr><td>');
+						printf('%sp:Modul%s', '&lt;', '&gt;');
+						printf('</td></tr><tr><td>');
+						printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_uf[0]['codimodul'], '&lt;', '&gt;');
+						printf('</td></tr><tr><td>');
+						printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+						$durada=$data_uf[0]['duradaminima'];
+						if($durada==0)$durada=$data_uf[0]['duradamaxima'];
+						printf('</td></tr><tr><td>');
+						printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;',$durada, '&lt;', '&gt;');
+						printf('</td></tr><tr><td>');
+						printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+						printf('</td></tr><tr><td>');
+//	UNITATS FORMATIVES
+						for($k=0; $k<count($data_uf); $k++){
+							printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+							printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;',$data_uf[$k]['codiunitatformativa'], '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;',$data_uf[$k]['duradaunitatformativa'], '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+						}
+						printf('</td></tr><tr><td>');
+						printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
+						printf('</td></tr><tr><td>');
+						printf('%s/p:Modul%s', '&lt;', '&gt;');
+					}
+				}				
 			}	
 //	######### FI MODULS			
 			printf('</td></tr><tr><td>');
