@@ -1232,3 +1232,65 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 		}
 	}
 }
+
+#############################################################################################
+/**
+ * Calcular nota final
+ * shortcode: [ricca3-calcularnotaf]
+ *
+ * @since ricca3.v.2014.6.4
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_calcularnotaf($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_actes;
+	
+//	dump_r($_POST);
+	
+	ricca3_missatge(__('Calcular nota final','ricca3-aval'));
+	$ricca3_butons_actes['texte'][0] = __('ajuda-aval-aval', 'ricca3-aval');
+//		butons
+	ricca3_butons( $ricca3_butons_actes, 6 );
+	
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="cercar"><tr>', NULL);
+	printf('<td><button type="submit" name="cercar" value="actualitzar" title="%s">%s</td>',
+	__('ajuda-actes-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+//		drop per el any
+	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+	ricca3_drop_any( __('Any:','ricca3-aval'), 'any', $data_any, 'idany', 'any', __('ajuda_actes_any', 'ricca3-aval'), 'actual' );
+//		drop per el grup
+	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_actes_grup', 'ricca3-aval'), TRUE );
+//		tanquem la barra de selecció
+	printf('</tr></table></form>', NULL);
+	if( isset( $_POST['grup'] ) && $_POST['grup'] != '-1'){
+//	busquem la definicio del grup
+		$row_grup = $wpdb->get_row( $wpdb->prepare(  'SELECT * FROM ricca3_grups WHERE idgrup=%s', $_POST['grup']), ARRAY_A, 0);
+//	busquem l'especialitat del grup
+		$row_espec = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_especialitats WHERE idespecialitat=%s', $row_grup['idespecialitat']), ARRAY_A, 0);
+//	comprovem que el grup es del ultim curs de l'especialitat
+		if(($row_espec['cursos'] == '2' && $row_grup['idcurs'] == '2') || ($row_espec['cursos'] == '1' && $row_grup['curs'] == '1')){
+			ricca3_missatge(__('Calculant la nota final','ricca3-aval'));
+			$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne '.
+				'INNER JOIN ricca3_alumne_especialitat on ricca3_alumne_especialitat.idalumne=ricca3_alumne.idalumne '.
+				'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_alumne_especialitat.idany '.
+				'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup '.
+				'INNER JOIN ricca3_cursos ON ricca3_cursos.idcurs = ricca3_grups.idcurs '.
+			 	'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_grups.idespecialitat '.
+				'INNER JOIN ricca3_estat ON ricca3_estat.idestat = ricca3_alumne_especialitat.idestat_es '.
+				'WHERE ricca3_grups.idgrup=%s AND ricca3_any.idany=%s AND idestat_es=1 '.
+				'ORDER BY cognomsinom ',
+				$_POST['grup'], $_POST['any']);
+			$dades = $wpdb->get_results( $query, ARRAY_A );
+			printf('<table id="nom" class="petit">', NULL);
+			for( $i = 0; $i < count($dades); $i++){
+				ricca3_notafinal($dades[$i]['idalumne'], $dades[$i]['idespecialitat'], $_POST['any']);
+			}
+			printf('</table>', NULL);
+			ricca3_missatge(sprintf('%s <b>%s</b> %s', __('Calculada la Nota Final per a','ricca3-aval'), count($dades), __('alumnes.','ricca3-aval')));
+		}else{
+			ricca3_missatge(__('No és l\'últim curs i no es pot calcular la nota final','ricca3-aval'));
+		}
+	}
+}
