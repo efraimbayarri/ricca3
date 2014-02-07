@@ -174,6 +174,20 @@ function ricca3_missatge($missatge){
 
 #############################################################################################
 /**
+ * mostra un missatge a la pàgina
+ *
+ * @since ricca3.v.2014.6.5
+ * @author Efraim Bayarri
+ *
+ * @param string $missatge missatge a mostrar
+ */
+#############################################################################################
+function ricca3_missatge_petit($missatge){
+	printf('<table id="nom" class="petit"><tr><td align="right" class="petit">%s</td></tr></table>', $missatge);
+}
+
+#############################################################################################
+/**
  * mostra els butons de la pàgina.
  *
  * @since ricca3.v.2013.13.6
@@ -378,11 +392,7 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 		'WHERE idalumne=%s AND idany=%s AND idespecialitat=%s AND idestat_es=1 ',
 		$userid, $idany, $idespecialitat);		
 	$dades = $wpdb->get_results( $query, ARRAY_A );
-	
-	dump_r($dades);
-	
-	return;
-	
+
 	for( $i = 0; $i < count($dades); $i++ ){
 //	buscar pla d'estudis de l'especialitat per saber quins credits ha de tenir el alumne
 		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_especialitat WHERE idespecialitat = %s', $dades[$i]['idespecialitat']);
@@ -403,63 +413,53 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 				'WHERE idalumne=%s and idcredit=%s and pendi!="R" ', 
 				$userid, $dades_esp[$j]['idcredit']);
 			$res_cred = $wpdb->get_results( $query, ARRAY_A );
-			
-			
-			
-			
-			
-			
-			
-			
-			if( $res_cred ){
-				$row_cred = $wpdb->get_row( $query_cred, ARRAY_A, 0);
-				$row_credit = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca_credits WHERE idcredit=%s', $row_cred['idcredit']), ARRAY_A, 0);
-				if(is_numeric($row_cred['notaf'])){
-					$notaf = intval( $row_cred['notaf'] );
+//
+			if( count($res_cred) > 0 ){
+				$row_credit = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_credits WHERE idcredit=%s', $res_cred[0]['idcredit']), ARRAY_A, 0);
+				if(is_numeric($res_cred[0]['notaf_cr'])){
+					$notaf = intval( $res_cred[0]['notaf_cr'] );
 					if($notaf >= 5 ){
-						$wpdb->update('ricca_credits_avaluacions', array( 'pendi' => '' ), array( 'idkey' => $row_cred['idkey']) );
-						$punts = ($notaf * $row_credit['hores'])/10;
+						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => '' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
+						$punts = ($notaf * $row_credit['hores_cr'])/10;
 						$acumulat = $acumulat + $punts;
 ##
 //						printf('<br /> Crèdit %s de l\'especialitat %s aprovat amb un - %d , un total de %d hores amb %s punts (%s)',
-//							$row_credit['nomcredit'],$row_cred['idespecialitat'], $notaf, $row_credit['hores'], $punts , $acumulat);
+//							$row_credit['nomcredit'],$row_cred['idespecialitat'], $notaf, $row_credit['hores_cr'], $punts , $acumulat);
 ##
-						$hores = $hores + $row_credit['hores'];
+						$hores = $hores + $row_credit['hores_cr'];
 						$calcul['nomcredit'][] = $row_credit['nomcredit'];
 						$calcul['notaf'][] = $notaf;
-						$calcul['hores'][] = $row_credit['hores'];
+						$calcul['hores'][] = $row_credit['hores_cr'];
 						$calcul['punts'][] = $punts;
 					}else{
-//						$wpdb->update('ricca_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idalumne' => $userid, 'idcredit' => $row_esp['idcredit'], 'repe' => 'R' ) );
-						$wpdb->update('ricca_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idkey' => $row_cred['idkey']) );
+						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idcredaval' => $row_cred['idcredaval']) );
 ##
-//						printf('<br /> Crèdit %s de l\'especialitat %s suspes amb un - %d',$row_credit['nomcredit'],$row_cred['idespecialitat'], $notaf);
+//					printf('<br /> Crèdit %s de l\'especialitat %s suspes amb un - %d',$row_credit['nomcredit'],$row_cred['idespecialitat'], $notaf);
 ##
 						$aprovat = 0;
 						$suspes = 1;
 					}
 				}else{
-					if(strtolower($row_cred['notaf']) == 'co' || strncmp( strtolower( $row_cred['notaf']), 'apt', 3 ) == 0){
-						$wpdb->update('ricca_credits_avaluacions', array( 'pendi' => '' ), array( 'idkey' => $row_cred['idkey']) );
+					if(strtolower($res_cred[0]['notaf_cr']) == 'co' || strncmp( strtolower( $res_cred[0]['notaf_cr']), 'apt', 3 ) == 0){
+						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => '' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
 ##
 //						printf('<br /> Crèdit %s de l\'especialitat %s aprovat amb un - %s',
-//							$row_credit['nomcredit'],$row_cred['idespecialitat'], $row_cred['notaf']);
+//							$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
 ##
 						$calcul['nomcredit'][] = $row_credit['nomcredit'];
-						$calcul['notaf'][] = $row_cred['notaf'];
-						$calcul['hores'][] = $row_credit['hores'];
+						$calcul['notaf'][] = $res_cred[0]['notaf_cr'];
+						$calcul['hores'][] = $row_credit['hores_cr'];
 						$calcul['punts'][] = '';
-					}elseif( strtolower( $row_cred['notaf'] ) == 'np' || strtolower( $row_cred['notaf'] ) == 'pfct'){
-//						$wpdb->update('ricca_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idalumne' => $userid, 'idcredit' => $row_esp['idcredit'], 'repe' => 'R') );
-						$wpdb->update('ricca_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idkey' => $row_cred['idkey']) );
+					}elseif( strtolower( $res_cred[0]['notaf_cr'] ) == 'np' || strtolower( $res_cred[0]['notaf_cr'] ) == 'pfct'){
+						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
 ##
-//						printf('<br /> Crèdit %s de l\'especialitat %s suspes amb un - %s',$row_credit['nomcredit'],$row_cred['idespecialitat'], $row_cred['notaf']);
+//						printf('<br /> Crèdit %s de l\'especialitat %s suspes amb un - %s',$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
 ##
 						$aprovat = 0;
 						$np = 1;
 					}else{
 ##
-//						printf('<br /> Crèdit %s de l\'especialitat %s sense aprovar  - %s',$row_credit['nomcredit'],$row_cred['idespecialitat'], $row_cred['notaf']);
+//						printf('<br /> Crèdit %s de l\'especialitat %s sense aprovar  - %s',$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
 ##
 						$aprovat = 0;
 						$sensenota = 1;
@@ -471,40 +471,41 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 			}
 		}
 		if( $hores > 0) $notafinal = sprintf('%01.3f', ($acumulat*10)/$hores);
-//		print_r($calcul);
+//		dump_r($calcul);
 ##
 //		echo '<br />APROVAT='.$aprovat.' hores='.$hores.' punts='.$acumulat.' NOTAFINAL:'.$notafinal.'<br />';
 ##
 		$texte = '';
-		if( $aprovat     == 1) $texte = sprintf('%s', __(', ha aprovat.', 'ric-ca-inc'));
-		if( $suspes      == 1) $texte = sprintf('%s', __(', té assignatures suspeses', 'ric-ca-inc'));
-		if( $np          == 1) $texte = sprintf('%s %s',$texte , __(', té crèdits sense presentar', 'ric-ca-inc'));
-		if( $sensenota   == 1) $texte = sprintf('%s %s',$texte , __(', té crèdits sense nota', 'ric-ca-inc'));
-		if( $faltencreds == 1) $texte = sprintf('%s %s',$texte , __(', té crèdits sense fer', 'ric-ca-inc'));
-		ricca_missatge_petit(sprintf('%s %s <b>%s</b>',__('El alumne','ric-ca-inc'), $row_alumne['cognomsinom'], $texte ));
+		if( $aprovat     == 1) $texte = sprintf('%s %s', __(', ha aprovat:', 'ricca3-inc'), $notafinal);
+		if( $suspes      == 1) $texte = sprintf('%s', __(', té assignatures suspeses.', 'ricca3-inc'));
+		if( $np          == 1) $texte = sprintf('%s %s',$texte , __(', té crèdits sense presentar.', 'ricca3-inc'));
+		if( $sensenota   == 1) $texte = sprintf('%s %s',$texte , __(', té crèdits sense nota.', 'ricca3-inc'));
+		if( $faltencreds == 1) $texte = sprintf('%s %s',$texte , __(', té crèdits sense fer.', 'ricca3-inc'));
+		ricca3_missatge_petit(sprintf('%s %s <b>%s</b>',__('El alumne','ricca3-inc'), $row_alumne['cognomsinom'], $texte ));
 //	guardar notaf al registre de ricca_alumne_especialitat
 		if($aprovat == 1){
-			$row_notaf = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca_alumne_especialitat WHERE idalumne=%s AND idespecialitat=%s ORDER BY idany DESC',
-					$userid, $row_cred['idespecialitat']), ARRAY_A, 0);
-			$wpdb->update('ricca_alumne_especialitat', array( 'nota' => $notafinal ), array( 'idkey' => $row_notaf['idkey']));
-		
-			$calcul_notaf['doublenotaf'] = $notafinal;
-			$calcul_notaf['nomcredit'] = json_encode($calcul['nomcredit'], JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
-			$calcul_notaf['notaf']     = json_encode($calcul['notaf'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
-			$calcul_notaf['hores']     = json_encode($calcul['hores'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
-			$calcul_notaf['punts']     = json_encode($calcul['punts'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
-			$calcul_notaf['idalumne']  = $userid;
-			$calcul_notaf['idespecialitat'] = $row_cred['idespecialitat'];
-			$calcul_notaf['stampuser']  = $current_user->user_login;
-			$calcul_notaf['stampplace'] = 'ricca_notafinal';
-
-			$query_notaf = $wpdb->prepare('SELECT * FROM ricca_calcul_notaf WHERE idalumne=%s AND idespecialitat=%s', $userid, $row_cred['idespecialitat'] );
-			if($wpdb->query( $query_notaf ) == 0){
-				$wpdb->insert('ricca_calcul_notaf', $calcul_notaf);
-			}else{
-				$row_calcul = $wpdb->get_row( $query_notaf, ARRAY_A,0);
-				$wpdb->update('ricca_calcul_notaf', $calcul_notaf, array( 'idkey' => $row_calcul['idkey']));
-			}
+			$query = $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idgrup=%s ORDER BY idany DESC',
+					$dades[0]['idalumne'], $dades[0]['idgrup']);
+			$result = $wpdb->get_results($query, ARRAY_A );
+			$wpdb->update('ricca3_alumne_especialitat', array( 'notaf_es' => $notafinal ), array( 'idalumespec' => $result[0]['idalumespec']));
+//		
+//			$calcul_notaf['doublenotaf'] = $notafinal;
+//			$calcul_notaf['nomcredit'] = json_encode($calcul['nomcredit'], JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
+//			$calcul_notaf['notaf']     = json_encode($calcul['notaf'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
+//			$calcul_notaf['hores']     = json_encode($calcul['hores'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
+//			$calcul_notaf['punts']     = json_encode($calcul['punts'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
+//			$calcul_notaf['idalumne']  = $userid;
+//			$calcul_notaf['idespecialitat'] = $row_cred['idespecialitat'];
+//			$calcul_notaf['stampuser']  = $current_user->user_login;
+//			$calcul_notaf['stampplace'] = 'ricca_notafinal';
+//
+//			$query_notaf = $wpdb->prepare('SELECT * FROM ricca_calcul_notaf WHERE idalumne=%s AND idespecialitat=%s', $userid, $row_cred['idespecialitat'] );
+//			if($wpdb->query( $query_notaf ) == 0){
+//				$wpdb->insert('ricca_calcul_notaf', $calcul_notaf);
+//			}else{
+//				$row_calcul = $wpdb->get_row( $query_notaf, ARRAY_A,0);
+//				$wpdb->update('ricca_calcul_notaf', $calcul_notaf, array( 'idkey' => $row_calcul['idkey']));
+//			}
 		}
 //	guardar el calcul a ricca_calcul_notafinal
 	}
