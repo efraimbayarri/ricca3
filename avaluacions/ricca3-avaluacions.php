@@ -1244,14 +1244,14 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 #############################################################################################
 function ricca3_shortcode_calcularnotaf($atts, $content = null) {
 	global $wpdb;
-	global $ricca3_butons_actes;
+	global $ricca3_butons_notaalumne;
 	
 //	dump_r($_POST);
 	
 	ricca3_missatge(__('Calcular nota final','ricca3-aval'));
 	$ricca3_butons_actes['texte'][0] = __('ajuda-aval-aval', 'ricca3-aval');
 //		butons
-	ricca3_butons( $ricca3_butons_actes, 6 );
+	ricca3_butons( $ricca3_butons_notaalumne, 6 );
 	
 	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="cercar"><tr>', NULL);
 	printf('<td><button type="submit" name="cercar" value="actualitzar" title="%s">%s</td>',
@@ -1260,7 +1260,9 @@ function ricca3_shortcode_calcularnotaf($atts, $content = null) {
 	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
 	ricca3_drop_any( __('Any:','ricca3-aval'), 'any', $data_any, 'idany', 'any', __('ajuda_actes_any', 'ricca3-aval'), 'actual' );
 //		drop per el grup
-	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups '.
+		'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_grups.idespecialitat '.
+		'WHERE actiu_gr = 1 AND (cursos=1 OR idcurs=2) ORDER BY grup ', ARRAY_A );
 	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_actes_grup', 'ricca3-aval'), TRUE );
 //		tanquem la barra de selecció
 	printf('</tr></table></form>', NULL);
@@ -1293,4 +1295,58 @@ function ricca3_shortcode_calcularnotaf($atts, $content = null) {
 			ricca3_missatge(__('No és l\'últim curs i no es pot calcular la nota final','ricca3-aval'));
 		}
 	}
+}
+
+#############################################################################################
+/**
+ * Calcular nota final alumne
+ * shortcode: [ricca3-notaalumne]
+ *
+ * @since ricca3.v.2014.7.1
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_notaalumne($atts, $content = null) {
+	global $wpdb;
+	global $current_user;
+	global $ricca3_butons_actes;
+	
+	ricca3_missatge(__('Nota final per alumne','ricca3-aval'));
+	ricca3_butons( $ricca3_butons_actes, 6 );
+//
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="cercar">', NULL);
+//		radio per els grups
+	if(!isset($_POST['tipus']) || (isset($_POST['tipus']) && $_POST['tipus'] == 'grup')){
+		printf('<tr><td><INPUT type="radio" name="tipus" value="grup" title="%s" checked /></td><td> ', __('ajuda-obser-grup', 'ricca3-aval'));
+	}else{
+		printf('<tr><td><INPUT type="radio" name="tipus" value="grup" title="%s" /></td><td> ', __('ajuda-obser-grup', 'ricca3-aval'));
+	}
+	printf('%s</td>', __('Per grup','ricca3-aval'));
+//		drop per el grup
+	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups '.
+			'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_grups.idespecialitat '.
+			'WHERE actiu_gr = 1 AND (cursos=1 OR idcurs=2) ORDER BY grup ', ARRAY_A );
+	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda-obser-grup', 'ricca3-aval'), TRUE );
+//		radio per els alumnes
+	if(isset($_POST['tipus']) && $_POST['tipus'] == 'alumne'){
+		printf('   <td><INPUT type="radio" name="tipus" value="alumne" title="%s" checked /></td><td> ', __('ajuda-obser-alumne', 'ricca3-aval'));
+	}else{
+		printf('   <td><INPUT type="radio" name="tipus" value="alumne" title="%s" /></td><td> ', __('ajuda-obser-alumne', 'ricca3-aval'));
+	}
+	printf('%s</td>', __('Per Alumne','ricca3-aval'));
+	if(isset($_POST['cognom1'])){ $value = $_POST['cognom1'];}else{ $value = "";}
+	printf('    <td>1er Cognom: <INPUT type="text" name="cognom1"	size=15 value="%s" title="%s" /></td>', $value, __('ajuda-obser-cognom1', 'ricca3-aval'));
+	if(isset($_POST['cognom2'])){ $value = $_POST['cognom2'];}else{ $value = "";}
+	printf('    <td>2on Cognom: <INPUT type="text" name="cognom2"	size=15 value="%s" title="%s" /></td>', $value, __('ajuda-obser-cognom2', 'ricca3-aval'));
+	if(isset($_POST['nom'])){     $value = $_POST['nom'];    }else{ $value = "";}
+	printf('    <td>nom:        <INPUT type="text" name="nom"	    size=15 value="%s" title="%s" /></td>', $value, __('ajuda-obser-nom', 'ricca3-aval'));
+	if(isset($_POST['DNI'])){     $value = $_POST['DNI'];    }else{ $value = "";}
+	printf('    <td>DNI:        <INPUT type="text" name="DNI"	    size=15 value="%s" title="%s" /></td>', $value, __('ajuda-obser-dni', 'ricca3-aval'));
+	if(isset($_POST['ID'])){      $value = $_POST['ID'];     }else{ $value = "";}
+	printf('    <td>ID:         <INPUT type="text" name="ID"    	size=15 value="%s" title="%s" /></td>', $value, __('ajuda-obser-id', 'ricca3-aval'));
+	printf('</tr></table>', NULL);
+//
+	if(!isset($_POST['cercar']))printf('<table><tr><td><button type="submit" name="cercar" value="actualitzar" title="%s">%s</td></tr></table>',
+			__('ajuda-obser-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+	printf('</form>', NULL);
 }
