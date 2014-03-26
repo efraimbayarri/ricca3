@@ -516,7 +516,7 @@ function ricca3_shortcode_obser($atts, $content = null) {
 			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idany=%s AND idgrup=%s ORDER BY observ3 ASC',
 					$row_any['idany'], $_POST['grup']), ARRAY_A, 0);
 			printf('<form method="post" action="" name="cercar"><table>', NULL);
-			printf('<tr><td>%s</td><td><textarea accesskey="" cols="60" rows="3" name="observ3" title="observ3" >%s</textarea>',
+			printf('<tr><td>%s</td><td><textarea accesskey="" cols="60" rows="3" name="observ3" title="observ3" style="font-family:Arial; font-size:10pt" >%s</textarea>',
 				__('Observacions del grup','ricca3-aval'), $row["observ3"]);
 			printf('<INPUT type="hidden" name="grup" value="%s" >', $_POST['grup']);
 			printf('<INPUT type="hidden" name="tipus" value="grup" ></td></tr></table>', NULL);
@@ -549,9 +549,9 @@ function ricca3_shortcode_obser($atts, $content = null) {
 		$row_alum = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_POST['cbox']), ARRAY_A, 0);
 		$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idany=%s', $_POST['cbox'], $row_any['idany']), ARRAY_A, 0);
 		printf('<form method="post" action="" name="cercar"><table>', NULL);
-		printf('<tr><td>%s %s %s</td><td><textarea accesskey="" cols="60" rows="3" name="observ1" title="observ1" >%s</textarea></td></tr>',
+		printf('<tr><td>%s %s %s</td><td><textarea accesskey="" cols="60" rows="3" name="observ1" title="observ1" style="font-family:Arial; font-size:10pt">%s</textarea></td></tr>',
 			__('Observacions de l\'alumne','ricca3-aval'), $row_alum['cognomsinom'], __('per a la primera avaluació','ricca3-aval'), $row["observ1"]);
-		printf('<tr><td>%s %s %s</td><td><textarea accesskey="" cols="60" rows="3" name="observ2" title="observ2" >%s</textarea></td></tr>',
+		printf('<tr><td>%s %s %s</td><td><textarea accesskey="" cols="60" rows="3" name="observ2" title="observ2" style="font-family:Arial; font-size:10pt">%s</textarea></td></tr>',
 			__('Observacions de l\'alumne','ricca3_aval'), $row_alum['cognomsinom'], __('per a la segona avaluació','ricca3-aval'), $row["observ2"]);
 		printf('<tr><td><INPUT type="hidden" name="alumne" value="%s" >', $_POST['cbox']);
 		printf('<tr><td><INPUT type="hidden" name="tipus" value="alumne" >', NULL);
@@ -683,11 +683,13 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 //		dump_r($dades_grup);
 //		dump_r($dades_ccomp);
 		
+		$queaval="1";
 		for( $j=0; $j < count($dades_ccomp); $j++ ){
 			printf('<tr><td>%s</td><td align="center">%s</td><td align="center">%s</td><td align="center">',
 				$dades_ccomp[$j]['nomccomp'], $dades_ccomp[$j]['nota1'], $dades_ccomp[$j]['nota2']);
 			if( $dades_ccomp[$j]['act2'] != ""){
 				echo $dades_ccomp[$j]['act2'];
+				$queaval="2";
 			}else{
 				echo $dades_ccomp[$j]['act1'];
 			}
@@ -703,8 +705,10 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 			__('OBSERVACIONS:','ricca3-aval'));
 		printf('</td><td></td></tr><tr><td></td><td>%s</td></tr><tr><td></td><td></td></tr>', 
 			$dades_espec[$i]['observ3']);
-		printf('<tr><td align="right"></td><td>%s</td></tr>', 
-			$dades_espec[$i]['observ1']);
+		if($queaval=="1"){
+			printf('<tr><td align="right"></td><td>%s</td></tr>', 
+				$dades_espec[$i]['observ1']);
+		}
 		printf('<tr><td align="right"></td><td>%s</td></tr></table><table class="cap"><tr><td>&nbsp</td></tr><tr><td>', 
 			$dades_espec[$i]['observ2']);
 		printf('%s %s</td></tr></table>',  

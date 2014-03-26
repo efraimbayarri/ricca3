@@ -3082,3 +3082,42 @@ function ricca3_shortcode_alumnes_sense_especialitat($atts, $content = null) {
 	printf('<table>', NULL);
 }
 
+#############################################################################################
+/**
+ * Obrir BD per autocomplete
+ *
+ * @since ricca3.v.2014.11.4
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+
+class DB
+{
+	const DATABASE = 'ricca';
+	const HOST = 'localhost';
+	const USERNAME = 'root';
+	const PASSWORD = 'Cafe1.20';
+
+	static private $pdo;
+
+	static public function singleton()
+	{
+		if (!is_object(self::$pdo))
+		{
+			self::$pdo = new PDO('mysql:dbname=' . self::DATABASE . ';host=' . self::HOST,
+					self::USERNAME,
+					self::PASSWORD);
+		}
+		return self::$pdo;
+	}
+
+	private function __construct()
+	{
+
+	}
+
+	public function __clone()
+	{
+		throw new Exception('You may not clone the DB instance');
+	}
+}
