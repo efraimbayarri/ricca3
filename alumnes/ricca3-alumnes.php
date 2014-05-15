@@ -727,10 +727,11 @@ function ricca3_shortcode_especalum($atts, $content = null) {
  		printf('<form method="post" action="" target="_self" name="espec" id="primertab">', NULL);
  		printf('<table><tr><td>%s</td></tr></table>', $row_espec['nomespecialitat']);
 //	busquem quin credits te asignats 		
- 		$query = $wpdb->prepare('SELECT DISTINCT ricca3_credits_avaluacions.idccomp, ricca3_credits.ordre_cr FROM ricca.ricca3_credits_avaluacions '. 
+ 		$query = $wpdb->prepare('SELECT DISTINCT ricca3_credits_avaluacions.idccomp, ricca3_credits.ordre_cr FROM ricca3_credits_avaluacions '. 
 								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 								'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s ORDER BY ricca3_credits.ordre_cr ', $_GET['ID'], $idespec['idespecialitat']);
+// 		echo "<br />", $query; 		
  		$array_cred_espec = $wpdb->get_results( $query, ARRAY_A );
  		printf('<table>', NULL);
 //	mostrem la capçalera de la graella amb les ajudes
@@ -755,7 +756,8 @@ function ricca3_shortcode_especalum($atts, $content = null) {
  				);
 //	busquem quin es el any actual per les negretes de la graella 		
  		$row_any = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE actual = 1', NULL ) , ARRAY_A , 0 );
-//	busquem l'infomació dels crèdits 		
+//	busquem l'infomació dels crèdits 	
+//		echo "<br />", count($array_cred_espec);		
  		for( $j=0; $j < count($array_cred_espec); $j++){
  			$query_cred = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '. 
 										'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp=ricca3_credits_avaluacions.idccomp '.
@@ -1046,7 +1048,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 //	cerquem tots el crèdits de l'alumne
 
   		$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
-				'FROM ricca.ricca3_credits_avaluacions '.
+				'FROM ricca3_credits_avaluacions '.
 				'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 				'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 				'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s '.
@@ -1400,7 +1402,7 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 //		entrada qualificacions
 	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
-			'FROM ricca.ricca3_credits_avaluacions '.
+			'FROM ricca3_credits_avaluacions '.
 			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 			'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s '.
@@ -1469,7 +1471,7 @@ function ricca3_shortcode_imphistorial($atts, $content = null) {
 	printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 //		entrada qualificacions
 	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
-			'FROM ricca.ricca3_credits_avaluacions '.
+			'FROM ricca3_credits_avaluacions '.
 			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 			'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s '.
@@ -2420,7 +2422,7 @@ function ricca3_shortcode_canviany($atts, $content = null) {
 		$row      = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumespec=%s', $_POST['cbox']), ARRAY_A, 0);
 		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup="%s"', $row['idgrup']), ARRAY_A, 0);
 		$wpdb->update('ricca3_alumne_especialitat' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idalumespec' => $_POST['cbox'] ) );
-		$dades = $wpdb->get_results($wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+		$dades = $wpdb->get_results($wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 			'WHERE idalumne=%s AND idany="%s" AND idespecialitat="%s"',
@@ -2905,7 +2907,7 @@ function ricca3_shortcode_afegircredit($atts, $content = null) {
 	if( isset( $_POST['accio'] ) && $_POST['accio'] == 'afegircredit_grup'){
 		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT grup FROM ricca3_grups WHERE idgrup=%s', $_POST['grup']), ARRAY_A,0);
 		ricca3_missatge(sprintf('%s %s %s',__('Afegir crèdit per el grup:','ricca3-alum'),$row_grup['grup'], __('al any actual.','ricca3-alum')));
-		$dades_ccomp = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ricca.ricca3_ccomp_view WHERE idgrup=%s', $_POST['grup']), ARRAY_A);
+		$dades_ccomp = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ricca3_ccomp_view WHERE idgrup=%s', $_POST['grup']), ARRAY_A);
 		ricca3_graella( $ricca3_afegircredit_ccomp, $dades_ccomp, $token );
 		printf('</table>', NULL);
 		ricca3_desar('accio', 'afegircredit_ccomp', __('ajuda-afegirccomp-drop', 'ricca3-alum'));

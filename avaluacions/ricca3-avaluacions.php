@@ -1278,7 +1278,7 @@ function ricca3_shortcode_calcularnotaf($atts, $content = null) {
 //	comprovem que el grup es del ultim curs de l'especialitat
 		if(($row_espec['cursos'] == '2' && $row_grup['idcurs'] == '2') || ($row_espec['cursos'] == '1' && $row_grup['curs'] == '1')){
 			ricca3_missatge(__('Calculant la nota final','ricca3-aval'));
-			$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne '.
+			$query = $wpdb->prepare('SELECT * FROM ricca3_alumne '.
 				'INNER JOIN ricca3_alumne_especialitat on ricca3_alumne_especialitat.idalumne=ricca3_alumne.idalumne '.
 				'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_alumne_especialitat.idany '.
 				'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup '.
