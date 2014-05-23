@@ -433,8 +433,13 @@ function ricca3_shortcode_notes($atts, $content = null) {
 		}
 	}
 	if( isset( $_POST['accio']) && $_POST['accio'] == 'actualitzar'){
+//		dump_r($_POST);
 		$quants = count( $_POST['RECORD'] );
+		$row_ccomp  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_POST['ccomp']),  ARRAY_A, 0);
 		for( $i = 0; $i < $quants; $i++){
+			$count = $wpdb->query($wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idcredit=%s AND idgrup=%s ', $row_ccomp['idcredit'], $row_ccomp['idgrup']));
+//			dump_r($row_ccomp);
+			if($count=='1')$_POST['notaf_cr'][$i]=$_POST['notaf_cc'][$i];
 			$result = $wpdb->update('ricca3_credits_avaluacions', 
 				array(  'nota1'      => strtoupper($_POST['nota1'][$i]), 
 						'act1'       => strtoupper($_POST['act1'][$i]),
@@ -1276,7 +1281,7 @@ function ricca3_shortcode_calcularnotaf($atts, $content = null) {
 //	busquem l'especialitat del grup
 		$row_espec = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_especialitats WHERE idespecialitat=%s', $row_grup['idespecialitat']), ARRAY_A, 0);
 //	comprovem que el grup es del ultim curs de l'especialitat
-		if(($row_espec['cursos'] == '2' && $row_grup['idcurs'] == '2') || ($row_espec['cursos'] == '1' && $row_grup['curs'] == '1')){
+		if(($row_espec['cursos'] == '2' && $row_grup['idcurs'] == '2') || ($row_espec['cursos'] == '1' && $row_grup['idcurs'] == '1')){
 			ricca3_missatge(__('Calculant la nota final','ricca3-aval'));
 			$query = $wpdb->prepare('SELECT * FROM ricca3_alumne '.
 				'INNER JOIN ricca3_alumne_especialitat on ricca3_alumne_especialitat.idalumne=ricca3_alumne.idalumne '.

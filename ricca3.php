@@ -26,6 +26,7 @@ require_once(WP_PLUGIN_DIR.'/ricca3/alumnes/ricca3-alumnes.php');
 require_once(WP_PLUGIN_DIR.'/ricca3/avaluacions/ricca3-avaluacions.php');
 require_once(WP_PLUGIN_DIR.'/ricca3/dades/ricca3-dades.php');
 require_once(WP_PLUGIN_DIR.'/ricca3/sii/ricca3-sii.php');
+require_once(WP_PLUGIN_DIR.'/ricca3/professors/ricca3-professors.php');
 
 if (is_admin()){
 	add_action('admin_menu', 'ricca3_admin_page');
@@ -95,6 +96,9 @@ add_shortcode( 'ricca3-sii-opcions',  'ricca3_shortcode_sii_opcions' );
 add_shortcode( 'ricca3-sii-fitxers',  'ricca3_shortcode_sii_fitxers' );
 add_shortcode( 'ricca3-sii-modif',    'ricca3_shortcode_sii_modif' );
 add_shortcode( 'ricca3-sii-xml',      'ricca3_shortcode_sii_xml' );
+
+add_shortcode( 'ricca3-professors',   'ricca3_shortcode_professors' );
+add_shortcode( 'ricca3-assistencia',  'ricca3_shortcode_assistencia' );
 
 function ricca3_init() {
 	global $wpdb;

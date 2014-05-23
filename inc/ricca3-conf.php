@@ -494,3 +494,25 @@ $ricca3_butons_sii=array(
 	"nova"   =>array(false,                false,                false,              false,        false,        false),
 	"texte"  =>array("",                   "" ,                  "",                 "",           "",           "")
 );
+
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_butons_professors=array(
+"imatge" =>array("assistencia",        "buid",              "buid",              "buid",              "buid",              "buid"),
+"enllac" =>array("ricca3-assistencia", "ricca3-professors", "ricca3-professors", "ricca3-professors", "ricca3-professors", "ricca3-professors"),
+"id"     =>array(false,                 false,               false,               false,               false,               false),
+"nova"   =>array(false,                 false,               false,               false,               false,               false),
+"texte"  =>array("",                    "" ,                 "",                  "",                  "",                  "")
+);
+
+#############################################################################################
+/**   */
+#############################################################################################
+$ricca3_butons_assistencia=array(
+"imatge" =>array("professors",        "buid",              "buid",              "buid",              "buid",              "buid"),
+"enllac" =>array("ricca3-professors", "ricca3-professors", "ricca3-professors", "ricca3-professors", "ricca3-professors", "ricca3-professors"),
+"id"     =>array(false,               false,               false,               false,               false,               false),
+"nova"   =>array(false,               false,               false,               false,               false,               false),
+"texte"  =>array("",                  "" ,                 "",                  "",                  "",                  "")
+);

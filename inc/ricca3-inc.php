@@ -397,6 +397,10 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 //	buscar pla d'estudis de l'especialitat per saber quins credits ha de tenir el alumne
 		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_especialitat WHERE idespecialitat = %s', $dades[$i]['idespecialitat']);
 		$dades_esp = $wpdb->get_results( $query, ARRAY_A );
+##
+//		dump_r($dades_esp);
+##		
+		
 //	inicialitzar variables
 		$aprovat = 1;
 		$hores = 0;
@@ -423,8 +427,8 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 						$punts = ($notaf * $row_credit['hores_cr'])/10;
 						$acumulat = $acumulat + $punts;
 ##
-//						printf('<br /> Crèdit %s de l\'especialitat %s aprovat amb un - %d , un total de %d hores amb %s punts (%s)',
-//							$row_credit['nomcredit'],$row_cred['idespecialitat'], $notaf, $row_credit['hores_cr'], $punts , $acumulat);
+						printf('<br /> Crèdit %s de l\'especialitat %s aprovat amb un - %d , un total de %d hores amb %s punts (%s)',
+							$row_credit['nomcredit'],$row_cred['idespecialitat'], $notaf, $row_credit['hores_cr'], $punts , $acumulat);
 ##
 						$hores = $hores + $row_credit['hores_cr'];
 						$calcul['nomcredit'][] = $row_credit['nomcredit'];
@@ -434,7 +438,7 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 					}else{
 						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idcredaval' => $row_cred['idcredaval']) );
 ##
-//					printf('<br /> Crèdit %s de l\'especialitat %s suspes amb un - %d',$row_credit['nomcredit'],$row_cred['idespecialitat'], $notaf);
+					printf('<br /> Crèdit %s de l\'especialitat %s suspes amb un - %d',$row_credit['nomcredit'],$row_cred['idespecialitat'], $notaf);
 ##
 						$aprovat = 0;
 						$suspes = 1;
@@ -443,8 +447,8 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 					if(strtolower($res_cred[0]['notaf_cr']) == 'co' || strncmp( strtolower( $res_cred[0]['notaf_cr']), 'apt', 3 ) == 0){
 						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => '' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
 ##
-//						printf('<br /> Crèdit %s de l\'especialitat %s aprovat amb un - %s',
-//							$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
+						printf('<br /> Crèdit %s de l\'especialitat %s aprovat amb un - %s',
+							$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
 ##
 						$calcul['nomcredit'][] = $row_credit['nomcredit'];
 						$calcul['notaf'][] = $res_cred[0]['notaf_cr'];
@@ -453,13 +457,13 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 					}elseif( strtolower( $res_cred[0]['notaf_cr'] ) == 'np' || strtolower( $res_cred[0]['notaf_cr'] ) == 'pfct'){
 						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
 ##
-//						printf('<br /> Crèdit %s de l\'especialitat %s suspes amb un - %s',$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
+						printf('<br /> Crèdit %s de l\'especialitat %s suspes amb un - %s',$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
 ##
 						$aprovat = 0;
 						$np = 1;
 					}else{
 ##
-//						printf('<br /> Crèdit %s de l\'especialitat %s sense aprovar  - %s',$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
+						printf('<br /> Crèdit %s de l\'especialitat %s sense aprovar  - %s',$row_credit['nomcredit'],$row_cred['idespecialitat'], $res_cred[0]['notaf_cr']);
 ##
 						$aprovat = 0;
 						$sensenota = 1;
