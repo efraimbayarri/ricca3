@@ -4,7 +4,7 @@
  * Plugin URI: http://replicantsfactory.com/
  * Author: Efraim Bayarri
  * Author URI: http://replicantsfactory.com/
- * Version: 2014.21.6
+ * Version: 2013.28.3
  * Description: Projecte RIC-CA Versió 3 (Escola Ramon i Cajal) 
  * Release Version:(build 2013.27.5)
  * Release Date: 5 juliol 2013
@@ -25,8 +25,6 @@ require_once(WP_PLUGIN_DIR.'/ricca3/admin/ricca3-admin.php');
 require_once(WP_PLUGIN_DIR.'/ricca3/alumnes/ricca3-alumnes.php');
 require_once(WP_PLUGIN_DIR.'/ricca3/avaluacions/ricca3-avaluacions.php');
 require_once(WP_PLUGIN_DIR.'/ricca3/dades/ricca3-dades.php');
-require_once(WP_PLUGIN_DIR.'/ricca3/sii/ricca3-sii.php');
-require_once(WP_PLUGIN_DIR.'/ricca3/professors/ricca3-professors.php');
 
 if (is_admin()){
 	add_action('admin_menu', 'ricca3_admin_page');
@@ -53,16 +51,11 @@ add_shortcode( 'ricca3-especrepe',    'ricca3_shortcode_especrepe' );
 add_shortcode( 'ricca3-canviany',     'ricca3_shortcode_canviany' );
 add_shortcode( 'ricca3-mailings',     'ricca3_shortcode_mailings' );
 add_shortcode( 'ricca3-credpendents', 'ricca3_shortcode_credpendents' );
-add_shortcode( 'ricca3-pendactual',   'ricca3_shortcode_pendactual' );
 add_shortcode( 'ricca3-pregrup',      'ricca3_shortcode_pregrup' );
 add_shortcode( 'ricca3-afegircredit', 'ricca3_shortcode_afegircredit' );
 add_shortcode( 'ricca3-notafinal',    'ricca3_shortcode_notafinal' );
 add_shortcode( 'ricca3-caratula',     'ricca3_shortcode_caratula' );
 add_shortcode( 'ricca3-impcaratula',  'ricca3_shortcode_impcaratula' );
-add_shortcode( 'ricca3-esborraalumne','ricca3_shortcode_esborraalumne' );
-add_shortcode( 'ricca3-alumnes-sense-especialitat','ricca3_shortcode_alumnes_sense_especialitat' );
-
-
 
 add_shortcode( 'ricca3-avaluacions',  'ricca3_shortcode_avaluacions' );
 add_shortcode( 'ricca3-actes',        'ricca3_shortcode_actes' );
@@ -72,12 +65,6 @@ add_shortcode( 'ricca3-notes',        'ricca3_shortcode_notes' );
 add_shortcode( 'ricca3-obser',        'ricca3_shortcode_obser' );
 add_shortcode( 'ricca3-certif',       'ricca3_shortcode_certif' );
 add_shortcode( 'ricca3-impcertif',    'ricca3_shortcode_impcertif' );
-add_shortcode( 'ricca3-certifcurs1',  'ricca3_shortcode_certifcurs1' );
-add_shortcode( 'ricca3-impcertifcurs1','ricca3_shortcode_impcertifcurs1' );
-add_shortcode( 'ricca3-certiffinal',  'ricca3_shortcode_certiffinal' );
-add_shortcode( 'ricca3-impcertiffinal','ricca3_shortcode_impcertiffinal' );
-add_shortcode( 'ricca3-calcularnotaf' ,'ricca3_shortcode_calcularnotaf' );
-add_shortcode( 'ricca3-notaalumne'    ,'ricca3_shortcode_notaalumne' );
 
 add_shortcode( 'ricca3-dades',        'ricca3_shortcode_dades' );
 add_shortcode( 'ricca3-espec',        'ricca3_shortcode_espec' );
@@ -90,15 +77,6 @@ add_shortcode( 'ricca3-pla',          'ricca3_shortcode_pla' );
 add_shortcode( 'ricca3-guardarpla',   'ricca3_shortcode_guardarpla' );
 add_shortcode( 'ricca3-llistarpla',   'ricca3_shortcode_llistarpla' );
 add_shortcode( 'ricca3-sensepla',     'ricca3_shortcode_sensepla' );
-
-add_shortcode( 'ricca3-sii',          'ricca3_shortcode_sii' );
-add_shortcode( 'ricca3-sii-opcions',  'ricca3_shortcode_sii_opcions' );
-add_shortcode( 'ricca3-sii-fitxers',  'ricca3_shortcode_sii_fitxers' );
-add_shortcode( 'ricca3-sii-modif',    'ricca3_shortcode_sii_modif' );
-add_shortcode( 'ricca3-sii-xml',      'ricca3_shortcode_sii_xml' );
-
-add_shortcode( 'ricca3-professors',   'ricca3_shortcode_professors' );
-add_shortcode( 'ricca3-assistencia',  'ricca3_shortcode_assistencia' );
 
 function ricca3_init() {
 	global $wpdb;

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RICCA3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-25 15:18+0100\n"
-"PO-Revision-Date: 2013-11-25 15:20+0100\n"
+"POT-Creation-Date: 2013-07-05 12:30+0100\n"
+"PO-Revision-Date: 2013-07-05 12:30+0100\n"
 "Last-Translator: Efraim Bayarri <efraim.bayarri@gmail.com>\n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -60,7 +60,6 @@ msgstr "Actes d'avaluació"
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:232
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:458
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:581
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:708
 msgid "ajuda-aval-aval"
 msgstr "Tornar al menú d'avaluacions"
 
@@ -73,15 +72,12 @@ msgstr "Escollir els criteris de cerca actuals"
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:270
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:492
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:587
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:714
 msgid "escollir"
 msgstr "escollir"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:52
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:241
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:590
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:717
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:900
 msgid "Any:"
 msgstr "Any:"
 
@@ -93,8 +89,6 @@ msgstr "Any de les actes"
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:244
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:471
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:593
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:721
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:904
 msgid "Grup:"
 msgstr "Grup:"
 
@@ -140,8 +134,6 @@ msgstr "Actes de"
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:82
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:85
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:605
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:741
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:924
 msgid "amb data"
 msgstr "amb data"
 
@@ -168,7 +160,6 @@ msgstr "CRÈDIT:"
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:145
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:193
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:643
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:771
 msgid "CURS:"
 msgstr "CURS:"
 
@@ -205,7 +196,6 @@ msgstr "Alumnes"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:161
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:205
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:979
 msgid "Qualificació"
 msgstr "Qualificació"
 
@@ -225,21 +215,16 @@ msgstr "Entrada de notes"
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:238
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:270
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:587
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:714
 msgid "ajuda-notes-escollir"
 msgstr "Escollir els criteris de cerca actuals"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:241
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:590
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:717
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:900
 msgid "ajuda_notes_any"
 msgstr "Any de l'evaluació"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:244
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:593
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:721
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:904
 msgid "ajuda_notes_grup"
 msgstr "Grup de l'evaluació"
 
@@ -454,7 +439,6 @@ msgid "Certificats avaluacions"
 msgstr "Certificats avaluacions"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:605
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:741
 msgid "Certificats de"
 msgstr "Certificats de"
 
@@ -467,7 +451,6 @@ msgid "ANY:"
 msgstr "ANY:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:645
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:770
 msgid "ALUMNE/A:"
 msgstr "ALUMNE/A:"
 
@@ -492,7 +475,6 @@ msgid "OBSERVACIONS:"
 msgstr "OBSERVACIONS:"
 
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:684
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1148
 msgid "Barcelona, a"
 msgstr "Barcelona, a"
 
@@ -507,489 +489,4 @@ msgstr "Segell del centre"
 #: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:690
 msgid "Direcció Docent"
 msgstr "Direcció Docent"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:707
-msgid "Certificats Primer Curs"
-msgstr "Certificats Primer Curs"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:731
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:733
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:915
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:917
-msgid "Cast"
-msgstr "Avaluacions dels alumnes"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:768
-msgid "CICLE FORMATIU DE GRAU SUPERIOR"
-msgstr "CICLE FORMATIU DE GRAU SUPERIOR"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:769
-msgid "CURS ACADÈMIC:"
-msgstr "CURS ACADÈMIC:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:772
-msgid "1er"
-msgstr "1er"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:773
-msgid "L'alumne/a ha realitzat els següents crèdits durant el curs acadèmic"
-msgstr "L'alumne/a ha realitzat els següents crèdits durant el curs acadèmic"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:774
-msgid "L'alumne/a ha realitzat els següents mòduls durant el curs acadèmic"
-msgstr "L'alumne/a ha realitzat els següents mòduls durant el curs acadèmic"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:775
-msgid "i ha obtingut les següents qualificacions:"
-msgstr "i ha obtingut les següents qualificacions:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:776
-msgid "MÒDUL"
-msgstr "MÒDUL"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:777
-msgid "NOM DEL MÒDUL"
-msgstr "NOM DEL MÒDUL"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:778
-msgid "CRÈDIT"
-msgstr "CRÈDIT"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:779
-msgid "NOM DEL CRÈDIT"
-msgstr "NOM DEL CRÈDIT"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:780
-msgid "HORES"
-msgstr "HORES"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:781
-msgid "Data:"
-msgstr "Data:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:782
-msgid "Segell del Centre"
-msgstr "Segell del Centre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:784
-msgid "CICLO FORMATIVO DE GRADO SUPERIOR"
-msgstr "CICLO FORMATIVO DE GRADO SUPERIOR"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:785
-msgid "CURSO ACADÉMICO:"
-msgstr "CURSO ACADÉMICO:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:786
-msgid "ALUMNO/A:"
-msgstr "ALUMNO/A:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:787
-msgid "CURSO:"
-msgstr "CURSO:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:788
-msgid "1º"
-msgstr "1º"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:789
-msgid "El alumno/a ha realizado los seguientes créditos durante el curso académico"
-msgstr "El alumno/a ha realizado los seguientes créditos durante el curso académico"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:790
-msgid "El alumno/a ha realizado los seguientes módulos durante el curso académico"
-msgstr "El alumno/a ha realizado los seguientes módulos durante el curso académico"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:791
-msgid "y ha obtenido las siguientes calificaciones:"
-msgstr "y ha obtenido las siguientes calificaciones:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:792
-msgid "MÓDULO"
-msgstr "MÓDULO"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:793
-msgid "NOMBRE DEL MÓDULO"
-msgstr "NOMBRE DEL MÓDULO"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:794
-msgid "CRÉDITO"
-msgstr "CRÉDITO"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:795
-msgid "NOMBRE DEL CRÉDITO"
-msgstr "NOMBRE DEL CRÉDITO"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:796
-msgid "HORAS"
-msgstr "HORAS"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:797
-msgid "Fecha:"
-msgstr "Fecha:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:798
-msgid "Sello del Centro"
-msgstr "Sello del Centro"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:812
-msgid "DNI:"
-msgstr "DNI:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:832
-msgid "NOTA"
-msgstr "NOTA"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:871
-msgid "El/la director/a"
-msgstr "El/la director/a"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:892
-msgid "Certificats Final"
-msgstr "Certificats Final"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:924
-msgid "Certificats finals de"
-msgstr "Certificats finals de"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:945
-msgid "Certificat d'estudis complerts de CFGS, per a l'accès a estudis universitaris"
-msgstr "Certificat d'estudis complerts de CFGS, per a l'accès a estudis universitaris"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:946
-msgid "Dades del Centre"
-msgstr "Dades del Centre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:947
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:972
-msgid "Codi"
-msgstr "Codi"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:948
-msgid "Nom del centre"
-msgstr "Nom del centre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:949
-msgid "Adreça"
-msgstr "Adreça"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:950
-msgid "Municipi"
-msgstr "Municipi"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:951
-msgid "CARLOS AYLAGAS MOLERO, secretari de centre ESCOLA RAMON I CAJAL, d'acord amb la documentació que hi ha disponible en aquesta secretaria,"
-msgstr "CARLOS AYLAGAS MOLERO, secretari de centre ESCOLA RAMON I CAJAL, d'acord amb la documentació que hi ha disponible en aquesta secretaria,"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:952
-msgid "amb DNI/NIE/Passaport Nº"
-msgstr "amb DNI/NIE/Passaport Nº"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:953
-msgid "amb el document de identificació"
-msgstr "amb el document de identificació"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:954
-msgid "ha cursat i superat el cicle formatiu"
-msgstr "ha cursat i superat el cicle formatiu"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:955
-msgid "regulat pel Reial decret número"
-msgstr "regulat pel Reial decret número"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:956
-msgid "/1995 de data 7 d'abril"
-msgstr "/1995 de data 7 d'abril"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:957
-msgid "l'alumne/a ha obtingut la qualificació final de:"
-msgstr "l'alumne/a ha obtingut la qualificació final de:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:958
-msgid "I, per que consti, signo aquest certificat, amb el vist i plau de la directora del centre."
-msgstr "I, per que consti, signo aquest certificat, amb el vist i plau de la directora del centre."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:959
-msgid "Signatura del secretari"
-msgstr "Signatura del secretari"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:960
-msgid "Vist i plau de la directora"
-msgstr "Vist i plau de la directora"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:961
-msgid "Nom i cognoms"
-msgstr "Nom i cognoms"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:962
-msgid "SEGELL DEL CENTRE"
-msgstr "SEGELL DEL CENTRE"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:964
-msgid "Historial acadèmic"
-msgstr "Historial acadèmic"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:965
-msgid "Resultats de l'avaluació dels crèdits"
-msgstr "Resultats de l'avaluació dels crèdits"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:966
-msgid "Formació professional inicial"
-msgstr "Formació professional inicial"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:967
-msgid "Dades de l'alumne/a"
-msgstr "Dades de l'alumne/a"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:968
-msgid "Cognoms i nom"
-msgstr "Cognoms i nom"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:969
-msgid "DNI/NIE/passaport"
-msgstr "DNI/NIE/passaport"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:970
-msgid "Núm. d'identificació"
-msgstr "Núm. d'identificació"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:971
-msgid "Dades acadèmiques"
-msgstr "Dades acadèmiques"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:973
-msgid "Nom del cicle formatiu"
-msgstr "Nom del cicle formatiu"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:974
-msgid "Grau"
-msgstr "Grau"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:975
-msgid "Qualificacions"
-msgstr "Qualificacions"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:976
-msgid "Crèdit"
-msgstr "Crèdit"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:977
-msgid "Hores"
-msgstr "Hores"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:978
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1019
-msgid "Convocatoria"
-msgstr "Convocatoria"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:980
-msgid "Qualificació final del cicle formatíu"
-msgstr "Qualificació final del cicle formatíu"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:981
-msgid "Observacions"
-msgstr "Observacions"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:982
-msgid "Diligència de la validesa de l'historial acadèmic"
-msgstr "Diligència de la validesa de l'historial acadèmic"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:983
-msgid "CARLOS AYLAGAS MOLERO Secretari del centre ESCOLA RAMON I CAJAL amb codi 08035672 certifica que les dades que figuren en aquest historial \treflecteixen les que consten en la documentació dipositada a la secretaria d'aquest centre."
-msgstr "CARLOS AYLAGAS MOLERO Secretari del centre ESCOLA RAMON I CAJAL amb codi 08035672 certifica que les dades que figuren en aquest historial \treflecteixen les que consten en la documentació dipositada a la secretaria d'aquest centre."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:984
-msgid "Lloc i data"
-msgstr "Lloc i data"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:986
-msgid "Certificado de estudios cumpletados de CFGS para el acceso a estudios universitarios"
-msgstr "Certificado de estudios cumpletados de CFGS para el acceso a estudios universitarios"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:987
-msgid "Datos del Centro"
-msgstr "Datos del Centro"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:988
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1013
-msgid "Código"
-msgstr "Código"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:989
-msgid "Nombre del centro"
-msgstr "Nombre del centro"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:990
-msgid "Dirección"
-msgstr "Dirección"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:991
-msgid "Municipio"
-msgstr "Municipio"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:992
-msgid "CARLOS AYLAGAS MOLERO, secretario del centro ESCOLA RAMON I CAJAL, de acuerdo con la documentación que hay disponible en esta secretaría,"
-msgstr "CARLOS AYLAGAS MOLERO, secretario del centro ESCOLA RAMON I CAJAL, de acuerdo con la documentación que hay disponible en esta secretaría,"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:993
-msgid "con DNI/NIE/Pasaporte Nº"
-msgstr "con DNI/NIE/Pasaporte Nº"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:994
-msgid "con el número de identificación"
-msgstr "con el número de identificación"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:995
-msgid "ha cursado y superado el ciclo formativo"
-msgstr "ha cursado y superado el ciclo formativo"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:996
-msgid "regulado por el Real decreto número"
-msgstr "regulado por el Real decreto número"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:997
-msgid "/1995 de fecha 7 de Abril"
-msgstr "/1995 de fecha 7 de Abril"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:998
-msgid "El alumno/a ha obtenido la calificación final de:"
-msgstr "El alumno/a ha obtenido la calificación final de:"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:999
-msgid "Y, para que conste, firmo este certificado, con el visto bueno de la directora del centro."
-msgstr "Y, para que conste, firmo este certificado, con el visto bueno de la directora del centro."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1000
-msgid "Firma del secretario"
-msgstr "Firma del secretario"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1001
-msgid "Visto bueno de la directora"
-msgstr "Visto bueno de la directora"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1002
-msgid "Nombre y apellidos"
-msgstr "Nombre y apellidos"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1003
-msgid "SELLO DEL CENTRO"
-msgstr "SELLO DEL CENTRO"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1005
-msgid "Historial académico"
-msgstr "Historial académico"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1006
-msgid "Resultados de la evaluación de los créditos"
-msgstr "Resultados de la evaluación de los créditos"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1007
-msgid "Formación profesional inicial"
-msgstr "Formación profesional inicial"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1008
-msgid "Datos del alumno/a"
-msgstr "Datos del alumno/a"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1009
-msgid "Apellidos y nombre"
-msgstr "Apellidos y nombre"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1010
-msgid "DNI/NIE/pasaporte"
-msgstr "DNI/NIE/pasaporte"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1011
-msgid "Núm. de identificación"
-msgstr "Núm. de identificación"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1012
-msgid "Datos académicos"
-msgstr "Datos académicos"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1014
-msgid "Nombre del ciclo formativo"
-msgstr "Nombre del ciclo formativo"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1015
-msgid "Grado"
-msgstr "Grado"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1016
-msgid "Calificaciones"
-msgstr "Calificaciones"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1017
-msgid "Crédito"
-msgstr "Crédito"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1018
-msgid "Horas"
-msgstr "Horas"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1020
-msgid "Calificación"
-msgstr "Calificación"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1021
-msgid "Calificación final del ciclo formativo"
-msgstr "Calificación final del ciclo formativo"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1022
-msgid "Observaciones"
-msgstr "Observaciones"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1023
-msgid "Diligencia de la validez del historial académico"
-msgstr "Diligencia de la validez del historial académico"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1024
-msgid "CARLOS AYLAGAS MOLERO Secretario del centro ESCOLA RAMON I CAJAL con código 08035672 certifica que los datos que figuran en este historial reflejan los que constan en la documentación depositada en la secretaría de este centro."
-msgstr "CARLOS AYLAGAS MOLERO Secretario del centro ESCOLA RAMON I CAJAL con código 08035672 certifica que los datos que figuran en este historial reflejan los que constan en la documentación depositada en la secretaría de este centro."
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1025
-msgid "Lugar y fecha"
-msgstr "Lugar y fecha"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1061
-msgid "SUPERIOR"
-msgstr "SUPERIOR"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1145
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1198
-msgid "Carlos Aylagas Molero"
-msgstr "Carlos Aylagas Molero"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1145
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1198
-msgid "Teresa Llirinós Sopena"
-msgstr "Teresa Llirinós Sopena"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1150
-msgid "___/___"
-msgstr "___/___"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1165
-msgid "08035672"
-msgstr "08035672"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1165
-msgid "ESCOLA RAMON I CAJAL"
-msgstr "ESCOLA RAMON I CAJAL"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1167
-msgid "Rosselló, 303"
-msgstr "Rosselló, 303"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1167
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1201
-msgid "Barcelona"
-msgstr "Barcelona"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1172
-msgid "Certifico"
-msgstr "Certifico"
-
-#: /var/www/ric-ca/wp-content/plugins/ricca3/avaluacions/ricca3-avaluacions.php:1175
-msgid "Que"
-msgstr "Que"
 
