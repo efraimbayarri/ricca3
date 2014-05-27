@@ -1319,6 +1319,9 @@ function ricca3_shortcode_notaalumne($atts, $content = null) {
 	global $wpdb;
 	global $current_user;
 	global $ricca3_butons_actes;
+	global $ricca3_notaalumne;
+	
+//	dump_r($_POST);
 	
 	ricca3_missatge(__('Nota final per alumne','ricca3-aval'));
 	ricca3_butons( $ricca3_butons_actes, 6 );
@@ -1356,6 +1359,22 @@ function ricca3_shortcode_notaalumne($atts, $content = null) {
 	printf('</tr></table>', NULL);
 //
 	if(!isset($_POST['cercar']))printf('<table><tr><td><button type="submit" name="cercar" value="actualitzar" title="%s">%s</td></tr></table>',
-			__('ajuda-obser-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+				__('ajuda-obser-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'actualitzar'){
+		if($_POST['tipus'] == 'grup'){
+			$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE actual = 1', NULL),ARRAY_A,0);
+			$query= $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idany=%s AND idgrup=%s AND idestat_es=1 ORDER BY cognomsinom', 
+					$row_any['idany'], $_POST['grup']);
+			$data_view = $wpdb->get_results( $query, ARRAY_A);
+			ricca3_graella( $ricca3_notaalumne, $data_view, $token );
+			ricca3_desar('accio', 'calcularnota_grup', __('ajuda-calcularnota', 'ricca3-aval'));
+		}
+	}
+	if(isset($_POST['accio']) && $_POST['accio'] == 'calcularnota_grup'){
+		$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE actual = 1', NULL),ARRAY_A,0);
+		$espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup']),ARRAY_A,0);
+		
+		ricca3_notafinal($_POST['cbox'],$espec['idespecialitat'],$row_any['idany']);
+	}
 	printf('</form>', NULL);
 }

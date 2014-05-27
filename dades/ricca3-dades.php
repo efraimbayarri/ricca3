@@ -883,6 +883,12 @@ function ricca3_shortcode_credespec($atts, $content = null) {
 		$data_view = $wpdb->get_results( $query, ARRAY_A);
 		ricca3_graella( $ricca3_listcredespec, $data_view );
 		printf('</table>', NULL);
+// 		suma les hores
+		$suma=0;
+		for( $t=0; $t<count($data_view);$t++){
+			$suma=$suma+$data_view[$t]['hores_cr'];
+		}
+		printf('<table><tr><td>TOTAL HORES:</td><td><b>%s</b></td></tr></table>', $suma);
 	}
 	if(isset($_POST['cercar']) && $_POST['cercar'] == 'editar'){
 //	estem editan

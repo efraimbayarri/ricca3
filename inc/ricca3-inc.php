@@ -392,10 +392,9 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 		'WHERE idalumne=%s AND idany=%s AND idespecialitat=%s AND idestat_es=1 ',
 		$userid, $idany, $idespecialitat);		
 	$dades = $wpdb->get_results( $query, ARRAY_A );
-
 	for( $i = 0; $i < count($dades); $i++ ){
 //	buscar pla d'estudis de l'especialitat per saber quins credits ha de tenir el alumne
-		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_especialitat WHERE idespecialitat = %s', $dades[$i]['idespecialitat']);
+		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_especialitat WHERE idespecialitat = %s ORDER BY ordre_cr_es', $dades[$i]['idespecialitat']);
 		$dades_esp = $wpdb->get_results( $query, ARRAY_A );
 ##
 //		dump_r($dades_esp);
@@ -414,7 +413,7 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 		for ( $j = 0; $j < count($dades_esp); $j++ ){
 			$query = $wpdb->prepare( 'SELECT * FROM ricca3_credits_avaluacions '.
 				'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
-				'WHERE idalumne=%s and idcredit=%s and pendi!="R" ', 
+				'WHERE idalumne=%s and idcredit=%s and pendi!="R" ORDER BY notaf_cr DESC', 
 				$userid, $dades_esp[$j]['idcredit']);
 			$res_cred = $wpdb->get_results( $query, ARRAY_A );
 //

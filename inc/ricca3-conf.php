@@ -18,6 +18,19 @@ $ricca3_alumespec=array(
 #############################################################################################
 /**   */
 #############################################################################################
+$ricca3_notaalumne=array(
+		"tipus"   =>array("radio",     "bd",       "bd",          "bd",      "bd",          "bd",    "bd",   "bd",       "miniatura"),
+		"nombd"   =>array("idalumne",  "idalumne", "cognomsinom", "telefon", "telefonfixe", "email", "estat","repeteix", ""),
+		"visual"  =>array("",          "ID",       "Nom",         "Telefon", "Telefon",     "email", "",     "R",        ""),
+		"enllac"  =>array("",          "",         "",            "",        "",            "",      "",     "",         "ricca3-dadesalumne/?ID="),
+		"camp"    =>array("",          "",         "",            "",        "",            "",      "",     "",         "idalumne"),
+		"texte"   =>array("",          "",         "",            "",        "",            "",      "",     "",         ""),
+		"ajuda"   =>array("",          "",         "",            "",        "",            "",      "",     "",         "")
+);
+
+#############################################################################################
+/**   */
+#############################################################################################
 $ricca3_mailings=array(
 		"tipus"     =>array("ordre", "checkall", "bd",          "bd",    "bd",   "miniatura"),
 		"nombd"		=>array("",      "idalumne", "cognomsinom", "email", "grup", ""),
@@ -283,9 +296,9 @@ $ricca3_editcredespec=array(
 /**   */
 #############################################################################################
 $ricca3_listcredespec=array(
-		"tipus"  => array('bd',          'bd',             'bd',       'bd',        'bd',          'bd'),
-		"nombd"	 => array('idcredespec', 'idespecialitat', 'idcredit', 'nomcredit', 'ordre_cr_es', 'numero'),
-		"visual" => array('id',          'idespecialitat', 'idcredit', 'crèdit',    'ordre',       '..')
+		"tipus"  => array('bd',          'bd',             'bd',       'bd',        'bd',          'bd',     'bd'),
+		"nombd"	 => array('idcredespec', 'idespecialitat', 'idcredit', 'nomcredit', 'ordre_cr_es', 'numero', 'hores_cr'),
+		"visual" => array('id',          'idespecialitat', 'idcredit', 'crèdit',    'ordre',       '..',     'hores')
 );
 
 #############################################################################################
