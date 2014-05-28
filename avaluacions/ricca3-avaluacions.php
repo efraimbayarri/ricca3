@@ -1368,6 +1368,17 @@ function ricca3_shortcode_notaalumne($atts, $content = null) {
 			$data_view = $wpdb->get_results( $query, ARRAY_A);
 			ricca3_graella( $ricca3_notaalumne, $data_view, $token );
 			ricca3_desar('accio', 'calcularnota_grup', __('ajuda-calcularnota', 'ricca3-aval'));
+		}elseif($_POST['tipus'] == 'alumne'){
+			if( strlen( $_POST['cognom1'] ) < 2 && strlen( $_POST['cognom2'] ) < 2 && strlen( $_POST['nom'] ) < 2 && strlen( $_POST['DNI'] ) < 2 && strlen( $_POST['ID'] ) < 2){
+				ricca3_missatge(__('No hi han criteris de cerca. Si us plau afegiu-ne un.','ricca3-aval'));
+			}else{
+				$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE cognom1 LIKE %s AND cognom2 LIKE %s AND nom LIKE %s AND dni LIKE %s AND idalumne LIKE %s ORDER BY cognom1 ASC, cognom2 ASC, nom ASC' ,
+						'%'.like_escape($_POST['cognom1']).'%' , '%'.like_escape($_POST['cognom2']).'%' , '%'.like_escape($_POST['nom']).'%',
+						'%'.like_escape($_POST['DNI']).'%' , '%'.like_escape($_POST['ID']).'%' ), ARRAY_A) ;
+				//		llistat dels alumnes
+				ricca3_graella( $ricca3_notaalumne, $data_view, $token );
+				ricca3_desar('accio', 'calcularnota_alumne', __('ajuda-calcularnota', 'ricca3-aval'));
+			}
 		}
 	}
 	if(isset($_POST['accio']) && $_POST['accio'] == 'calcularnota_grup'){
@@ -1375,6 +1386,16 @@ function ricca3_shortcode_notaalumne($atts, $content = null) {
 		$espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup']),ARRAY_A,0);
 		
 		ricca3_notafinal($_POST['cbox'],$espec['idespecialitat'],$row_any['idany']);
+	}
+	if(isset($_POST['accio']) && $_POST['accio'] == 'calcularnota_alumne'){
+		$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE actual = 1', NULL),ARRAY_A,0);
+		$query = $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumne '.
+								'INNER JOIN ricca3_alumne_especialitat ON ricca3_alumne_especialitat.idalumne = ricca3_alumne.idalumne '.
+								'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup '.
+								'WHERE ricca3_alumne.idalumne=%s AND idany=%s ',
+								$_POST['cbox'], $row_any['idany']);
+		$espec = $wpdb->get_results( $query, ARRAY_A );
+		for( $t=0; $t < count($espec); $t++) ricca3_notafinal($_POST['cbox'],$espec[$t]['idespecialitat'],$row_any['idany']);
 	}
 	printf('</form>', NULL);
 }

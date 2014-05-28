@@ -793,7 +793,7 @@ function ricca3_shortcode_especalum($atts, $content = null) {
 
  			}
 //	mostrem els resultats a la linea de la graella 			
-			printf('<tr><td>%s</td><td>%s</td><td>%s</td><td title="%s">%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', 
+			printf('<tr><td>%s</td><td>%s</td><td>%s</td><td title="%s">%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><b>%s</b></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', 
  				$row_cred['grup'], $conv, $repeteix, $title, $row_cred['nomccomp'], $row_cred['nota1'], $row_cred['act1'], $row_cred['nota2'], $row_cred['act2'], 
  				$row_cred['nota3'], $row_cred['actf'], $row_cred['notaf_cc'], $row_cred['notaf_cr'], $row_cred['pendi'],  $row_cred['nomicognoms'], $row_cred['hores_cc'], $row_cred['hores_cr']);
  		}
