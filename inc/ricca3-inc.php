@@ -509,10 +509,6 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 			}
 		}
 		if( $hores > 0) $notafinal = sprintf('%01.3f', ($acumulat*10)/$hores);
-//		dump_r($calcul);
-##
-//		echo '<br />APROVAT='.$aprovat.' hores='.$hores.' punts='.$acumulat.' NOTAFINAL:'.$notafinal.'<br />';
-##
 		$texte = '';
 		if( $aprovat     == 1) $texte = sprintf('%s %s', __(', ha aprovat:', 'ricca3-inc'), $notafinal);
 		if( $suspes      == 1) $texte = sprintf('%s', __(', té assignatures suspeses.', 'ricca3-inc'));
@@ -526,25 +522,6 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 					$dades[0]['idalumne'], $dades[0]['idgrup']);
 			$result = $wpdb->get_results($query, ARRAY_A );
 			$wpdb->update('ricca3_alumne_especialitat', array( 'notaf_es' => $notafinal ), array( 'idalumespec' => $result[0]['idalumespec']));
-//		
-//			$calcul_notaf['doublenotaf'] = $notafinal;
-//			$calcul_notaf['nomcredit'] = json_encode($calcul['nomcredit'], JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
-//			$calcul_notaf['notaf']     = json_encode($calcul['notaf'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
-//			$calcul_notaf['hores']     = json_encode($calcul['hores'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
-//			$calcul_notaf['punts']     = json_encode($calcul['punts'],     JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
-//			$calcul_notaf['idalumne']  = $userid;
-//			$calcul_notaf['idespecialitat'] = $row_cred['idespecialitat'];
-//			$calcul_notaf['stampuser']  = $current_user->user_login;
-//			$calcul_notaf['stampplace'] = 'ricca_notafinal';
-//
-//			$query_notaf = $wpdb->prepare('SELECT * FROM ricca_calcul_notaf WHERE idalumne=%s AND idespecialitat=%s', $userid, $row_cred['idespecialitat'] );
-//			if($wpdb->query( $query_notaf ) == 0){
-//				$wpdb->insert('ricca_calcul_notaf', $calcul_notaf);
-//			}else{
-//				$row_calcul = $wpdb->get_row( $query_notaf, ARRAY_A,0);
-//				$wpdb->update('ricca_calcul_notaf', $calcul_notaf, array( 'idkey' => $row_calcul['idkey']));
-//			}
 		}
-//	guardar el calcul a ricca_calcul_notafinal
 	}
 }

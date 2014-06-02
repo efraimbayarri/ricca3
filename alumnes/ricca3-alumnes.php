@@ -1721,7 +1721,7 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 	global $ricca3_butons_editardades;
 	global $ricca3_credalu;
 	global $current_user;
-//	dump_r($_POST);
+//	dump_r($_SERVER);
 	get_currentuserinfo();
 //		comprovar si hem de guardar les dades de tots el crèdits
 	$num_cols=count($ricca3_credalu,1)/count($ricca3_credalu,0)-1;
@@ -1729,7 +1729,8 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 		for( $i=0; $i < count($_POST['idcredaval']); $i++){
 			for( $j=0; $j < $num_cols; $j++){
 				if(!$ricca3_credalu['nomeslect'][$j]){
-					$result = $wpdb->update('ricca3_credits_avaluacions',
+//					$result = $wpdb->update('ricca3_credits_avaluacions',
+					$result = ricca3_dbupdate('ricca3_credits_avaluacions',
 						array( $ricca3_credalu['nomupdate'][$j] => strtoupper($_POST[$ricca3_credalu['nombd'][$j]][$i]), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credalu' ), 
 						array('idcredaval' => $_POST['idcredaval'][$i]) );
 				}
@@ -1739,11 +1740,12 @@ function ricca3_shortcode_credalu($atts, $content = null) {
 //		comprovar si he de guardar les dades d'una especialitat
 	if( isset( $_POST['accio'] ) && $_POST['accio'] == 'actualitzarespec'){
 		for( $i=0; $i < count( $_POST['pendi']); $i++ ){
-			$result = $wpdb->update('ricca3_credits_avaluacions',
+//			$result = $wpdb->update('ricca3_credits_avaluacions',
+			$result = ricca3_dbupdate('ricca3_credits_avaluacions',
 				array(  'pendi' => strtoupper($_POST['pendi'][$i]), 'repe'     => strtoupper($_POST['repe'][$i]),   'nota1' => strtoupper($_POST['nota1'][$i]), 
 						'act1'  => strtoupper($_POST['act1'][$i]),  'nota2'    => strtoupper($_POST['nota2'][$i]),  'act2'  => strtoupper($_POST['act2'][$i]), 
 						'nota3' => strtoupper($_POST['nota3'][$i]), 'actf'     => strtoupper($_POST['actf'][$i]),   'notaf_cc' => strtoupper($_POST['notaf_cc'][$i]), 
-						'convord' => $_POST['convord'][$i], 
+						'convord' => $_POST['convord'][$i], 'notaf_cr' => $_POST['notaf_cr'][$i],
 						'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credalu'),
 				array('idcredaval' => $_POST['idcredaval'][$i]) );
 		}

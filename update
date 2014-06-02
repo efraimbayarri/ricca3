@@ -1,0 +1,428 @@
+admin/ricca3-admin.php:	$any_act = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = "1" ', ARRAY_A, 0 );
+admin/ricca3-admin.php:	if($any_actual = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE any = %s ', $any ), ARRAY_A, 0 ) ){
+admin/ricca3-admin.php:		if($wpdb->update('ricca3_any', array('actual' => 0), array('actual' => 1)) ){
+admin/ricca3-admin.php:			if ($wpdb->update('ricca3_any', array('actual' => 1), array('any' => $any) ) ){
+admin/ricca3-admin.php:	$any_ins = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE insc   = "1" ', ARRAY_A, 0 );
+admin/ricca3-admin.php:	if($any_inscri = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE any = %s ', $any ), ARRAY_A, 0 ) ){
+admin/ricca3-admin.php:		if($wpdb->update('ricca3_any', array('insc' => 0), array('insc' => 1)) ){
+admin/ricca3-admin.php:			if ($wpdb->update('ricca3_any', array('insc' => 1), array('any' => $any) ) ){
+admin/ricca3.php:	$any_act = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = "1" ', ARRAY_A, 0 );
+admin/ricca3.php:	$any_ins = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE insc   = "1" ', ARRAY_A, 0 );
+alumnes/ricca3-alumnes.php:			$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE actual = 1', NULL),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:			$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_especialitats WHERE idespecialitat=%s', $_POST['espec']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s', $_POST['grup']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_especialitats WHERE idespecialitat=%s', $row_grup['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+alumnes/ricca3-alumnes.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+alumnes/ricca3-alumnes.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+alumnes/ricca3-alumnes.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+alumnes/ricca3-alumnes.php:			$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE cognom1 LIKE %s AND cognom2 LIKE %s AND nom LIKE %s AND dni LIKE %s AND idalumne LIKE %s ORDER BY cognom1 ASC, cognom2 ASC, nom ASC' ,
+alumnes/ricca3-alumnes.php:		if( $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE dni = %s',$_POST['dni'])) > 0){
+alumnes/ricca3-alumnes.php:		if( $wpdb->insert('ricca3_alumne',$_POST) ){
+alumnes/ricca3-alumnes.php:			$_GET['ID']=$wpdb->insert_id;
+alumnes/ricca3-alumnes.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+alumnes/ricca3-alumnes.php:		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grupassist']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:	$row_any = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE actual = 1', NULL ) , ARRAY_A , 0 );
+alumnes/ricca3-alumnes.php:	$dades = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ricca3_alumespec_view WHERE idgrup = %s AND idany = %s AND idestat_es = 1 AND repeteix != "R" ORDER BY cognomsinom ASC' , $_GET['ID'] , $row_any['idany'] ), ARRAY_A );
+alumnes/ricca3-alumnes.php:	$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s ',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:	$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s ',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		$wpdb->update('ricca3_alumne', array( 'attachment_id' => $attach_id, 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_editardades_foto' ), array('idalumne' => $_GET['ID']));
+alumnes/ricca3-alumnes.php:		$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne = %s',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		if( $result = $wpdb->update('ricca3_alumne' , $_POST , array('idalumne' => $_GET['ID']) ) ) 
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idany ',$_GET['ID']), ARRAY_A);
+alumnes/ricca3-alumnes.php:	$espec = $wpdb->query( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s and idestat_es = 1', $_GET['ID']));	
+alumnes/ricca3-alumnes.php:		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s and idestat_es = 1', $_GET['ID']), ARRAY_A, $i);
+alumnes/ricca3-alumnes.php:		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s and idestat_es = 1', $_GET['ID']), ARRAY_A, $i);
+alumnes/ricca3-alumnes.php:		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s AND idestat_es=1 ', $_GET['ID']), ARRAY_A, $i);
+alumnes/ricca3-alumnes.php: 		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php: 		$query = $wpdb->prepare('SELECT DISTINCT ricca3_credits_avaluacions.idccomp, ricca3_credits.ordre_cr FROM ricca3_credits_avaluacions '. 
+alumnes/ricca3-alumnes.php: 		$array_cred_espec = $wpdb->get_results( $query, ARRAY_A );
+alumnes/ricca3-alumnes.php: 		$row_any = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE actual = 1', NULL ) , ARRAY_A , 0 );
+alumnes/ricca3-alumnes.php: 			$query_cred = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '. 
+alumnes/ricca3-alumnes.php: 			$row_cred = $wpdb->get_row( $query_cred, ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$query_dades = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php: 			$dades_cred = $wpdb->get_results( $query_dades, ARRAY_A);
+alumnes/ricca3-alumnes.php:  		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s AND idestat_es=1 ', $_GET['ID']), ARRAY_A, $i);
+alumnes/ricca3-alumnes.php:  		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  		$query_cred = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:		$data_cred = $wpdb->get_results( $query_cred, ARRAY_A);
+alumnes/ricca3-alumnes.php:				$row_nota = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:  		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s AND idestat_es=1 ', $_GET['ID']), ARRAY_A, $z);
+alumnes/ricca3-alumnes.php:  		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  			$wpdb->update('ricca3_historial' ,
+alumnes/ricca3-alumnes.php:  			$wpdb->update('ricca3_alumne',
+alumnes/ricca3-alumnes.php:  		$query_hist = $wpdb->prepare( 'SELECT * FROM ricca3_historial WHERE idalumne=%s AND idespecialitat=%s' , $_GET['ID'], $idespec['idespecialitat'] );
+alumnes/ricca3-alumnes.php:  		$res_hist   = $wpdb->query( $query_hist );
+alumnes/ricca3-alumnes.php:  		$row_h = $wpdb->get_row( $query_hist, ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne = %s', $_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:  			$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_especialitats WHERE idespecialitat = %s', $idespec['idespecialitat'] ),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:  			$query = $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s ORDER BY idany ASC', $_GET['ID'], $idespec['idespecialitat'] );
+alumnes/ricca3-alumnes.php:  			$result = $wpdb->query( $query );
+alumnes/ricca3-alumnes.php:  				$row_grup  = $wpdb->get_row( $query, ARRAY_A, $i);
+alumnes/ricca3-alumnes.php:  				$row_desde = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany=%s', $row_grup['idany']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  				$row_cur =   $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s', $row_grup['idgrup']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  				$row_curs  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_cursos WHERE idcurs=%s', $row_cur['idcurs']), ARRAY_A, 0); 
+alumnes/ricca3-alumnes.php:  			$wpdb->insert('ricca3_historial',
+alumnes/ricca3-alumnes.php:  			$wpdb->update( 'ricca3_alumne',
+alumnes/ricca3-alumnes.php:  		$row_h = $wpdb->get_row( $query_hist, ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  		$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
+alumnes/ricca3-alumnes.php:			$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:		$query = $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s ORDER BY idany DESC',
+alumnes/ricca3-alumnes.php:		$result = $wpdb->query( $query );
+alumnes/ricca3-alumnes.php:			$row = $wpdb->get_row( $query, ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  		$row   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$query= $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idgrup=%s AND idany=%s AND idestat_es=1 ', 
+alumnes/ricca3-alumnes.php:		$dades = $wpdb->get_results( $query, ARRAY_A );
+alumnes/ricca3-alumnes.php:				$row_abans = $wpdb->get_row( $query, ARRAY_A, $abans);
+alumnes/ricca3-alumnes.php:				$row_despr = $wpdb->get_row( $query, ARRAY_A, $despr);
+alumnes/ricca3-alumnes.php:	$row_alum = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_alumne WHERE idalumne=%s',    $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:	$row      = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_historial WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $_GET['espec']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
+alumnes/ricca3-alumnes.php:		$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT  ricca3_credits.idcredit ,ricca3_credits.ordre_cr '.
+alumnes/ricca3-alumnes.php:		$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:		$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup= %s',$_POST['grup']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_especialitats WHERE idespecialitat = %s ', $row['idespecialitat'] ),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		$row_estat = $wpdb->get_row( 'SELECT * FROM ricca3_estat WHERE estat="Alta"', ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup= %s' , $_POST['grup'] ),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:			$result = $wpdb->insert('ricca3_alumne_especialitat',array( 'idany' => $_POST['any'],
+alumnes/ricca3-alumnes.php:			$rowa = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup= %s', $_POST['grup'] ),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:			$rowb = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any   WHERE idany= %s ', $_POST['any']  ),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:			$rowc = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup= %s', $_POST['grup'] ),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:			$rowd = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE actiu_gr=1 AND sessio =%s AND idespecialitat = %s AND idcurs=2 ' , $rowc['sessio'], $rowc['idespecialitat'] ), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$rowe = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE actiu_gr=1 AND sessio =%s AND idespecialitat = %s AND idcurs=1 ' , $rowc['sessio'], $rowc['idespecialitat'] ), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:				$result = $wpdb->insert('ricca3_alumne_especialitat',array( 'idany' => $_POST['any'], 
+alumnes/ricca3-alumnes.php:				$result = $wpdb->insert('ricca3_alumne_especialitat',array( 'idany' => $rowb['idany']+1, 
+alumnes/ricca3-alumnes.php:				$result = $wpdb->insert('ricca3_alumne_especialitat',array( 'idany' => $rowb['idany']-1, 
+alumnes/ricca3-alumnes.php:				$result = $wpdb->insert('ricca3_alumne_especialitat',array( 'idany' => $_POST['any'],
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idany ',$_GET['ID']), ARRAY_A);
+alumnes/ricca3-alumnes.php:		$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+alumnes/ricca3-alumnes.php:		$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat where idalumespec = %s', 
+alumnes/ricca3-alumnes.php:				$result = $wpdb->update('ricca3_alumne_especialitat' , array('idestat_es' =>  1, 'motiubaixa' => '', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_baixaespec' ) , array( 'idalumespec' => $_POST['cbox'][$i] ));
+alumnes/ricca3-alumnes.php:				$result = $wpdb->update('ricca3_alumne_especialitat' , array('idestat_es' =>  2, 'motiubaixa' => $_POST['motiu'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_baixaespec' ) , array( 'idalumespec' => $_POST['cbox'][$i] ));
+alumnes/ricca3-alumnes.php:			if( $wpdb->delete('ricca3_alumne_especialitat', array('idalumespec' => $_POST['cbox'][$i]) ) ){
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idespecialitat, idany ',$_GET['ID']), ARRAY_A);
+alumnes/ricca3-alumnes.php:					$result = $wpdb->update('ricca3_credits_avaluacions',
+alumnes/ricca3-alumnes.php:			$result = $wpdb->update('ricca3_credits_avaluacions',
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:	$espec = $wpdb->query( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']));
+alumnes/ricca3-alumnes.php:		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']), ARRAY_A, $i);
+alumnes/ricca3-alumnes.php:		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']), ARRAY_A, $i);
+alumnes/ricca3-alumnes.php:		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$query_cred = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:		$data_cred = $wpdb->get_results( $query_cred, ARRAY_A);
+alumnes/ricca3-alumnes.php:			$row_any = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE idany = %s', $data_cred[$j]['idany'] ) , ARRAY_A , 0 );
+alumnes/ricca3-alumnes.php:				$row_nota = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php://	$query = $wpdb->prepare('SELECT * FROM ricca3_alumcredit_view WHERE idalumne = %s ORDER BY idany, idcurs, ordre_cr',$_GET['ID']);
+alumnes/ricca3-alumnes.php://	$data_view = $wpdb->get_results( $query, ARRAY_A);
+alumnes/ricca3-alumnes.php:  	$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  	$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:  	$query_cred = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:  	$data_view = $wpdb->get_results( $query_cred, ARRAY_A);
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$row_alumespec = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumespec = %s', $_POST['cbox'][$i]), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$row_any   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $row_alumespec['idany']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$row_grup  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $row_alumespec['idgrup']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:				$row_ccomp = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_POST['idccomp'][$i][$j]), ARRAY_A, 0); 				
+alumnes/ricca3-alumnes.php:				$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions WHERE idany = %s AND idccomp = %s AND idalumne = %s',
+alumnes/ricca3-alumnes.php:				$result = $wpdb->query( $query );
+alumnes/ricca3-alumnes.php:					$result_insert = $wpdb->insert('ricca3_credits_avaluacions', array( 
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idespecialitat, idany ',$_GET['ID']), ARRAY_A);
+alumnes/ricca3-alumnes.php:			$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumespec = %s ',$_POST['cbox'][ $i ] ), ARRAY_A,0);
+alumnes/ricca3-alumnes.php:			$row_any   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $row_espec['idany']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$row_grup  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $row_espec['idgrup']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$query_pla = $wpdb->prepare('SELECT * FROM ricca3_pla '.
+alumnes/ricca3-alumnes.php:			$data_view2 = $wpdb->get_results( $query_pla, ARRAY_A);
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s', 
+alumnes/ricca3-alumnes.php:		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s',
+alumnes/ricca3-alumnes.php:		$data_view = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT idespecialitat, nomespecialitat, sessio FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idany ',$_GET['ID']), ARRAY_A);
+alumnes/ricca3-alumnes.php:	$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE insc = 1', NULL),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne = %s',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:	$row     = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s',
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s',
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT idespecialitat, nomespecialitat, sessio FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idany ',$_GET['ID']), ARRAY_A);
+alumnes/ricca3-alumnes.php:	$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE insc = 1', NULL),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne = %s',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:	$row     = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s AND idespecialitat = %s',
+alumnes/ricca3-alumnes.php:			$row = $wpdb->get_row( $wpdb->prepare('SELECT repeteix from ricca3_alumne_especialitat WHERE idalumespec = %s' , $_POST['cbox'][$i] ),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:				$wpdb->update('ricca3_alumne_especialitat', array ( 'repeteix' => NULL , 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_especrepe' ) , array( 'idalumespec' => $_POST['cbox'][ $i ] ) );
+alumnes/ricca3-alumnes.php:				$wpdb->update('ricca3_alumne_especialitat', array ( 'repeteix' => 'R',   'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_especrepe' ) , array( 'idalumespec' => $_POST['cbox'][ $i ] ) );
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idespecialitat, idany ',$_GET['ID']), ARRAY_A);
+alumnes/ricca3-alumnes.php:		$row      = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumespec=%s', $_POST['cbox']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup="%s"', $row['idgrup']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$wpdb->update('ricca3_alumne_especialitat' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idalumespec' => $_POST['cbox'] ) );
+alumnes/ricca3-alumnes.php:		$dades = $wpdb->get_results($wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:			$wpdb->update('ricca3_credits_avaluacions' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idcredaval' => $dades[$i]['idcredaval']) );
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idespecialitat, idany ',$_GET['ID']), ARRAY_A);
+alumnes/ricca3-alumnes.php:		$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+alumnes/ricca3-alumnes.php:		$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+alumnes/ricca3-alumnes.php:		$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+alumnes/ricca3-alumnes.php:		$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+alumnes/ricca3-alumnes.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+alumnes/ricca3-alumnes.php:			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s',$_POST['cbox'][$i]),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:			$row_cre = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:			$row_any = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1', ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
+alumnes/ricca3-alumnes.php:			$wpdb->insert('ricca3_credits_avaluacions',
+alumnes/ricca3-alumnes.php:			$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idgrup=%s', $row_cre['idalumne'], $row_cre['idgrup'] ));
+alumnes/ricca3-alumnes.php:			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ), 
+alumnes/ricca3-alumnes.php:			if(!$wpdb->query($wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s AND idany=%s ',
+alumnes/ricca3-alumnes.php:				$wpdb->insert('ricca3_alumne_especialitat', array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'], 'idany' => $row_any['idany'], 'idestat_es' => 1, 'repeteix' => 'R'));	
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results('SELECT ricca3_credits_avaluacions.idcredaval, '.
+alumnes/ricca3-alumnes.php:			$row_cre = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:			$row_any = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1', ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
+alumnes/ricca3-alumnes.php:			$wpdb->insert('ricca3_credits_avaluacions',
+alumnes/ricca3-alumnes.php:			$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idgrup=%s', $row_cre['idalumne'], $row_cre['idgrup'] ));
+alumnes/ricca3-alumnes.php:			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ),
+alumnes/ricca3-alumnes.php:			if(!$wpdb->query($wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s AND idany=%s ',
+alumnes/ricca3-alumnes.php:				$wpdb->insert('ricca3_alumne_especialitat', array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'], 'idany' => $row_any['idany'], 'idestat_es' => 1, 'repeteix' => 'R'));
+alumnes/ricca3-alumnes.php:	$data_view = $wpdb->get_results('SELECT ricca3_credits_avaluacions.idcredaval, '.
+alumnes/ricca3-alumnes.php:	$res_grup = $wpdb->query($query_grup);
+alumnes/ricca3-alumnes.php:	$row_any = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE insc = 1', ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$row_grup = $wpdb->get_row( $query_grup, ARRAY_A, $i);
+alumnes/ricca3-alumnes.php:		$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat '.
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		$row_ccomp = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_ccomp_view WHERE idccomp=%s', $_POST['cbox']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:		$row_any = $wpdb->get_row('SELECT * FROM ricca3_any WHERE actual=1', ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		$wpdb->insert('ricca3_credits_avaluacions',
+alumnes/ricca3-alumnes.php:		if( $wpdb->delete('ricca3_credits_avaluacions', array( 'idcredaval' => $_POST['cbox'] ) ) ){
+alumnes/ricca3-alumnes.php:	$dades_cred = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '. 
+alumnes/ricca3-alumnes.php:		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT grup FROM ricca3_grups WHERE idgrup=%s', $_POST['grup']), ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		$dades_ccomp = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ricca3_ccomp_view WHERE idgrup=%s', $_POST['grup']), ARRAY_A);
+alumnes/ricca3-alumnes.php:		$dades_grup = $wpdb->get_results( $wpdb->prepare( 'SELECT DISTINCT ricca3_ccomp.idgrup, grup FROM ricca3_credits_avaluacions '.
+alumnes/ricca3-alumnes.php:	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		if( $wpdb->update('ricca3_alumne_especialitat', array( 'notaf_es_manual' => $_POST['notafmanual']), array( 'idalumespec' => $_POST['cbox']) ) ){
+alumnes/ricca3-alumnes.php:	$dades_espec = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idespecialitat, idany ',
+alumnes/ricca3-alumnes.php:			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumespec=%s ', $_POST['cbox']), ARRAY_A, 0);
+alumnes/ricca3-alumnes.php:	$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s ',$_GET['ID']),ARRAY_A,0);
+alumnes/ricca3-alumnes.php:		$wpdb->delete('ricca3_historial', array('idalumne' => $_GET['ID']));
+alumnes/ricca3-alumnes.php:		if( $wpdb->delete('ricca3_alumne', array('idalumne' => $_GET['ID']) ) ){
+alumnes/ricca3-alumnes.php:	$dades_alum = $wpdb->get_results( 'SELECT * FROM ricca3_alumne ORDER BY idalumne', ARRAY_A);	
+alumnes/ricca3-alumnes.php:		$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s', $dades_alum[$i]['idalumne']));
+avaluacions/ricca3-avaluacions.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$data_aval = $wpdb->get_results('SELECT * FROM ricca3_avaluacions', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_aval = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_avaluacions WHERE idavaluacio = %s', $_POST['aval']) ,ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany=%s', $_POST['any'] ),ARRAY_A,0 );
+avaluacions/ricca3-avaluacions.php:	$row_aval = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_avaluacions WHERE idavaluacio = %s', $_GET['aval']) ,ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$query = $wpdb->prepare('SELECT * FROM ricca3_pla_view WHERE idany = %s AND idgrup = %s AND aval3nomes=0 ORDER BY ordre_cr ', $_GET['any'], $_GET['grup'] );
+avaluacions/ricca3-avaluacions.php:		$query = $wpdb->prepare('SELECT * FROM ricca3_pla_view WHERE idany = %s AND idgrup = %s ORDER BY ordre_cr ', $_GET['any'], $_GET['grup'] );
+avaluacions/ricca3-avaluacions.php:	$dades_pla = $wpdb->get_results( $query, ARRAY_A);
+avaluacions/ricca3-avaluacions.php:		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+avaluacions/ricca3-avaluacions.php:		$dades_ccomp = $wpdb->get_results( $query, ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$row_aval = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_avaluacions WHERE idavaluacio = %s', $_GET['aval']) ,ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany=%s', $_GET['any'] ),ARRAY_A,0 );
+avaluacions/ricca3-avaluacions.php:	$dades_ccomp =  $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT idccomp FROM ricca3_alumccomprepe_view WHERE idgrup = %s AND idany = %s ORDER BY ordre_cr', $_GET['grup'], $_GET['any']), ARRAY_A);
+avaluacions/ricca3-avaluacions.php:		$dades =  $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumccomprepe_view WHERE idccomp = %s AND idany = %s ORDER BY ordre_cr', $dades_ccomp[$i]['idccomp'],	 $_GET['any']), ARRAY_A);		
+avaluacions/ricca3-avaluacions.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:		$query_ccomp = $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idgrup = %s AND actiu_cc = 1 ORDER BY nomccomp ASC', $_POST['grup']);
+avaluacions/ricca3-avaluacions.php:		if(isset($_POST['repe']) && $_POST['repe'] == 'si') $query_ccomp = $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idgrup = %s ORDER BY nomccomp ASC', $_POST['grup']);
+avaluacions/ricca3-avaluacions.php:		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_POST['grup'] ), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_POST['any'] ),  ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$data_ccomp = $wpdb->get_results( $query_ccomp, ARRAY_A);
+avaluacions/ricca3-avaluacions.php:		$row_grup   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_POST['grup'] ),  ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_any    = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_POST['any'] ),   ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_ccomp  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_POST['ccomp']),  ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:			$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+avaluacions/ricca3-avaluacions.php:			$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+avaluacions/ricca3-avaluacions.php:		$dades_cred = $wpdb->get_results( $query, ARRAY_A );
+avaluacions/ricca3-avaluacions.php:		$row_prof = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_professors WHERE idprof=%s ', $dades_cred[0]['idprofessor']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:			$count = $wpdb->query($wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idcredit=%s AND idgrup=%s ', $row_ccomp['idcredit'], $row_ccomp['idgrup']));
+avaluacions/ricca3-avaluacions.php:		$row_ccomp  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_POST['ccomp']),  ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:			$count = $wpdb->query($wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idcredit=%s AND idgrup=%s ', $row_ccomp['idcredit'], $row_ccomp['idgrup']));
+avaluacions/ricca3-avaluacions.php:			$result = $wpdb->update('ricca3_credits_avaluacions', 
+avaluacions/ricca3-avaluacions.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:		$row_any  = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1',  ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:			$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idany=%s AND idgrup=%s ORDER BY observ3 ASC',
+avaluacions/ricca3-avaluacions.php:				$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE cognom1 LIKE %s AND cognom2 LIKE %s AND nom LIKE %s AND dni LIKE %s AND idalumne LIKE %s ORDER BY cognomsinom ASC' ,
+avaluacions/ricca3-avaluacions.php:		$row_any  = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1',  ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_alum = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_POST['cbox']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idany=%s', $_POST['cbox'], $row_any['idany']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_any  = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1',  ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:			$dades_grup = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idany=%s AND idgrup=%s ORDER BY observ3 ASC',
+avaluacions/ricca3-avaluacions.php:				$wpdb->update('ricca3_alumne_especialitat', array( 'observ3' => stripslashes($_POST['observ3']), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_obser' ), 
+avaluacions/ricca3-avaluacions.php:			$dades_alum = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idany=%s', 
+avaluacions/ricca3-avaluacions.php:				$wpdb->update('ricca3_alumne_especialitat', array( 'observ1' => stripslashes($_POST['observ1']), 'observ2' => stripslashes($_POST['observ2']), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_obser' ),
+avaluacions/ricca3-avaluacions.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup'] ), ARRAY_A, 0 );
+avaluacions/ricca3-avaluacions.php:	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any  WHERE idany  = %s', $_GET['any'] ), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:	$dades_espec = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idany=%s AND idgrup=%s AND idestat_es=1 ORDER BY cognomsinom ASC', 
+avaluacions/ricca3-avaluacions.php:		$dades_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_GET['grup']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$dades_ccomp = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+avaluacions/ricca3-avaluacions.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups INNER JOIN ricca3_especialitats ON ricca3_grups.idespecialitat = ricca3_especialitats.idespecialitat '.
+avaluacions/ricca3-avaluacions.php:		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup'] ), ARRAY_A, 0 );
+avaluacions/ricca3-avaluacions.php://	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any   WHERE idkey  = %s', $_GET['any'] ), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:	$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_GET['grup'] ), ARRAY_A, 0 );
+avaluacions/ricca3-avaluacions.php:	$query_alum  = $wpdb->prepare( 'SELECT * FROM ricca3_alumespec_view WHERE idany = %s AND idgrup = %s AND idestat_es=1 AND repeteix !="R" ORDER BY cognomsinom ASC ',$_GET['any'], $_GET['grup'] );
+avaluacions/ricca3-avaluacions.php:	$dades_alum = $wpdb->get_results( $query_alum, ARRAY_A);
+avaluacions/ricca3-avaluacions.php:	$query_cred = $wpdb->prepare('SELECT DISTINCT ordre_cr, credit, hores_cr, notaf_cr FROM ricca3_credits_avaluacions '.
+avaluacions/ricca3-avaluacions.php:		$dades_cred = $wpdb->get_results( $query_cred, ARRAY_A);
+avaluacions/ricca3-avaluacions.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups INNER JOIN ricca3_especialitats ON ricca3_grups.idespecialitat = ricca3_especialitats.idespecialitat '.
+avaluacions/ricca3-avaluacions.php:		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup'] ), ARRAY_A, 0 );
+avaluacions/ricca3-avaluacions.php:	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any   WHERE idany  = %s', $_GET['any'] ), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:	$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_GET['grup'] ), ARRAY_A, 0 );
+avaluacions/ricca3-avaluacions.php:	$query_alum  = $wpdb->prepare( 'SELECT * FROM ricca3_alumespec_view WHERE idany = %s AND idgrup = %s AND estat="Alta" ORDER BY cognomsinom ASC ',$row_any['idany'], $_GET['grup'] );
+avaluacions/ricca3-avaluacions.php:	$result_alum = $wpdb->query( $query_alum );
+avaluacions/ricca3-avaluacions.php:		$row_alumespec = $wpdb->get_row( $query_alum, ARRAY_A, $i);
+avaluacions/ricca3-avaluacions.php:		$row_alum = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_alumne WHERE idalumne=%s', $row_alumespec['idalumne']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_espec = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_especialitats WHERE idespecialitat= %s', $row_alumespec['idespecialitat']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$query  = $wpdb->prepare('SELECT * FROM ricca3_credits WHERE idespecialitat = %s ORDER BY ordre_cr ',$row_alumespec['idespecialitat']);
+avaluacions/ricca3-avaluacions.php:		$result = $wpdb->query( $query );
+avaluacions/ricca3-avaluacions.php:			$row_cred = $wpdb->get_row( $query, ARRAY_A, $j);
+avaluacions/ricca3-avaluacions.php://			$query_cre  = $wpdb->prepare('SELECT * FROM ricca3_alumcredit_view WHERE idalumne = %s AND idespecialitat = %s AND idcredit = %s ORDER BY idany DESC ',
+avaluacions/ricca3-avaluacions.php:			$query_cre = $wpdb->prepare('SELECT ricca3_credits_avaluacions.idcredaval, '.
+avaluacions/ricca3-avaluacions.php:			$result_cre = $wpdb->query( $query_cre );
+avaluacions/ricca3-avaluacions.php:				$row = $wpdb->get_row( $query_cre, ARRAY_A, 0 );
+avaluacions/ricca3-avaluacions.php:					$row_local=$wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_credits WHERE idcredit=%s', $row_cred['idcredit']), ARRAY_A,0);
+avaluacions/ricca3-avaluacions.php:		$row_alumespec = $wpdb->get_row( $query_alum, ARRAY_A, $i);
+avaluacions/ricca3-avaluacions.php:		$row_alum = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_alumne WHERE idalumne=%s', $row_alumespec['idalumne']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups '.
+avaluacions/ricca3-avaluacions.php:		$row_grup = $wpdb->get_row( $wpdb->prepare(  'SELECT * FROM ricca3_grups WHERE idgrup=%s', $_POST['grup']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:		$row_espec = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_especialitats WHERE idespecialitat=%s', $row_grup['idespecialitat']), ARRAY_A, 0);
+avaluacions/ricca3-avaluacions.php:			$query = $wpdb->prepare('SELECT * FROM ricca3_alumne '.
+avaluacions/ricca3-avaluacions.php:			$dades = $wpdb->get_results( $query, ARRAY_A );
+avaluacions/ricca3-avaluacions.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups '.
+avaluacions/ricca3-avaluacions.php:			$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE actual = 1', NULL),ARRAY_A,0);
+avaluacions/ricca3-avaluacions.php:			$query= $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idany=%s AND idgrup=%s AND idestat_es=1 ORDER BY cognomsinom', 
+avaluacions/ricca3-avaluacions.php:			$data_view = $wpdb->get_results( $query, ARRAY_A);
+avaluacions/ricca3-avaluacions.php:				$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE cognom1 LIKE %s AND cognom2 LIKE %s AND nom LIKE %s AND dni LIKE %s AND idalumne LIKE %s ORDER BY cognom1 ASC, cognom2 ASC, nom ASC' ,
+avaluacions/ricca3-avaluacions.php:		$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE actual = 1', NULL),ARRAY_A,0);
+avaluacions/ricca3-avaluacions.php:		$espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup']),ARRAY_A,0);
+avaluacions/ricca3-avaluacions.php:		$row_any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE actual = 1', NULL),ARRAY_A,0);
+avaluacions/ricca3-avaluacions.php:		$query = $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumne '.
+avaluacions/ricca3-avaluacions.php:		$espec = $wpdb->get_results( $query, ARRAY_A );
+dades/ricca3-dades.php:			$wpdb->update('ricca3_especialitats',
+dades/ricca3-dades.php:		$wpdb->insert('ricca3_especialitats',
+dades/ricca3-dades.php:		if(!$wpdb->query($wpdb->prepare('DELETE FROM ricca3_especialitats WHERE idespecialitat=%s', $_POST['idespecialitat'])))
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( 'SELECT * FROM ricca3_especialitats ORDER BY ordre_es ASC', ARRAY_A);
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( 'SELECT * FROM ricca3_especialitats ORDER BY ordre_es ASC', ARRAY_A);
+dades/ricca3-dades.php:	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+dades/ricca3-dades.php:			$wpdb->update('ricca3_credits',
+dades/ricca3-dades.php:		$wpdb->insert('ricca3_credits',
+dades/ricca3-dades.php:		if(!$wpdb->query($wpdb->prepare('DELETE FROM ricca3_credits WHERE idcredit=%s', $_POST['idcredit'])))
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+dades/ricca3-dades.php:			$wpdb->update('ricca3_grups',
+dades/ricca3-dades.php:		if(!$wpdb->insert('ricca3_grups',
+dades/ricca3-dades.php:		if(!$wpdb->query($wpdb->prepare('DELETE FROM ricca3_grups WHERE idgrup=%s', $_POST['idgrup'])))
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:			$wpdb->update('ricca3_professors',
+dades/ricca3-dades.php:		if(!$wpdb->insert('ricca3_professors',
+dades/ricca3-dades.php:		if(!$wpdb->query($wpdb->prepare('DELETE FROM ricca3_professors WHERE idprof=%s', $_POST['idprof'])))
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+dades/ricca3-dades.php:			$wpdb->update('ricca3_ccomp',
+dades/ricca3-dades.php:		if(!$wpdb->insert('ricca3_ccomp',
+dades/ricca3-dades.php:		if(!$wpdb->query($wpdb->prepare('DELETE FROM ricca3_ccomp WHERE idccomp=%s', $_POST['idccomp'])))
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+dades/ricca3-dades.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A);
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+dades/ricca3-dades.php:		$wpdb->delete('ricca3_pla', array('idany' => $_POST['any']));
+dades/ricca3-dades.php:		$dades_pla = $wpdb->get_results( 'SELECT * FROM ricca3_ccomp_view WHERE actiu_cc = 1 AND actiu_cr = 1 ', ARRAY_A);
+dades/ricca3-dades.php:			if(!$wpdb->insert('ricca3_pla',
+dades/ricca3-dades.php:	$data_any = $wpdb->get_results('SELECT DISTINCT ricca3_pla.idany, ricca3_any.any, ricca3_any.actual FROM ricca3_pla '.
+dades/ricca3-dades.php:	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+dades/ricca3-dades.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A);
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:	$row_any  = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1',  ARRAY_A, 0);
+dades/ricca3-dades.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A);
+dades/ricca3-dades.php:			$query = $wpdb->prepare('SELECT * FROM ricca3_pla_view WHERE idany=%s AND idgrup=%s', 
+dades/ricca3-dades.php:			$dades_ccomp = $wpdb->get_results( $query , ARRAY_A);
+dades/ricca3-dades.php:				$wpdb->insert('ricca3_credits_avaluacions',
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:			$result = $wpdb->query( $wpdb->prepare( 'SELECT * FROM ricca3_alumcredit_view WHERE idalumne=%s AND idgrup=%s AND idany=%s',
+dades/ricca3-dades.php:	$row_any  = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1',  ARRAY_A, 0);
+dades/ricca3-dades.php:	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+dades/ricca3-dades.php:			$wpdb->update('ricca3_credits_especialitat',
+dades/ricca3-dades.php:		if(!$wpdb->insert('ricca3_credits_especialitat',
+dades/ricca3-dades.php:		if(!$wpdb->query($wpdb->prepare('DELETE FROM ricca3_credits_especialitat WHERE idcredespec=%s', $_POST['idcredespec'])))
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+dades/ricca3-dades.php:		$data_cred = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_credits WHERE idespecialitat = %s ORDER BY ordre_cr', $_POST['espec']), ARRAY_A);
+dades/ricca3-dades.php:		$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 ORDER BY ordre_es ', ARRAY_A);
+inc/ricca3-inc.php: * @param array $data matriu amb el resultat del query a la base de dades ($wpdb->get_result);
+inc/ricca3-inc.php:						if(count( $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idany=13 AND idestat_es=1 ', $data[$i]['idalumne']))) > 1){
+inc/ricca3-inc.php://					$query_hist = $wpdb->prepare('SELECT * FROM ricca_historial WHERE idalumne = %s AND idespecialitat = %s ', $row['idalumne'] , $row['idespecialitat']);
+inc/ricca3-inc.php://					if( $result_hist = $wpdb->query( $query_hist )) printf('<td>si</td>', NULL);
+inc/ricca3-inc.php:				$any = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany=%s', $data[ $i ][ $matriu['nombd'][ $j ] ] ), ARRAY_A, 0);
+inc/ricca3-inc.php:	$row_alum = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s ',$idalumne),ARRAY_A,0);
+inc/ricca3-inc.php:	$row_alumne = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $userid), ARRAY_A, 0);
+inc/ricca3-inc.php:	$query = $wpdb->prepare( 'SELECT * FROM ricca3_alumne_especialitat '. 
+inc/ricca3-inc.php:	$dades = $wpdb->get_results( $query, ARRAY_A );
+inc/ricca3-inc.php:		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_especialitat WHERE idespecialitat = %s ORDER BY ordre_cr_es', $dades[$i]['idespecialitat']);
+inc/ricca3-inc.php:		$dades_esp = $wpdb->get_results( $query, ARRAY_A );
+inc/ricca3-inc.php:			$query = $wpdb->prepare( 'SELECT * FROM ricca3_credits_avaluacions '.
+inc/ricca3-inc.php:			$res_cred = $wpdb->get_results( $query, ARRAY_A );
+inc/ricca3-inc.php:							$wpdb->update('ricca3_credits_avaluacions', array( 'notaf_cr' => $cc_notaf ), array( 'idcredaval' => $res_cred[$k]['idcredaval']));
+inc/ricca3-inc.php:							$res_cred = $wpdb->get_results( $query, ARRAY_A );
+inc/ricca3-inc.php:						$wpdb->update('ricca3_credits_avaluacions', array( 'notaf_cr' => $res_cred[0]['notaf_cr'] ), array( 'idcredaval' => $res_cred[$k]['idcredaval']));
+inc/ricca3-inc.php:				$row_credit = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_credits WHERE idcredit=%s', $res_cred[0]['idcredit']), ARRAY_A, 0);
+inc/ricca3-inc.php:						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => '' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
+inc/ricca3-inc.php:						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idcredaval' => $row_cred['idcredaval']) );
+inc/ricca3-inc.php:						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => '' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
+inc/ricca3-inc.php:						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'P' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
+inc/ricca3-inc.php:			$query = $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idgrup=%s ORDER BY idany DESC',
+inc/ricca3-inc.php:			$result = $wpdb->get_results($query, ARRAY_A );
+inc/ricca3-inc.php:			$wpdb->update('ricca3_alumne_especialitat', array( 'notaf_es' => $notafinal ), array( 'idalumespec' => $result[0]['idalumespec']));
+sii/ricca3-sii_old.txt://			$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne WHERE idalumne=%s', $_POST['cbox'][$i]);
+sii/ricca3-sii_old.txt:			$query = $wpdb->prepare('SELECT * FROM ricca3_alumne '.
+sii/ricca3-sii_old.txt:			$data_view = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii_old.txt:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+sii/ricca3-sii_old.txt:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+sii/ricca3-sii_old.txt:		$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne '.
+sii/ricca3-sii_old.txt:		$data_view = $wpdb->get_results( $query, ARRAY_A);	
+sii/ricca3-sii_old.txt:					$result = $wpdb->update('ricca3_alumne',
+sii/ricca3-sii_old.txt:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+sii/ricca3-sii_old.txt:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+sii/ricca3-sii_old.txt:		$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne '.
+sii/ricca3-sii_old.txt:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii.php:	$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
+sii/ricca3-sii.php:	$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne_especialitat '.
+sii/ricca3-sii.php:	$data_view = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii.php:					$result = $wpdb->update('ricca3_alumne',
+sii/ricca3-sii.php:	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+sii/ricca3-sii.php:	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+sii/ricca3-sii.php:		$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne '.
+sii/ricca3-sii.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii.php:	$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
+sii/ricca3-sii.php:		$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne_especialitat '.
+sii/ricca3-sii.php:		$data_view = $wpdb->get_results( $query, ARRAY_A);		
+sii/ricca3-sii.php:			$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
+sii/ricca3-sii.php:			$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul '.
+sii/ricca3-sii.php:			$data_modul_nom = $wpdb->get_results($query, ARRAY_A);						
+sii/ricca3-sii.php:						$query = $wpdb->prepare('SELECT DISTINCT SII_CodiCredit FROM ricca.ricca3_credits_avaluacions '.
+sii/ricca3-sii.php:						$data_credit = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii.php:							$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+sii/ricca3-sii.php:							$data_modul_hores = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii.php:								$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+sii/ricca3-sii.php:								$data_credit_hores = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii.php:						$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+sii/ricca3-sii.php:						$data_credit_no = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii.php:					$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul FROM ricca.ricca3_credits_avaluacions '.
+sii/ricca3-sii.php:					$data_credit = $wpdb->get_results( $query, ARRAY_A);
+sii/ricca3-sii.php:						$query=$wpdb->prepare('SELECT * FROM ricca3_sii_loe WHERE codimodul=%s', $data_credit[0]['SII_CodiModul']);
+sii/ricca3-sii.php:						$data_uf = $wpdb->get_results( $query, ARRAY_A);
