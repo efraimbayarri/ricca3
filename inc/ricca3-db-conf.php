@@ -202,10 +202,23 @@ function ricca3_dbdelete($table, $where, $where_format = null) {
 	global $current_user;
 	get_currentuserinfo();
 	$stampversion = '2014.23.1';
-	if($wpdb->delete( $table, $where, $where_format)){
-		
+	$encodedwhere = json_encode($where, JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);	
+	$return_value = $wpdb->delete( $table, $where, $where_format);
+	if($return_value){
+		$wpdb->insert( 'ricca3_logdb',
+				array(  type         => 'DELETE',
+						tabla        => $table,
+						donde        => $encodedwhere,
+						where_format => $where_format,
+						stampuser    => $current_user->user_login,
+						stampreferer => $_SERVER['HTTP_REFERER'],
+						stampplace   => $_SERVER['REQUEST_URI'],
+						stampremote  => $_SERVER['REMOTE_ADDR'],
+						stampversion => $stampversion,
+						returns      =>  'TRUE'));
+		return $return_value;
 	}else{
-		
+		return FALSE;
 	}
 }
 

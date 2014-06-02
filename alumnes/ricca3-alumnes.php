@@ -537,7 +537,8 @@ function ricca3_shortcode_editardades($atts, $content = null) {
 		$attach_data = wp_generate_attachment_metadata( $attach_id, $movefile['file'] );
 		wp_update_attachment_metadata( $attach_id, $attach_data );
 		get_currentuserinfo();
-		$wpdb->update('ricca3_alumne', array( 'attachment_id' => $attach_id, 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_editardades_foto' ), array('idalumne' => $_GET['ID']));
+//		$wpdb->update('ricca3_alumne', array( 'attachment_id' => $attach_id, 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_editardades_foto' ), array('idalumne' => $_GET['ID']));
+		ricca3_dbupdate('ricca3_alumne', array( 'attachment_id' => $attach_id, 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_editardades_foto' ), array('idalumne' => $_GET['ID']));
 		$row = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne = %s',$_GET['ID']),ARRAY_A,0);
 	}
 //	visualitza les dades actuals
@@ -638,7 +639,8 @@ function ricca3_shortcode_editardades($atts, $content = null) {
 //	afegim els stamp
 		$_POST['stampuser']  = $current_user->user_login;
 		$_POST['stampplace'] = 'ricca_shortcode_editardades';
-		if( $result = $wpdb->update('ricca3_alumne' , $_POST , array('idalumne' => $_GET['ID']) ) ) 
+//		if( $result = $wpdb->update('ricca3_alumne' , $_POST , array('idalumne' => $_GET['ID']) ) ) 
+		if( $result = ricca3_dbupdate('ricca3_alumne' , $_POST , array('idalumne' => $_GET['ID']) ) )
 			ricca3_missatge(sprintf('%s', __('S\'HAN ACTUALITZAT ELS REGISTRES DE DADES SATISFACTORIAMENT', 'ricca3_alum')));
 }
 
@@ -914,7 +916,8 @@ function ricca3_shortcode_especalum($atts, $content = null) {
   			if($_POST['hist']['condic'][$z] == 'prova') $prova = $_POST['hist']['prova'][$z];
   			if($_POST['hist']['condic'][$z] == 'titol') $titol = $_POST['hist']['titol'][$z];
 //
-  			$wpdb->update('ricca3_historial' ,
+//  			$wpdb->update('ricca3_historial' ,
+  			ricca3_dbupdate('ricca3_historial' ,
   					array(  'codi_c' => $_POST['hist']['codi_c'][$z],
   							'grau_c' => $_POST['hist']['grau_c'][$z],
   							'nom_c'  => $_POST['hist']['nom_c'][$z],
@@ -934,7 +937,8 @@ function ricca3_shortcode_especalum($atts, $content = null) {
   			);
 //	alumnes 
   			$data_naix=strftime("%Y-%m-%d",strtotime(str_replace('/',"-",$_POST['alumne']['FechaNac'][$z])));
-  			$wpdb->update('ricca3_alumne',
+//  			$wpdb->update('ricca3_alumne',
+  			ricca3_dbupdate('ricca3_alumne',
   					array(	'tipusdni'      => $_POST['alumne']['tipoDNI'][$z],
   							'datanai'       => $data_naix,
   							'llocnai'       => stripslashes($_POST['alumne']['LocalidadNac'][$z]),
@@ -1027,7 +1031,8 @@ function ricca3_shortcode_especalum($atts, $content = null) {
   		
   					)
  			);
-  			$wpdb->update( 'ricca3_alumne',
+//  			$wpdb->update( 'ricca3_alumne',
+  			ricca3_dbupdate( 'ricca3_alumne',
   					array(  'idhistorial'  => 'si',
   							'tipusdni'     => $tipodni,
   							'paisnai'      => $pais,
@@ -1669,17 +1674,20 @@ function ricca3_shortcode_baixaespec($atts, $content = null) {
 				$_POST['cbox'][$i] ),ARRAY_A,0);
 //	si ja està de baixa, la donem d'alta
 			if($row['idestat_es'] == 2 ){
-				$result = $wpdb->update('ricca3_alumne_especialitat' , array('idestat_es' =>  1, 'motiubaixa' => '', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_baixaespec' ) , array( 'idalumespec' => $_POST['cbox'][$i] ));
+//				$result = $wpdb->update('ricca3_alumne_especialitat' , array('idestat_es' =>  1, 'motiubaixa' => '', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_baixaespec' ) , array( 'idalumespec' => $_POST['cbox'][$i] ));
+				$result = ricca3_dbupdate('ricca3_alumne_especialitat' , array('idestat_es' =>  1, 'motiubaixa' => '', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_baixaespec' ) , array( 'idalumespec' => $_POST['cbox'][$i] ));
 // si està d'alta, la donem de baixa
 			}else{
-				$result = $wpdb->update('ricca3_alumne_especialitat' , array('idestat_es' =>  2, 'motiubaixa' => $_POST['motiu'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_baixaespec' ) , array( 'idalumespec' => $_POST['cbox'][$i] ));
+//				$result = $wpdb->update('ricca3_alumne_especialitat' , array('idestat_es' =>  2, 'motiubaixa' => $_POST['motiu'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_baixaespec' ) , array( 'idalumespec' => $_POST['cbox'][$i] ));
+				$result = ricca3_dbupdate('ricca3_alumne_especialitat' , array('idestat_es' =>  2, 'motiubaixa' => $_POST['motiu'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_baixaespec' ) , array( 'idalumespec' => $_POST['cbox'][$i] ));
 			}
 		}
 	}
 //	ESBORRA especialitat
 	if( isset( $_POST['accio'] ) && $_POST['accio'] == 'borraespec' && isset($_POST['cbox'])){
 		for( $i = 0; $i <count($_POST['cbox']); $i++){
-			if( $wpdb->delete('ricca3_alumne_especialitat', array('idalumespec' => $_POST['cbox'][$i]) ) ){
+//			if( $wpdb->delete('ricca3_alumne_especialitat', array('idalumespec' => $_POST['cbox'][$i]) ) ){
+			if( ricca3_dbdelete('ricca3_alumne_especialitat', array('idalumespec' => $_POST['cbox'][$i]) ) ){
 				ricca3_missatge( __('Especialitat esborrada amb exit!', 'ricca3-alum'));
 			}else{
 				ricca3_missatge( __('No s\'ha pogut esborrar l\'especialitat!', 'ricca3-alum'));
@@ -2367,9 +2375,11 @@ function ricca3_shortcode_especrepe($atts, $content = null) {
 		for( $i=0; $i < count($_POST['cbox']); $i++){
 			$row = $wpdb->get_row( $wpdb->prepare('SELECT repeteix from ricca3_alumne_especialitat WHERE idalumespec = %s' , $_POST['cbox'][$i] ),ARRAY_A,0);
 			if($row['repeteix'] == "R"){
-				$wpdb->update('ricca3_alumne_especialitat', array ( 'repeteix' => NULL , 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_especrepe' ) , array( 'idalumespec' => $_POST['cbox'][ $i ] ) );
+//				$wpdb->update('ricca3_alumne_especialitat', array ( 'repeteix' => NULL , 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_especrepe' ) , array( 'idalumespec' => $_POST['cbox'][ $i ] ) );
+				ricca3_dbupdate('ricca3_alumne_especialitat', array ( 'repeteix' => NULL , 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_especrepe' ) , array( 'idalumespec' => $_POST['cbox'][ $i ] ) );
 			}else{
-				$wpdb->update('ricca3_alumne_especialitat', array ( 'repeteix' => 'R',   'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_especrepe' ) , array( 'idalumespec' => $_POST['cbox'][ $i ] ) );
+//				$wpdb->update('ricca3_alumne_especialitat', array ( 'repeteix' => 'R',   'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_especrepe' ) , array( 'idalumespec' => $_POST['cbox'][ $i ] ) );
+				ricca3_dbupdate('ricca3_alumne_especialitat', array ( 'repeteix' => 'R',   'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_especrepe' ) , array( 'idalumespec' => $_POST['cbox'][ $i ] ) );
 			}
 		}
 	}	
@@ -2423,7 +2433,8 @@ function ricca3_shortcode_canviany($atts, $content = null) {
 	if( isset( $_POST['cbox'] ) && $_POST['crear'] == 'data'){
 		$row      = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumespec=%s', $_POST['cbox']), ARRAY_A, 0);
 		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup="%s"', $row['idgrup']), ARRAY_A, 0);
-		$wpdb->update('ricca3_alumne_especialitat' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idalumespec' => $_POST['cbox'] ) );
+//		$wpdb->update('ricca3_alumne_especialitat' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idalumespec' => $_POST['cbox'] ) );
+		ricca3_dbupdate('ricca3_alumne_especialitat' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idalumespec' => $_POST['cbox'] ) );
 		$dades = $wpdb->get_results($wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
@@ -2431,7 +2442,8 @@ function ricca3_shortcode_canviany($atts, $content = null) {
 			$_GET['ID'], $row['idany'], $row_grup['idespecialitat']), 
 			ARRAY_A);
 		for( $i=0; $i < count($dades); $i++){
-			$wpdb->update('ricca3_credits_avaluacions' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idcredaval' => $dades[$i]['idcredaval']) );
+//			$wpdb->update('ricca3_credits_avaluacions' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idcredaval' => $dades[$i]['idcredaval']) );
+			ricca3_dbupdate('ricca3_credits_avaluacions' , array( 'idany' => $_POST['any'], 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_canviany' ) , array( 'idcredaval' => $dades[$i]['idcredaval']) );
 		}
 	}
 	$row_alu = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumne where idalumne = %s',$_GET['ID']),ARRAY_A,0);
@@ -2634,7 +2646,8 @@ function ricca3_shortcode_credpendents($atts, $content = null) {
 					'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 					'WHERE idcredaval = %s', $_POST['cbox'][$i] ), ARRAY_A, 0);
 			$row_any = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1', ARRAY_A, 0);
-			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
+//			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
+			ricca3_dbupdate('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
 			$wpdb->insert('ricca3_credits_avaluacions',
 					array(
 							'idany'          => $row_any['idany'],
@@ -2647,7 +2660,8 @@ function ricca3_shortcode_credpendents($atts, $content = null) {
 					)
 			);
 			$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idgrup=%s', $row_cre['idalumne'], $row_cre['idgrup'] ));
-			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ), 
+//			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ), 
+			if($result)	ricca3_dbupdate('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ),
 										array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'] ) );
 //	afegir especialitat als alumnes repetidors (no als que estan fent segon i tenen perndents de primer)
 			if(!$wpdb->query($wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s AND idany=%s ',
@@ -2713,7 +2727,8 @@ function ricca3_shortcode_pendactual($atts, $content = null) {
 					'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 					'WHERE idcredaval = %s', $_POST['cbox'][$i] ), ARRAY_A, 0);
 			$row_any = $wpdb->get_row( 'SELECT * FROM ricca3_any WHERE actual = 1', ARRAY_A, 0);
-			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
+//			$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
+			ricca3_dbupdate('ricca3_credits_avaluacions', array( 'pendi' => 'R' ), array( 'idcredaval' => $_POST['cbox'][$i] )	);
 			$wpdb->insert('ricca3_credits_avaluacions',
 					array(
 							'idany'          => $row_any['idany'],
@@ -2726,7 +2741,8 @@ function ricca3_shortcode_pendactual($atts, $content = null) {
 					)
 			);
 			$result = $wpdb->query( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idgrup=%s', $row_cre['idalumne'], $row_cre['idgrup'] ));
-			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ),
+//			if($result)	$wpdb->update('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ),
+			if($result)	ricca3_dbupdate('ricca3_alumne_especialitat', array( 'repeteix' => 'R', 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_credpendents' ),
 					array('idalumne' => $row_cre['idalumne'], 'idgrup' => $row_cre['idgrup'] ) );
 			//	afegir especialitat als alumnes repetidors (no als que estan fent segon i tenen perndents de primer)
 			if(!$wpdb->query($wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s AND idany=%s ',
@@ -2874,7 +2890,8 @@ function ricca3_shortcode_afegircredit($atts, $content = null) {
 	}
 //		Esborrar crèdit
 	if( isset( $_POST['accio']) && $_POST['accio'] == 'esborrarcredit' && isset($_POST['cbox']) ){
-		if( $wpdb->delete('ricca3_credits_avaluacions', array( 'idcredaval' => $_POST['cbox'] ) ) ){
+//		if( $wpdb->delete('ricca3_credits_avaluacions', array( 'idcredaval' => $_POST['cbox'] ) ) ){
+		if( ricca3_dbdelete('ricca3_credits_avaluacions', array( 'idcredaval' => $_POST['cbox'] ) ) ){
 			ricca3_missatge(__('Crèdit esborrat amb exit!!!','ricca3-alum'));
 		}else{
 			ricca3_missatge(__('ERROR!! esborrant crèdit','ricca3-alum'));
@@ -2958,7 +2975,8 @@ function ricca3_shortcode_notafinal($atts, $content = null) {
 	ricca3_butons( $ricca3_butons_editardades, 6, $token );
 //
 	if(isset($_POST['accio']) && $_POST['accio'] == "entranota"){
-		if( $wpdb->update('ricca3_alumne_especialitat', array( 'notaf_es_manual' => $_POST['notafmanual']), array( 'idalumespec' => $_POST['cbox']) ) ){
+//		if( $wpdb->update('ricca3_alumne_especialitat', array( 'notaf_es_manual' => $_POST['notafmanual']), array( 'idalumespec' => $_POST['cbox']) ) ){
+		if( ricca3_dbupdate('ricca3_alumne_especialitat', array( 'notaf_es_manual' => $_POST['notafmanual']), array( 'idalumespec' => $_POST['cbox']) ) ){
 			ricca3_missatge( __('Nota Final Manual afegida amb exit!', 'ricca3-alum'));
 		}else{
 			ricca3_missatge( __('ERROR al afegir Nota Final Manual!!', 'ricca3-alum'));
@@ -3026,9 +3044,11 @@ function ricca3_shortcode_esborraalumne($atts, $content = null) {
 	ricca3_butons( $ricca3_butons_editardades, 6, $token );
 	if(isset($_POST['esborrar']) && $_POST['esborrar'] == 'esborrar'){
 //		esborrar primer l'historial
-		$wpdb->delete('ricca3_historial', array('idalumne' => $_GET['ID']));
+//		$wpdb->delete('ricca3_historial', array('idalumne' => $_GET['ID']));
+		ricca3_dbdelete('ricca3_historial', array('idalumne' => $_GET['ID']));
 //		
-		if( $wpdb->delete('ricca3_alumne', array('idalumne' => $_GET['ID']) ) ){
+//		if( $wpdb->delete('ricca3_alumne', array('idalumne' => $_GET['ID']) ) ){
+		if( ricca3_dbdelete('ricca3_alumne', array('idalumne' => $_GET['ID']) ) ){
 			ricca3_missatge( __('Alumne esborrat amb exit!', 'ricca3-alum'));
 		}else{
 			ricca3_missatge( __('NO s\'ha pogut esborrar l\'alumne! Comproveu que no té ni crèdits ni especialitats assignades abans d\'esborrar.', 'ricca3-alum'));

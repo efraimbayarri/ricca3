@@ -440,7 +440,8 @@ function ricca3_shortcode_notes($atts, $content = null) {
 			$count = $wpdb->query($wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idcredit=%s AND idgrup=%s ', $row_ccomp['idcredit'], $row_ccomp['idgrup']));
 //			dump_r($row_ccomp);
 			if($count=='1')$_POST['notaf_cr'][$i]=$_POST['notaf_cc'][$i];
-			$result = $wpdb->update('ricca3_credits_avaluacions', 
+//			$result = $wpdb->update('ricca3_credits_avaluacions', 
+			$result = ricca3_dbupdate('ricca3_credits_avaluacions',
 				array(  'nota1'      => strtoupper($_POST['nota1'][$i]), 
 						'act1'       => strtoupper($_POST['act1'][$i]),
 						'nota2'      => strtoupper($_POST['nota2'][$i]),
@@ -571,7 +572,8 @@ function ricca3_shortcode_obser($atts, $content = null) {
 			$dades_grup = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idany=%s AND idgrup=%s ORDER BY observ3 ASC',
 				$row_any['idany'], $_POST['grup']), ARRAY_A, 0);
 			for ( $i=0; $i < count($dades_grup); $i++){
-				$wpdb->update('ricca3_alumne_especialitat', array( 'observ3' => stripslashes($_POST['observ3']), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_obser' ), 
+//				$wpdb->update('ricca3_alumne_especialitat', array( 'observ3' => stripslashes($_POST['observ3']), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_obser' ), 
+				ricca3_dbupdate('ricca3_alumne_especialitat', array( 'observ3' => stripslashes($_POST['observ3']), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_obser' ),
 															array( 'idalumespec' => $dades_grup[$i]['idalumespec'] ) );
 			}
 		}
@@ -580,7 +582,8 @@ function ricca3_shortcode_obser($atts, $content = null) {
 			$dades_alum = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat WHERE idalumne=%s AND idany=%s', 
 				$_POST['alumne'], $row_any['idany']), ARRAY_A, 0);
 			for ( $i=0; $i < count($dades_alum); $i++){
-				$wpdb->update('ricca3_alumne_especialitat', array( 'observ1' => stripslashes($_POST['observ1']), 'observ2' => stripslashes($_POST['observ2']), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_obser' ),
+//				$wpdb->update('ricca3_alumne_especialitat', array( 'observ1' => stripslashes($_POST['observ1']), 'observ2' => stripslashes($_POST['observ2']), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_obser' ),
+				ricca3_dbupdate('ricca3_alumne_especialitat', array( 'observ1' => stripslashes($_POST['observ1']), 'observ2' => stripslashes($_POST['observ2']), 'stampuser' => $current_user->user_login, 'stampplace' => 'ricca_shortcode_obser' ),
 															array( 'idalumespec' => $dades_alum[$i]['idalumespec'] ) );
 			}
 		}

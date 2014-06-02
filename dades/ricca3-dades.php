@@ -49,7 +49,8 @@ function ricca3_shortcode_espec($atts, $content = null) {
 //	update
 	if(isset($_POST['crear']) && $_POST['crear'] == 'guardar'){
 		for( $i = 0; $i < count($_POST['idespecialitat']); $i++){
-			$wpdb->update('ricca3_especialitats',
+//			$wpdb->update('ricca3_especialitats',
+			ricca3_dbupdate('ricca3_especialitats',
 				array(	'nomespecialitat'  => $_POST['nomespecialitat'][$i],
 						'codiespecialitat' => $_POST['codiespecialitat'][$i],
 						'pla'              => $_POST['pla'][$i],
@@ -173,7 +174,8 @@ function ricca3_shortcode_cred($atts, $content = null) {
 //	Guardem les dades
 	if(isset($_POST['cercar']) && $_POST['cercar'] == 'guardar'){
 		for( $i = 0; $i < count($_POST['idcredit']); $i++){
-			$wpdb->update('ricca3_credits',
+//			$wpdb->update('ricca3_credits',
+			ricca3_dbupdate('ricca3_credits',
 				array(	'nomcredit'      => stripslashes($_POST['nomcredit'][$i]),
 						'actiu_cr'       => $_POST['actiu_cr'][$i],
 						'aval3nomes'     => $_POST['aval3nomes'][$i],
@@ -298,7 +300,8 @@ function ricca3_shortcode_grups($atts, $content = null) {
 //	Guardem les dades
 	if(isset($_POST['cercar']) && $_POST['cercar'] == 'guardar'){
 		for( $i = 0; $i < count($_POST['idgrup']); $i++){
-			$wpdb->update('ricca3_grups',
+//			$wpdb->update('ricca3_grups',
+			ricca3_dbupdate('ricca3_grups',
 				array( 	'grup'           => $_POST['grup'][$i],
 						'actiu_gr'       => $_POST['actiu_gr'][$i],
 						'idespecialitat' => $_POST['idespecialitat'][$i],
@@ -403,7 +406,8 @@ function ricca3_shortcode_prof($atts, $content = null) {
 //	Guardem les dades
 	if(isset($_POST['cercar']) && $_POST['cercar'] == 'guardar'){
 		for( $i = 0; $i < count($_POST['idprof']); $i++){
-			$wpdb->update('ricca3_professors',
+//			$wpdb->update('ricca3_professors',
+			ricca3_dbupdate('ricca3_professors',
 				array( 	'idprof'      => $_POST['idprof'][$i],
 						'idtutor'     => $_POST['idprof'][$i],
 						'nomicognoms' => $_POST['nomicognoms'][$i],
@@ -514,7 +518,8 @@ function ricca3_shortcode_ccomp($atts, $content = null) {
 //	Guardem les dades
 	if(isset($_POST['cercar']) && $_POST['cercar'] == 'guardar'){
 		for( $i = 0; $i < count($_POST['idccomp']); $i++){
-			$wpdb->update('ricca3_ccomp',
+//			$wpdb->update('ricca3_ccomp',
+			ricca3_dbupdate('ricca3_ccomp',
 				array( 	'idcredit'    => $_POST['idcredit'][$i],
 						'idgrup'      => $_POST['idgrup'][$i],
 						'hores_cc'    => $_POST['hores_cc'][$i],
@@ -665,7 +670,8 @@ function ricca3_shortcode_guardarpla($atts, $content = null) {
 	printf('</tr></table></form>', NULL);
 	if(isset($_POST['cercar']) && $_POST['cercar'] == 'actualitzar'){
 //		esborrem les dades anteriors		
-		$wpdb->delete('ricca3_pla', array('idany' => $_POST['any']));
+//		$wpdb->delete('ricca3_pla', array('idany' => $_POST['any']));
+		ricca3_dbdelete('ricca3_pla', array('idany' => $_POST['any']));
 //**
 		$dades_pla = $wpdb->get_results( 'SELECT * FROM ricca3_ccomp_view WHERE actiu_cc = 1 AND actiu_cr = 1 ', ARRAY_A);
 		for( $i=0; $i < count($dades_pla); $i++){
@@ -850,7 +856,8 @@ function ricca3_shortcode_credespec($atts, $content = null) {
 //	Guardem les dades
 	if(isset($_POST['cercar']) && $_POST['cercar'] == 'guardar'){
 		for( $i = 0; $i < count($_POST['idcredespec']); $i++){
-			$wpdb->update('ricca3_credits_especialitat',
+//			$wpdb->update('ricca3_credits_especialitat',
+			ricca3_dbupdate('ricca3_credits_especialitat',
 					array( 	'idespecialitat' => $_POST['idespecialitat'][$i],
 							'idcredit'       => $_POST['idcredit'][$i],
 							'ordre_cr_es'    => $_POST['ordre_cr_es'][$i],
