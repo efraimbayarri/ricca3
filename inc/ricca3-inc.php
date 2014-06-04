@@ -392,6 +392,9 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 		'WHERE idalumne=%s AND idany=%s AND idespecialitat=%s AND idestat_es=1 ',
 		$userid, $idany, $idespecialitat);		
 	$dades = $wpdb->get_results( $query, ARRAY_A );
+##
+//		dump_r($dades);
+##
 	for( $i = 0; $i < count($dades); $i++ ){
 //	buscar pla d'estudis de l'especialitat per saber quins credits ha de tenir el alumne
 		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_especialitat WHERE idespecialitat = %s ORDER BY ordre_cr_es', $dades[$i]['idespecialitat']);
@@ -463,6 +466,22 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 //						$wpdb->update('ricca3_credits_avaluacions', array( 'pendi' => '' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
 						ricca3_dbupdate('ricca3_credits_avaluacions', array( 'pendi' => '' ), array( 'idcredaval' => $res_cred[0]['idcredaval']) );
 						$punts = ($notaf * $row_credit['hores_cr'])/10;
+//
+//	EXCEPCIONS PER EL CURS 2013-2014:
+//
+//	El grups Higiene Tarda (idgrup=20) no fa el credit lliure d'Informàtica. Les 20 hores corresponents
+//	es traslladen a C1 (total 70 hores) i C7 (total 70 hores)
+//
+//
+						if($dades[$i]['idgrup'] == 20 && $dades[$i]['idany'] == 13 && ($res_cred[0]['idccomp'] == 324 || $res_cred[0]['idccomp'] == 330)){
+//	Es Higiene tarda
+//							dump_r($res_cred);
+							$row_credit['hores_cr'] = 70;
+							$punts = ($notaf * 70)/10;
+						}								
+//
+//	FINAL DE LES EXCEPCIONS
+//
 						$acumulat = $acumulat + $punts;
 ##
 						printf('<br /> Crèdit %s de l\'especialitat %s aprovat amb un - %d , un total de %d hores amb %s punts (%s)',
@@ -512,8 +531,24 @@ function ricca3_notafinal($userid,$idespecialitat,$idany){
 					}
 				}
 			}else{
-				$aprovat = 0;
-				$faltencreds = 1;
+//
+//	EXCEPCIONS PER EL CURS 2013-2014:
+//
+//	El grups Higiene Tarda (idgrup=20) no fa el credit lliure d'Informàtica. Les 20 hores corresponents
+//	es traslladen a C1 (total 70 hores) i C7 (total 70 hores)
+//				
+//				
+				if($dades[$i]['idgrup'] == 20 && $dades[$i]['idany'] == 13){
+//	Es Higiene tarda
+
+					
+//
+//	FINAL DE LES EXCEPCIONS
+//
+				}else{
+					$aprovat = 0;
+					$faltencreds = 1;
+				}
 			}
 		}
 		if( $hores > 0) $notafinal = sprintf('%01.3f', ($acumulat*10)/$hores);
