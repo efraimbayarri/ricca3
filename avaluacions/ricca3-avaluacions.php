@@ -1192,7 +1192,7 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 	for( $i = 0; $i < $result_alum; $i++){
 		$row_alumespec = $wpdb->get_row( $query_alum, ARRAY_A, $i);
 		$row_alum = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_alumne WHERE idalumne=%s', $row_alumespec['idalumne']), ARRAY_A, 0);
-		if( $row_alumespec['notaf_es'] > 0 ){
+		if( $row_alumespec['notaf_es'] > 0 || $row_alumespec['notaf_es_manual'] > 0){
 			printf('<table class="cap"> <tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
 			printf('<br /><br /><br /><br />', NULL);
 			printf('<table class="cap"><tr><td class="gran"><b>%s</b></td></tr>',$certif);
