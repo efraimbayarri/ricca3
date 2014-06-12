@@ -1159,10 +1159,10 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 		printf('<table class="cap"><tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
 		printf('<tr><td width="680px" colspan="3">&nbsp;</td></tr>', NULL);
 		if(strlen($row_alumespec['notaf_es_manual']) > 1){
-			printf('                   <tr><td width="400px"></td><td width="200px"><b>%s</b></td><td width="80px" rowspan="2" class="notaf">&nbsp; %s</td></tr>',
+			printf('                   <tr><td width="400px"></td><td width="200px"><b>%s</b></td><td width="80px" rowspan="2" class="notaf">&nbsp; %01.3f</td></tr>',
 			$qualicf, $row_alumespec['notaf_es_manual'] );
 		}elseif (strlen($row_alumespec['notaf_es']) > 1){
-			printf('                   <tr><td width="400px"></td><td width="200px"><b>%s</b></td><td width="80px" rowspan="2" class="notaf">&nbsp; %s</td></tr>',
+			printf('                   <tr><td width="400px"></td><td width="200px"><b>%s</b></td><td width="80px" rowspan="2" class="notaf">&nbsp; %01.3f</td></tr>',
 			$qualicf, $row_alumespec['notaf_es'] );
 		}
 		printf('                   <tr><td width="400px"><b>%s</b></td><td width="200px"></td></tr></table>', $observa );
@@ -1220,9 +1220,9 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 						, $row_espec['nomespecialitat'], $reial1, $row_espec['reialdecret'], $reial2 );
 			}
 			if(strlen($row_alumespec['notaf_es_manual']) > 1){
-				printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %s</b></td></tr>', $qualifica, $row_alumespec['notaf_es_manual']);
+				printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %01.3f</b></td></tr>', $qualifica, $row_alumespec['notaf_es_manual']);
 			}elseif (strlen($row_alumespec['notaf_es']) > 1){
-				printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %s</b></td></tr>', $qualifica, $row_alumespec['notaf_es']);
+				printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %01.3f</b></td></tr>', $qualifica, $row_alumespec['notaf_es']);
 			}
 //			printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %s</b></td></tr>', $qualifica, $row_alumespec['nota']);
 			printf('                  <tr class="linea"><td width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr></table><br />', WP_PLUGIN_URL);
