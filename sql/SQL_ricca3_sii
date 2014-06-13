@@ -1,4 +1,4 @@
-SELECT * FROM ricca.ricca3_alumne
+SELECT * FROM ricca3_alumne
 INNER JOIN ricca3_alumne_especialitat on ricca3_alumne_especialitat.idalumne=ricca3_alumne.idalumne 
 INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_alumne_especialitat.idany
 INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup

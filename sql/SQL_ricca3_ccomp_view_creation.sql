@@ -19,7 +19,7 @@ ricca3_credits.ordre_cr,
 ricca3_credits.idespecialitat,
 ricca3_especialitats.nomespecialitat
 
-FROM ricca.ricca3_ccomp
+FROM ricca3_ccomp
 
 INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit
 INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup

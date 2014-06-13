@@ -57,7 +57,7 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 	ricca3_missatge(__('Sistema d\'Intercanvi d\'Informació (SII) - FITXERS','ricca3-sii'));
 	ricca3_butons( $ricca3_butons_sii, 6 );
 	$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
-	$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne_especialitat '.
+	$query = $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat '.
 			'INNER JOIN ricca3_alumne ON ricca3_alumne.idalumne=ricca3_alumne_especialitat.idalumne '.
 			'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_alumne_especialitat.idany '.
 			'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup '.
@@ -124,7 +124,7 @@ function ricca3_shortcode_sii_modif($atts, $content = null) {
 	printf('</tr></table></form>', NULL);	
 //		Si ja hem fet la cerca, mostrar els resultats
 	if( isset( $_POST['cercar'] ) && $_POST['cercar'] == "actualitzar" ){
-		$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne '.
+		$query = $wpdb->prepare('SELECT * FROM ricca3_alumne '.
 				'INNER JOIN ricca3_alumne_especialitat on ricca3_alumne_especialitat.idalumne=ricca3_alumne.idalumne '.
 				'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_alumne_especialitat.idany '.
 				'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup '.
@@ -179,7 +179,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 //		LOOP DE TOTS ELS ALUMNES SELECCIONATS	
 	$numeroalumnes=count($_POST['cbox']);
 	for($i=0;$i<$numeroalumnes;$i++){
-		$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_alumne_especialitat '.
+		$query = $wpdb->prepare('SELECT * FROM ricca3_alumne_especialitat '.
 				'INNER JOIN ricca3_alumne ON ricca3_alumne.idalumne=ricca3_alumne_especialitat.idalumne '.
 				'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_alumne_especialitat.idany '.
 				'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_alumne_especialitat.idgrup '.
@@ -371,7 +371,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 				for($j=0; $j<count($data_modul_nom); $j++){
 					if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 4){
 //	Crèdits de l'alumne
-						$query = $wpdb->prepare('SELECT DISTINCT SII_CodiCredit FROM ricca.ricca3_credits_avaluacions '.
+						$query = $wpdb->prepare('SELECT DISTINCT SII_CodiCredit FROM ricca3_credits_avaluacions '.
 								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s ',
@@ -379,7 +379,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 						$data_credit = $wpdb->get_results( $query, ARRAY_A);
 						if(count($data_credit)>0){
 //	Modul
-							$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+							$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 									'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 									'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 									'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit = %s',
@@ -398,7 +398,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 							printf('%sp:Credits%s', '&lt;', '&gt;');
 							printf('</td></tr><tr><td>');	
 							for( $k=0; $k<count($data_credit); $k++){
-								$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+								$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 										'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 										'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 										'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit = %s',
@@ -426,7 +426,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 					}
 // sense modul
 					if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 2){
-						$query = $wpdb->prepare('SELECT * FROM ricca.ricca3_credits_avaluacions '.
+						$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit != %s',
@@ -468,7 +468,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 			}else{
 				for($j=0; $j<count($data_modul_nom); $j++){
 //	Crèdits de l'alumne
-					$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul FROM ricca.ricca3_credits_avaluacions '.
+					$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul FROM ricca3_credits_avaluacions '.
 							'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 							'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 							'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s ',
