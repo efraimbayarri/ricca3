@@ -6,13 +6,13 @@
 ##
 ######################################################
 $ricca3_alumespec=array(
-	"tipus"   =>array("ordre", "bd",       "token",                   "bd",          "bd",      "bd",          "bd",    "bd",   "bd",       "miniatura"),
-	"nombd"   =>array("",      "idalumne", "",                        "cognomsinom", "telefon", "telefonfixe", "email", "estat","repeteix", ""),
-	"visual"  =>array("",      "ID",       "",                        "Nom",         "Telefon", "Telefon",     "email", "",     "R",        ""),
-	"enllac"  =>array("",      "",         "ricca3-dadesalumne/?ID=", "",            "",        "",            "",      "",     "",         "ricca3-dadesalumne/?ID="),
-	"camp"    =>array("",      "",         "idalumne",                "",            "",        "",            "",      "",     "",         "idalumne"),
-	"texte"   =>array("",      "",         "veure",                   "",            "",        "",            "",      "",     "",         ""),
-	"ajuda"   =>array("",      "",         "",                        "",            "",        "",            "",      "",     "",         "")
+	"tipus"   =>array("ordre", "bd",       "token",                   "bd",          "bd",      "bd",      "bd",          "bd",    "bd",   "bd",       "miniatura"),
+	"nombd"   =>array("",      "idalumne", "",                        "cognomsinom", "dni",     "telefon", "telefonfixe", "email", "estat","repeteix", ""),
+	"visual"  =>array("",      "ID",       "",                        "Nom",         "DNI",     "Telefon", "Telefon",     "email", "",     "R",        ""),
+	"enllac"  =>array("",      "",         "ricca3-dadesalumne/?ID=", "",            "",        "",        "",            "",      "",     "",         "ricca3-dadesalumne/?ID="),
+	"camp"    =>array("",      "",         "idalumne",                "",            "",        "",        "",            "",      "",     "",         "idalumne"),
+	"texte"   =>array("",      "",         "veure",                   "",            "",        "",        "",            "",      "",     "",         ""),
+	"ajuda"   =>array("",      "",         "",                        "",            "",        "",        "",            "",      "",     "",         "")
 ); 
 
 #############################################################################################
