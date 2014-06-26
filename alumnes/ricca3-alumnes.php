@@ -94,7 +94,9 @@ function ricca3_shortcode_alumnes($atts, $content = null) {
 		if( $_POST['repe']  != "-1" && $_POST['repe'] == "si") { $query = substr_replace( $query," AND repeteix =  'R' ",strlen( $query ) , 0 );}
 		if( $_POST['repe']  != "-1" && $_POST['repe'] == "no") { $query = substr_replace( $query," AND repeteix != 'R' ",strlen( $query ) , 0 );}
 		$query=substr_replace( $query," ORDER BY cognomsinom ",strlen( $query ), 0 );
-
+		
+//		echo $query;
+		
 //	fem el query i guardem tots els resultats a $data_view 		
 		$data_view = $wpdb->get_results( $query, ARRAY_A);
 //	llistat del alumnes del filtre
