@@ -149,6 +149,7 @@ function ricca3_shortcode_sii_modif($atts, $content = null) {
 /**
  * Sistema d'Intercanvi d'Informació (SII) - Fitxer XML
  * shortcode: [ricca3-sii-xml]
+ * 
  *
  * @since ricca3.v.2014.4.4
  * @author Efraim Bayarri
@@ -525,7 +526,39 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 			printf('%s/p:Matricules%s', '&lt;', '&gt;');
 //	#########		AVALUACIONS
 			printf('</td></tr><tr><td>');
-			printf('%sp:Avaluacions xsi:nil="true"/%s', '&lt;', '&gt;');			
+// Sense avaluacions 			
+//			printf('%sp:Avaluacions xsi:nil="true"/%s', '&lt;', '&gt;');
+// amb avaluacions
+			printf('%sp:Avaluacions%s', '&lt;', '&gt;');
+			printf('</td></tr><tr><td>');
+			printf('%sp:Avaluacio%s', '&lt;', '&gt;');
+			printf('</td></tr><tr><td>');
+// MarcNormatiu
+			printf('</td></tr><tr><td>');
+			$MarcNormatiu='L';
+			if($data_view[0]['pla']=='LOGSE')$MarcNormatiu='LG';
+			printf('%sp:MarcNormatiu%s%s%s/p:MarcNormatiu%s', '&lt;', '&gt;',$MarcNormatiu, '&lt;', '&gt;');
+//	CodiEnsenyament
+			printf('</td></tr><tr><td>');
+			printf('%sp:CodiEnsenyament%sCFPS&nbsp;&nbsp;&nbsp;&nbsp;%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;',$data_view[0]['codiespecialitat'], '&lt;', '&gt;');
+//	QualificacioCicle						
+			printf('</td></tr><tr><td>');
+			
+//	QualificacioCiclePAAU			
+			printf('</td></tr><tr><td>');
+			printf('%sp:QualificacioCiclePAAU xsi:nil="true"/%s', '&lt;', '&gt;');
+			
+			
+			
+			
+			
+			
+			
+//			
+			printf('</td></tr><tr><td>');
+			printf('%s/p:Avaluacio%s', '&lt;', '&gt;');
+			printf('</td></tr><tr><td>');
+			printf('%s/p:Avaluacions%s', '&lt;', '&gt;');
 //		TANQUEM ALUMNE
 			printf('</td></tr><tr><td>');
 			printf('%s/p:Alumne%s', '&lt;', '&gt;');
