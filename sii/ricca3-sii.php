@@ -76,7 +76,8 @@ function ricca3_shortcode_sii_fitxers($atts, $content = null) {
 	ricca3_graella( $ricca3_sii_fitxers, $data_view );
 	printf('<tr>', NULL);
 //	ricca3_desar('accio', 'actualitzartot', __('ajuda-tab-credits-tots-desar', 'ricca3-sii'));
-	printf('<td><button type="submit" name="cercar" value="actualitzar" title="%s"><img src=%s/ricca3/imatges/ricca3-sii-XML.png  border="0" /></button></td>', __('ajuda-llistar-alumnes', 'ricca3-sii'), WP_PLUGIN_URL);
+	printf('<td><button type="submit" name="cercar" value="actualitzar_matr" title="%s"><img src=%s/ricca3/imatges/ricca3-sii-XML-matr.png  border="0" /></button></td>', __('ajuda-llistar-alumnes', 'ricca3-sii'), WP_PLUGIN_URL);
+	printf('<td><button type="submit" name="cercar" value="actualitzar_aval" title="%s"><img src=%s/ricca3/imatges/ricca3-sii-XML-aval.png  border="0" /></button></td>', __('ajuda-llistar-alumnes', 'ricca3-sii'), WP_PLUGIN_URL);
 }
 
 #############################################################################################
@@ -157,7 +158,7 @@ function ricca3_shortcode_sii_modif($atts, $content = null) {
 #############################################################################################
 function ricca3_shortcode_sii_xml($atts, $content = null) {
 	global $wpdb;
-//	dump_r($_POST);
+	dump_r($_POST);
 	$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
 //		CAPÇALERA	
 	printf('<table><tr><td>', NULL);
@@ -274,412 +275,422 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 			printf('</td></tr><tr><td>');
 			printf('%s/p:DadesAlumne%s', '&lt;', '&gt;');
 //	#########		Curriculum
-			printf('</td></tr><tr><td>');
-			printf('%sp:Matricules%s', '&lt;', '&gt;');
-			printf('</td></tr><tr><td>');
-			printf('%sp:Matricula%s', '&lt;', '&gt;');
+			if($_POST['cercar'] == 'actualitzar_aval'){
+				printf('</td></tr><tr><td>');
+				printf('%sp:Matricules xsi:nil="true"/%s', '&lt;', '&gt;');
+			}else{
+				printf('</td></tr><tr><td>');
+				printf('%sp:Matricules%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Matricula%s', '&lt;', '&gt;');
 // MarcNormatiu
-			printf('</td></tr><tr><td>');
-			$MarcNormatiu='L';
-			if($data_view[0]['pla']=='LOGSE')$MarcNormatiu='LG';
-			printf('%sp:MarcNormatiu%s%s%s/p:MarcNormatiu%s', '&lt;', '&gt;',$MarcNormatiu, '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				$MarcNormatiu='L';
+				if($data_view[0]['pla']=='LOGSE')$MarcNormatiu='LG';
+				printf('%sp:MarcNormatiu%s%s%s/p:MarcNormatiu%s', '&lt;', '&gt;',$MarcNormatiu, '&lt;', '&gt;');
 //	CodiEnsenyament			
-			printf('</td></tr><tr><td>');
-			printf('%sp:CodiEnsenyament%sCFPS&nbsp;&nbsp;&nbsp;&nbsp;%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;',$data_view[0]['codiespecialitat'], '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%sCFPS&nbsp;&nbsp;&nbsp;&nbsp;%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;',$data_view[0]['codiespecialitat'], '&lt;', '&gt;');
 //  ******************************************************
 //  ******************************************************
 //	DataMatricula   **************************************
-			printf('</td></tr><tr><td>');
-			printf('%sp:DataMatricula%s%s%s/p:DataMatricula%s', '&lt;', '&gt;','16092013', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:DataMatricula%s%s%s/p:DataMatricula%s', '&lt;', '&gt;','16092013', '&lt;', '&gt;');
 //	CursAcademicIniciCicle
-			printf('</td></tr><tr><td>');
-			$CursAcademicIniciCicle='1213';
-			if($data_view[0]['idcurs']==1)$CursAcademicIniciCicle='1314';
-			printf('%sp:CursAcademicIniciCicle%s%s%s/p:CursAcademicIniciCicle%s', '&lt;', '&gt;',$CursAcademicIniciCicle, '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				$CursAcademicIniciCicle='1213';
+				if($data_view[0]['idcurs']==1)$CursAcademicIniciCicle='1314';
+				printf('%sp:CursAcademicIniciCicle%s%s%s/p:CursAcademicIniciCicle%s', '&lt;', '&gt;',$CursAcademicIniciCicle, '&lt;', '&gt;');
 //  ******************************************************
 //  ******************************************************			
 
 //	Nivell
-			printf('</td></tr><tr><td>');
-			$Nivell='2';
-			if($data_view[0]['idcurs']==1)$Nivell='1';
-			printf('%sp:Nivell%s%s%s/p:Nivell%s', '&lt;', '&gt;',$Nivell, '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				$Nivell='2';
+				if($data_view[0]['idcurs']==1)$Nivell='1';
+				printf('%sp:Nivell%s%s%s/p:Nivell%s', '&lt;', '&gt;',$Nivell, '&lt;', '&gt;');
 //	ModalitatCursa
-			printf('</td></tr><tr><td>');
-			printf('%sp:ModalitatCursa%s%s%s/p:ModalitatCursa%s', '&lt;', '&gt;','P', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:ModalitatCursa%s%s%s/p:ModalitatCursa%s', '&lt;', '&gt;','P', '&lt;', '&gt;');
 //	EscolaritzacioCompartida
-			printf('</td></tr><tr><td>');
-			printf('%sp:EscolaritzacioCompartida%s%s%s/p:EscolaritzacioCompartida%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:EscolaritzacioCompartida%s%s%s/p:EscolaritzacioCompartida%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 //	CodiCentreExpedient	++VOID
-			printf('</td></tr><tr><td>');
-			printf('%sp:CodiCentreExpedient xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiCentreExpedient xsi:nil="true"/%s', '&lt;', '&gt;');
 //	AlumneConveni ++VOID
-			printf('</td></tr><tr><td>');
-			printf('%sp:AlumneConveni%s%s%s/p:AlumneConveni%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:AlumneConveni%s%s%s/p:AlumneConveni%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
 //	NIFEntitatConveni ++VOID
-			printf('</td></tr><tr><td>');
-			printf('%sp:NIFEntitatConveni xsi:nil="true"/%s', '&lt;', '&gt;');			
+				printf('</td></tr><tr><td>');
+				printf('%sp:NIFEntitatConveni xsi:nil="true"/%s', '&lt;', '&gt;');			
 //	Torn
-			printf('</td></tr><tr><td>');
-			$Torn='M';
-			if($data_view[0]['sessio']=='Tarda')$Torn='V';
-			printf('%sp:Torn%s%s%s/p:Torn%s', '&lt;', '&gt;',$Torn, '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				$Torn='M';
+				if($data_view[0]['sessio']=='Tarda')$Torn='V';
+				printf('%sp:Torn%s%s%s/p:Torn%s', '&lt;', '&gt;',$Torn, '&lt;', '&gt;');
 //	RequisitsAcademicsAcces
-			printf('</td></tr><tr><td>');
-			if(strncmp(strtolower($data_view[0]['estudisrealitzats']),"batxi",5)==0){
-				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','K', '&lt;', '&gt;');
-			}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"cfgs",4)==0){
-				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','Q', '&lt;', '&gt;');
-			}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"cou",3)==0){
-				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','K', '&lt;', '&gt;');
-			}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"homol",5)==0){
-				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','E', '&lt;', '&gt;');
-			}else{
-				printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','1', '&lt;', '&gt;');
-			}
+				printf('</td></tr><tr><td>');
+				if(strncmp(strtolower($data_view[0]['estudisrealitzats']),"batxi",5)==0){
+					printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','K', '&lt;', '&gt;');
+				}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"cfgs",4)==0){
+					printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','Q', '&lt;', '&gt;');
+				}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"cou",3)==0){
+					printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','K', '&lt;', '&gt;');
+				}elseif(strncmp(strtolower($data_view[0]['estudisrealitzats']),"homol",5)==0){
+					printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','E', '&lt;', '&gt;');
+				}else{
+					printf('%sp:RequisitsAcademicsAcces%s%s%s/p:RequisitsAcademicsAcces%s', '&lt;', '&gt;','1', '&lt;', '&gt;');
+				}
 //	UltimEstudiMatriculat
-			printf('</td></tr><tr><td>');
-			printf('%sp:UltimEstudiMatriculat%s%s%s/p:UltimEstudiMatriculat%s', '&lt;', '&gt;','9', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:UltimEstudiMatriculat%s%s%s/p:UltimEstudiMatriculat%s', '&lt;', '&gt;','9', '&lt;', '&gt;');
 //	CursUltimEstudiMatriculat	++VOID
-			printf('</td></tr><tr><td>');
-			printf('%sp:CursUltimEstudiMatriculat xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CursUltimEstudiMatriculat xsi:nil="true"/%s', '&lt;', '&gt;');
 //	CodiPaisUltimEstudiMatriculat	++VOID
-			printf('</td></tr><tr><td>');
-			printf('%sp:CodiPaisUltimEstudiMatriculat xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiPaisUltimEstudiMatriculat xsi:nil="true"/%s', '&lt;', '&gt;');
 //	TipusPrograma	++VOID
-			printf('</td></tr><tr><td>');
-			printf('%sp:Programa xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Programa xsi:nil="true"/%s', '&lt;', '&gt;');
 //	GrupEnsenyamentAlumne
-			printf('</td></tr><tr><td>');
-			printf('%sp:GrupEnsenyamentAlumne%s%s%s/p:GrupEnsenyamentAlumne%s', '&lt;', '&gt;','1', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:GrupEnsenyamentAlumne%s%s%s/p:GrupEnsenyamentAlumne%s', '&lt;', '&gt;','1', '&lt;', '&gt;');
 //	DataBaixa	++VOID
-			printf('</td></tr><tr><td>');
-			printf('%sp:DataBaixa xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:DataBaixa xsi:nil="true"/%s', '&lt;', '&gt;');
 //	#########		Credits i Moduls			
 //	Moduls
-			printf('</td></tr><tr><td>');
-			printf('%sp:Moduls%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Moduls%s', '&lt;', '&gt;');
 //			Any actual
-			$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
+				$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
 //	Nom de moduls de l'especialitat
-			$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul '.
+				$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul '.
 					'FROM ricca3_credits WHERE idespecialitat=%s AND actiu_cr=1 ORDER BY SII_CodiModul, SII_CodiCredit',
 					$data_view[0]['idespecialitat']	);
-			$data_modul_nom = $wpdb->get_results($query, ARRAY_A);						
-//			dump_r($data_modul_nom);
+				$data_modul_nom = $wpdb->get_results($query, ARRAY_A);						
+//				dump_r($data_modul_nom);
 //	LOGSE
-			if($data_view[0]['pla'] == 'LOGSE'){
-				for($j=0; $j<count($data_modul_nom); $j++){
-					if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 4){
+				if($data_view[0]['pla'] == 'LOGSE'){
+					for($j=0; $j<count($data_modul_nom); $j++){
+						if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 4){
 //	Crèdits de l'alumne
-						$query = $wpdb->prepare('SELECT DISTINCT SII_CodiCredit FROM ricca3_credits_avaluacions '.
+							$query = $wpdb->prepare('SELECT DISTINCT SII_CodiCredit FROM ricca3_credits_avaluacions '.
 								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s ',
 								$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul']);
-						$data_credit = $wpdb->get_results( $query, ARRAY_A);
-						if(count($data_credit)>0){
+							$data_credit = $wpdb->get_results( $query, ARRAY_A);
+							if(count($data_credit)>0){
 //	Modul
-							$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+								$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 									'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 									'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 									'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit = %s',
-							$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul'], $data_credit[0]['SII_CodiCredit']);
-							$data_modul_hores = $wpdb->get_results( $query, ARRAY_A);
-							printf('</td></tr><tr><td>');
-							printf('%sp:Modul%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_modul_nom[$j]['SII_CodiModul'], '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;',$data_modul_hores[0]['SII_NombreHoresModul'], '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
+								$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul'], $data_credit[0]['SII_CodiCredit']);
+								$data_modul_hores = $wpdb->get_results( $query, ARRAY_A);
+								printf('</td></tr><tr><td>');
+								printf('%sp:Modul%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_modul_nom[$j]['SII_CodiModul'], '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;',$data_modul_hores[0]['SII_NombreHoresModul'], '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
 //	crèdits							
-							printf('%sp:Credits%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');	
-							for( $k=0; $k<count($data_credit); $k++){
-								$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+								printf('%sp:Credits%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');	
+								for( $k=0; $k<count($data_credit); $k++){
+									$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 										'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 										'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 										'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit = %s',
 										$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul'], $data_credit[$k]['SII_CodiCredit']);
-								$data_credit_hores = $wpdb->get_results( $query, ARRAY_A);
-								printf('</td></tr><tr><td>');
-								printf('%sp:Credit%s', '&lt;', '&gt;');
-								printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit[$k]['SII_CodiCredit'], '&lt;', '&gt;');
-								printf('</td></tr><tr><td>');
-								printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
-								printf('</td></tr><tr><td>');
-								printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;',$data_credit_hores[0]['SII_NombreHoresCredit'], '&lt;', '&gt;');
-								printf('</td></tr><tr><td>');
-								printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
-								printf('</td></tr><tr><td>');
-								printf('%s/p:Credit%s', '&lt;', '&gt;');
-							}
+									$data_credit_hores = $wpdb->get_results( $query, ARRAY_A);
+									printf('</td></tr><tr><td>');
+									printf('%sp:Credit%s', '&lt;', '&gt;');
+									printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit[$k]['SII_CodiCredit'], '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;',$data_credit_hores[0]['SII_NombreHoresCredit'], '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%s/p:Credit%s', '&lt;', '&gt;');
+								}
 //  fi crédits
-							printf('</td></tr><tr><td>');
-							printf('%s/p:Credits%s', '&lt;', '&gt;');	
+								printf('</td></tr><tr><td>');
+								printf('%s/p:Credits%s', '&lt;', '&gt;');	
 //	fi modul
-							printf('</td></tr><tr><td>');
-							printf('%s/p:Modul%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%s/p:Modul%s', '&lt;', '&gt;');
+							}
 						}
-					}
 // sense modul
-					if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 2){
-						$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+						if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 2){
+							$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit != %s',
 								$data_view[0]['idalumne'],$row_any['idany'], 'NO', 'NO');
-						$data_credit_no = $wpdb->get_results( $query, ARRAY_A);
+							$data_credit_no = $wpdb->get_results( $query, ARRAY_A);
 //						dump_r($data_credit_no);
-						if(count($data_credit_no) > 0){
-							printf('</td></tr><tr><td>');
-							printf('%sp:Modul%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%sp:Credits%s', '&lt;', '&gt;');
-							for($k=0; $k<count($data_credit_no); $k++){
+							if(count($data_credit_no) > 0){
 								printf('</td></tr><tr><td>');
-								printf('%sp:Credit%s', '&lt;', '&gt;');
-								printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_CodiCredit'], '&lt;', '&gt;');
+								printf('%sp:Modul%s', '&lt;', '&gt;');
 								printf('</td></tr><tr><td>');
-								printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+								printf('%sp:CodiModul xsi:nil="true"/%s', '&lt;', '&gt;');
 								printf('</td></tr><tr><td>');
-								printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_NombreHoresCredit'], '&lt;', '&gt;');
+								printf('%sp:ModulPropi xsi:nil="true"/%s', '&lt;', '&gt;');
 								printf('</td></tr><tr><td>');
-								printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+								printf('%sp:NombreHoresModul xsi:nil="true"/%s', '&lt;', '&gt;');
 								printf('</td></tr><tr><td>');
-								printf('%s/p:Credit%s', '&lt;', '&gt;');
+								printf('%sp:Credits%s', '&lt;', '&gt;');
+								for($k=0; $k<count($data_credit_no); $k++){
+									printf('</td></tr><tr><td>');
+									printf('%sp:Credit%s', '&lt;', '&gt;');
+									printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_CodiCredit'], '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_NombreHoresCredit'], '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%s/p:Credit%s', '&lt;', '&gt;');
+								}
+								printf('</td></tr><tr><td>');
+								printf('%s/p:Credits%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%s/p:Modul%s', '&lt;', '&gt;');							
 							}
-							printf('</td></tr><tr><td>');
-							printf('%s/p:Credits%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%s/p:Modul%s', '&lt;', '&gt;');							
 						}
 					}
-				}
 //	LOE				
-			}else{
-				for($j=0; $j<count($data_modul_nom); $j++){
+				}else{
+					for($j=0; $j<count($data_modul_nom); $j++){
 //	Crèdits de l'alumne
-					$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul FROM ricca3_credits_avaluacions '.
+						$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul FROM ricca3_credits_avaluacions '.
 							'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 							'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 							'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s ',
 							$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul']);
-					$data_credit = $wpdb->get_results( $query, ARRAY_A);
-					if(count($data_credit)>0){
+						$data_credit = $wpdb->get_results( $query, ARRAY_A);
+						if(count($data_credit)>0){
 //						dump_r($data_credit);
-						$query=$wpdb->prepare('SELECT * FROM ricca3_sii_loe WHERE codimodul=%s', $data_credit[0]['SII_CodiModul']);
-						$data_uf = $wpdb->get_results( $query, ARRAY_A);
+							$query=$wpdb->prepare('SELECT * FROM ricca3_sii_loe WHERE codimodul=%s', $data_credit[0]['SII_CodiModul']);
+							$data_uf = $wpdb->get_results( $query, ARRAY_A);
 //
-//						dump_r($data_uf);
+//							dump_r($data_uf);
 //
 //	MODUL												
-						printf('</td></tr><tr><td>');
-						printf('%sp:Modul%s', '&lt;', '&gt;');
-						printf('</td></tr><tr><td>');
-						printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_uf[0]['codimodul'], '&lt;', '&gt;');
-						printf('</td></tr><tr><td>');
-						printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
-						$durada=$data_uf[0]['duradaminima'];
-						if($durada==0)$durada=$data_uf[0]['duradamaxima'];
-						printf('</td></tr><tr><td>');
-						printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;',$durada, '&lt;', '&gt;');
-						printf('</td></tr><tr><td>');
-						printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
-						printf('</td></tr><tr><td>');
+							printf('</td></tr><tr><td>');
+							printf('%sp:Modul%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_uf[0]['codimodul'], '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:ModulPropi%s%s%s/p:ModulPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+							$durada=$data_uf[0]['duradaminima'];
+							if($durada==0)$durada=$data_uf[0]['duradamaxima'];
+							printf('</td></tr><tr><td>');
+							printf('%sp:NombreHoresModul%s%s%s/p:NombreHoresModul%s', '&lt;', '&gt;',$durada, '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
+							printf('%sp:UnitatsFormatives%s', '&lt;', '&gt;');
+							printf('</td></tr><tr><td>');
 //	UNITATS FORMATIVES
-						for($k=0; $k<count($data_uf); $k++){
-							printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
-							printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;',$data_uf[$k]['codiunitatformativa'], '&lt;', '&gt;');
+							for($k=0; $k<count($data_uf); $k++){
+								printf('%sp:UnitatFormativa%s', '&lt;', '&gt;');
+								printf('%sp:CodiUnitatFormativa%s%s%s/p:CodiUnitatFormativa%s', '&lt;', '&gt;',$data_uf[$k]['codiunitatformativa'], '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;',$data_uf[$k]['duradaunitatformativa'], '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+							}
 							printf('</td></tr><tr><td>');
-							printf('%sp:UnitatFormativaPropia%s%s%s/p:UnitatFormativaPropia%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+							printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
 							printf('</td></tr><tr><td>');
-							printf('%sp:NombreHoresUnitatFormativa%s%s%s/p:NombreHoresUnitatFormativa%s', '&lt;', '&gt;',$data_uf[$k]['duradaunitatformativa'], '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');
-							printf('%s/p:UnitatFormativa%s', '&lt;', '&gt;');
+							printf('%s/p:Modul%s', '&lt;', '&gt;');
 						}
-						printf('</td></tr><tr><td>');
-						printf('%s/p:UnitatsFormatives%s', '&lt;', '&gt;');
-						printf('</td></tr><tr><td>');
-						printf('%s/p:Modul%s', '&lt;', '&gt;');
-					}
-				}				
-			}	
+					}				
+				}	
 //	######### FI MODULS			
-			printf('</td></tr><tr><td>');
-			printf('%s/p:Moduls%s', '&lt;', '&gt;');			
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Moduls%s', '&lt;', '&gt;');			
 //	#########		FI Curriculum
-			printf('</td></tr><tr><td>');
-			printf('%s/p:Matricula%s', '&lt;', '&gt;');
-			printf('</td></tr><tr><td>');
-			printf('%s/p:Matricules%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Matricula%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Matricules%s', '&lt;', '&gt;');
+			}
 //	#########
 //	#########			
 //	#########		AVALUACIONS
 //	#########
 //	#########
 			printf('</td></tr><tr><td>');
-// Sense avaluacions 			
-//			printf('%sp:Avaluacions xsi:nil="true"/%s', '&lt;', '&gt;');
-// amb avaluacions
-			printf('%sp:Avaluacions%s', '&lt;', '&gt;');
-			printf('</td></tr><tr><td>');
-			printf('%sp:Avaluacio%s', '&lt;', '&gt;');
-			printf('</td></tr><tr><td>');
+// Sense avaluacions
+			if($_POST['cercar'] == 'actualitzar_matr'){
+				printf('%sp:Avaluacions xsi:nil="true"/%s', '&lt;', '&gt;');
+			}else{
+//
+				printf('%sp:Avaluacions%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Avaluacio%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
 // MarcNormatiu
-			printf('</td></tr><tr><td>');
-			$MarcNormatiu='L';
-			if($data_view[0]['pla']=='LOGSE')$MarcNormatiu='LG';
-			printf('%sp:MarcNormatiu%s%s%s/p:MarcNormatiu%s', '&lt;', '&gt;',$MarcNormatiu, '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				$MarcNormatiu='L';
+				if($data_view[0]['pla']=='LOGSE')$MarcNormatiu='LG';
+				printf('%sp:MarcNormatiu%s%s%s/p:MarcNormatiu%s', '&lt;', '&gt;',$MarcNormatiu, '&lt;', '&gt;');
 //	CodiEnsenyament
-			printf('</td></tr><tr><td>');
-			printf('%sp:CodiEnsenyament%sCFPS&nbsp;&nbsp;&nbsp;&nbsp;%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;',$data_view[0]['codiespecialitat'], '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiEnsenyament%sCFPS&nbsp;&nbsp;&nbsp;&nbsp;%s%s/p:CodiEnsenyament%s', '&lt;', '&gt;',$data_view[0]['codiespecialitat'], '&lt;', '&gt;');
 	
 // HA FINALITZAT EL CICLE?
-			if($data_view[0]['notaf_es'] >= 5){
+				if($data_view[0]['notaf_es'] >= 5){
 //	CicleFinalitzat				
-				printf('</td></tr><tr><td>');
-				printf('%sp:CicleFinalitzat%s', '&lt;', '&gt;');
+					printf('</td></tr><tr><td>');
+					printf('%sp:CicleFinalitzat%s', '&lt;', '&gt;');
 //	QualificacioCicle						
-				printf('</td></tr><tr><td>');
-				if($data_view[0]['notaf_es_manual'] == '0'){
-					printf('%sp:QualificacioCicle%s%01.2f%s/p:QualificacioCicle%s', '&lt;', '&gt;',$data_view[0]['notaf_es'],'&lt;', '&gt;');
-				}else{
-					printf('%sp:QualificacioCicle%s%01.2f%s/p:QualificacioCicle%s', '&lt;', '&gt;',$data_view[0]['notaf_es_manual'],'&lt;', '&gt;');
-				}
+					printf('</td></tr><tr><td>');
+					if($data_view[0]['notaf_es_manual'] == '0'){
+						printf('%sp:QualificacioCicle%s%01.2f%s/p:QualificacioCicle%s', '&lt;', '&gt;',$data_view[0]['notaf_es'],'&lt;', '&gt;');
+					}else{
+						printf('%sp:QualificacioCicle%s%01.2f%s/p:QualificacioCicle%s', '&lt;', '&gt;',$data_view[0]['notaf_es_manual'],'&lt;', '&gt;');
+					}
 //	FI CicleFinalitzat
-				printf('</td></tr><tr><td>');
-				printf('%s/p:CicleFinalitzat%s', '&lt;', '&gt;');
-			}
+					printf('</td></tr><tr><td>');
+					printf('%s/p:CicleFinalitzat%s', '&lt;', '&gt;');
+				}
 //	######### MODULS
-			printf('</td></tr><tr><td>');
-			printf('%sp:Moduls%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%sp:Moduls%s', '&lt;', '&gt;');
+				
+				$query = $wpdb->prepare('SELECT DISTINCT SII_CodiModul '.
+						'FROM ricca3_credits WHERE idespecialitat=%s AND actiu_cr=1 ORDER BY SII_CodiModul, SII_CodiCredit',
+						$data_view[0]['idespecialitat']	);
+				$data_modul_nom = $wpdb->get_results($query, ARRAY_A);
 //			
-			dump_r($data_modul_nom);
+				dump_r($data_modul_nom);
 //	LOGSE
-			if($data_view[0]['pla'] == 'LOGSE'){
-				for($j=0; $j<count($data_modul_nom); $j++){
-					if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 4){
+				if($data_view[0]['pla'] == 'LOGSE'){
+					for($j=0; $j<count($data_modul_nom); $j++){
+						if(strlen($data_modul_nom[$j]['SII_CodiModul']) == 4){
 //	Crèdits de l'alumne
-						$query = $wpdb->prepare('SELECT DISTINCT SII_CodiCredit FROM ricca3_credits_avaluacions '.
+							$query = $wpdb->prepare('SELECT DISTINCT SII_CodiCredit FROM ricca3_credits_avaluacions '.
 								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s ',
 								$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul']);
-						$data_credit = $wpdb->get_results( $query, ARRAY_A);
-						if(count($data_credit)>0){
-							$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+							$data_credit = $wpdb->get_results( $query, ARRAY_A);
+							if(count($data_credit)>0){
+								$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 									'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 									'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 									'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit = %s',
 									$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul'], $data_credit[0]['SII_CodiCredit']);
-							$data_modul_nota = $wpdb->get_results( $query, ARRAY_A);
+								$data_modul_nota = $wpdb->get_results( $query, ARRAY_A);
 							
 //							dump_r($data_modul_nota);
 //	Modul
-							printf('</td></tr><tr><td>');
-							printf('%sp:Modul%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%sp:Modul%s', '&lt;', '&gt;');
 //	CodiModul
-							printf('</td></tr><tr><td>');
-							printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_modul_nom[$j]['SII_CodiModul'], '&lt;', '&gt;');							
+								printf('</td></tr><tr><td>');
+								printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_modul_nom[$j]['SII_CodiModul'], '&lt;', '&gt;');							
 //  EL TE APROVAT??
-							if($data_modul_nota[0]['notaf_cr'] >= 5){
+								if($data_modul_nota[0]['notaf_cr'] >= 5){
 //	ModulFinalitzat								
-								printf('</td></tr><tr><td>');
-								printf('%sp:ModulFinalitzat%s', '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:ModulFinalitzat%s', '&lt;', '&gt;');
 //	QualificacioModul								
-								printf('</td></tr><tr><td>');
-								printf('%sp:QualificacioModul%s%s%s/p:QualificacioModul%s', '&lt;', '&gt;',$data_modul_nota[0]['notaf_cr'], '&lt;', '&gt;');								
+									printf('</td></tr><tr><td>');
+									printf('%sp:QualificacioModul%s%s%s/p:QualificacioModul%s', '&lt;', '&gt;',$data_modul_nota[0]['notaf_cr'], '&lt;', '&gt;');								
 //	FI ModulFinalitzat
-								printf('</td></tr><tr><td>');
-								printf('%s/p:ModulFinalitzat%s', '&lt;', '&gt;');								
-							}
+									printf('</td></tr><tr><td>');
+									printf('%s/p:ModulFinalitzat%s', '&lt;', '&gt;');								
+								}
 //	Credits
-							printf('</td></tr><tr><td>');
-							printf('%sp:Credits%s', '&lt;', '&gt;');
-							printf('</td></tr><tr><td>');	
-							for( $k=0; $k<count($data_credit); $k++){
-								$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+								printf('</td></tr><tr><td>');
+								printf('%sp:Credits%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');	
+								for( $k=0; $k<count($data_credit); $k++){
+									$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 										'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 										'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 										'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit = %s',
 										$data_view[0]['idalumne'],$row_any['idany'], $data_modul_nom[$j]['SII_CodiModul'], $data_credit[$k]['SII_CodiCredit']);
-								$data_credit_hores = $wpdb->get_results( $query, ARRAY_A);
+									$data_credit_hores = $wpdb->get_results( $query, ARRAY_A);
 //	Credit								
-								printf('</td></tr><tr><td>');
-								printf('%sp:Credit%s', '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:Credit%s', '&lt;', '&gt;');
 //	CodiCredit								
-								printf('</td></tr><tr><td>');
-								printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit[$k]['SII_CodiCredit'], '&lt;', '&gt;');
+									printf('</td></tr><tr><td>');
+									printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit[$k]['SII_CodiCredit'], '&lt;', '&gt;');
 //	Convocatoria
-								printf('</td></tr><tr><td>');
-								if($data_modul_nota[0]['repe'] == 'R'){
-									printf('%sp:Convocatoria%sA%s/p:CodiCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
-								}else{
-									printf('%sp:Convocatoria%sP%s/p:CodiCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
-								}
+									printf('</td></tr><tr><td>');
+									if($data_modul_nota[0]['repe'] == 'R'){
+										printf('%sp:Convocatoria%sA%s/p:CodiCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+									}else{
+										printf('%sp:Convocatoria%sP%s/p:CodiCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+									}
 //	QualificacioCredit								
-								printf('</td></tr><tr><td>');
-								if(is_numeric($data_modul_nota[0]['notaf_cr'])){
-									printf('%sp:QualificacioCredit%s%s%s/p:QualificacioCredit%s', '&lt;', '&gt;', $data_modul_nota[0]['notaf_cr'], '&lt;', '&gt;');
-								}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'NP'){
-									printf('%sp:QualificacioCredit%sN%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
-								}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'CO'){
-									printf('%sp:QualificacioCredit%sC%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
-								}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'NO'){
-									printf('%sp:QualificacioCredit%sF%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
-								}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'PE'){
-									printf('%sp:QualificacioCredit%sF%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
-								}
+									printf('</td></tr><tr><td>');
+									if(is_numeric($data_modul_nota[0]['notaf_cr'])){
+										printf('%sp:QualificacioCredit%s%s%s/p:QualificacioCredit%s', '&lt;', '&gt;', $data_modul_nota[0]['notaf_cr'], '&lt;', '&gt;');
+									}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'NP'){
+										printf('%sp:QualificacioCredit%sN%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+									}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'CO'){
+										printf('%sp:QualificacioCredit%sC%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+									}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'NO'){
+										printf('%sp:QualificacioCredit%sF%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+									}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'PE'){
+										printf('%sp:QualificacioCredit%sF%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+									}
 //	PractiquesEmpresa
-								if(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'AP'){
-									printf('</td></tr><tr><td>');
-									printf('%sp:PractiquesEmpresa%s', '&lt;', '&gt;');
+									if(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'AP'){
+										printf('</td></tr><tr><td>');
+										printf('%sp:PractiquesEmpresa%s', '&lt;', '&gt;');
 									
 									
 									
-									printf('</td></tr><tr><td>');
-									printf('%s/p:PractiquesEmpresa%s', '&lt;', '&gt;');
-								}								
+										printf('</td></tr><tr><td>');
+										printf('%s/p:PractiquesEmpresa%s', '&lt;', '&gt;');
+									}								
 //	FI Credit								
-								printf('</td></tr><tr><td>');
-								printf('%s/p:Credit%s', '&lt;', '&gt;');
-								
-							}
+									printf('</td></tr><tr><td>');
+									printf('%s/p:Credit%s', '&lt;', '&gt;');
+								}
 //	FI Credits							
-							printf('</td></tr><tr><td>');
-							printf('%s/p:Credits%s', '&lt;', '&gt;');
-						}
-						
-						
-					}	
-				}
+								printf('</td></tr><tr><td>');
+								printf('%s/p:Credits%s', '&lt;', '&gt;');
+							}
+						}	
+					}
 //	LOE
-			}else{				
+				}else{				
 				
-			}
+				}
 //	######### FI MODULS
-			printf('</td></tr><tr><td>');
-			printf('%s/p:Moduls%s', '&lt;', '&gt;');			
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Moduls%s', '&lt;', '&gt;');			
 			
 //			dump_r($data_view);
 			
 //			
-			printf('</td></tr><tr><td>');
-			printf('%s/p:Avaluacio%s', '&lt;', '&gt;');
-			printf('</td></tr><tr><td>');
-			printf('%s/p:Avaluacions%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Avaluacio%s', '&lt;', '&gt;');
+				printf('</td></tr><tr><td>');
+				printf('%s/p:Avaluacions%s', '&lt;', '&gt;');
+			}
 //		TANQUEM ALUMNE
 			printf('</td></tr><tr><td>');
 			printf('%s/p:Alumne%s', '&lt;', '&gt;');
