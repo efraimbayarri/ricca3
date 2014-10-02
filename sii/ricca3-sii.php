@@ -158,7 +158,7 @@ function ricca3_shortcode_sii_modif($atts, $content = null) {
 #############################################################################################
 function ricca3_shortcode_sii_xml($atts, $content = null) {
 	global $wpdb;
-	dump_r($_POST);
+//	dump_r($_POST);
 	$row_any = $wpdb->get_row('SELECT * FROM ricca3_any where actual = 1 ',ARRAY_A,0);
 //		CAPÇALERA	
 	printf('<table><tr><td>', NULL);
@@ -275,7 +275,8 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 			printf('</td></tr><tr><td>');
 			printf('%s/p:DadesAlumne%s', '&lt;', '&gt;');
 //	#########		Curriculum
-			if($_POST['cercar'] == 'actualitzar_aval'){
+//			if($_POST['cercar'] == 'actualitzar_aval'){
+			if($_POST['cercar'] == 'actualitzar_aval2'){
 				printf('</td></tr><tr><td>');
 				printf('%sp:Matricules xsi:nil="true"/%s', '&lt;', '&gt;');
 			}else{
@@ -435,7 +436,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 							$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
 								'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp = ricca3_credits_avaluacions.idccomp '.
 								'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
-								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit != %s',
+								'WHERE idalumne=%s AND idany=%s AND SII_CodiModul = %s AND SII_CodiCredit != %s ORDER BY ricca3_credits.idcredit',
 								$data_view[0]['idalumne'],$row_any['idany'], 'NO', 'NO');
 							$data_credit_no = $wpdb->get_results( $query, ARRAY_A);
 //						dump_r($data_credit_no);
@@ -451,17 +452,19 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 								printf('</td></tr><tr><td>');
 								printf('%sp:Credits%s', '&lt;', '&gt;');
 								for($k=0; $k<count($data_credit_no); $k++){
-									printf('</td></tr><tr><td>');
-									printf('%sp:Credit%s', '&lt;', '&gt;');
-									printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_CodiCredit'], '&lt;', '&gt;');
-									printf('</td></tr><tr><td>');
-									printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
-									printf('</td></tr><tr><td>');
-									printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_NombreHoresCredit'], '&lt;', '&gt;');
-									printf('</td></tr><tr><td>');
-									printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
-									printf('</td></tr><tr><td>');
-									printf('%s/p:Credit%s', '&lt;', '&gt;');
+									if($data_credit_no[$k]['SII_CodiCredit'] != $data_credit_no[$k-1]['SII_CodiCredit']){
+										printf('</td></tr><tr><td>');
+										printf('%sp:Credit%s', '&lt;', '&gt;');
+										printf('%sp:CodiCredit%s%s%s/p:CodiCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_CodiCredit'], '&lt;', '&gt;');
+										printf('</td></tr><tr><td>');
+										printf('%sp:CreditPropi%s%s%s/p:CreditPropi%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+										printf('</td></tr><tr><td>');
+										printf('%sp:NombreHoresCredit%s%s%s/p:NombreHoresCredit%s', '&lt;', '&gt;',$data_credit_no[$k]['SII_NombreHoresCredit'], '&lt;', '&gt;');
+										printf('</td></tr><tr><td>');
+										printf('%sp:IdiomaEstrangerVehicular xsi:nil="true"/%s', '&lt;', '&gt;');
+										printf('</td></tr><tr><td>');
+										printf('%s/p:Credit%s', '&lt;', '&gt;');
+									}
 								}
 								printf('</td></tr><tr><td>');
 								printf('%s/p:Credits%s', '&lt;', '&gt;');
@@ -566,9 +569,22 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 					}else{
 						printf('%sp:QualificacioCicle%s%01.2f%s/p:QualificacioCicle%s', '&lt;', '&gt;',$data_view[0]['notaf_es_manual'],'&lt;', '&gt;');
 					}
+//	QualificacioCiclePAAU
+					printf('</td></tr><tr><td>');
+					if($data_view[0]['notaf_es_manual'] == '0'){
+						printf('%sp:QualificacioCiclePAAU%s%01.3f%s/p:QualificacioCiclePAAU%s', '&lt;', '&gt;',$data_view[0]['notaf_es'],'&lt;', '&gt;');
+					}else{
+						printf('%sp:QualificacioCiclePAAU%s%01.3f%s/p:QualificacioCiclePAAU%s', '&lt;', '&gt;',$data_view[0]['notaf_es_manual'],'&lt;', '&gt;');
+					}
+//	EstadesMovilitat						
+					printf('</td></tr><tr><td>');
+					printf('%sp:EstadesMobilitat xsi:nil="true"/%s', '&lt;', '&gt;');
 //	FI CicleFinalitzat
 					printf('</td></tr><tr><td>');
 					printf('%s/p:CicleFinalitzat%s', '&lt;', '&gt;');
+				}else{
+					printf('</td></tr><tr><td>');
+					printf('%sp:CicleFinalitzat xsi:nil="true"/%s', '&lt;', '&gt;');
 				}
 //	######### MODULS
 				printf('</td></tr><tr><td>');
@@ -579,7 +595,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 						$data_view[0]['idespecialitat']	);
 				$data_modul_nom = $wpdb->get_results($query, ARRAY_A);
 //			
-				dump_r($data_modul_nom);
+// 				dump_r($data_modul_nom);
 //	LOGSE
 				if($data_view[0]['pla'] == 'LOGSE'){
 					for($j=0; $j<count($data_modul_nom); $j++){
@@ -607,16 +623,23 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 								printf('</td></tr><tr><td>');
 								printf('%sp:CodiModul%s%s%s/p:CodiModul%s', '&lt;', '&gt;',$data_modul_nom[$j]['SII_CodiModul'], '&lt;', '&gt;');							
 //  EL TE APROVAT??
-								if($data_modul_nota[0]['notaf_cr'] >= 5){
+								if($data_modul_nota[0]['notaf_cr'] >= 5 || substr($data_modul_nota[0]['notaf_cr'],0,2)== 'AP'){
 //	ModulFinalitzat								
 									printf('</td></tr><tr><td>');
 									printf('%sp:ModulFinalitzat%s', '&lt;', '&gt;');
 //	QualificacioModul								
 									printf('</td></tr><tr><td>');
-									printf('%sp:QualificacioModul%s%s%s/p:QualificacioModul%s', '&lt;', '&gt;',$data_modul_nota[0]['notaf_cr'], '&lt;', '&gt;');								
+									if(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'AP'){
+										printf('%sp:QualificacioModul%s%s%s/p:QualificacioModul%s', '&lt;', '&gt;','A', '&lt;', '&gt;');
+									}else{
+										printf('%sp:QualificacioModul%s%s%s/p:QualificacioModul%s', '&lt;', '&gt;',$data_modul_nota[0]['notaf_cr'], '&lt;', '&gt;');
+									}								
 //	FI ModulFinalitzat
 									printf('</td></tr><tr><td>');
 									printf('%s/p:ModulFinalitzat%s', '&lt;', '&gt;');								
+								}else{
+									printf('</td></tr><tr><td>');
+									printf('%sp:ModulFinalitzat xsi:nil="true"/%s', '&lt;', '&gt;');
 								}
 //	Credits
 								printf('</td></tr><tr><td>');
@@ -638,9 +661,9 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 //	Convocatoria
 									printf('</td></tr><tr><td>');
 									if($data_modul_nota[0]['repe'] == 'R'){
-										printf('%sp:Convocatoria%sA%s/p:CodiCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+										printf('%sp:Convocatoria%sA%s/p:Convocatoria%s', '&lt;', '&gt;', '&lt;', '&gt;');
 									}else{
-										printf('%sp:Convocatoria%sP%s/p:CodiCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+										printf('%sp:Convocatoria%sP%s/p:Convocatoria%s', '&lt;', '&gt;', '&lt;', '&gt;');
 									}
 //	QualificacioCredit								
 									printf('</td></tr><tr><td>');
@@ -654,26 +677,36 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 										printf('%sp:QualificacioCredit%sF%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
 									}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'PE'){
 										printf('%sp:QualificacioCredit%sF%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
+									}elseif(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'AP'){
+										printf('%sp:QualificacioCredit%sA%s/p:QualificacioCredit%s', '&lt;', '&gt;', '&lt;', '&gt;');
 									}
+									
 //	PractiquesEmpresa
-									if(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'AP'){
+//									if(substr($data_modul_nota[0]['notaf_cr'],0,2)== 'AP'){
+//										printf('</td></tr><tr><td>');
+//										printf('%sp:PractiquesEmpresa%s', '&lt;', '&gt;');
+////									
+////									
+//										printf('</td></tr><tr><td>');
+//										printf('%s/p:PractiquesEmpresa%s', '&lt;', '&gt;');
+//									}else{
 										printf('</td></tr><tr><td>');
-										printf('%sp:PractiquesEmpresa%s', '&lt;', '&gt;');
-									
-									
-									
-										printf('</td></tr><tr><td>');
-										printf('%s/p:PractiquesEmpresa%s', '&lt;', '&gt;');
-									}								
+										printf('%sp:PractiquesEmpresa xsi:nil="true"/%s', '&lt;', '&gt;');
+//									}							
 //	FI Credit								
 									printf('</td></tr><tr><td>');
 									printf('%s/p:Credit%s', '&lt;', '&gt;');
 								}
+
 //	FI Credits							
 								printf('</td></tr><tr><td>');
 								printf('%s/p:Credits%s', '&lt;', '&gt;');
+								printf('</td></tr><tr><td>');
+								printf('%s/p:Modul%s', '&lt;', '&gt;');
 							}
+
 						}	
+
 					}
 //	LOE
 				}else{				
