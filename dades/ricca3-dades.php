@@ -773,7 +773,7 @@ function ricca3_shortcode_sensepla($atts, $content = null) {
 						'idany'    => $row_any['idany'],
 						'idccomp'  => $dades_ccomp[$j]['idccomp'],
 						'idalumne' => $_POST['cbox'][$i],
-						'convord'  => $row_any['any'],
+						'convord'  => $row_any['conv'],
 						'convext1' => '1',
 						'convext2' => '1',
 						'stampuser'  => $current_user->user_login,
@@ -808,6 +808,20 @@ function ricca3_shortcode_sensepla($atts, $content = null) {
 				printf('<tr><td><input type="checkbox" accesskey="" name="cbox[]" value="%s" title="" class="" ><INPUT type="hidden" name="idgrup[]" value="%s" /></td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>',
 				$data_view[$i]['idalumne'], $data_view[$i]['idgrup'], $data_view[$i]['idalumne'], $data_view[$i]['cognomsinom'], $data_view[$i]['nomespecialitat'], $data_view[$i]['grup']);
 			}
+//
+//	################## BUG convocatoria
+//			$query_cred=($wpdb->prepare('SELECT convord,idcredaval FROM ricca3_credits_avaluacions WHERE idalumne=%s AND convord=%s', $data_view[$i]['idalumne'], "2014-2015"));
+//			$data_cred=$wpdb->get_results($query_cred, ARRAY_A);
+//			$result = $wpdb->query($query_cred);
+//			dump_r($data_cred);
+//			if( $result > 0){
+//				for ($j=0; $j < $result; $j++){
+//				ricca3_dbupdate('ricca3_credits_avaluacions',
+//					array('convord' => "06/15" ),
+//					array('idcredaval' => $data_cred[$j]['idcredaval']) );
+//				}
+//			}	
+//  #############################			
 		}
 		printf('<tr><td><button type="submit" name="cercar" value="guardar"><font size ="1px" face="Arial, Helvetica, sans-serif">%s</button></td><td><INPUT type="hidden" name="grup" value="%s" /></td></tr></table></form>',	
 			__('Guardar dades','ricca3-dades'), $_POST['grup'] );
