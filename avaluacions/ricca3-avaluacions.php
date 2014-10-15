@@ -851,7 +851,7 @@ function ricca3_shortcode_impcertifcurs1($atts, $content = null) {
 		printf('<table><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s</b></font></td></tr></table>', __('DNI:','ricca3-aval'), $dades_alum[$i]['dni']);
 		printf('<table><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s</b></font></td></tr></table>', $curs2, $primer);
 // diferencia entre modul i crèdit
-		if($_GET['grup'] == '1' || $_GET['grup'] == '4'){
+		if($_GET['grup'] == '39' || $_GET['grup'] == '37'){
 			printf('<table><tr><td> &nbsp;</td></tr><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s %s</b></font></td></tr></table>', $modul1, $dades_alum['any'], $linea2 );
 		}else{
 			printf('<table><tr><td> &nbsp;</td></tr><tr><td><font face="Arial, Helvetica, sans-serif"><b>%s %s %s</b></font></td></tr></table>', $linea1, $row['any'], $linea2);
@@ -860,7 +860,7 @@ function ricca3_shortcode_impcertifcurs1($atts, $content = null) {
 ##	FINAL DE CAPÇALERA
 ##
 // diferencia entre modul i crèdit
-		if($_GET['grup'] == '1' || $_GET['grup'] == '10'){
+		if($_GET['grup'] == '39' || $_GET['grup'] == '37'){
 			printf('<table class="cos"><tr><td align="center" width="15%%">%s</td>', $capmodul);
 			printf('<td align="center" width="65%%">%s</td>',                        $nommodul);
 		}else{
