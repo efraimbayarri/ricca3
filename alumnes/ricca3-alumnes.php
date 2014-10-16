@@ -61,7 +61,7 @@ function ricca3_shortcode_alumnes($atts, $content = null) {
 	$ricca3_butons_alumnes['texte'][5] = __('ajuda-inscripcions',  'ricca3-alum');
 //		mostrar la filera de butons	
 	printf('<div id="alumnes">', NULL);
-	ricca3_butons( $ricca3_butons_alumnes, 6, $token );
+	ricca3_butons( $ricca3_butons_alumnes, 12, $token );
 //		mostrem la barra de selecció d'especialitat
 	ricca3_missatge(__('Alumnes per especialitat','ricca3-alum'));
 	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="cercar"><tr>', NULL);
@@ -3146,4 +3146,86 @@ class DB
 	{
 		throw new Exception('You may not clone the DB instance');
 	}
+}
+
+
+#############################################################################################
+/**
+ * filtres per a l'impresio dels llistats d'alumnes
+ * shortcode: [ricca3-llistalu]
+ *
+ * @since ricca3.v.2014.42.4
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_llistalu($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_cercalumne;
+	//		missatge de capçalera de la pàgina
+	ricca3_missatge(__('Llistats d\'alumnes','ricca3-alum'));
+	//		crear token
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+	//		preparar ajudes als butons
+	$ricca3_butons_cercalumne['texte'][0] = __('ajuda-alumnes', 'ricca3-alum');
+	//		mostrar la filera de butons
+	ricca3_butons( $ricca3_butons_cercalumne, 6, $token );
+	//		formulari del filtre de grups
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt350"><tr>', NULL);
+	printf('<td><button type="submit" name="cercar" value="actualitzar"><img src=%s/ricca3/imatges/ricca3-escollirgrup.png " border="0" /></button></td>', WP_PLUGIN_URL);
+	//	si no hem escollit encara un grup i hi ha un definit al token, possar-ho com predeterminat
+	if( !isset( $_POST['grupassist'] ) && $_GET['grup'] != '-1') $_POST['grupassist'] = $_GET['grup'];
+	//		drop per el grup
+	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+	ricca3_drop( __('Grup:','ricca3-alum'), 'grupassist',  $data_grup,  'idgrup', 'grup',  __('ajuda_drop_ grup', 'ricca3-alum'), TRUE );
+	//		final del formulari
+	printf('</tr></table></form>', NULL);
+	//		si ja hem escollit el grup,
+	if( isset( $_POST['grupassist'] ) ){
+		//	busquem el nom del grup i mostrem el missatge d'aceptació
+		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grupassist']), ARRAY_A, 0);
+		ricca3_missatge(sprintf('%s %s', __('Llistat d\'alumnes del grup','ricca3-alum'), $row_grup['grup'] ) );
+		//	presentem la taula d'aceptació
+		printf('<table><tr>', NULL);
+		printf('<td><a href="%s/%s/?ID=%s" target="POPUPW" onsubmit="POPUPW = window.open("about:blank","POPUPW","width=800,height=650" >',site_url(), 'ricca3-impalu', $_POST['grupassist']);
+		printf('<button type="button"><img src="%s/ricca3/imatges/ricca3-impassist.png" border=0 /></button></a></td>',WP_PLUGIN_URL );
+		printf('</tr></table>', NULL);
+	}
+}
+
+#############################################################################################
+/**
+ * Impresio dels llistats d'alumnes
+ * shortcode: [ricca3-impalu]
+ *
+ * @since ricca3.v.2014.42.4
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_impalu($atts, $content = null) {
+	global $wpdb;
+	$row_any = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE actual = 1', NULL ) , ARRAY_A , 0 );
+	$dades = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ricca3_alumespec_view WHERE idgrup = %s AND idany = %s AND idestat_es = 1 AND repeteix != "R" ORDER BY cognomsinom ASC' , $_GET['ID'] , $row_any['idany'] ), ARRAY_A );
+	for( $i=0; $i < count( $dades ); $i++ ) {
+		if ($i == 0 || $i == 16) {
+			printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
+			printf('<table><tr><td width="200px"></td>', NULL);
+			printf('<td>%s</td></tr>',                __('','ricca3-alum'));
+			printf('<tr><td>%s %s</td>',              __('Grup:','ricca3-alum'), $dades[$i]['grup']);
+			printf('<td>%s %s</td></tr>',             __('Especialitat:','ricca3-alum'), $dades[$i]['nomespecialitat']);
+			printf('<tr><td>%s %s</td></tr></table>', __('Curs:','ricca3-alum'), $dades[$i]['any']);
+		}
+		if ($i == 0 && count( $dades ) >= 16) {
+			$table = " class=\"cosassist\" style=\"page-break-after: always;\" ";
+		} else {
+			$table = " class=\"cosassist\" ";
+		}
+		if ($i==0 || $i == 16) printf('<table %s>', $table );
+		if ($i==0 || $i == 16) {
+			printf( '<tr><td width="280px" align="center">%s</td><td width="80px">DNI</td><td width="80px">Telefon</td><td width="80px">Fixe</td><td width="260px">email</td></tr>', __('Alumnes','ricca3-alum'));
+
+		}
+//		printf( '<tr><td>%s - %s</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>', $i+1 , $dades[$i]["cognomsinom"] );
+		printf( '<tr><td>%s - %s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', $i+1 , $dades[$i]["cognomsinom"], $dades[$i]["dni"], $dades[$i]["telefon"], $dades[$i]["telefonfixe"], $dades[$i]["email"] );
+	}
+	printf('</table>', NULL);
 }

@@ -6,13 +6,13 @@
 ##
 ######################################################
 $ricca3_alumespec=array(
-	"tipus"   =>array("ordre", "bd",       "token",                   "bd",          "bd",      "bd",      "bd",          "bd",    "bd",   "bd",       "miniatura"),
-	"nombd"   =>array("",      "idalumne", "",                        "cognomsinom", "dni",     "telefon", "telefonfixe", "email", "estat","repeteix", ""),
-	"visual"  =>array("",      "ID",       "",                        "Nom",         "DNI",     "Telefon", "Telefon",     "email", "",     "R",        ""),
-	"enllac"  =>array("",      "",         "ricca3-dadesalumne/?ID=", "",            "",        "",        "",            "",      "",     "",         "ricca3-dadesalumne/?ID="),
-	"camp"    =>array("",      "",         "idalumne",                "",            "",        "",        "",            "",      "",     "",         "idalumne"),
-	"texte"   =>array("",      "",         "veure",                   "",            "",        "",        "",            "",      "",     "",         ""),
-	"ajuda"   =>array("",      "",         "",                        "",            "",        "",        "",            "",      "",     "",         "")
+	"tipus"   =>array("ordre", "bd",       "token",                   "bd",          "bd",   "bd",      "bd",      "bd",          "bd",    "bd",   "bd",       "miniatura"),
+	"nombd"   =>array("",      "idalumne", "",                        "cognomsinom", "grup", "dni",     "telefon", "telefonfixe", "email", "estat","repeteix", ""),
+	"visual"  =>array("",      "ID",       "",                        "Nom",         "grup", "DNI",     "Telefon", "Telefon",     "email", "",     "R",        ""),
+	"enllac"  =>array("",      "",         "ricca3-dadesalumne/?ID=", "",            "",     "",        "",        "",            "",      "",     "",         "ricca3-dadesalumne/?ID="),
+	"camp"    =>array("",      "",         "idalumne",                "",            "",     "",        "",        "",            "",      "",     "",         "idalumne"),
+	"texte"   =>array("",      "",         "veure",                   "",            "",     "",        "",        "",            "",      "",     "",         ""),
+	"ajuda"   =>array("",      "",         "",                        "",            "",     "",        "",        "",            "",      "",     "",         "")
 ); 
 
 #############################################################################################
@@ -378,9 +378,9 @@ $ricca3_sii_fitxers=array(
 ######################################################
 ######################################################
 $ricca3_butons_alumnes=array(
-	"imatge" =>array("cercar",            "noualumne",        "llistatassistencia", "mailings",        "creditspendents",     "inscripcions"),
-	"enllac" =>array("ricca3-cercalumne", "ricca3-noualumne", "ricca3-assist",      "ricca3-mailings", "ricca3-credpendents", "ricca3-pregrup"),
-	"id"     =>array(false,               false,              false,                false,             false,                 false),
+	"imatge" =>array("cercar",            "noualumne",        "llistatassistencia", "mailings",        "creditspendents",     "inscripcions",   "buid",           "buid",           "llistalu",        "buid",           "buid",           "buid"),
+	"enllac" =>array("ricca3-cercalumne", "ricca3-noualumne", "ricca3-assist",      "ricca3-mailings", "ricca3-credpendents", "ricca3-pregrup", "ricca3-alumnes", "ricca3-alumnes", "ricca3-llistalu", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes"),
+	"id"     =>array(false,               false,              false,                false,             false,                 false           , false,            false,            false,             false,             false,           false),
 	"texte"  =>array("",                  "" ,                "",                   "",                "",                    "")
 );
 
