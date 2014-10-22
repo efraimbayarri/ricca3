@@ -182,9 +182,9 @@ function ricca3_shortcode_impactesrepe($atts, $content = null) {
 	
 	$row_aval = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_avaluacions WHERE idavaluacio = %s', $_GET['aval']) ,ARRAY_A, 0);
 	$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany=%s', $_GET['any'] ),ARRAY_A,0 );
-	$dades_ccomp =  $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT idccomp FROM ricca3_alumccomprepe_view WHERE idgrup = %s AND idany = %s ORDER BY ordre_cr', $_GET['grup'], $_GET['any']), ARRAY_A);
+	$dades_ccomp =  $wpdb->get_results( $wpdb->prepare('SELECT DISTINCT idccomp FROM ricca3_alumccomprepe_view WHERE idgrup = %s AND idany = %s ORDER BY ordre_cr, cognomsinom', $_GET['grup'], $_GET['any']), ARRAY_A);
 	for ( $i = 0; $i < count( $dades_ccomp ); $i++){
-		$dades =  $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumccomprepe_view WHERE idccomp = %s AND idany = %s ORDER BY ordre_cr', $dades_ccomp[$i]['idccomp'],	 $_GET['any']), ARRAY_A);		
+		$dades =  $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumccomprepe_view WHERE idccomp = %s AND idany = %s ORDER BY ordre_cr, cognomsinom', $dades_ccomp[$i]['idccomp'],	 $_GET['any']), ARRAY_A);		
 		if($dades[0]['aval3nomes'] == '0' || $_GET['aval'] == '4' || $_GET['aval'] == '5'){
 //			dump_r($dades);
 			printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );

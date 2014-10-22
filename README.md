@@ -6,11 +6,12 @@ ricca3
  * Plugin URI: http://replicantsfactory.com/
  * Author: Efraim Bayarri
  * Author URI: http://replicantsfactory.com/
- * Version: 2014.42.4
+ * Version: 2014.43.3
  * Description: Projecte RIC-CA Versió 3 (Escola Ramon i Cajal) 
  * Release Version:(build 2013.27.5)
  * Release Date: 5 juliol 2013
  * -------------------------------------------------------------------
+ * 2014.43.3 Ordenar per cognom a les actes del repetidors (ricca3-avaluacions.php)
  * 2014.42.4 Afegir 'Impresió llista d'alumnes'. Afegir columna 'grup' al la pantalla d'alumnes.
  * 2014.42.3 Certificats 1er curs. canviar 'crèdit' per 'mòdul' a les especialitat LOE
  * 2014.40.4 Canvis SII - avaluacions
