@@ -316,9 +316,17 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 //	EscolaritzacioCompartida
 				printf('</td></tr><tr><td>');
 				printf('%sp:EscolaritzacioCompartida%s%s%s/p:EscolaritzacioCompartida%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
+//	CANVIS CURS 14-15				
 //	CodiCentreExpedient	++VOID
+//				printf('</td></tr><tr><td>');
+//				printf('%sp:CodiCentreExpedient xsi:nil="true"/%s', '&lt;', '&gt;');
+//	CodiCentreCompartit
 				printf('</td></tr><tr><td>');
-				printf('%sp:CodiCentreExpedient xsi:nil="true"/%s', '&lt;', '&gt;');
+				printf('%sp:CodiCentreCompartit xsi:nil="true"/%s', '&lt;', '&gt;');
+//	CodiCentreCustodiaExpedient
+				printf('</td></tr><tr><td>');
+				printf('%sp:CodiCentreCustodiaExpedient xsi:nil="true"/%s', '&lt;', '&gt;');
+//	FI CANVIS CURS 14-15				
 //	AlumneConveni ++VOID
 				printf('</td></tr><tr><td>');
 				printf('%sp:AlumneConveni%s%s%s/p:AlumneConveni%s', '&lt;', '&gt;','N', '&lt;', '&gt;');
