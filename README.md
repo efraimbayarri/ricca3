@@ -11,6 +11,7 @@ ricca3
  * Release Version:(build 2013.27.5)
  * Release Date: 5 juliol 2013
  * -------------------------------------------------------------------
+ * 2014.51.1 Canvis ordre crèdits en els certificats avaluacions
  * 2014.48.3 Canvis SII - Curs 14-15
  * 2014.43.3 Ordenar per cognom a les actes del repetidors (ricca3-avaluacions.php)
  * 2014.42.4 Afegir 'Impresió llista d'alumnes'. Afegir columna 'grup' al la pantalla d'alumnes.

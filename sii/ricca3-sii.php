@@ -275,7 +275,6 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 			printf('</td></tr><tr><td>');
 			printf('%s/p:DadesAlumne%s', '&lt;', '&gt;');
 //	#########		Curriculum
-//			if($_POST['cercar'] == 'actualitzar_aval'){
 			if($_POST['cercar'] == 'actualitzar_aval2'){
 				printf('</td></tr><tr><td>');
 				printf('%sp:Matricules xsi:nil="true"/%s', '&lt;', '&gt;');
@@ -705,7 +704,6 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 									printf('</td></tr><tr><td>');
 									printf('%s/p:Credit%s', '&lt;', '&gt;');
 								}
-
 //	FI Credits							
 								printf('</td></tr><tr><td>');
 								printf('%s/p:Credits%s', '&lt;', '&gt;');
@@ -726,7 +724,6 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 			
 //			dump_r($data_view);
 			
-//			
 				printf('</td></tr><tr><td>');
 				printf('%s/p:Avaluacio%s', '&lt;', '&gt;');
 				printf('</td></tr><tr><td>');

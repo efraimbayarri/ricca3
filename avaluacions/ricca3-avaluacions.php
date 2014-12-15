@@ -685,7 +685,7 @@ function ricca3_shortcode_impcertif($atts, $content = null) {
 			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
 //			'WHERE idany=%s AND idgrup=%s and idalumne=%s ORDER BY ordre_cr',
 //			$_GET['any'], $_GET['grup'], $dades_espec[$i]['idalumne']), ARRAY_A);
-			'WHERE idany=%s AND idespecialitat=%s and idalumne=%s ORDER BY ordre_cr',
+			'WHERE idany=%s AND idespecialitat=%s and idalumne=%s ORDER BY ordre_cr, nomccomp',
 			$_GET['any'], $dades_grup['idespecialitat'], $dades_espec[$i]['idalumne']), ARRAY_A);
 		
 //		dump_r($dades_grup);
