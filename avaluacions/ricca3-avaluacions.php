@@ -602,6 +602,8 @@ function ricca3_shortcode_obser($atts, $content = null) {
 function ricca3_shortcode_certif($atts, $content = null) {
 	global $wpdb;
 	global $ricca3_butons_actes;
+
+//	dump_r($_POST);
 	
 	ricca3_missatge( __('Certificats avaluacions','ricca3-aval'));
 	$ricca3_butons_actes['texte'][0] = __('ajuda-aval-aval', 'ricca3-aval');
@@ -618,15 +620,19 @@ function ricca3_shortcode_certif($atts, $content = null) {
 	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
 	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_notes_grup', 'ricca3-aval'), TRUE );
 //	
-	if( !isset( $_POST['data'] ) ){
-		$data = strftime("%d/%m/%Y");
-	}else{
-		$data = $_POST['data'];
-	}
+//
+	if( isset( $_POST['data'] ) )ricca3_dbupdate('ricca3_data_certif' , array( 'datacertif' => $_POST['data'] ) , array('iddatacertif' => 1) );
+	$data_data = $wpdb->get_results('SELECT * FROM ricca3_data_certif',ARRAY_A);
+
+//	dump_r($data_data);
+	
+	$data = $data_data[0]['datacertif'];
+	
 	printf('<td><INPUT type="text" name="data"	size=15 value="%s"></td>', $data);
 	printf('</tr></table></form>', NULL);
 //
 	if( isset( $_POST['grup'] ) && $_POST['grup'] != '-1'){
+//
 		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup = %s', $_POST['grup'] ), ARRAY_A, 0 );
 		ricca3_missatge(sprintf('%s %s %s %s', __('Certificats de','ricca3-aval'), $row_grup['grup'], __('amb data','ricca3-aval'), $_POST['data']) );
 		printf('<table><tr>', NULL);
@@ -759,11 +765,18 @@ function ricca3_shortcode_certifcurs1($atts, $content = null) {
 		'WHERE actiu_gr = 1 AND idcurs=1 AND cursos=2 ORDER BY grup ', ARRAY_A );
 	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_notes_grup', 'ricca3-aval'), TRUE );
 //	
-	if( !isset( $_POST['data'] ) ){
-		$data = strftime("%d/%m/%Y");
-	}else{
-		$data = $_POST['data'];
-	}
+	if( isset( $_POST['data'] ) )ricca3_dbupdate('ricca3_data_certif' , array( 'datacertif' => $_POST['data'] ) , array('iddatacertif' => 1) );
+	$data_data = $wpdb->get_results('SELECT * FROM ricca3_data_certif',ARRAY_A);
+	
+	//	dump_r($data_data);
+	
+	$data = $data_data[0]['datacertif'];
+	
+//	if( !isset( $_POST['data'] ) ){
+//		$data = strftime("%d/%m/%Y");
+//	}else{
+//		$data = $_POST['data'];
+//	}
 	printf('<td><INPUT type="text" name="data"	size=15 value="%s"></td>', $data);
 	
 	if( isset( $_POST['cast']) && $_POST['cast'] == 'si'){
@@ -942,11 +955,19 @@ function ricca3_shortcode_certiffinal($atts, $content = null) {
 		'WHERE actiu_gr = 1 AND ( idcurs=2 OR ricca3_grups.idespecialitat=6 OR ricca3_grups.idespecialitat=7) ORDER BY grup ', ARRAY_A );
 	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_notes_grup', 'ricca3-aval'), TRUE );
 //	
-	if( !isset( $_POST['data'] ) ){
-		$data = strftime("%d/%m/%Y");
-	}else{
-		$data = $_POST['data'];
-	}
+
+	if( isset( $_POST['data'] ) )ricca3_dbupdate('ricca3_data_certif' , array( 'datacertif' => $_POST['data'] ) , array('iddatacertif' => 1) );
+	$data_data = $wpdb->get_results('SELECT * FROM ricca3_data_certif',ARRAY_A);
+	
+//	dump_r($data_data);
+	
+	$data = $data_data[0]['datacertif'];
+	
+//	if( !isset( $_POST['data'] ) ){
+//		$data = strftime("%d/%m/%Y");
+//	}else{
+//		$data = $_POST['data'];
+//	}
 	printf('<td><INPUT type="text" name="data"	size=15 value="%s"></td>', $data);
 	
 	
