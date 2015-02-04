@@ -271,6 +271,14 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 //	SituacioLaboral
 			printf('</td></tr><tr><td>');
 			printf('%sp:SituacioLaboral%s%s%s/p:SituacioLaboral%s', '&lt;', '&gt;','D', '&lt;', '&gt;');
+			
+//			<PrimerTutor>
+			printf('</td></tr><tr><td>');
+			printf('%sp:PrimerTutor xsi:nil="true"/%s', '&lt;', '&gt;');
+//			<SegonTutor>
+			printf('</td></tr><tr><td>');
+			printf('%sp:SegonTutor xsi:nil="true"/%s', '&lt;', '&gt;');			
+			
 //	#########		FI Dades Alumne
 			printf('</td></tr><tr><td>');
 			printf('%s/p:DadesAlumne%s', '&lt;', '&gt;');
@@ -295,11 +303,11 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 //  ******************************************************
 //	DataMatricula   **************************************
 				printf('</td></tr><tr><td>');
-				printf('%sp:DataMatricula%s%s%s/p:DataMatricula%s', '&lt;', '&gt;','16092013', '&lt;', '&gt;');
+				printf('%sp:DataMatricula%s%s%s/p:DataMatricula%s', '&lt;', '&gt;','16092014', '&lt;', '&gt;');
 //	CursAcademicIniciCicle
 				printf('</td></tr><tr><td>');
 				$CursAcademicIniciCicle='1213';
-				if($data_view[0]['idcurs']==1)$CursAcademicIniciCicle='1314';
+				if($data_view[0]['idcurs']==1)$CursAcademicIniciCicle='1415';
 				printf('%sp:CursAcademicIniciCicle%s%s%s/p:CursAcademicIniciCicle%s', '&lt;', '&gt;',$CursAcademicIniciCicle, '&lt;', '&gt;');
 //  ******************************************************
 //  ******************************************************			
