@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: RICCA3
- * Plugin URI: http://replicantsfactory.com/
+ * Plugin URI: http://efraim.cat/
  * Author: Efraim Bayarri
- * Author URI: http://replicantsfactory.com/
- * Version: 2015.06.3
+ * Author URI: http://efraim.cat/
+ * Version: 2015.08.5
  * Description: Projecte RIC-CA Versió 3 (Escola Ramon i Cajal) 
  * Release Version:(build 2013.27.5)
  * Release Date: 5 juliol 2013
@@ -92,6 +92,8 @@ add_shortcode( 'ricca3-pla',          'ricca3_shortcode_pla' );
 add_shortcode( 'ricca3-guardarpla',   'ricca3_shortcode_guardarpla' );
 add_shortcode( 'ricca3-llistarpla',   'ricca3_shortcode_llistarpla' );
 add_shortcode( 'ricca3-sensepla',     'ricca3_shortcode_sensepla' );
+add_shortcode( 'ricca3-ufloe',        'ricca3_shortcode_ufloe' );
+add_shortcode( 'ricca3-notesufloe',   'ricca3_shortcode_notesufloe' );
 
 add_shortcode( 'ricca3-sii',          'ricca3_shortcode_sii' );
 add_shortcode( 'ricca3-sii-opcions',  'ricca3_shortcode_sii_opcions' );

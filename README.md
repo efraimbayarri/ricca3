@@ -3,14 +3,15 @@ ricca3
 
 /**
  * Plugin Name: RICCA3
- * Plugin URI: http://replicantsfactory.com/
+ * Plugin URI: http://efraim.cat/
  * Author: Efraim Bayarri
- * Author URI: http://replicantsfactory.com/
- * Version: 2015.06.3
+ * Author URI: http://efraim.cat/
+ * Version: 2015.08.5
  * Description: Projecte RIC-CA Versió 3 (Escola Ramon i Cajal) 
  * Release Version:(build 2013.27.5)
  * Release Date: 5 juliol 2013
  * -------------------------------------------------------------------
+ * 2015.08.5 Suport UF LOE
  * 2015.06.3 Canvis per el enviament SII 2014-2015
  * 2014.52.1 Mantindre la data dels certificats
  * 2014.51.1 Canvis ordre crèdits en els certificats avaluacions

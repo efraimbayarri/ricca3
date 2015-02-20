@@ -946,3 +946,162 @@ function ricca3_shortcode_credespec($atts, $content = null) {
 		printf('%s</font></button></td><td><INPUT type="hidden" name="espec" value="%s" /></td></tr></table></form>', __('Guardar dades:','ricca3-dades'), $_POST['espec']);
 	}	
 }
+
+#############################################################################################
+/**
+ * notes UF loe
+ * shortcode: [ricca3-ufloe]
+ *
+ * @since ricca3.v.20150804
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_ufloe($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_espec;
+	global $ricca3_listpla;
+	global $ricca3_ufloe;
+	
+//	dump_r($_POST);
+	
+	ricca3_missatge(__('Notes Unitats Formatives LOE','ricca3-dades'));
+	$ricca3_butons_espec['texte'][0] = __('ajuda-dades-dades', 'ricca3-dades');
+//		butons
+	ricca3_butons( $ricca3_butons_espec, 6 );
+	
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt800"><tr>', NULL);
+	printf('<td><button type="submit" name="cercar" value="actualitzar" title="%s">%s</td>',
+	__('ajuda-llistarpla-escollir', 'ricca3-dades'), __('escollir', 'ricca3-dades'));
+//		drop per el any
+	$data_any = $wpdb->get_results('SELECT DISTINCT ricca3_pla.idany, ricca3_any.any, ricca3_any.actual FROM ricca3_pla '.
+			'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_pla.idany', ARRAY_A);
+	ricca3_drop_any( __('Any:','ricca3-dades'), 'any', $data_any, 'idany', 'any', __('ajuda_llistarpla_any', 'ricca3-dades'), 'actual' );
+//		drop per a especialitat
+	$data_espec = $wpdb->get_results('SELECT * FROM ricca3_especialitats WHERE actiu_es = 1 AND pla = "loe" ORDER BY ordre_es ', ARRAY_A);
+	ricca3_drop( __('Especialitat:','ricca3-dades'), 'espec', $data_espec, 'idespecialitat', 'nomespecialitat', __('ajuda_drop_especialitat', 'ricca3-dades'), TRUE );
+	
+	
+	printf('</tr></table></form>', NULL);
+	
+	if(isset($_POST['cercar']) && $_POST['cercar'] == 'actualitzar'){
+
+		$query = $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idany= %s AND idespecialitat = %s AND idestat_es=1 ORDER BY cognomsinom ',$_POST['any'], $_POST['espec']);
+		
+//		dump_r($query);
+		
+		$data_view = $wpdb->get_results( $query , ARRAY_A);
+		ricca3_graella( $ricca3_ufloe, $data_view, NULL );
+		
+	}
+	
+}
+
+#############################################################################################
+/**
+ * notes UF loe
+ * shortcode: [ricca3-notesufloe]
+ *
+ * @since ricca3.v.20150804
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_notesufloe($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_espec;
+	global $ricca3_especalum;
+	
+	dump_r($_POST);
+	
+	$dades_any=$wpdb->get_row('SELECT * FROM ricca3_any WHERE actual=1', ARRAY_A, 0);
+	ricca3_missatge(__('Notes Unitats Formatives LOE','ricca3-dades'));
+	$ricca3_butons_espec['texte'][0] = __('ajuda-dades-dades', 'ricca3-dades');
+//		butons
+	ricca3_butons( $ricca3_butons_espec, 6 );
+	
+	if( !isset( $_GET['ID'] ) ) return '';
+//		buscar les dades del alumne
+	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
+	$image_attributes = ricca3_miniatura($_GET['ID']);
+//		missatge de capçalera de la pàgina
+	ricca3_missatge(sprintf('%s %s</td><td><img src="%s" width="%s" height="%s">',__('Especialitats de l\'alumne','ricca3-alum'), $row_alu['cognomsinom'], $image_attributes[0], $image_attributes[1], $image_attributes[2] ));
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+//		buscar especialitats
+	$data_view = $wpdb->get_results( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne = %s ORDER BY idany ',$_GET['ID']), ARRAY_A);
+//		llistat de les especialitats del alumne
+	ricca3_graella( $ricca3_especalum, $data_view, $token );
+	printf('</table></form>', NULL);
+	
+	$idespec = $wpdb->get_row( $wpdb->prepare('SELECT DISTINCT idespecialitat FROM ricca3_alumespec_view WHERE idalumne=%s AND idestat_es=1 AND (idespecialitat = 10 or idespecialitat = 11) ', $_GET['ID']), ARRAY_A, 0);
+	$row_espec = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idespecialitat=%s', $_GET['ID'], $idespec['idespecialitat']), ARRAY_A, 0);
+	$nom = str_word_count($row_espec['nomespecialitat'], 1, 'ÀÈÒÓ');
+	$query_cred = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+			'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp=ricca3_credits_avaluacions.idccomp '.
+			'INNER JOIN ricca3_credits ON ricca3_credits.idcredit = ricca3_ccomp.idcredit '.
+			'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+			'INNER JOIN ricca3_grups ON ricca3_grups.idgrup = ricca3_ccomp.idgrup '.
+			'INNER JOIN ricca3_any ON ricca3_any.idany = ricca3_credits_avaluacions.idany '.
+			'INNER JOIN ricca3_professors ON ricca3_professors.idprof = ricca3_ccomp.idprofessor '.
+			'WHERE idalumne=%s AND ricca3_credits.idespecialitat=%s '.
+			'ORDER BY ordre_cr, ricca3_credits_avaluacions.idccomp, ricca3_credits_avaluacions.idany ', $_GET['ID'], $idespec['idespecialitat']);
+	$data_cred = $wpdb->get_results( $query_cred, ARRAY_A);
+	
+//	dump_r($data_cred);
+	
+//		Mirar si ja te UF creades
+	$dades_uf= $wpdb->get_results($wpdb->prepare('SELECT * from ricca3_loe_alumnes WHERE idalumne=%s', $_GET['ID']), ARRAY_A);
+	if(count($dades_uf)==0){
+		$dades_loeuf=$wpdb->get_results($wpdb->prepare('SELECT * from ricca3_loe_uf WHERE idespecialitat=%s ORDER BY modul', $idespec['idespecialitat']), ARRAY_A);
+		for($k=0; $k< count($dades_loeuf); $k++){
+			$wpdb->insert('ricca3_loe_alumnes',
+					array(	'idalumne'	=> $_GET['ID'],
+							'iduf'		=> $dades_loeuf[$k]['iduf'],
+							'nota'		=> '',
+							'idany_uf'	=> $dades_any['idany']
+					)
+			);
+		}
+	}
+//	
+	printf('<table>');
+//	mostrem la capçalera de la graella amb les ajudes
+	printf( '<tr><th>Grup</th><th></th><th>MODUL/UF</th><th></th><th>hores UF</th><th>Aval</th><th>Professor</th>'.
+			'<th>Nota</th><th></th><th></th><th></th><th>NF</th><th></th><th></th><th></th><th>Hores</th></tr>', NULL);	
+	
+	for( $j=0; $j < count($data_cred); $j++ ){
+//	si el crèdit es actiu per aquest any mostrem la convocatoria en negretes
+		$conv = $data_cred[$j]['convord'];
+		if($data_cred[$j]['conv'] == $row_any['conv']) $conv = sprintf('<b>%s</b>', $data_cred[$j]['convord']);
+//
+		$repeteix = $data_cred[$j]['repe'];
+		if($data_cred[$j]['repe'] =='R') $repeteix = '<b>*</b>';
+//	mostrem els resultats a la linea de la graella
+//	si es un credit nou a la graella, mostrem el grup, el nom del crèdit, la nota final de credit i les hores
+		if( $j == 0 || $data_cred[$j]['idcredit'] != $data_cred[$j-1]['idcredit']){
+//	busquem la ultima entrada del crèdit per esbrinar la nota final del credit
+			$row_nota = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_credits_avaluacions '.
+				'INNER JOIN ricca3_ccomp ON ricca3_ccomp.idccomp=ricca3_credits_avaluacions.idccomp '.
+						'WHERE idalumne=%s AND idcredit=%s ORDER by idany DESC ',
+						$_GET['ID'], $data_cred[$j]['idcredit']), ARRAY_A, 0);
+			$nota = $row_nota['notaf_cr'];
+//	mostrem la linea inicial del crèdit
+			$pendi='';
+			if( $data_cred[$j]['pendi'] == 'P') $pendi='P';
+			printf('<tr class="credit"><td>%s</td><td>%s</td><td colspan="2"><b>%s</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><b>%s</b></td><td><b>%s</b></td><td></td><td></td><td>%s</td></tr>',
+				$data_cred[$j]['grup'], '<b>===></b>', $data_cred[$j]['nomcredit'], $nota, $pendi, $data_cred[$j]['hores_cr']);
+			$query=$wpdb->prepare('SELECT * from ricca3_loe_uf WHERE idcredit=%s ORDER BY uf, aval', $data_cred[$j]['idcredit']);
+			$dades_loeuf=$wpdb->get_results($query, ARRAY_A);
+//	mostrem les UF
+			for($k=0;$k<count($dades_loeuf); $k++){
+				$dades_prof=$wpdb->get_row( $wpdb->prepare('SELECT * from ricca3_professors WHERE idprof=%s', $dades_loeuf[$k]['prof']), ARRAY_A, 0);
+				$dades_notauf=$wpdb->get_row( $wpdb->prepare('SELECT * from ricca3_loe_alumnes WHERE idalumne=%s AND iduf=%s', $_GET['ID'], $dades_loeuf[$k]['iduf']), ARRAY_A, 0);
+				printf('<tr><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s hores</td><td>%s aval</td><td>%s</td><td>%s</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>',
+				'',$dades_loeuf[$k]['uf'], $dades_loeuf[$k]['ufnom'],$dades_loeuf[$k]['ufchores'], $dades_loeuf[$k]['aval'], $dades_prof['nomicognoms'], $dades_notauf['nota']);
+			}			
+			
+		}
+	
+
+	}
+	printf('</table>', NULL);
+	
+}
