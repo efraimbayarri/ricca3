@@ -3229,3 +3229,152 @@ function ricca3_shortcode_impalu($atts, $content = null) {
 	}
 	printf('</table>', NULL);
 }
+
+#############################################################################################
+/**
+ * filtres per a l'impresio dels llistats de tutors
+ * shortcode: [ricca3-llisttut]
+ *
+ * @since ricca3.v.2015.12.2
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_llisttut($atts, $content = null) {
+	global $wpdb;
+	global $ricca3_butons_cercalumne;
+	
+	dump_r($_POST);
+	
+//		missatge de capçalera de la pàgina
+	ricca3_missatge(__('Llistats dels tutors','ricca3-alum'));
+//		crear token
+	$token = array( 'espec' => $_GET['espec'], 'grup' => $_GET['grup'], 'any' => $_GET['any'], 'estat' => $_GET['estat'], 'repe' => $_GET['repe']);
+//		preparar ajudes als butons
+	$ricca3_butons_cercalumne['texte'][0] = __('ajuda-alumnes', 'ricca3-alum');
+//		mostrar la filera de butons
+	ricca3_butons( $ricca3_butons_cercalumne, 6, $token );
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt600"><tr>', NULL);
+	printf('<td><button type="submit" name="cercar" value="grup" title="%s">%s</td>',
+	__('ajuda-notes-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+//		drop per el any
+	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+	ricca3_drop_any( __('Any:','ricca3-aval'), 'any', $data_any, 'idany', 'any', __('ajuda_notes_any', 'ricca3-aval'), 'actual' );
+//		drop per el grup
+	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups WHERE actiu_gr = 1 ORDER BY grup ', ARRAY_A );
+	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_notes_grup', 'ricca3-aval'), TRUE );
+//
+	if( isset( $_POST['repe']) && $_POST['repe'] == 'si'){
+		printf('<td title="%s">%s<input type="checkbox" accesskey="" name="repe" value="si" title="" class="" checked /></td>' ,
+		__('ajuda_actes_repe','ricca3-aval'), __('Repetidors','ricca3-aval') );
+	}else{
+		printf('<td title="%s">%s<input type="checkbox" accesskey="" name="repe" value="si" title="" class="" /></td>' ,
+		__('ajuda_actes_repe','ricca3-aval'), __('Repetidors','ricca3-aval') );
+	}
+//		tanquem la barra de selecció
+	printf('</tr></table></form>', NULL);
+	
+	if( isset( $_POST['cercar']) && $_POST['cercar'] == 'ccomp'){
+		
+//	busquem el nom del grup i mostrem el missatge d'aceptació
+		$row_grup = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_POST['ccomp']), ARRAY_A, 0);
+		ricca3_missatge(sprintf('%s %s', __('Llistat d\'alumnes de ','ricca3-alum'), $row_grup['nomccomp'] ) );
+//	presentem la taula d'aceptació
+		printf('<table><tr>', NULL);
+		printf('<td><a href="%s/%s/?ccomp=%s&any=%s&grup=%s" target="POPUPW" onsubmit="POPUPW = window.open("about:blank","POPUPW","width=800,height=650" >',site_url(), 'ricca3-imptut', $_POST['ccomp'], $_POST['any'], $_POST['grup']);
+		printf('<button type="button"><img src="%s/ricca3/imatges/ricca3-impassist.png" border=0 /></button></a></td>',WP_PLUGIN_URL );
+		printf('</tr></table>', NULL);
+	}
+	
+	if( isset( $_POST['cercar'] ) && $_POST['cercar'] == 'grup'){
+		$query_ccomp = $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idgrup = %s AND actiu_cc = 1 ORDER BY nomccomp ASC', $_POST['grup']);
+		if(isset($_POST['repe']) && $_POST['repe'] == 'si') $query_ccomp = $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idgrup = %s ORDER BY nomccomp ASC', $_POST['grup']);
+	
+		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_POST['grup'] ), ARRAY_A, 0);
+		$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_POST['any'] ),  ARRAY_A, 0);
+		printf('<table id="nom" class="nom"><tr><td class="nom">%s %s %s </td></tr></table>',
+		$row_grup['grup'], __('del curs','ricca3-aval'), $row_any['any'] );
+	
+		printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt800"><tr>', NULL);
+		printf('<td><INPUT type="hidden" name="any"  value="%s" />',$_POST['any']);
+		printf('    <INPUT type="hidden" name="grup" value="%s" />',$_POST['grup']);
+		if( isset( $_POST['repe'] ) ) printf('<INPUT type="hidden" name="repe" value=%s />',$_POST['repe']);
+		printf('<button type="submit" name="cercar" value="ccomp" title="%s">%s</td>',
+		__('ajuda-notes-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+		$data_ccomp = $wpdb->get_results( $query_ccomp, ARRAY_A);
+		ricca3_drop( __('Crèdit:','ricca3-aval'), 'ccomp',  $data_ccomp,  'idccomp', 'nomccomp',  __('ajuda_notes_ccomp', 'ricca3-aval'), TRUE );
+		printf('</tr></table></form>', NULL);
+	}	
+}
+
+#############################################################################################
+/**
+ * Impresio dels llistats d'alumnes
+ * shortcode: [ricca3-imptut]
+ *
+ * @since ricca3.v.2015.12.2
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_imptut($atts, $content = null) {
+	global $wpdb;
+	$row_grup   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_GET['grup'] ),  ARRAY_A, 0);
+	$row_any    = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_GET['any'] ),   ARRAY_A, 0);
+	$row_ccomp  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_GET['ccomp']),  ARRAY_A, 0);
+	if( $row_grup['idgrup'] == 17 ){
+		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+				'INNER JOIN ricca3_any                 ON ricca3_any.idany                    = ricca3_credits_avaluacions.idany '.
+				'INNER JOIN ricca3_ccomp               ON ricca3_ccomp.idccomp                = ricca3_credits_avaluacions.idccomp '.
+				'INNER JOIN ricca3_credits             ON ricca3_credits.idcredit             = ricca3_ccomp.idcredit '.
+				'INNER JOIN ricca3_grups               ON ricca3_grups.idgrup                 = ricca3_ccomp.idgrup '.
+				'INNER JOIN ricca3_professors          ON ricca3_professors.idprof            = ricca3_ccomp.idprofessor '.
+				'INNER JOIN ricca3_tutors              ON ricca3_tutors.idprof                = ricca3_ccomp.idtutor '.
+				'INNER JOIN ricca3_alumne              ON ricca3_alumne.idalumne              = ricca3_credits_avaluacions.idalumne '.
+				'INNER JOIN ricca3_especialitats       ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+				'INNER JOIN ricca3_cursos              ON ricca3_cursos.idcurs                = ricca3_credits.idcurs '.
+				'INNER JOIN ricca3_alumne_especialitat ON ricca3_alumne_especialitat.idalumne = ricca3_alumne.idalumne '.
+				'AND ricca3_alumne_especialitat.idgrup   = ricca3_grups.idgrup '.
+				'WHERE ricca3_credits_avaluacions.idccomp = %s AND ricca3_credits_avaluacions.idany = %s AND idestat_es = 1 ORDER BY cognomsinom ASC ',
+				$_GET['ccomp'], $row_any['idany'] );
+	}else{
+		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+				'INNER JOIN ricca3_any                 ON ricca3_any.idany                    = ricca3_credits_avaluacions.idany '.
+				'INNER JOIN ricca3_ccomp               ON ricca3_ccomp.idccomp                = ricca3_credits_avaluacions.idccomp '.
+				'INNER JOIN ricca3_credits             ON ricca3_credits.idcredit             = ricca3_ccomp.idcredit '.
+				'INNER JOIN ricca3_grups               ON ricca3_grups.idgrup                 = ricca3_ccomp.idgrup '.
+				'INNER JOIN ricca3_professors          ON ricca3_professors.idprof            = ricca3_ccomp.idprofessor '.
+				'INNER JOIN ricca3_tutors              ON ricca3_tutors.idprof                = ricca3_ccomp.idtutor '.
+				'INNER JOIN ricca3_alumne              ON ricca3_alumne.idalumne              = ricca3_credits_avaluacions.idalumne '.
+				'INNER JOIN ricca3_especialitats       ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+				'INNER JOIN ricca3_cursos              ON ricca3_cursos.idcurs                = ricca3_credits.idcurs '.
+				'INNER JOIN ricca3_alumne_especialitat ON ricca3_alumne_especialitat.idalumne = ricca3_alumne.idalumne '.
+				'AND ricca3_alumne_especialitat.idgrup   = ricca3_grups.idgrup '.
+				'WHERE ricca3_credits_avaluacions.idccomp = %s AND ricca3_credits_avaluacions.idany = %s AND idestat_es = 1 AND ricca3_alumne_especialitat.idany = %s ORDER BY cognomsinom ASC ',
+				$_GET['ccomp'], $row_any['idany'], $row_any['idany'] );
+	}
+	$dades_cred = $wpdb->get_results( $query, ARRAY_A );
+	$row_prof = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_professors WHERE idprof=%s ', $dades_cred[0]['idprofessor']), ARRAY_A, 0);
+
+	
+	for( $i=0; $i < count( $dades_cred ); $i++ ) {
+		if ($i == 0 || $i == 16) {
+			printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
+			printf('<table><tr><td width="200px"></td>', NULL);
+			printf('<td>%s</td></tr>',                __('','ricca3-alum'));
+			printf('<tr><td>%s %s</td>',              __('Grup:','ricca3-alum'), $dades_cred[$i]['grup']);
+			printf('<td>%s %s</td></tr>',             __('Especialitat:','ricca3-alum'), $dades_cred[$i]['nomespecialitat']);
+			printf('<tr><td>%s %s</td></tr></table>', __('Curs:','ricca3-alum'), $dades_cred[$i]['any']);
+		}
+//		if ($i == 0 && count( $dades ) >= 16) {
+//			$table = " class=\"cosassist\" style=\"page-break-after: always;\" ";
+//		} else {
+//			$table = " class=\"cosassist\" ";
+//		}
+//		if ($i==0 || $i == 16) printf('<table %s>', $table );
+//		if ($i==0 || $i == 16) {
+//			printf( '<tr><td width="280px" align="center">%s</td><td width="80px">DNI</td><td width="80px">Telefon</td><td width="80px">Fixe</td><td width="260px">email</td></tr>', __('Alumnes','ricca3-alum'));
+//		}
+//		printf( '<tr><td>%s - %s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', $i+1 , $dades[$i]["cognomsinom"], $dades[$i]["dni"], $dades[$i]["telefon"], $dades[$i]["telefonfixe"], $dades[$i]["email"] );
+	}
+	printf('</table>', NULL);
+	
+}

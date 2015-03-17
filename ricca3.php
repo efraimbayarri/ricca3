@@ -4,7 +4,7 @@
  * Plugin URI: http://efraim.cat/
  * Author: Efraim Bayarri
  * Author URI: http://efraim.cat/
- * Version: 2015.08.5
+ * Version: 2015.12.2
  * Description: Projecte RIC-CA Versió 3 (Escola Ramon i Cajal) 
  * Release Version:(build 2013.27.5)
  * Release Date: 5 juliol 2013
@@ -63,7 +63,8 @@ add_shortcode( 'ricca3-esborraalumne','ricca3_shortcode_esborraalumne' );
 add_shortcode( 'ricca3-alumnes-sense-especialitat','ricca3_shortcode_alumnes_sense_especialitat' );
 add_shortcode( 'ricca3-llistalu',     'ricca3_shortcode_llistalu' );
 add_shortcode( 'ricca3-impalu',       'ricca3_shortcode_impalu' );
-
+add_shortcode( 'ricca3-llisttut',     'ricca3_shortcode_llisttut' );
+add_shortcode( 'ricca3-imptut',       'ricca3_shortcode_imptut' );
 
 
 add_shortcode( 'ricca3-avaluacions',  'ricca3_shortcode_avaluacions' );

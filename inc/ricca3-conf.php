@@ -391,8 +391,8 @@ $ricca3_sii_fitxers=array(
 ######################################################
 ######################################################
 $ricca3_butons_alumnes=array(
-	"imatge" =>array("cercar",            "noualumne",        "llistatassistencia", "mailings",        "creditspendents",     "inscripcions",   "buid",           "buid",           "llistalu",        "buid",           "buid",           "buid"),
-	"enllac" =>array("ricca3-cercalumne", "ricca3-noualumne", "ricca3-assist",      "ricca3-mailings", "ricca3-credpendents", "ricca3-pregrup", "ricca3-alumnes", "ricca3-alumnes", "ricca3-llistalu", "ricca3-alumnes", "ricca3-alumnes", "ricca3-alumnes"),
+	"imatge" =>array("cercar",            "noualumne",        "llistatassistencia", "mailings",        "creditspendents",     "inscripcions",   "buid",           "buid",           "llistalu",        "llistattutors",   "buid",           "buid"),
+	"enllac" =>array("ricca3-cercalumne", "ricca3-noualumne", "ricca3-assist",      "ricca3-mailings", "ricca3-credpendents", "ricca3-pregrup", "ricca3-alumnes", "ricca3-alumnes", "ricca3-llistalu", "ricca3-llisttut", "ricca3-alumnes", "ricca3-alumnes"),
 	"id"     =>array(false,               false,              false,                false,             false,                 false           , false,            false,            false,             false,             false,           false),
 	"texte"  =>array("",                  "" ,                "",                   "",                "",                    "")
 );
