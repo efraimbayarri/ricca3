@@ -3243,7 +3243,7 @@ function ricca3_shortcode_llisttut($atts, $content = null) {
 	global $wpdb;
 	global $ricca3_butons_cercalumne;
 	
-	dump_r($_POST);
+//	dump_r($_POST);
 	
 //		missatge de capçalera de la pàgina
 	ricca3_missatge(__('Llistats dels tutors','ricca3-alum'));
@@ -3359,20 +3359,26 @@ function ricca3_shortcode_imptut($atts, $content = null) {
 		if ($i == 0 || $i == 16) {
 			printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
 			printf('<table><tr><td width="200px"></td>', NULL);
-			printf('<td>%s</td></tr>',                __('','ricca3-alum'));
-			printf('<tr><td>%s %s</td>',              __('Grup:','ricca3-alum'), $dades_cred[$i]['grup']);
-			printf('<td>%s %s</td></tr>',             __('Especialitat:','ricca3-alum'), $dades_cred[$i]['nomespecialitat']);
-			printf('<tr><td>%s %s</td></tr></table>', __('Curs:','ricca3-alum'), $dades_cred[$i]['any']);
+			printf('<td>%s</td></tr>',            __('','ricca3-alum'));
+			printf('<tr><td>%s %s</td>',          __('Grup:','ricca3-alum'), $dades_cred[$i]['grup']);
+			printf('<td>%s %s</td></tr>',         __('Especialitat:','ricca3-alum'), $dades_cred[$i]['nomespecialitat']);
+			printf('<tr><td>%s %s</td>',          __('Curs:','ricca3-alum'), $dades_cred[$i]['any']);
+			printf('<td>%s</td>',                 $dades_cred[$i]['nomccomp']);
+			printf('<tr><td>%s %s</td>',          __('Professor:','ricca3-alum'), $row_prof['nomicognoms']);
+			printf('<td>%s %s</td></tr></table>', __('Tutor:','ricca3-alum'), $dades_cred[$i]['nomicognomstut']);
+				
 		}
-//		if ($i == 0 && count( $dades ) >= 16) {
-//			$table = " class=\"cosassist\" style=\"page-break-after: always;\" ";
-//		} else {
-//			$table = " class=\"cosassist\" ";
-//		}
-//		if ($i==0 || $i == 16) printf('<table %s>', $table );
-//		if ($i==0 || $i == 16) {
-//			printf( '<tr><td width="280px" align="center">%s</td><td width="80px">DNI</td><td width="80px">Telefon</td><td width="80px">Fixe</td><td width="260px">email</td></tr>', __('Alumnes','ricca3-alum'));
-//		}
+		if ($i == 0 && count( $dades_cred ) >= 16) {
+			$table = " class=\"cosassist\" style=\"page-break-after: always;\" ";
+		} else {
+			$table = " class=\"cosassist\" ";
+		}
+		if ($i==0 || $i == 16) printf('<table %s>', $table );
+		if ($i==0 || $i == 16) {
+			printf( '<tr><td width="280px" align="center">%s</td><td width="40px">N1</td><td width="40px">A1</td><td width="40px">N2</td><td width="40px">A2</td><td width="40px">N3</td><td width="40px">A3</td><td width="40px">NF</td></tr>', __('Alumnes','ricca3-alum'));
+		}
+		printf( '<tr><td>%s - %s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>',
+				$i+1, $dades_cred[$i]['cognomsinom'], $dades_cred[$i]['nota1'],$dades_cred[$i]['act1'],$dades_cred[$i]['nota2'],$dades_cred[$i]['act2'],$dades_cred[$i]['nota3'],$dades_cred[$i]['act3'],$dades_cred[$i]['notaf_cc']);
 //		printf( '<tr><td>%s - %s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>', $i+1 , $dades[$i]["cognomsinom"], $dades[$i]["dni"], $dades[$i]["telefon"], $dades[$i]["telefonfixe"], $dades[$i]["email"] );
 	}
 	printf('</table>', NULL);

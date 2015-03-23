@@ -1010,7 +1010,7 @@ function ricca3_shortcode_notesufloe($atts, $content = null) {
 	global $ricca3_butons_espec;
 	global $ricca3_especalum;
 	
-	dump_r($_POST);
+//	dump_r($_POST);
 	
 	$dades_any=$wpdb->get_row('SELECT * FROM ricca3_any WHERE actual=1', ARRAY_A, 0);
 	ricca3_missatge(__('Notes Unitats Formatives LOE','ricca3-dades'));
@@ -1019,6 +1019,38 @@ function ricca3_shortcode_notesufloe($atts, $content = null) {
 	ricca3_butons( $ricca3_butons_espec, 6 );
 	
 	if( !isset( $_GET['ID'] ) ) return '';
+
+#############################################
+// 	navegació endevant i enrere
+#############################################
+	$query= $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idalumne=%s AND idany=%s', $_GET['ID'], $dades_any['idany']);
+	$data_alumne= $wpdb->get_row($query,ARRAY_A,0);
+	$query= $wpdb->prepare('SELECT * FROM ricca3_alumespec_view WHERE idespecialitat=%s AND idany=%s AND idestat_es=1 ', $data_alumne['idespecialitat'], $data_alumne['idany']);
+	$dades = $wpdb->get_results( $query, ARRAY_A );
+	
+//	dump_r($dades);
+	
+	for( $i=0; $i < count($dades); $i++){
+		if( $dades[$i]['idalumne'] == $_GET['ID']){
+			$ara = $i;
+			$despr = $i + 1;
+			$abans = $i - 1;
+			if( $despr > count($dades) - 1) $despr = 0;
+			if( $abans  == -1) $abans = count($dades) - 1 ;
+			$row_abans = $wpdb->get_row( $query, ARRAY_A, $abans);
+			$row_despr = $wpdb->get_row( $query, ARRAY_A, $despr);
+			
+//			dump_r($row_abans);
+//			dump_r($row_despr);
+			
+			printf('<table width="100%%"><tr><td align="left"> <a href="%s/%s?ID=%s"><img src="%s/ricca3/imatges/ricca3-anterior.png" border=0 " /></a></td>',
+			site_url(), 'ricca3-notesufloe', $row_abans['idalumne'], WP_PLUGIN_URL);
+			printf('                         <td align="left"> <a href="%s/%s?ID=%s"><img src="%s/ricca3/imatges/ricca3-seguent.png" border=0 " /></a></td></tr></table>',
+			site_url(), 'ricca3-notesufloe', $row_despr['idalumne'], WP_PLUGIN_URL);
+		}
+	}
+#############################################	
+	
 //		buscar les dades del alumne
 	$row_alu = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_alumne WHERE idalumne=%s', $_GET['ID']), ARRAY_A, 0);
 	$image_attributes = ricca3_miniatura($_GET['ID']);
@@ -1062,11 +1094,20 @@ function ricca3_shortcode_notesufloe($atts, $content = null) {
 		}
 	}
 //	
-	printf('<table>');
+	if (isset($_POST['accio']) && $_POST['accio']=='actualitzarufloe'){
+		for( $i=0; $i < count( $_POST['notauf']); $i++ ){
+			
+			$result = ricca3_dbupdate('ricca3_loe_alumnes',
+					array( 'nota'  => $_POST['notauf'][$i]),
+					array( 'idloe' => $_POST['idloe'][$i]) );
+		}
+	}
+//	
+	printf('<form method="post" action="" target="_self" name="notauf" id="notauf"><table>');
 //	mostrem la capçalera de la graella amb les ajudes
 	printf( '<tr><th>Grup</th><th></th><th>MODUL/UF</th><th></th><th>hores UF</th><th>Aval</th><th>Professor</th>'.
 			'<th>Nota</th><th></th><th></th><th></th><th>NF</th><th></th><th></th><th></th><th>Hores</th></tr>', NULL);	
-	
+	$z=0;
 	for( $j=0; $j < count($data_cred); $j++ ){
 //	si el crèdit es actiu per aquest any mostrem la convocatoria en negretes
 		$conv = $data_cred[$j]['convord'];
@@ -1090,18 +1131,26 @@ function ricca3_shortcode_notesufloe($atts, $content = null) {
 				$data_cred[$j]['grup'], '<b>===></b>', $data_cred[$j]['nomcredit'], $nota, $pendi, $data_cred[$j]['hores_cr']);
 			$query=$wpdb->prepare('SELECT * from ricca3_loe_uf WHERE idcredit=%s ORDER BY uf, aval', $data_cred[$j]['idcredit']);
 			$dades_loeuf=$wpdb->get_results($query, ARRAY_A);
+			
+//			echo(count($dades_loeuf));
 //	mostrem les UF
 			for($k=0;$k<count($dades_loeuf); $k++){
 				$dades_prof=$wpdb->get_row( $wpdb->prepare('SELECT * from ricca3_professors WHERE idprof=%s', $dades_loeuf[$k]['prof']), ARRAY_A, 0);
 				$dades_notauf=$wpdb->get_row( $wpdb->prepare('SELECT * from ricca3_loe_alumnes WHERE idalumne=%s AND iduf=%s', $_GET['ID'], $dades_loeuf[$k]['iduf']), ARRAY_A, 0);
-				printf('<tr><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s hores</td><td>%s aval</td><td>%s</td><td>%s</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>',
-				'',$dades_loeuf[$k]['uf'], $dades_loeuf[$k]['ufnom'],$dades_loeuf[$k]['ufchores'], $dades_loeuf[$k]['aval'], $dades_prof['nomicognoms'], $dades_notauf['nota']);
+				
+				printf('<tr><td>%s</td><td>%s</td><td>%s</td><td></td><td>%s hores</td><td>%s aval</td><td>%s</td>',
+					$dades_notauf['idloe'], $dades_loeuf[$k]['uf'], $dades_loeuf[$k]['ufnom'],$dades_loeuf[$k]['ufchores'], $dades_loeuf[$k]['aval'], $dades_prof['nomicognoms']);
+				 
+				printf('<td><INPUT type="text" size="5" name="notauf[%s]" value="%s"  /></td>',$z, $dades_notauf['nota']);
+				printf('<td><input type="hidden" name="idloe[%s]" value="%s" /></td>', $z, $dades_notauf['idloe']);
+				printf('<td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>', NULL);
+				$z++;
 			}			
-			
 		}
-	
-
 	}
 	printf('</table>', NULL);
+	ricca3_desar('accio', 'actualitzarufloe', __('ajuda-tab-credits-tots-desar', 'ricca3-alum'));
+	printf('</td></tr></table></form>', NULL);
+//	printf('</table></form>', NULL);
 	
 }
