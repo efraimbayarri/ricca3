@@ -463,7 +463,7 @@ $ricca3_butons_especalum=array(
 #############################################################################################
 $ricca3_butons_avaluacions=array(
 	"imatge" =>array("actes",        "notes",        "observacions", "calcularnotaf",        "veurecalculs",       "buid",               "certifaval",    "certifcurs1",        "certiffinal",        "buid",               "buid",               "buid"),
-	"enllac" =>array("ricca3-actes", "ricca3-notes", "ricca3-obser", "ricca3-calcularnotaf", "ricca3-avaluacions", "ricca3-avaluacions", "ricca3-certif", "ricca3-certifcurs1", "ricca3-certiffinal", "ricca3-avaluacions", "ricca3-avaluacions", "ricca3-avaluacions"),
+	"enllac" =>array("ricca3-actes", "ricca3-notes", "ricca3-obser", "ricca3-calcularnotaf", "ricca3-avaluacions", "ricca3-notesuf", "ricca3-certif", "ricca3-certifcurs1", "ricca3-certiffinal", "ricca3-avaluacions", "ricca3-avaluacions", "ricca3-avaluacions"),
 	"id"     =>array(false,          false,          false,          false,                  false,                false,                false,           false,                false,                false,                false,                false),
 	"nova"   =>array(false,          false,          false,          false,                  false,                false,                false,           false,                false,                false,                false,                false),
 	"texte"  =>array("",             "" ,            "",             "",                     "",                   "",                   "",              "" ,                  "",                   "",                   "",                   "")

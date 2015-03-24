@@ -1427,3 +1427,147 @@ function ricca3_shortcode_notaalumne($atts, $content = null) {
 	}
 	printf('</form>', NULL);
 }
+
+#############################################################################################
+/**
+ * Entrada notes UF
+ * shortcode: [ricca3_notesuf]
+ * última modificació: 2015.13.1
+ *
+ * @since ricca3.v.2014.7.1
+ * @author Efraim Bayarri
+ */
+#############################################################################################
+function ricca3_shortcode_notesuf($atts, $content = null) {
+	global $wpdb;
+	global $current_user;
+	global $ricca3_butons_actes;
+	
+//	dump_r($_POST);
+	
+	ricca3_missatge(__('Notes per UF','ricca3-aval'));
+	ricca3_butons( $ricca3_butons_actes, 6 );
+	
+	printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt600"><tr>', NULL);
+	printf('<td><button type="submit" name="cercar" value="grup" title="%s">%s</td>',
+	__('ajuda-notes-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+//		drop per el any
+	$data_any = $wpdb->get_results('SELECT * FROM ricca3_any', ARRAY_A );
+	ricca3_drop_any( __('Any:','ricca3-aval'), 'any', $data_any, 'idany', 'any', __('ajuda_notes_any', 'ricca3-aval'), 'actual' );
+//		drop per el grup
+	$data_grup = $wpdb->get_results('SELECT * FROM ricca3_grups '.
+			'INNER JOIN ricca3_especialitats ON ricca3_especialitats.idespecialitat = ricca3_grups.idespecialitat '. 
+			'WHERE actiu_gr = 1 AND pla="LOE" ORDER BY grup ', ARRAY_A );
+	ricca3_drop( __('Grup:','ricca3-aval'), 'grup',  $data_grup,  'idgrup', 'grup',  __('ajuda_notes_grup', 'ricca3-aval'), TRUE );
+//
+	if( isset( $_POST['repe']) && $_POST['repe'] == 'si'){
+		printf('<td title="%s">%s<input type="checkbox" accesskey="" name="repe" value="si" title="" class="" checked /></td>' ,
+		__('ajuda_actes_repe','ricca3-aval'), __('Repetidors','ricca3-aval') );
+	}else{
+		printf('<td title="%s">%s<input type="checkbox" accesskey="" name="repe" value="si" title="" class="" /></td>' ,
+		__('ajuda_actes_repe','ricca3-aval'), __('Repetidors','ricca3-aval') );
+	}
+//		tanquem la barra de selecció
+	printf('</tr></table></form>', NULL);
+//		un cop hem escollit el grup, any i avaluació, mostra els credits
+	if( isset( $_POST['cercar'] ) && $_POST['cercar'] == 'grup'){
+		$query_ccomp = $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idgrup = %s AND actiu_cc = 1 ORDER BY nomccomp ASC', $_POST['grup']);
+		if(isset($_POST['repe']) && $_POST['repe'] == 'si') $query_ccomp = $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idgrup = %s ORDER BY nomccomp ASC', $_POST['grup']);
+		
+		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_POST['grup'] ), ARRAY_A, 0);
+		$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_POST['any'] ),  ARRAY_A, 0);
+		printf('<table id="nom" class="nom"><tr><td class="nom">%s %s %s </td></tr></table>',
+		$row_grup['grup'], __('del curs','ricca3-aval'), $row_any['any'] );
+		
+		printf('<form method="post" action="" name="cercar"><table dir="ltr" class="menucurt800"><tr>', NULL);
+		printf('<td><INPUT type="hidden" name="any"  value="%s" />',$_POST['any']);
+		printf('    <INPUT type="hidden" name="grup" value="%s" />',$_POST['grup']);
+		if( isset( $_POST['repe'] ) ) printf('<INPUT type="hidden" name="repe" value=%s />',$_POST['repe']);
+		printf('<button type="submit" name="accio" value="ccomp" title="%s">%s</td>',
+		__('ajuda-notes-escollir', 'ricca3-aval'), __('escollir', 'ricca3-aval'));
+		$data_ccomp = $wpdb->get_results( $query_ccomp, ARRAY_A);
+		ricca3_drop( __('Mòdul:','ricca3-aval'), 'ccomp',  $data_ccomp,  'idccomp', 'nomccomp',  __('ajuda_notes_ccomp', 'ricca3-aval'), TRUE );
+		printf('</tr></table></form>', NULL);
+	}
+	if( isset( $_POST['accio']) && $_POST['accio'] == 'actualitzar'){
+		for( $i=0; $i < count( $_POST['RECORD']); $i++ ){
+			for( $j=0; $j < count( $_POST['idloe'][$i]); $j++ ){
+
+//				dump_r($_POST['idloe'][$i][$j]);
+
+				$result = ricca3_dbupdate('ricca3_loe_alumnes',
+						array( 'nota'  => $_POST['notauf'][$i][$j]),
+						array( 'idloe' => $_POST['idloe'][$i][$j]) );
+			}
+		}
+	}
+	if( isset( $_POST['accio']) && ($_POST['accio'] == 'ccomp' || $_POST['accio'] == 'actualitzar')){
+		$row_grup   = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_POST['grup'] ),  ARRAY_A, 0);
+		$row_any    = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_POST['any'] ),   ARRAY_A, 0);
+		$row_ccomp  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idccomp = %s', $_POST['ccomp']),  ARRAY_A, 0);
+		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
+					'INNER JOIN ricca3_any                 ON ricca3_any.idany                    = ricca3_credits_avaluacions.idany '.
+					'INNER JOIN ricca3_ccomp               ON ricca3_ccomp.idccomp                = ricca3_credits_avaluacions.idccomp '.
+					'INNER JOIN ricca3_credits             ON ricca3_credits.idcredit             = ricca3_ccomp.idcredit '.
+					'INNER JOIN ricca3_grups               ON ricca3_grups.idgrup                 = ricca3_ccomp.idgrup '.
+					'INNER JOIN ricca3_professors          ON ricca3_professors.idprof            = ricca3_ccomp.idprofessor '.
+					'INNER JOIN ricca3_tutors              ON ricca3_tutors.idprof                = ricca3_ccomp.idtutor '.
+					'INNER JOIN ricca3_alumne              ON ricca3_alumne.idalumne              = ricca3_credits_avaluacions.idalumne '.
+					'INNER JOIN ricca3_especialitats       ON ricca3_especialitats.idespecialitat = ricca3_credits.idespecialitat '.
+					'INNER JOIN ricca3_cursos              ON ricca3_cursos.idcurs                = ricca3_credits.idcurs '.
+					'INNER JOIN ricca3_alumne_especialitat ON ricca3_alumne_especialitat.idalumne = ricca3_alumne.idalumne '.
+					'AND ricca3_alumne_especialitat.idgrup   = ricca3_grups.idgrup '.
+					'WHERE ricca3_credits_avaluacions.idccomp = %s AND ricca3_credits_avaluacions.idany = %s AND idestat_es = 1 AND ricca3_alumne_especialitat.idany = %s ORDER BY cognomsinom ASC ',
+					$_POST['ccomp'], $row_any['idany'], $row_any['idany'] );
+		$dades_cred = $wpdb->get_results( $query, ARRAY_A );
+//
+		if( count($dades_cred) > 0){
+			printf('<table id="nom" class="nom"><tr><td class="nom">%s ', $row_grup['grup']);
+			printf('%s %s </td></tr></table>', __('del curs','ricca3-aval'), $row_any['any'] );
+			printf('<table id="nom" class="nom"><tr><td class="nom">', NULL);
+			printf('%s %s </td></tr></table>',__('MÒDUL:','ricca3-aval'), $row_ccomp['nomccomp']);
+		}
+		
+//		dump_r($dades_cred);
+//		dump_r($query);
+
+		$z=0;
+		if(!isset($_POST['repe']))$_POST['repe'] = 'no';
+		
+		$query = $wpdb->prepare('SELECT * FROM ricca3_loe_uf WHERE idcredit = %s ORDER BY uf, aval ', $dades_cred[$z]['idcredit']);
+		$dades_uf = $wpdb->get_results( $query, ARRAY_A );
+		
+//		dump_r($dades_uf);
+		
+		printf('<form method="post" action="" name="cercar"><table><tr><th>%s</th>',
+		__('Alumne','ricca3-aval'));
+		
+		for( $i=0 ; $i < count($dades_uf); $i++){
+			printf('<th>%s-%s (%s)</th>', $dades_uf[$i]['uf'], $dades_uf[$i]['aval'], $dades_uf[$i]['ufchores']);
+			
+		}
+		printf('</tr>', NULL);
+		for( $i=0; $i < count($dades_cred); $i++){
+			if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
+				printf('<tr><td><INPUT type="hidden" name="RECORD[]" value="%s"> %s - %s</td>',
+				$dades_cred[$i]['idcredaval'],$z+1,$dades_cred[$i]['cognomsinom'] );
+				for( $j=0 ; $j < count($dades_uf); $j++){
+					$dades_ufalumne = $wpdb->get_row($wpdb->prepare('SELECT * FROM ricca3_loe_alumnes WHERE idalumne=%s and iduf=%s', $dades_cred[$i]['idalumne'], $dades_uf[$j]['iduf']), ARRAY_A, 0);
+					
+//					dump_r($dades_ufalumne);
+					
+					printf('<td><INPUT type="text" size="5" name="notauf[%s][%s]" value="%s"  />',$i, $j, $dades_ufalumne['nota']);
+					printf('    <INPUT type="hidden" name="idloe[%s][%s]" value="%s" />',         $i, $j, $dades_ufalumne['idloe']);
+					printf('    <INPUT type="hidden" name="any" value="%s" />',                   $_POST['any']);
+					printf('    <INPUT type="hidden" name="ccomp" value="%s" />',                 $_POST['ccomp']);
+					printf('    <INPUT type="hidden" name="grup" value="%s" /></td>',             $_POST['grup']);
+				}
+				$z++;
+				printf('</tr>', NULL);
+			}
+		}
+		printf('</table>',NULL);
+		ricca3_desar('accio', 'actualitzar', __('ajuda-notes-desar','ricca3-aval'));
+		printf('</td></tr></table></form>', NULL);
+	}
+}
