@@ -1474,6 +1474,8 @@ function ricca3_shortcode_notesuf($atts, $content = null) {
 		$query_ccomp = $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idgrup = %s AND actiu_cc = 1 ORDER BY nomccomp ASC', $_POST['grup']);
 		if(isset($_POST['repe']) && $_POST['repe'] == 'si') $query_ccomp = $wpdb->prepare('SELECT * FROM ricca3_ccomp WHERE idgrup = %s ORDER BY nomccomp ASC', $_POST['grup']);
 		
+//		dump_r($query_ccomp);
+		
 		$row_grup = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_grups WHERE idgrup=%s ', $_POST['grup'] ), ARRAY_A, 0);
 		$row_any  = $wpdb->get_row( $wpdb->prepare('SELECT * FROM ricca3_any WHERE idany = %s', $_POST['any'] ),  ARRAY_A, 0);
 		printf('<table id="nom" class="nom"><tr><td class="nom">%s %s %s </td></tr></table>',
@@ -1548,7 +1550,7 @@ function ricca3_shortcode_notesuf($atts, $content = null) {
 		}
 		printf('</tr>', NULL);
 		for( $i=0; $i < count($dades_cred); $i++){
-			if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
+//			if( ($dades_cred[$i]['repe'] != 'R' && $_POST['repe'] != 'si') || ($dades_cred[$i]['repe'] == 'R' && $_POST['repe'] == 'si') ){
 				printf('<tr><td><INPUT type="hidden" name="RECORD[]" value="%s"> %s - %s</td>',
 				$dades_cred[$i]['idcredaval'],$z+1,$dades_cred[$i]['cognomsinom'] );
 				for( $j=0 ; $j < count($dades_uf); $j++){
@@ -1564,7 +1566,7 @@ function ricca3_shortcode_notesuf($atts, $content = null) {
 				}
 				$z++;
 				printf('</tr>', NULL);
-			}
+//			}
 		}
 		printf('</table>',NULL);
 		ricca3_desar('accio', 'actualitzar', __('ajuda-notes-desar','ricca3-aval'));
