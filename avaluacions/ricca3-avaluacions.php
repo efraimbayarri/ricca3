@@ -1023,6 +1023,7 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 //
 	$histo       = __('Historial acadèmic','ricca3-aval');
 	$resultats   = __('Resultats de l\'avaluació dels crèdits','ricca3-aval');
+	$resultats2  = __('Resultats de l\'avaluació dels moduls','ricca3-aval');
 	$forma       = __('Formació professional inicial','ricca3-aval');
 	$dadesalum   = __('Dades de l\'alumne/a','ricca3-aval');
 	$cognoms     = __('Cognoms i nom','ricca3-aval');
@@ -1034,6 +1035,7 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 	$grau        = __('Grau','ricca3-aval');
 	$quali       = __('Qualificacions','ricca3-aval');
 	$nomcredit   = __('Crèdit','ricca3-aval');
+	$nomcredit2  = __('Modul','ricca3-aval');
 	$hores       = __('Hores','ricca3-aval');
 	$convo       = __('Convocatoria','ricca3-aval');
 	$qualicred   =  __('Qualificació','ricca3-aval');
@@ -1064,6 +1066,7 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 //
 		$histo       = __('Historial académico','ricca3-aval');
 		$resultats   = __('Resultados de la evaluación de los créditos','ricca3-aval');
+		$resultats2  = __('Resultados de la evaluación de los módulos','ricca3-aval');
 		$forma       = __('Formación profesional inicial','ricca3-aval');
 		$dadesalum   = __('Datos del alumno/a','ricca3-aval');
 		$cognoms     = __('Apellidos y nombre','ricca3-aval');
@@ -1075,6 +1078,7 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 		$grau        = __('Grado','ricca3-aval');
 		$quali       = __('Calificaciones','ricca3-aval');
 		$nomcredit   = __('Crédito','ricca3-aval');
+		$nomcredit2  = __('Módulo','ricca3-aval');
 		$hores       = __('Horas','ricca3-aval');
 		$convo       = __('Convocatoria','ricca3-aval');
 		$qualicred   = __('Calificación','ricca3-aval');
@@ -1095,8 +1099,14 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 		$row_alum = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_alumne WHERE idalumne=%s', $row_alumespec['idalumne']), ARRAY_A, 0);
 		printf('<table class="cap"> <tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table><br />', WP_PLUGIN_URL, WP_PLUGIN_URL );
 		printf('<table class="cap"><tr><td width="680px" colspan="3" class="gran"><b>%s</b></td></tr>',	$histo );
-		printf('                   <tr><td width="460px" colspan="2"><b>%s</b></td><td width="230px" class="dereta"><b>%s</b></td>',
-		$resultats, $forma );
+		$row_espec = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_especialitats WHERE idespecialitat= %s', $row_alumespec['idespecialitat']), ARRAY_A, 0);
+		if( $row_espec['codiespecialitat'] == "SAA0"){
+			printf('                   <tr><td width="460px" colspan="2"><b>%s</b></td><td width="230px" class="dereta"><b>%s</b></td>',
+			$resultats2, $forma );
+		}else{
+			printf('                   <tr><td width="460px" colspan="2"><b>%s</b></td><td width="230px" class="dereta"><b>%s</b></td>',
+			$resultats, $forma );
+		}
 		printf('                   <tr class="linea"><td colspan="3" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr></table>', WP_PLUGIN_URL);
 //	dades del alumne
 		printf('<table class="cap"><tr><td width="230px" colspan="3"><b>%s</b></td></tr>', $dadesalum );
@@ -1123,8 +1133,13 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 //	qualificacions
 		printf('<table class="cap"><tr><td width="680px" colspan="4"><b>%s</b></td></tr>', $quali);
 		printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-mitja.png"></td></tr>', WP_PLUGIN_URL);
-		printf('                   <tr><td width="380px">%s</td><td width="100px" >%s</td><td width="100px" >%s</td><td width="100px" >%s</td></tr>',
-		$nomcredit, $hores, $convo, $qualicred );
+		if( $row_espec['codiespecialitat'] == "SAA0"){
+			printf('                   <tr><td width="380px">%s</td><td width="100px" >%s</td><td width="100px" >%s</td><td width="100px" >%s</td></tr>',
+			$nomcredit2, $hores, $convo, $qualicred );
+		}else{
+			printf('                   <tr><td width="380px">%s</td><td width="100px" >%s</td><td width="100px" >%s</td><td width="100px" >%s</td></tr>',
+			$nomcredit, $hores, $convo, $qualicred );
+		}
 		printf('                   <tr class="linea"><td colspan="4" width="680px" class="petit"><IMG SRC="%s/ricca3/imatges/ricca3-linea-estreta.png"></td></tr>', WP_PLUGIN_URL);
 //	entrada qualificacions
 		$query  = $wpdb->prepare('SELECT * FROM ricca3_credits WHERE idespecialitat = %s ORDER BY ordre_cr ',$row_alumespec['idespecialitat']);
@@ -1235,10 +1250,12 @@ function ricca3_shortcode_impcertiffinal($atts, $content = null) {
 			__('Que','ricca3-aval'), $row_alum['nomicognoms'], $dni, $row_alum['dni'], $numdni,$row_alum['idalumne'],$cursat, $row_espec['codiespecialitat']);
 			if( $_GET['local'] == 'si'){
 				printf( ' %s %s %s%s</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>'
-						, $row_espec['nomespecialitat_cast'], $reial1, $row_espec['reialdecret'], $reial2 );
+//				, $row_espec['nomespecialitat_cast'], $reial1, $row_espec['reialdecret'], $reial2 );
+			, $row_espec['nomespecialitat_cast'], $reial1, $row_espec['reialdecret'], "" );
 			}else{
 				printf( ' %s %s %s%s</td></tr><tr><td>&nbsp;</td></tr><tr><td>&nbsp;</td></tr>'
-						, $row_espec['nomespecialitat'], $reial1, $row_espec['reialdecret'], $reial2 );
+//				, $row_espec['nomespecialitat'], $reial1, $row_espec['reialdecret'], $reial2 );
+				, $row_espec['nomespecialitat'], $reial1, $row_espec['reialdecret'], "" );
 			}
 			if(strlen($row_alumespec['notaf_es_manual']) > 1){
 				printf('                  <tr><td class="gran"><b>%s&nbsp;&nbsp; %01.3f</b></td></tr>', $qualifica, $row_alumespec['notaf_es_manual']);
