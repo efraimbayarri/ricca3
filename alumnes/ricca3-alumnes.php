@@ -14,6 +14,12 @@ function ricca3_shortcode_alumnes($atts, $content = null) {
 	global $ricca3_butons_alumnes;
 	global $ricca3_alumespec;
 ##	BEGIN debug
+//	global $current_user;
+//	get_currentuserinfo();
+//	echo 'Username: ' . $current_user->user_login . "\n";
+//	echo 'User roles: ' . implode(', ', $current_user->roles) . "\n";
+//	echo 'User ID: ' . $current_user->ID . "\n";
+	
 //	print_r($_POST);	
 //	dump($_POST);
 //	dump_r($_POST);
@@ -2147,8 +2153,10 @@ function ricca3_shortcode_impbutlleti($atts, $content = null) {
 	printf('%s<b> %s</b></td><td width="350">',             __('DNI/Passaport','ricca3-alum'), $row_alu["dni"] );
 	printf('%s<b> %s</b></td></tr><tr><td>',                __('Professió','ricca3-alum'), $row_alu["professio"] );
 	printf('%s<b> %s</b></td><td width="350">',             __('Telèfon fixe','ricca3-alum'), $row_alu["telefonfixe"] );
-	printf('%s<b> %s</b></td></tr></table><table><tr><td>', __('Telèfon mòbil','ricca3-alum'), $row_alu["telefon"]);
-	printf('%s<b> %s</b></td><td width="350"></td></tr></table><table><tr><td>', __('Domicili','ricca3-alum'), $row_alu["residenciahabitual"] );
+#	printf('%s<b> %s</b></td></tr></table><table><tr><td>', __('Telèfon mòbil','ricca3-alum'), $row_alu["telefon"]);
+#	printf('%s<b> %s</b></td><td width="350"></td></tr></table><table><tr><td>', __('Domicili','ricca3-alum'), $row_alu["residenciahabitual"] );
+	printf('%s<b> %s</b></td></tr></table><table><tr><td colspan="2">', __('Telèfon mòbil','ricca3-alum'), $row_alu["telefon"]);
+	printf('%s<b> %s</b></td></tr></table><table><tr><td>', __('Domicili','ricca3-alum'), $row_alu["residenciahabitual"] );
 	printf('%s<b> %s</b></td><td width="350">',             __('Població','ricca3-alum'), $row_alu["ciutathabitual"] );
 	printf('%s<b> %s</b></td></tr><tr><td>',                __('Codi postal','ricca3-alum'), $row_alu["codipostal"] );
 	printf('%s<b> %s</b></td><td></td></tr></table><table class="cap"><tr><td>', __('Email','ricca3-alum'), $row_alu["email"] );

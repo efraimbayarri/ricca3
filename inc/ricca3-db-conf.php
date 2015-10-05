@@ -85,6 +85,9 @@ function ricca3_dbupdate($table, $data, $where, $format = null, $where_format = 
 	global $wpdb;
 	global $current_user;
 	get_currentuserinfo();
+//	if($current_user->roles != 'super_admin' or $current_user->roles != 'advanced') return;
+//  echo 'User roles: ' . implode(', ', $current_user->roles) . "\n";	
+	if( implode(', ', $current_user->roles) == 'contributor' ) return;
 	$stampversion = '2014.23.1';
 	$encodeddata  = json_encode($data,  JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
 	$encodedwhere = json_encode($where, JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);
@@ -161,6 +164,7 @@ function ricca3_dbinsert($table, $data, $format = null) {
 	global $wpdb;
 	global $current_user;
 	get_currentuserinfo();
+	if( implode(', ', $current_user->roles) == 'contributor' ) return;
 	$stampversion = '2014.23.1';
 	if($wpdb->insert( $table, $data, $format )){
 		
@@ -201,6 +205,7 @@ function ricca3_dbdelete($table, $where, $where_format = null) {
 	global $wpdb;
 	global $current_user;
 	get_currentuserinfo();
+	if( implode(', ', $current_user->roles) == 'contributor' ) return;
 	$stampversion = '2014.23.1';
 	$encodedwhere = json_encode($where, JSON_FORCE_OBJECT | JSON_UNESCAPED_UNICODE);	
 	$return_value = $wpdb->delete( $table, $where, $where_format);
