@@ -307,7 +307,7 @@ function ricca3_shortcode_sii_xml($atts, $content = null) {
 //	CursAcademicIniciCicle
 				printf('</td></tr><tr><td>');
 				$CursAcademicIniciCicle='1213';
-				if($data_view[0]['idcurs']==1)$CursAcademicIniciCicle='1415';
+				if($data_view[0]['idcurs']==1)$CursAcademicIniciCicle='1516';
 				printf('%sp:CursAcademicIniciCicle%s%s%s/p:CursAcademicIniciCicle%s', '&lt;', '&gt;',$CursAcademicIniciCicle, '&lt;', '&gt;');
 //  ******************************************************
 //  ******************************************************			
