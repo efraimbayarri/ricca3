@@ -401,7 +401,7 @@ function ricca3_shortcode_impassist($atts, $content = null) {
 	$row_any = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ricca3_any WHERE actual = 1', NULL ) , ARRAY_A , 0 );
 	$dades = $wpdb->get_results( $wpdb->prepare( 'SELECT * FROM ricca3_alumespec_view WHERE idgrup = %s AND idany = %s AND idestat_es = 1 AND repeteix != "R" ORDER BY cognomsinom ASC' , $_GET['ID'] , $row_any['idany'] ), ARRAY_A );
 	for( $i=0; $i < count( $dades ); $i++ ) {
-		if ($i == 0 || $i == 16) {
+		if ($i == 0 || $i == 16 || $i == 32){
 			printf('<table class="cap"><tr><td><IMG SRC="%s/ricca3/imatges/ricca3-logo.jpg" ALIGN=left><IMG SRC="%s/ricca3/imatges/ricca3-adreca.png" ALIGN=left></td></tr></table>', WP_PLUGIN_URL, WP_PLUGIN_URL );
 			printf('<table><tr><td width="200px"></td>', NULL);
 			printf('<td>%s</td></tr>',                __('CONTROL D\'ASSISTENCIA','ricca3-alum'));
@@ -412,10 +412,11 @@ function ricca3_shortcode_impassist($atts, $content = null) {
 		if ($i == 0 && count( $dades ) >= 16) {
 			$table = " class=\"cosassist\" style=\"page-break-after: always;\" ";
 		} else {
-			$table = " class=\"cosassist\" ";
+			$table = " class=\"cosassist\" style=\"page-break-after: always;\" ";
 		}
-		if ($i==0 || $i == 16) printf('<table %s>', $table );
-		if ($i==0 || $i == 16) { 
+		if ( $i >= 32)$table = " class=\"cosassist\" style=\"page-break-after: always;\" ";
+		if ($i==0 || $i == 16 || $i == 32) printf('<table %s>', $table );
+		if ($i==0 || $i == 16 || $i == 32) { 
 			printf( '<tr><td width="380px" align="center">%s<br />&nbsp;</td><td width="40px"></td><td width="40px"></td><td width="40px"></td><td width="40px"></td><td width="40px"></td>', __('Alumnes','ricca3-alum'));
 			printf( '<td width="40px"></td><td width="40px"></td><td width="40px"></td><td width="40px"></td><td width="40px"></td></tr>', NULL);
 		}

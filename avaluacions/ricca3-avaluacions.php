@@ -118,6 +118,10 @@ function ricca3_shortcode_impactes($atts, $content = null) {
 		$query = $wpdb->prepare('SELECT * FROM ricca3_pla_view WHERE idany = %s AND idgrup = %s ORDER BY ordre_cr ', $_GET['any'], $_GET['grup'] );
 	}
 	$dades_pla = $wpdb->get_results( $query, ARRAY_A);
+	
+//	dump_r($dades_pla);
+
+	
 //		creem un acta per cada un dels crèdits
 	for( $i = 0; $i < count($dades_pla); $i++){
 		$query = $wpdb->prepare('SELECT * FROM ricca3_credits_avaluacions '.
@@ -135,6 +139,11 @@ function ricca3_shortcode_impactes($atts, $content = null) {
                                 'WHERE ricca3_credits_avaluacions.idccomp = %s AND ricca3_credits_avaluacions.idany = %s AND ricca3_credits_avaluacions.repe != "R" and idestat_es=1 ORDER BY cognomsinom ASC ',
                                 $dades_pla[$i]['idccomp'], $dades_pla[$i]['idany'] );
 		$dades_ccomp = $wpdb->get_results( $query, ARRAY_A );
+
+//	dump_r($query);
+//	dump_r($dades_ccomp);
+		
+		
 //	si hi han alumnes per el crèdit continuem
 		if( count($dades_ccomp) > 0){
 			for( $j = 0; $j < count($dades_ccomp); $j++){
